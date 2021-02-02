@@ -18,3 +18,4 @@
 
 ### System Architecture Design
 - Architecture can be found [here](https://github.com/ezrahall/Comp4350/wiki).
+
