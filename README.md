@@ -8,7 +8,12 @@
 | Matt Lewis | Matthew9799 | Backend Dev
 
 ### Description
-- Details regarding the nature of this project can be found on the wiki [homepage](https://github.com/ezrahall/Comp4350/wiki).
+Safeat is designed to provide customers a platform to order food from restauraunts in a safe and efficient manner. The application allows users to order off the menu of a restauraunt and pay for that order, which will then be delivered to a location specified by the customer. What makes Safeat standout from any other food ordering service is that it adds contact tracing to the delivery process. The contact tracing feature means that if any individual involved in the food delivery procees (restaurant worker, delivery driver or customer) tests positive for Covid-19 (or in the future any other illnesses) all other parties involved in the order will recieve a notification.
+
+### Vision Statement
+ Design and develop a safe and secure food delivery app that incorporates a Covid-19 contact tracing system.
+
+- Details regarding the nature of this project along with the vision statement can also be found at [homepage](https://github.com/ezrahall/Comp4350/wiki).
 
 ### Languages and Tools
 - Documentation regarding tools can be found on this wiki [page](https://github.com/ezrahall/Comp4350/wiki).
