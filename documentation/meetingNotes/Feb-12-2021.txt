@@ -1,0 +1,24 @@
+# Friday February 12, 2021
+Agenda: Proposal wrap up, 
+Team evaluation, 
+Sprint 2 task organization, 
+
+## Notes
+- Discussed adding acceptance criteria to user stories
+- Went through our team evaluations and decided where to give out our points, came to an agreement about which teams get which points
+- Will we add stakeholders to the project summary/vision 
+- Will make sure our project description lines up with the description we have in our readme
+- What features do we want to do first and talked about if there is any technical challenges stopping us 
+- For account management feature: need to make sure we finish drivers/customers/restaurant, do it in a modular reusable way
+- Goal for sprint 2: account management, browsing restaurants will have high priority, other two features will have medium and low priorities
+- Talked about how we want to design the endpoints for search, individual endpoints or more monolithic, will need to figure this out later on as we start developing
+- Discussed how to or if we need to paginate requests, aim for about 30 restaurants to begin
+- Start the sprint by creating dev tasks for each user story
+- We will have to figure out how to set up the Github CI 
+- Need to give every team member full admin access to the Github repository
+Summary:
+- Michael will add stakeholders
+- We will each add our acceptance criteria to our user stories
+- Ezra will submit proposal when we’re done
+- Ezra and Matt will setup frontend and backend respectively
+- We will all start creating dev tasks
