@@ -9,7 +9,7 @@ login_manager = LoginManager()
 
 def create_app():
     appl = Flask(__name__, static_folder=os.path.abspath(''))
-    appl.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user_1:&Q?kXvA7XQ@159.203.34.38:3306/safeat_prod'
+    appl.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user_1:&Q?kXvA7XQ@159.203.34.38:3306/safeat'
     appl.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     appl.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024
 
@@ -33,5 +33,4 @@ def create_app():
         return appl
 
 
-if __name__ == 'main':
-    create_app()
+create_app()

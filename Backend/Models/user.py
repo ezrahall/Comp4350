@@ -9,9 +9,11 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String(100), nullable=False, unique=False)
-    email = db.Column(db.String(40), unique=True, nullable=False)
-    password = db.Column(db.String(200), primary_key=False, unique=False, nullable=False)
-    created_on = db.Column(db.DateTime, index=False, unique=False, nullable=True)
-    last_login = db.Column(db.DateTime, index=False, unique=False, nullable=True)
+    email = db.Column(db.String(40), index=True, unique=True, nullable=False)
+    password = db.Column(db.String(200), unique=False, nullable=False)
+    created_on = db.Column(db.DateTime, index=False, unique=False, nullable=False)
+    latitude = db.Column(db.Float, nullable=False, unique=False, index=True)
+    longitude = db.Column(db.Float, nullable=False, unique=False, index=True)
+    last_login = db.Column(db.DateTime, index=False, unique=False, nullable=False)
 
-    active = db.Column(db.Boolean, index=False, unique=False, nullable=False)
+    active = db.Column(db.Boolean, index=True, unique=False, nullable=False)

@@ -26,3 +26,24 @@ def login():
 
     session.close()
     return json.loads(result)
+
+
+@login_bp.route('/Api/Register', methods=['POST'])
+@login_required
+def login():
+    Session = sessionmaker(bind=db.engine)
+    session = Session()
+    result = ''
+
+    try:
+        res = session.execute('select * from users where org = :org', {'org': current_user.organization})
+
+        session.commit()
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+
+    session.close()
+    return json.loads(result)

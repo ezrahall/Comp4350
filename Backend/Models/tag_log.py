@@ -3,15 +3,13 @@ from Backend import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class Staff(UserMixin, db.Model):
-    __tablename__ = 'staff'
+class TagLog(UserMixin, db.Model):
+    __tablename__ = 'tag_log'
 
     id = db.Column(db.Integer, primary_key=True)
 
     restaurant = db.Column(db.Integer, db.ForeignKey('restaurant.id'), index=True, nullable=False)
-
-    name = db.Column(db.String(100), nullable=False, unique=False)
-    email = db.Column(db.String(40), unique=True, nullable=False)
-    created_on = db.Column(db.DateTime, index=False, unique=False, nullable=True)
+    tag = db.Column(db.Integer, db.ForeignKey('tags.id'), index=True, nullable=False)
+    created_on = db.Column(db.DateTime, index=True, unique=False, nullable=False)
 
     active = db.Column(db.Boolean, index=True, unique=False, nullable=False)

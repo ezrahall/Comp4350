@@ -11,4 +11,4 @@ class Tags(UserMixin, db.Model):
     name = db.Column(db.String(100), nullable=False, unique=False)
     created_on = db.Column(db.DateTime, index=False, unique=False, nullable=True)
 
-    active = db.Column(db.Boolean, index=False, unique=False, nullable=False)
+    active = db.Column(db.Boolean, index=True, unique=False, nullable=False)
