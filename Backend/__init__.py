@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from gevent import monkey
 import os
 
 db = SQLAlchemy()
@@ -15,6 +16,7 @@ def create_app():
 
     db.init_app(appl)
     login_manager.init_app(appl)
+    monkey.patch_all()
 
     with appl.app_context():
         from Backend.Blueprints.Errors import errors

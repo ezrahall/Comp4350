@@ -7,9 +7,30 @@ import json
 users_bp = Blueprint('users__bp', __name__)
 
 
-@users_bp.route('/Api/Users', methods=['POST'])
+@users_bp.route('/Api/User/Update', methods=['POST'])
 @login_required
-def user_info():
+def user_update():
+    Session = sessionmaker(bind=db.engine)
+    session = Session()
+    result = ''
+
+    try:
+        res = session.execute('select * from users where org = :org', {'org': current_user.organization})
+
+        session.commit()
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+
+    session.close()
+    return json.loads(result)
+
+
+@users_bp.route('/Api/User/Deactivate', methods=['POST'])
+@login_required
+def user_deactivate():
     Session = sessionmaker(bind=db.engine)
     session = Session()
     result = ''
