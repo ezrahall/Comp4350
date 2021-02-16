@@ -1,8 +1,8 @@
 import './App.css';
 import Layout from "./hoc/Layout/Layout";
 import {Switch, Route, withRouter} from 'react-router-dom';
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
+import Home from "./components/pages/Home/Home";
+import Login from "./components/pages/Login/Login";
 
 function App() {
   return (
