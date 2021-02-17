@@ -50,12 +50,13 @@ def search():
                                quote_plus(parameters['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
 
-        results = session.execute('select * from (select r.id, r.name, r.comment, r.latitude, r.longitude '
+        results = session.execute('select * from (select r.id, u.name, r.comment, r.latitude, r.longitude '
                                   'from restaurant as r '
                                   '     left join tag_log tl on r.id = tl.restaurant and tl.active = 1 '
                                   '     left join tags t on t.id = tl.tag '
                                   '     left join menu_item mi on r.id = mi.restaurant and mi.active = 1 '
-                                  'where (r.name like CONCAT("%", :query, "%") or'
+                                  '     inner join user u on r.id = u.restaurant '
+                                  'where (u.name like CONCAT("%", :query, "%") or'
                                   '       mi.name like CONCAT("%", :query, "%") or'
                                   '       t.name like CONCAT("%", :query, "%")) '
                                   'and r.active = 1 '

@@ -24,7 +24,6 @@ def create_app():
         from Backend.Blueprints.Restaurants import restaurants
         from Backend.Blueprints.Search import search
         from Backend.Blueprints.Users import users
-        from Backend.Blueprints.Utilities import utility
 
         appl.register_blueprint(errors.error_bp)
         appl.register_blueprint(login.login_bp)
