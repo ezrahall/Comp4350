@@ -40,15 +40,19 @@ def search():
         parameters = {
             'addr': '45 D\'arcy Dr, Winnipeg',
             'dist': 50,
-            'query': 'mcd',
+            'query': 'salad',
             'offset': 0,
             'limit': 30
         }
         """
 
+
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
                                quote_plus(parameters['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
+        # Disables error from mysql for grouping by primary id
+        session.execute("set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,"
+                        "ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'")
 
         results = session.execute('select * from (select r.id, u.name, r.comment, r.latitude, r.longitude, r.address '
                                   'from restaurant as r '
