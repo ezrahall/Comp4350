@@ -28,6 +28,7 @@ def user_login():
     # Initialize the database connection
     Session = sessionmaker(bind=db.engine)
     session = Session()
+    user = None
 
     try:
         parameters = json.loads(request.form['user'])
@@ -58,7 +59,7 @@ def user_login():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+    return json.dumps(user), 200, {'ContentType': 'application/json'}
 
 
 """
@@ -78,6 +79,7 @@ def user_register():
     # Initialize database
     Session = sessionmaker(bind=db.engine)
     session = Session()
+    user = None
 
     try:
         parameters = json.loads(request.form['user'])
@@ -90,7 +92,7 @@ def user_register():
             raise LookupError
 
         # Else wise we now create the new user
-        session.execute('insert into user values(default, null, :name, :email, :password, now(), now(), 1)',
+        session.execute('insert into user values(default, null, :name, :email, "", :password, now(), now(), 1)',
                         {'name': parameters['name'],
                          'email': parameters['email'],
                          'password': generate_password_hash(parameters['password'], method='sha256')})
@@ -114,7 +116,7 @@ def user_register():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+    return json.dumps(user), 200, {'ContentType': 'application/json'}
 
 
 """
@@ -132,6 +134,7 @@ this and getting the email or password wrong or an email that doesnt exist all g
 def restaurant_login():
     Session = sessionmaker(bind=db.engine)
     session = Session()
+    user = None
 
     try:
         parameters = json.loads(request.form['user'])
@@ -162,7 +165,7 @@ def restaurant_login():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+    return json.dumps(user), 200, {'ContentType': 'application/json'}
 
 
 """
@@ -182,6 +185,7 @@ is to silently fail which is telling the adversary the same information, and pot
 def restaurant_register():
     Session = sessionmaker(bind=db.engine)
     session = Session()
+    user = None
 
     try:
         parameters = json.loads(request.form['user'])
@@ -198,13 +202,15 @@ def restaurant_register():
                                quote_plus(parameters['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
         # Insert restaurant into system
-        session.execute('insert into restaurant values(default, :lat, :lng, "", 1)',
+        session.execute('insert into restaurant values(default, :lat, :lng, :addr, "", 1)',
                         {
                             'lat': address['results'][0]['geometry']['location']['lat'],
-                            'lng': address['results'][0]['geometry']['location']['lng']
+                            'lng': address['results'][0]['geometry']['location']['lng'],
+                            'addr': address['results'][0]['formatted_address']
                         })
         # Create user and link them to that restaurant
-        session.execute('insert into user values(default, last_insert_id(), :name, :email, :password, now(), now(), 1)',
+        session.execute('insert into user values(default, last_insert_id(), :name, :email, "", :password, '
+                        'now(), now(), 1)',
                         {'name': parameters['name'],
                          'email': parameters['email'],
                          'password': generate_password_hash(parameters['password'], method='sha256')})
@@ -229,7 +235,7 @@ def restaurant_register():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+    return json.dumps(user), 200, {'ContentType': 'application/json'}
 
 
 """

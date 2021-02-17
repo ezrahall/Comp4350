@@ -24,12 +24,14 @@ def create_app():
         from Backend.Blueprints.Restaurants import restaurants
         from Backend.Blueprints.Search import search
         from Backend.Blueprints.Users import users
+        from Backend.Blueprints.Menu import menu
 
         appl.register_blueprint(errors.error_bp)
         appl.register_blueprint(login.login_bp)
         appl.register_blueprint(restaurants.restaurant_bp)
         appl.register_blueprint(search.search_bp)
         appl.register_blueprint(users.users_bp)
+        appl.register_blueprint(menu.menu_bp)
 
         return appl
 

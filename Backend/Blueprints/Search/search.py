@@ -17,7 +17,7 @@ Endpoint expects to be given five parameters from client
 @query:    The desired restaurant, tag, menu item, etc 
 @offset:   The offset for return results for pagination
 @limit:    The number of entries you wish to receive
-@addr:     The latitude of the client
+@addr:     The address of the client eg "45 D'arcy Dr. Winnipeg"
 Returns JSON array of restaurants with id, name, and description
 Default behaviour is empty query which will return first 30 restaurants within range
 """
@@ -50,7 +50,7 @@ def search():
                                quote_plus(parameters['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
 
-        results = session.execute('select * from (select r.id, u.name, r.comment, r.latitude, r.longitude '
+        results = session.execute('select * from (select r.id, u.name, r.comment, r.latitude, r.longitude, r.address '
                                   'from restaurant as r '
                                   '     left join tag_log tl on r.id = tl.restaurant and tl.active = 1 '
                                   '     left join tags t on t.id = tl.tag '
@@ -98,7 +98,8 @@ def search():
             json_string += '{"id": "' + str(row[0]) + '", ' \
                             '"name": "' + str(row[1]) + '", ' \
                             '"description": "' + str(row[2]) + '",' \
-                            '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '"},'
+                            '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '", ' \
+                            '"address": "' + str(row[5]) + '"},'
 
         if json_string.endswith(','):
             json_string = json_string[:-1]
@@ -157,5 +158,4 @@ def location_autocomplete():
         print(str(e))
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
-    print(json_string)
     return json.loads(json_string)
