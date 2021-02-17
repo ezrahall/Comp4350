@@ -12,7 +12,7 @@ class MenuItem(UserMixin, db.Model):
 
     name = db.Column(db.String(100), nullable=False, unique=False)
     price = db.Column(db.Float, nullable=False, unique=False, index=True)
-    description = db.Column(db.String(2048), index=False, unique=False, nullable=False)
+    description = db.Column(db.String(2048), index=False, unique=False, nullable=True)
     created_on = db.Column(db.DateTime, index=False, unique=False, nullable=False)
 
     active = db.Column(db.Boolean, index=True, unique=False, nullable=False)
