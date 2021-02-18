@@ -17,7 +17,7 @@ Endpoint expects to be given five parameters from client
 @query:    The desired restaurant, tag, menu item, etc 
 @offset:   The offset for return results for pagination
 @limit:    The number of entries you wish to receive
-@addr:     The latitude of the client
+@addr:     The address of the client eg "45 D'arcy Dr. Winnipeg"
 Returns JSON array of restaurants with id, name, and description
 Default behaviour is empty query which will return first 30 restaurants within range
 """
@@ -40,22 +40,27 @@ def search():
         parameters = {
             'addr': '45 D\'arcy Dr, Winnipeg',
             'dist': 50,
-            'query': 'mcd',
+            'query': 'salad',
             'offset': 0,
             'limit': 30
         }
         """
 
+
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
                                quote_plus(parameters['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
+        # Disables error from mysql for grouping by primary id
+        session.execute("set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,"
+                        "ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'")
 
-        results = session.execute('select * from (select r.id, r.name, r.comment, r.latitude, r.longitude '
+        results = session.execute('select * from (select r.id, u.name, r.comment, r.latitude, r.longitude, r.address '
                                   'from restaurant as r '
                                   '     left join tag_log tl on r.id = tl.restaurant and tl.active = 1 '
                                   '     left join tags t on t.id = tl.tag '
                                   '     left join menu_item mi on r.id = mi.restaurant and mi.active = 1 '
-                                  'where (r.name like CONCAT("%", :query, "%") or'
+                                  '     inner join user u on r.id = u.restaurant '
+                                  'where (u.name like CONCAT("%", :query, "%") or'
                                   '       mi.name like CONCAT("%", :query, "%") or'
                                   '       t.name like CONCAT("%", :query, "%")) '
                                   'and r.active = 1 '
@@ -97,7 +102,8 @@ def search():
             json_string += '{"id": "' + str(row[0]) + '", ' \
                             '"name": "' + str(row[1]) + '", ' \
                             '"description": "' + str(row[2]) + '",' \
-                            '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '"},'
+                            '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '", ' \
+                            '"address": "' + str(row[5]) + '"},'
 
         if json_string.endswith(','):
             json_string = json_string[:-1]
@@ -156,5 +162,4 @@ def location_autocomplete():
         print(str(e))
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
-    print(json_string)
     return json.loads(json_string)
