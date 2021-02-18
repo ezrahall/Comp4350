@@ -162,7 +162,12 @@ This value is then used to retrieve the image from the backend
 
 @restaurant_bp.route('/Api/Images/<image_id>')
 def get_image(image_id):
-    return send_from_directory(directory=os.path.join(os.getcwd() + '/Backend/Images/'), filename=str(image_id) + '.jpg')
+    if os.path.exists(os.path.join(os.getcwd() + '/Backend/Images/') + str(image_id) + '.jpg'):
+        return send_from_directory(directory=os.path.join(os.getcwd() + '/Backend/Images/'),
+                                   filename=str(image_id) + '.jpg')
+    else:
+        return send_from_directory(directory=os.path.join(os.getcwd() + '/Backend/Images/'),
+                                   filename='no_image.jpg')
 
 
 """
