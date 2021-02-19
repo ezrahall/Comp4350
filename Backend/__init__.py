@@ -34,6 +34,3 @@ def create_app():
         appl.register_blueprint(menu.menu_bp)
 
         return appl
-
-
-create_app()
