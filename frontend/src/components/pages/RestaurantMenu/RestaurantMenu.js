@@ -1,19 +1,20 @@
 import React from 'react'
 import './RestaurantMenu.css'
-import NavBar from '../../NavBar/NavBar'
+import Hero from '../../Hero/Hero'
+import FoodItem from '../../FoodItem/FoodItem'
+import FeaturedItem from '../../FoodItem/FeaturedItem/FeaturedItem'
+import Footer from '../../Footer/Footer'
 
-function RestaurantMenu() {
+function RestaurantMenu({title,image,description,restaurantSlogan}) {
     return (
         <div className='restaurantMenu'>
 
-            <NavBar />
+            <Hero />
+            <FoodItem />
 
-            <div className='restaurantMenu__image'>
-            </div>
-
-            <div className='restaurantMenu__items'>
-
-            </div>    
+            <FeaturedItem />
+            <FoodItem />
+            <Footer />
 
 
             
