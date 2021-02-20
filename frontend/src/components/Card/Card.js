@@ -13,6 +13,7 @@ function Card({title,image,description,rating,distance}) {
                 <h4>{description}</h4>
                 <h3>{rating} <img className='card__starImage' src={Star} /> </h3>
                 <h4>Distace Away: {distance}</h4>
+                
 
             </div>
             
