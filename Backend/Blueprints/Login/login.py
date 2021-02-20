@@ -28,12 +28,14 @@ def user_login():
     Session = sessionmaker(bind=db.engine)
     session = Session()
     user = None
-
+    
     try:
         # Check to see if credentials match user, and the account is still active
+        print("In try")
         user = User.query.filter(User.active == 1, User.email == request.form['email']).first()
-
-        if user.check_password(request.form['password']):
+        print("Got user ")
+        print(user)
+        if user.check_password(request.args.get('password')):
             login_user(user)
             session.execute('update user set last_login = now() where id = :id and active = 1',
                             {'id': user.id})
@@ -78,8 +80,11 @@ def user_register():
 
     try:
         # Check to see if email is already in use
+        print("in try")
+        print(request.form['email'])
+        print("trying first query")
         in_use_email = User.query.filter(User.active == 1, User.email == request.form['email']).first()
-
+        print(in_use_email)
         # If account exists then we raise exception
         if in_use_email is not None:
             raise LookupError

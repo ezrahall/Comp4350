@@ -4,14 +4,23 @@ import {Switch, Route, withRouter} from 'react-router-dom';
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 
+import UserContextProvider from './context/user';
+import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './components/Dashboard';
+
 function App() {
-  return (
+  return ( 
     <div className="App">
       <Layout>
-        <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/login"component={Login}/>
-        </Switch>
+        <UserContextProvider>
+          <Switch>
+            <Route path="/" exact component={Home}/>
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/protected">
+              <Dashboard />
+            </PrivateRoute>
+          </Switch>
+        </UserContextProvider>
       </Layout>
     </div>
   );
