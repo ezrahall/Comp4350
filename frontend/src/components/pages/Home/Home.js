@@ -18,9 +18,13 @@ function Home(props) {
 
             </div>
             <Banner />
+            
             <div className='home__cardContainer'>
+            <h2 className='home__title'>Available Restaurants: </h2>
+                
 
                 <div className='home__card'>
+                
                 <Card title='KFC' image={KFC} rating={4}/>
                 <Card title='KFC' image={KFC} rating={4}/>
                 <Card title='KFC' image={KFC} rating={4}/>
@@ -34,13 +38,29 @@ function Home(props) {
                 <Card title='KFC' image={KFC} rating={4}/>
 
                 </div>
+                <div className='home__card'>
+                <Card title='KFC' image={KFC} rating={4}/>
+                <Card title='KFC' image={KFC} rating={4}/>
+                <Card title='KFC' image={KFC} rating={4}/>
 
+                </div>
+
+                <div className='home__card'>
+                <Card title='KFC' image={KFC} rating={4}/>
+                <Card title='KFC' image={KFC} rating={4}/>
+                <Card title='KFC' image={KFC} rating={4}/>
+
+                </div>
+
+                
+
+
+            
                 <Footer />
-
-
-
-
+                
             </div>
+            
+            
         </div>
     );
 }
