@@ -30,10 +30,11 @@ def user_login():
     user = None
 
     try:
+        parameters = request.json
         # Check to see if credentials match user, and the account is still active
-        user = User.query.filter(User.active == 1, User.email == request.form['email']).first()
+        user = User.query.filter(User.active == 1, User.email == parameters['email']).first()
 
-        if user.check_password(request.form['password']):
+        if user.check_password(parameters['password']):
             login_user(user)
             session.execute('update user set last_login = now() where id = :id and active = 1',
                             {'id': user.id})
@@ -77,8 +78,9 @@ def user_register():
     user = None
 
     try:
+        parameters = request.json
         # Check to see if email is already in use
-        in_use_email = User.query.filter(User.active == 1, User.email == request.form['email']).first()
+        in_use_email = User.query.filter(User.active == 1, User.email == parameters['email']).first()
 
         # If account exists then we raise exception
         if in_use_email is not None:
@@ -87,9 +89,9 @@ def user_register():
         # Else wise we now create the new user
         session.execute('insert into user values(default, null, :name, :email, "", :password, now(), now(), 1)',
                         {
-                            'name': request.form['name'],
-                            'email': request.form['email'],
-                            'password': generate_password_hash(request.form['password'], method='pbkdf2:sha256',
+                            'name': parameters['name'],
+                            'email': parameters['email'],
+                            'password': generate_password_hash(parameters['password'], method='pbkdf2:sha256',
                                                                salt_length=8)
                         })
 
@@ -130,15 +132,16 @@ def restaurant_register():
     user = None
 
     try:
+        parameters = request.json
         # Check to see if restaurant/user exists in the system
-        in_use_email = User.query.filter(User.email == request.form['email'], User.active == 1).first()
+        in_use_email = User.query.filter(User.email == parameters['email'], User.active == 1).first()
         # Raise an error if they already are present
         if in_use_email is not None:
             raise LookupError
 
         # Make a request to google for latitude and longitude of restaurant
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
-                               quote_plus(request.form['addr']) +
+                               quote_plus(parameters['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
         # Insert restaurant into system
         session.execute('insert into restaurant values(default, :lat, :lng, :addr, "", 1)',
@@ -151,9 +154,9 @@ def restaurant_register():
         session.execute('insert into user values(default, last_insert_id(), :name, :email, "", :password, '
                         'now(), now(), 1)',
                         {
-                            'name': request.form['name'],
-                            'email': request.form['email'],
-                            'password': generate_password_hash(request.form['password'], method='pbkdf2:sha256',
+                            'name': parameters['name'],
+                            'email': parameters['email'],
+                            'password': generate_password_hash(parameters['password'], method='pbkdf2:sha256',
                                                                salt_length=8)
                         })
 
