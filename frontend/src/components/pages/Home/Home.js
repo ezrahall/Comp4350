@@ -9,56 +9,45 @@ import Footer from '../../Footer/Footer';
 function Home(props) {
     return (
         <div className='home'>
-            <div className='home__container'>
-            <img
-                className='home__image'
-                src={HomeBackground}
-                alt = ''
-                    />
+            
 
-            </div>
             <Banner />
-            
-            <div className='home__cardContainer'>
-            <h2 className='home__title'>Available Restaurants: </h2>
-                
 
-                <div className='home__card'>
-                
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
+            <h2>Available Restaurants</h2>
+                   
+            <div className='home__card'>
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
 
-                </div>
-
-
-                <div className='home__card'>
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
-
-                </div>
-                <div className='home__card'>
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
-
-                </div>
-
-                <div className='home__card'>
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
-                <Card title='KFC' image={KFC} rating={4}/>
-
-                </div>
-
-                
-
-
-            
-                <Footer />
-                
             </div>
+            <div className='home__card'>
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+
+
+            </div>
+            <div className='home__card'>
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
+
+
+            </div>
+
+            <div className='home__card'>
+
+
+            </div>
+
+            
+
+
+        
+            <Footer />
+                
+            
             
             
         </div>

@@ -1,20 +1,18 @@
 .banner {
-  margin-left: 25px;
-  margin-top: 30px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  position: absolute;
-  z-index: 1;
+  height: 50vh;
+  position: relative;
+  width: 80%;
+  flex-direction: column;
+  margin-left: 220px;
+  margin-top: 50px;
 }
 
 .banner__image {
   display: flex;
-  max-height: 400px;
-  max-width: auto;
-  width: 100%;
-  object-fit: contain;
+  margin-left: 280px;
+  margin-top: -390px;
+  z-index: -1;
 }
 
 .banner__info {

@@ -11,7 +11,7 @@ function Card({title,image,description,rating,distance}) {
             <div className='card__info'>
             <h2>{title}</h2>
                 <h4>{description}</h4>
-                <h3>{rating} <img className='card__starImage' src={Star} /> </h3>
+                <h3>{rating} <img className='card__starImage' src={Star} alt='' /> </h3>
                 <h4>Distace Away: {distance}</h4>
                 
 
