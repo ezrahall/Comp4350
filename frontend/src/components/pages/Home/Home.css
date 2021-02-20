@@ -1,0 +1,27 @@
+.home {
+  display: flex;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto; /* Allows us to not stretch if the screen size increases*/
+  max-width: 1500px;
+}
+
+.home__cardContainer {
+  margin: 450px;
+  position: relative;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.home__card {
+  display: flex;
+  padding: 30px;
+}
+
+.home__image {
+  width: 120%;
+  z-index: -1; /*Makes sure it is at the back of sth if overlaps i.e cards*/
+  margin-bottom: -150px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  position: absolute;
+}
