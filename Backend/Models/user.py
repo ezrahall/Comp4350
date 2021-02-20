@@ -1,5 +1,7 @@
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 from Backend import db
+import json
 
 
 class User(UserMixin, db.Model):
@@ -18,3 +20,21 @@ class User(UserMixin, db.Model):
 
     active = db.Column(db.Boolean, index=True, unique=False, nullable=False)
 
+    def set_password(self, password):
+        """Create hashed password."""
+        self.password = generate_password_hash(password, method='sha256')
+
+    def check_password(self, password):
+        """Check hashed password."""
+        return check_password_hash(self.password, password)
+
+    def to_json(self):
+        dict = {
+            'email': self.email,
+            'name': self.name,
+            'phone': self.phone,
+        }
+        return json.dumps(dict)
+
+    def __repr__(self):
+        return '<User {}>'.format(self.name)
