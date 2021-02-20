@@ -19,7 +19,7 @@
 }
 
 .home__image {
-  width: 120%;
+  width: 116.65%;
   z-index: -1; /*Makes sure it is at the back of sth if overlaps i.e cards*/
   margin-bottom: -150px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
