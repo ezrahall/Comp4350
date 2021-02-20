@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { MenuItems } from './MenuItems.js';
 // import { Button } from '../Button';
 import './NavBar.css';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
+import {Link} from 'react-router-dom'
 
 class NavBar extends Component {
     state = { clicked: false }
@@ -37,6 +39,16 @@ class NavBar extends Component {
                             </li>
                         )
                     })}
+                    <Link to='/checkout'>
+                        <div className='navbar-basket'>
+                            <ShoppingBasketIcon />
+                            <span
+                            className='navbar-basketCount'>
+                                0
+                            </span>
+                        </div>
+
+                    </Link>
                 </ul>
             </nav>
         )

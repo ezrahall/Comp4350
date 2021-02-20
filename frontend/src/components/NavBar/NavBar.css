@@ -64,3 +64,14 @@
 .menu-icon {
   display: none;
 }
+
+.navbar-basket {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.navbar-basketCount {
+  margin-left: 10px;
+  margin-right: 10px;
+}
