@@ -18,6 +18,7 @@ function Banner() {
                     variant="outlined">Explore
                 </Button>
 
+
             </div>
             <div className='banner__image'>
                 <img
