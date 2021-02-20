@@ -33,8 +33,6 @@ def search():
     session = Session()
 
     try:
-        parameters = json.loads(request.form['send_data'])
-
         """
         This is for testing purposes
         parameters = {
@@ -48,7 +46,7 @@ def search():
 
 
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
-                               quote_plus(parameters['addr']) +
+                               quote_plus(request.form['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
         # Disables error from mysql for grouping by primary id
         session.execute("set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,"
@@ -71,10 +69,10 @@ def search():
                                   'as rest_vals '
                                   'group by rest_vals.id limit :limit offset :offset',
                                   {
-                                      'dist': parameters['dist'],
-                                      'query': parameters['query'],
-                                      'offset': parameters['offset'],
-                                      'limit': parameters['limit'],
+                                      'dist': request.form['dist'],
+                                      'query': request.form['query'],
+                                      'offset': request.form['offset'],
+                                      'limit': request.form['limit'],
                                       'lat': address['results'][0]['geometry']['location']['lat'],
                                       'lng': address['results'][0]['geometry']['location']['lng']
                                   }).fetchall()
@@ -133,7 +131,7 @@ def location_autocomplete():
     json_string = '{ "completions": ['
 
     try:
-        parameters = json.loads(request.form['send_data'])
+        token = None
 
         """
         This is for testing purposes
@@ -143,11 +141,13 @@ def location_autocomplete():
         }
         """
 
-        if parameters['token'] is None:
-            parameters['token'] = str(uuid.uuid4().hex)
+        if request.form['token'] is None:
+            token = str(uuid.uuid4().hex)
+        else:
+            token = request.form['token']
 
-        address = requests.get(base_endpoint + '&input=' + quote_plus(parameters['addr']) + '&sessiontoken='
-                               + parameters['token'])
+        address = requests.get(base_endpoint + '&input=' + quote_plus(request.form['addr']) + '&sessiontoken='
+                               + token)
 
         for completion in address.json()['predictions']:
             json_string += '{"name": "' + completion['description'] + '"},'
@@ -155,7 +155,7 @@ def location_autocomplete():
         if json_string.endswith(','):
             json_string = json_string[:-1]
 
-        json_string += '], "token": "'+parameters['token']+'" '
+        json_string += '], "token": "'+token+'" '
 
         json_string += '}'
     except Exception as e:
