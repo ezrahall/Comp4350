@@ -30,20 +30,10 @@ def user_login():
     user = None
 
     try:
-        parameters = json.loads(request.form['user'])
-        """
-        # This is for testing purposes
-        parameters = {
-            'email': "test_email@test.com",
-            'password': 'this_is_really_secure',
-            'name': 'Joe Schmo'
-        }
-        """
-
         # Check to see if credentials match user, and the account is still active
-        user = User.query.filter(User.active == 1, User.email == parameters['email']).first()
+        user = User.query.filter(User.active == 1, User.email == request.form['email']).first()
 
-        if user.check_password(parameters['password']):
+        if user.check_password(request.form['password']):
             login_user(user)
             session.execute('update user set last_login = now() where id = :id and active = 1',
                             {'id': user.id})
@@ -87,16 +77,8 @@ def user_register():
     user = None
 
     try:
-        parameters = json.loads(request.form['user'])
-        """
-        parameters = {
-            'email': "test_email@toot.com",
-            'password': "this_is_really_secure",
-            'name': "Joe  not Schmo"
-        }
-        """
         # Check to see if email is already in use
-        in_use_email = User.query.filter(User.active == 1, User.email == parameters['email']).first()
+        in_use_email = User.query.filter(User.active == 1, User.email == request.form['email']).first()
 
         # If account exists then we raise exception
         if in_use_email is not None:
@@ -105,24 +87,17 @@ def user_register():
         # Else wise we now create the new user
         session.execute('insert into user values(default, null, :name, :email, "", :password, now(), now(), 1)',
                         {
-                            'name': parameters['name'],
-                            'email': parameters['email'],
-                            'password': generate_password_hash(parameters['password'], method='pbkdf2:sha256',
+                            'name': request.form['name'],
+                            'email': request.form['email'],
+                            'password': generate_password_hash(request.form['password'], method='pbkdf2:sha256',
                                                                salt_length=8)
                         })
-        # Need to fetch last id so we can use Flask-Login with ORM object instead of result_proxy object
-        user = session.execute('select * from user where user.id = last_insert_id()').fetchall()[0]
-        user = User(id=user[0], restaurant=user[1], name=user[2], email=user[3], phone=user[4], password=user[5],
-                    created_on=user[6], last_login=user[7], active=True)
-
-        # Log our new client into the application
-        login_user(user)
 
         session.commit()
     except LookupError:
         session.rollback()
         session.close()
-        return json.dumps({'success': False, 'error': 'An account with this email already exists.'}), \
+        return json.dumps({'success': False, 'error': 'An account with this name already exists.'}), \
                403, {'ContentType': 'application/json'}
 
     except Exception as e:
@@ -132,7 +107,7 @@ def user_register():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return user.to_json(), 200, {'ContentType': 'application/json'}
+    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 
 """
@@ -155,27 +130,15 @@ def restaurant_register():
     user = None
 
     try:
-        parameters = json.loads(request.form['user'])
-
-        """
-        # This is for testing purposes
-        parameters = {
-            'email': "test_email@toots.com",
-            'password': "this_is_really_secure",
-            'name': "Joe  not Schmo",
-            'addr': "45 D\'arcy dr, Winnipeg MB"
-        }
-        """
-
         # Check to see if restaurant/user exists in the system
-        in_use_email = User.query.filter(User.email == parameters['email'], User.active == 1).first()
+        in_use_email = User.query.filter(User.email == request.form['email'], User.active == 1).first()
         # Raise an error if they already are present
         if in_use_email is not None:
             raise LookupError
 
         # Make a request to google for latitude and longitude of restaurant
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
-                               quote_plus(parameters['addr']) +
+                               quote_plus(request.form['addr']) +
                                '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y').json()
         # Insert restaurant into system
         session.execute('insert into restaurant values(default, :lat, :lng, :addr, "", 1)',
@@ -188,19 +151,13 @@ def restaurant_register():
         session.execute('insert into user values(default, last_insert_id(), :name, :email, "", :password, '
                         'now(), now(), 1)',
                         {
-                            'name': parameters['name'],
-                            'email': parameters['email'],
-                            'password': generate_password_hash(parameters['password'], method='pbkdf2:sha256',
+                            'name': request.form['name'],
+                            'email': request.form['email'],
+                            'password': generate_password_hash(request.form['password'], method='pbkdf2:sha256',
                                                                salt_length=8)
                         })
-        # Fetch last user id so we can use Flask-Login and the ORM to manage session
-        user = session.execute('select * from user where user.id = last_insert_id()').fetchall()[0]
-        user = User(id=user[0], restaurant=user[1], name=user[2], email=user[3], phone=user[4], password=user[5],
-                    created_on=user[6], last_login=user[7], active=True)
-        # Log the user in
-        login_user(user)
-        session.commit()
 
+        session.commit()
     except LookupError:
         session.rollback()
         session.close()
@@ -214,7 +171,7 @@ def restaurant_register():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return user.to_json(), 200, {'ContentType': 'application/json'}
+    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 
 """
