@@ -5,6 +5,7 @@ import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
 import RestaurantMenu from './components/pages/RestaurantMenu/RestaurantMenu';
 import Checkout from './components/pages/Checkout/Checkout';
+import Payment from './components/pages/Payment/Payment';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
           <Route path="/" exact component={Home}/>
           <Route path="/login"component={Login}/>
           <Route path="/restaurantmenu"component={RestaurantMenu}/> 
-          <Route path="/checkout"component={Checkout}/>          
+          <Route path="/checkout"component={Checkout}/>     
+          <Route path="/payment"component={Payment}/>        
         </Switch>
       </Layout>
     </div>
