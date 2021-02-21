@@ -4,7 +4,8 @@ import './Footer.css'
 function Footer() {
     return (
         <div className='footer'>
-            <h1> This is a footer </h1>
+            <h2> Created by </h2>
+            <h1>Thanatos</h1>
             
         </div>
     )
