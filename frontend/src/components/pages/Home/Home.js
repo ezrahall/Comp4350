@@ -7,6 +7,25 @@ import Footer from '../../Footer/Footer';
 import {Link} from 'react-router-dom'
 import {restData} from './restaurantData'
 
+const distanceData = [
+    {
+        id: 1,
+        distance: 5
+    },
+    {
+        id: 2,
+        distance: 10
+    },
+    {
+        id: 3,
+        distance: 15
+    },
+    {
+        id: 4,
+        distance: 20
+    },
+]
+
 function Home(props) {
     return (
         <div className='home'>
@@ -14,7 +33,20 @@ function Home(props) {
 
             <Banner />
 
-            <h2>Available Restaurants</h2>
+
+            <div className='home__title'>
+
+                <h2>Available Restaurants Near: </h2>
+                <select>
+                    {distanceData.map((d) => (
+                        <option key={d.id} value={d.id} >{d.distance} Km</option>
+
+                    ))}
+                    
+                </select>
+            </div>
+
+            
                    
             <div className='home__card'>
 
