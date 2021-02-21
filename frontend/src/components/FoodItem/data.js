@@ -7,7 +7,7 @@ export const foodData = [
         alt: '',
         title: 'Chicken',
         ingridients: 'since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only fiv',
-        price: '19.99',
+        price: '25.00',
         button:'Add to Cart'
 
     },
@@ -17,7 +17,7 @@ export const foodData = [
         alt: '',
         title: 'Beef',
         ingridients: 'uries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets',
-        price: '19.99',
+        price: '119.29',
         button:'Add to Cart'
 
     },
