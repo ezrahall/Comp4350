@@ -15,7 +15,7 @@ export const foodData = [
         id: 2,
         img: KFC,
         alt: '',
-        title: 'Chicken',
+        title: 'Beef',
         ingridients: 'uries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets',
         price: '19.99',
         button:'Add to Cart'
@@ -25,7 +25,7 @@ export const foodData = [
         id: 3,
         img: KFC,
         alt: '',
-        title: 'Chicken',
+        title: 'BAAAACCOOON',
         ingridients: 'lorepIpsumuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets',
         price: '19.99',
         button:'Add to Cart'

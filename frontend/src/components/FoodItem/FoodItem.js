@@ -14,11 +14,12 @@ function FoodItem({heading,data}) {
         dispatch({
             type: 'ADD_TO_BASKET',
             item: {
-        
+                
+                id: e.id,
                 title: e.title,
                 image: e.image,
                 price: e.price,
-                description: e.desc,
+                ingridients: e.ingridients,
             },
         });
     }
