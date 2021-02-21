@@ -24,7 +24,7 @@ function NavBar() {
     
         return(
             <nav className="NavBarItems">
-                <Link to='/'>
+                <Link to='/' style={{ textDecoration: 'none' }}>
                     <h1 className="navbar-logo">Safeat</h1>
                 </Link>
                 
@@ -47,7 +47,7 @@ function NavBar() {
                             </li>
                         )
                     })}
-                    <Link to='/checkout'>
+                    <Link to='/checkout' style={{ textDecoration: 'none' }}>
                         <div className='navbar-basket'>
                             <ShoppingBasketIcon />
                             <span

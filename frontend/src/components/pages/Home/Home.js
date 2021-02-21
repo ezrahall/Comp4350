@@ -19,7 +19,7 @@ function Home(props) {
             <div className='home__card'>
 
                 {restData.map((restaurant) => (
-                    <Link to='/restaurantmenu'>
+                    <Link to='/restaurantmenu' style={{ textDecoration: 'none' }}>
                         <Card image={KFC} title={restaurant.title} rating={restaurant.rating} description={restaurant.description} distance={restaurant.distance} />
     
                     </Link>

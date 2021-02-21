@@ -17,7 +17,7 @@
 }
 
 .banner__info {
-  background-color: #663399;
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
   color: white;
   padding-top: 25vh;
   padding-left: 50px;
