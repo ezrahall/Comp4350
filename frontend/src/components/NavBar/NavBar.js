@@ -5,6 +5,7 @@ import './NavBar.css';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import {Link} from 'react-router-dom'
 import { useStateValue } from '../../ContextAPI/StateProvider.js';
+import SearchIcon from '@material-ui/icons/Search';
 
 
 function NavBar() {
@@ -30,11 +31,10 @@ function NavBar() {
                 
                 <div className="menu-icon" onClick={handleClick}></div>
                 <form  className="navbar-search" onSubmit={handleSubmit}>
-                    <label className="search-logo">
-                        Search
-                        <input className="search-box" type="text" name="searchQuery" placeholder="Search Restaurants"/>
-                    </label>
-                        <input className="submit-search" type="submit" value="Submit" />
+                    <div className="search-box">
+                        <input type="text" name="searchQuery" placeholder="Search Restaurants"/>
+                        <SearchIcon />
+                    </div>
                 </form>
                 <ul className={state.clicked ? 'nav-menu active' : 'nav-menu'}>
                     {MenuItems.map((item, index) => {
