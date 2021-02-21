@@ -3,7 +3,7 @@ import './Card.css'
 import Star from '../images/ratingStar.png'
 
 
-function Card({title,image,description,rating,distance}) {
+function Card({id,title,image,description,rating,distance}) {
     return (
         <div className='card'>
 

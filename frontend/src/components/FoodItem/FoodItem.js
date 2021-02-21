@@ -1,11 +1,11 @@
 import React from 'react'
 import './FoodItem.css'
-import {foodData} from './data'
+
 import { useStateValue } from '../../ContextAPI/StateProvider'
 
 
 
-function FoodItem() {
+function FoodItem({heading,data}) {
 
     const [{basket},dispatch] = useStateValue();
 
@@ -27,9 +27,9 @@ function FoodItem() {
 
     return (
         <div className='fooditem'>
-            <h1 className='fooditem__heading'>Heading</h1>
+            <h1 className='fooditem__heading'>{heading}</h1>
             <div className='fooditem__wrapper'>
-                {foodData.map((product, index) => {
+                {data.map((product) => {
                     return(
                         <div className='fooditem__card'>
                             <div className='fooditem__content'>
