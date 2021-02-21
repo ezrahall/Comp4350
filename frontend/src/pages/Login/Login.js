@@ -40,7 +40,7 @@ const Login = (props) => {
 
     const handleLoginSignup = async (e) => {
 
-        const { from } = location.state || { from: { pathname: "/" } };
+        const { from } = location.state || { from: { pathname: "/protected/dashboard" } };
         e.preventDefault()
 
         const user = {

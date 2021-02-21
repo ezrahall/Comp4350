@@ -17,11 +17,9 @@ const UserContextProvider = (props) => {
 	const signIn = async (user) => {
 		console.log("Sign In");
 		try {
-			const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/User/Login?email=${user.email}&password=${user.password}`, {
-				headers: {
-					"Accept": 'application/json',
-					'Content-Type': 'application/x-www-form-urlencoded'
-				},
+			const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/User/Login`, {
+                password: user.password,
+                email: user.email,
 			})
 
 			console.log(resp);
@@ -47,10 +45,10 @@ const UserContextProvider = (props) => {
 	const signUp = async (user) => {
 		console.log("Sign Up", user);
 		try {
-			const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/User/Register?email=${user.email}&password=${user.password}&name=${user.firstName}`, {
-				headers: {
-					"Accept": 'application/json',
-				},
+			const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/User/Register`, {
+                password: user.password,
+                email: user.email,
+                name: user.firstName
 			})
 			
 			const statusCode = resp.status
@@ -61,7 +59,6 @@ const UserContextProvider = (props) => {
 				setPhoneNumber(data.phone)
 				setHasError(false)
 				setErrorMessage('')
-				setIsAuth(true)
 			}
 		} catch (error) {
 			setHasError(true)
