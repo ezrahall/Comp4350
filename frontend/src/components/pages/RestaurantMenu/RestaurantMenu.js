@@ -9,7 +9,6 @@ import {foodData} from '../../FoodItem/data'
 function RestaurantMenu() {
     return (
         <div className='restaurantMenu'>
-
             <Hero />
             <FoodItem data={foodData} heading='Chicken' />
 

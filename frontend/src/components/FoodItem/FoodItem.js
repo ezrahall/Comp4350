@@ -37,7 +37,7 @@ function FoodItem({heading,data}) {
                             <div className='fooditem__info'>
                                 <h2 className='fooditem__title'>{product.title}</h2>
                                 <p className='fooditem__desc'>{product.desc}</p>
-                                <p className='fooditem__price'>{product.price}</p>
+                                <p className='fooditem__price'>${product.price}</p>
                                 <button className='fooditem__button' onClick={(e) => addToBasket(product)}>{product.button}</button>
                                 {/*Needs to be fixed, Subtotal not appearing */}
                             </div>          
