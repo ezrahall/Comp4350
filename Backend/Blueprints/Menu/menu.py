@@ -23,19 +23,20 @@ def restaurant_menu(restaurant):
                                'where r.active = 1 '
                                'and r.id = :id '
                                'order by mi.name', {'id': restaurant}).fetchall()
-
-        if menu is not None:
+        if len(menu) > 0:
             result += '"addr": "' + str(menu[0][0]) + '", "menu": ['
 
-        for item in menu:
-            result += '{"name": "' + str(item[1]) + '", ' \
-                       '"price": "' + str(item[2]) + '", ' \
-                       '"description": "' + str(item[3]) + '"},'
+            for item in menu:
+                result += '{"name": "' + str(item[1]) + '", ' \
+                          '"price": "' + str(item[2]) + '", ' \
+                          '"description": "' + str(item[3]) + '"},'
 
-        if result.endswith(','):
-            result = result[:-1]
+            if result.endswith(','):
+                result = result[:-1]
 
-        result += ']}'
+            result += ']'
+
+        result += '}'
 
         session.commit()
     except Exception as e:
@@ -45,5 +46,4 @@ def restaurant_menu(restaurant):
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    print(result)
     return json.loads(result)

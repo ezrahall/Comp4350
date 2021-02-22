@@ -53,7 +53,7 @@ def restaurant_update():
     session = Session()
 
     try:
-        parameters = json.loads(request.form['send_data'])
+        parameters = request.json
         # Update description of restaurant
         if parameters['descr'] != "" and current_user.restaurant is not None:
             session.query(Restaurant).filter(Restaurant.id == current_user.restaurant).update(
