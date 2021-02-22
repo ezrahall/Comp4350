@@ -1,0 +1,43 @@
+.banner {
+  display: flex;
+  height: 50vh;
+  position: relative;
+  width: 80%;
+  flex-direction: column;
+  margin-left: 220px;
+  margin-top: 50px;
+}
+
+.banner__image {
+  display: flex;
+  margin-left: 280px;
+  margin-top: -390px;
+  z-index: -1;
+}
+
+.banner__info {
+  background-color: #663399;
+  color: white;
+  padding-top: 25vh;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 40px;
+  width: 300px;
+}
+
+.banner__info > button {
+  background-color: #301934;
+  color: white;
+  text-transform: inherit;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.banner__info > h5 {
+  margin-top: 10px;
+}
+
+.banner__info > button:hover {
+  background-color: white;
+  color: #743a34;
+}

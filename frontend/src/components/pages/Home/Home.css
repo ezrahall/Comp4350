@@ -1,0 +1,16 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto; /* Allows us to not stretch if the screen size increases*/
+  max-width: 1500px;
+}
+
+.home__card {
+  display: flex;
+  padding: 30px;
+  z-index: 1;
+  margin-left: 5px;
+  margin-right: 5px;
+}
