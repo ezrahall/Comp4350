@@ -25,7 +25,7 @@ def user_update():
     session = Session()
 
     try:
-        parameters = json.loads(request.form['send_data'])
+        parameters = request.json
 
         # Update users name
         if parameters['name'] != "":
