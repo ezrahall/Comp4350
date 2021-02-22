@@ -4,16 +4,18 @@ import Hero from '../../Hero/Hero'
 import FoodItem from '../../FoodItem/FoodItem'
 import FeaturedItem from '../../FoodItem/FeaturedItem/FeaturedItem'
 import Footer from '../../Footer/Footer'
+import {foodData} from '../../FoodItem/data'
 
-function RestaurantMenu({title,image,description,restaurantSlogan}) {
+function RestaurantMenu() {
     return (
         <div className='restaurantMenu'>
-
             <Hero />
-            <FoodItem />
+            <FoodItem data={foodData} heading='Chicken' />
 
             <FeaturedItem />
-            <FoodItem />
+
+            <FoodItem data={foodData} heading='Beef' />
+
             <Footer />
 
 

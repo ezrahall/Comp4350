@@ -11,13 +11,13 @@
 .banner__image {
   display: flex;
   margin-left: 280px;
-  margin-top: -390px;
+  margin-top: -385px;
   z-index: -1;
   height: 98%;
 }
 
 .banner__info {
-  background-color: #663399;
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
   color: white;
   padding-top: 25vh;
   padding-left: 50px;
@@ -27,7 +27,7 @@
 }
 
 .banner__info > button {
-  background-color: #301934;
+  background-color: rgb(255, 0, 106);
   color: white;
   text-transform: inherit;
   margin-top: 20px;
@@ -40,5 +40,5 @@
 
 .banner__info > button:hover {
   background-color: white;
-  color: #743a34;
+  color: rgb(255, 0, 106);
 }

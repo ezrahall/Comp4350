@@ -58,7 +58,27 @@
 }
 
 .search-box {
-  float: center;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  max-width: fit-content;
+  padding: 10px;
+  height: 23px;
+  border: 1px solid lightgray;
+  border-radius: 999px;
+}
+
+.search-box > input {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  outline-width: 0;
+  width: 800px;
+}
+
+.search-box > input,
+input::-webkit-input-placeholder {
+  font-size: 18px;
 }
 
 .menu-icon {

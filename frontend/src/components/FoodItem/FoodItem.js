@@ -1,11 +1,11 @@
 import React from 'react'
 import './FoodItem.css'
-import {foodData} from './data'
+
 import { useStateValue } from '../../ContextAPI/StateProvider'
 
 
 
-function FoodItem() {
+function FoodItem({heading,data}) {
 
     const [{basket},dispatch] = useStateValue();
 
@@ -14,11 +14,12 @@ function FoodItem() {
         dispatch({
             type: 'ADD_TO_BASKET',
             item: {
-        
+                
+                id: e.id,
                 title: e.title,
                 image: e.image,
                 price: e.price,
-                description: e.desc,
+                ingridients: e.ingridients,
             },
         });
     }
@@ -27,9 +28,9 @@ function FoodItem() {
 
     return (
         <div className='fooditem'>
-            <h1 className='fooditem__heading'>Heading</h1>
+            <h1 className='fooditem__heading'>{heading}</h1>
             <div className='fooditem__wrapper'>
-                {foodData.map((product, index) => {
+                {data.map((product) => {
                     return(
                         <div className='fooditem__card'>
                             <div className='fooditem__content'>
@@ -37,7 +38,7 @@ function FoodItem() {
                             <div className='fooditem__info'>
                                 <h2 className='fooditem__title'>{product.title}</h2>
                                 <p className='fooditem__desc'>{product.desc}</p>
-                                <p className='fooditem__price'>{product.price}</p>
+                                <p className='fooditem__price'>${product.price}</p>
                                 <button className='fooditem__button' onClick={(e) => addToBasket(product)}>{product.button}</button>
                                 {/*Needs to be fixed, Subtotal not appearing */}
                             </div>          
