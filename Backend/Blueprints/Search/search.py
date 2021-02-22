@@ -33,8 +33,7 @@ def search():
     session = Session()
 
     try:
-        parameters = json.loads(request.form['send_data'])
-
+        parameters = request.json
         """
         This is for testing purposes
         parameters = {
@@ -133,7 +132,8 @@ def location_autocomplete():
     json_string = '{ "completions": ['
 
     try:
-        parameters = json.loads(request.form['send_data'])
+        parameters = request.json
+        token = None
 
         """
         This is for testing purposes
@@ -144,10 +144,12 @@ def location_autocomplete():
         """
 
         if parameters['token'] is None:
-            parameters['token'] = str(uuid.uuid4().hex)
+            token = str(uuid.uuid4().hex)
+        else:
+            token = parameters['token']
 
         address = requests.get(base_endpoint + '&input=' + quote_plus(parameters['addr']) + '&sessiontoken='
-                               + parameters['token'])
+                               + token)
 
         for completion in address.json()['predictions']:
             json_string += '{"name": "' + completion['description'] + '"},'
@@ -155,7 +157,7 @@ def location_autocomplete():
         if json_string.endswith(','):
             json_string = json_string[:-1]
 
-        json_string += '], "token": "'+parameters['token']+'" '
+        json_string += '], "token": "'+token+'" '
 
         json_string += '}'
     except Exception as e:

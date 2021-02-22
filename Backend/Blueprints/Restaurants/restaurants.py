@@ -23,7 +23,7 @@ Return json of associated restaurant information of menu items, tags, descriptio
 def restaurant_data():
     Session = sessionmaker(bind=db.engine)
     session = Session()
-    result = ''
+    result = '{}'
 
     try:
         session.execute('', {})
@@ -53,7 +53,7 @@ def restaurant_update():
     session = Session()
 
     try:
-        parameters = json.loads(request.form['send_data'])
+        parameters = request.json
         # Update description of restaurant
         if parameters['descr'] != "" and current_user.restaurant is not None:
             session.query(Restaurant).filter(Restaurant.id == current_user.restaurant).update(
@@ -177,6 +177,7 @@ Saves file, then opens it and converts it to jpg format
 
 
 @restaurant_bp.route('/Api/Images/Upload', methods=['POST'])
+@login_required
 def upload_image():
     # Check if current user is a restaurant owner and is therefore capable of uploading images
     if current_user.restaurant is not None:
