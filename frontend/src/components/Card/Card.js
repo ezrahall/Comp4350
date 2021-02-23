@@ -1,6 +1,6 @@
 import React from 'react'
 import './Card.css'
-import Star from '../images/ratingStar.png'
+import Star from '../../assets/images/ratingStar.png'
 
 
 function Card({id,title,image,description,rating,distance}) {

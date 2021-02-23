@@ -2,7 +2,7 @@ import React from 'react';
 import './Home.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
-import KFC from '../../images/KFC.jpg'
+import KFC from '../../../assets/images/KFC.jpg'
 import Footer from '../../Footer/Footer';
 import {Link} from 'react-router-dom'
 import {restData} from './restaurantData'
