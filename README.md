@@ -5,7 +5,7 @@
 | Tahmidul Hasnain Zidaan | thzidaan | Front End Dev
 | Ezra Hall | ezrahall | Front End Dev
 | James Harvey | Le-DarkOverlord | Full Stack Dev
-| Micael Ukwenya | ukwenyam  | Full Stack Dev
+| Michael Ukwenya | ukwenyam  | Full Stack Dev
 | Matt Lewis | Matthew9799 | Backend Dev
 
 
