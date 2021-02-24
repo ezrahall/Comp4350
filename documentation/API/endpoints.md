@@ -86,4 +86,27 @@ Endpoint retrieves the menu of the url encoded id of restaurant. expects one par
 ```
 {"addr": "45 D'arcy Dr, Winnipeg MB", "menu": [{"name": "Sweet Tacos", "price": 3.99, "description": "Delicious Tacos you'll regret the next morning!"}], "jwt_token": "324wtsg"}
 ```
+
+## /Api/Restaurant/Update [POST]
+Endpoint expects two parameters \
+@descr:    The description of the restaurant, which is to be displayed on the menu and search page\
+@cookies:  A dictionary of all cookies from the client \
+If value of descr is empty than it will not be updated\
+@returns 
+```
+{'success': True, 'jwt_token': "T456fghe546g5fd"}
+```
+
+## /Api/User/Update [POST]
+Endpoint expects 5 parameters
+@name     The name of the client\
+@email    The email of client. Note that if user changes email to their own email server will error\
+@password New password of user. \
+@phone    Phone number of user. Expects string type\
+@cookies  Dictionary of cookies from client\
+Default behaviour is to update the parameters that are not empty strings\
+@returns
+```
+{'success': True, 'jwt_token': "3452ubgsidbgiw"}
+```
             
