@@ -79,6 +79,7 @@ def user_register():
 
     try:
         parameters = request.json
+        print(parameters)
         # Check to see if email is already in use
         in_use_email = User.query.filter(User.active == 1, User.email == parameters['email']).first()
 

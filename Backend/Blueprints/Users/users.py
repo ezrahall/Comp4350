@@ -23,10 +23,8 @@ If the field is an empty string than it will not be updated
 def user_update():
     Session = sessionmaker(bind=db.engine)
     session = Session()
-
     try:
         parameters = request.json
-
         # Update users name
         if parameters['name'] != "":
             session.query(User).filter(User.id == current_user.id).update({'name': parameters['name']})
