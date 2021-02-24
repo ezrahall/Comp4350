@@ -1,21 +1,13 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './Card.css'
-import {getRestaurantImage} from '../../services/restaurants/restaurantsService'
-//import Star from '../images/ratingStar.png'
 
 
 function Card(props) {
 
-    useEffect(() => {
-        getRestaurantImage(props.id)
-            .then()
-            .catch((error) => console.log(error))
-    },[])
-
     return (
         <div className='card'>
 
-            <img src={props.image} alt={props.title + ' Logo'} />
+            <img src={`https://safeats.ca/Api/Images/${props.id}`} alt={props.title + ' Logo'} />
             <div className='card__info'>
             <h2>{props.title}</h2>
                 <h4>{props.description}</h4>

@@ -39,16 +39,3 @@ export const addRestaurants = async (offset, distance) => {
         console.log(e)
     }
 }
-
-export const getRestaurantImage = async (id) =>{
-    try {
-        axios.get('https://safeats.ca/Api/Images/0')
-            .then((res) => {
-                console.log(res)
-            })
-            .catch(e => console.log(e))
-    }catch (e)
-    {
-        console.log(e)
-    }
-}
