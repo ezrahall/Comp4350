@@ -5,18 +5,22 @@ from sqlalchemy.orm import sessionmaker
 from Backend.Models.user import User
 from Backend.Models.restaurant import Restaurant
 from Backend import db
+from Backend.Utilities import jwt_tools
 import json
 
 menu_bp = Blueprint('menu_bp', __name__)
 
 
-@menu_bp.route('/Api/Menu/<restaurant>', methods=['GET'])
+@menu_bp.route('/Api/Menu/<restaurant>', methods=['POST'])
 def restaurant_menu(restaurant):
     Session = sessionmaker(bind=db.engine)
     session = Session()
     result = '{ '
 
     try:
+        parameters = request.json
+        data = jwt_tools.decode(parameters['cookies'])
+
         menu = session.execute('select r.address, mi.name, mi.price, mi.description '
                                'from restaurant as r '
                                '    left join menu_item mi on r.id = mi.restaurant and mi.active = 1 '
@@ -34,11 +38,18 @@ def restaurant_menu(restaurant):
             if result.endswith(','):
                 result = result[:-1]
 
-            result += ']'
+            result += '], '
 
-        result += '}'
+        result += '"jwt_token": "'+jwt_tools.encode(data)+'"}'
 
         session.commit()
+
+    except LookupError:
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False, 'error': 'Session Timeout'}), \
+               403, {'ContentType': 'application/json'}
+
     except Exception as e:
         print(str(e))
         session.rollback()

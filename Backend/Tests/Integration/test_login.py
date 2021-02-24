@@ -1,5 +1,6 @@
 import pytest
 from Backend import create_app
+import json
 
 
 @pytest.fixture(scope='module')
@@ -18,10 +19,5 @@ def test_login(client):
         'email': "TES@gmail.com",
         'password': "test"
     }, content_type='application/json')
-
-    assert res.status_code == 200
-
-    # Establish an application context
-    res = client.get('/Api/Logout')
 
     assert res.status_code == 200

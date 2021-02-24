@@ -1,5 +1,6 @@
 import pytest
 from Backend import create_app
+import json
 
 
 @pytest.fixture(scope='module')
@@ -13,7 +14,7 @@ def client():
             yield testing_client  # this is where the testing happens!
 
 
-def test_update(client):
+def test_user_update(client):
     # Establish an application context
     res = client.post('/Api/User/Login', json={
         'email': "TES@gmail.com",
@@ -26,12 +27,26 @@ def test_update(client):
         'email': "",
         'password': "test",
         'name': "",
-        'phone': "434534 666"
+        'phone': "434534 666",
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
     assert res.status_code == 200
 
+
+def test_rest_update(client):
     # Establish an application context
-    res = client.get('/Api/Logout')
+    res = client.post('/Api/User/Login', json={
+        'email': "joblo_@test.com",
+        'password': "test"
+    }, content_type='application/json')
 
     assert res.status_code == 200
+
+    res = client.post('/Api/Restaurant/Update', json={
+        'descr': "Come eat our terrible food!",
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+

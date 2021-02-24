@@ -1,5 +1,6 @@
 import pytest
 from Backend import create_app
+import json
 
 
 @pytest.fixture(scope='module')
@@ -22,6 +23,13 @@ def test_registration_user(client):
     # Will 403 bc already in db
     assert res.status_code == 403
 
+    res = client.post('/Api/User/Login', json={
+        'email': "TES@gmail.com",
+        'password': "test"
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+
 
 def test_registration_rest(client):
     # Establish an application context
@@ -37,9 +45,5 @@ def test_registration_rest(client):
     # Establish an application context
     res = client.post('/Api/User/Login', json={
         'email': "joblo_@test.com",
-        'password': "test",
+        'password': "test"
     }, content_type='application/json')
-
-    res = client.get('/Api/Logout')
-
-    assert res.status_code == 200
