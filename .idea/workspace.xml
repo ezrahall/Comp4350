@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Home/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Login/Login.js" afterDir="false" />
+    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="GH-85 Create Assets Directory and moved images into it">
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/restaurants/restaurantsService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/ui/Spinner/Spinner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/ui/Spinner/Spinner.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/Card.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/Card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +40,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/assets" />
       <recent name="$PROJECT_DIR$/frontend/src/pages/Home" />
       <recent name="$PROJECT_DIR$/frontend/src/hoc/Layout" />
       <recent name="$PROJECT_DIR$/frontend/src/hoc" />
@@ -64,6 +69,8 @@
       <option name="presentableId" value="Default" />
       <updated>1613413407543</updated>
       <workItem from="1613413410805" duration="3977000" />
+      <workItem from="1614121735109" duration="321000" />
+      <workItem from="1614191900158" duration="9522000" />
     </task>
     <task id="LOCAL-00001" summary="GH-42 Created Raact Front End Base Template">
       <created>1613413609708</created>
@@ -93,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613514235572</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="GH-85 Create Assets Directory and moved images into it">
+      <created>1614121864999</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1614121864999</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +115,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GH-42 Created Raact Front End Base Template" />
-    <option name="LAST_COMMIT_MESSAGE" value="GH-42 Created Raact Front End Base Template" />
+    <MESSAGE value="GH-86 Added Material-Ui Dependencies to package.json" />
+    <MESSAGE value="GH-85 Create Assets Directory and moved images into it" />
+    <option name="LAST_COMMIT_MESSAGE" value="GH-85 Create Assets Directory and moved images into it" />
   </component>
 </project>
