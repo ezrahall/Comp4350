@@ -1,12 +1,12 @@
 import './App.css';
 import Layout from "./hoc/Layout/Layout";
 import {Switch, Route, withRouter} from 'react-router-dom';
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
+import Home from "./components/pages/Home/Home";
+import Login from "./components/pages/Login/Login";
 
 import UserContextProvider from './context/user';
 import PrivateRoute from './components/PrivateRoute';
-import Dashboard from './components/Dashboard';
+import Account from './components/pages/Account/Account';
 
 function App() {
   return ( 
@@ -15,10 +15,10 @@ function App() {
         <UserContextProvider>
           <Switch>
             <Route path="/" exact component={Home}/>
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/protected/dashboard">
-              <Dashboard />
-            </PrivateRoute>
+            <Route path="/login" exact component={Login} />
+            <Route path="/account" component={Account}>
+              <Account />
+            </Route>
           </Switch>
         </UserContextProvider>
       </Layout>
