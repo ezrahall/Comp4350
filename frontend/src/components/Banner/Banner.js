@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Banner.css"
-import BannerImage from '../images/banner-image2.jpg'
+import BannerImage from '../../assets/images/banner-image2.jpg'
 import {Button} from '@material-ui/core';
 
 function Banner() {

@@ -1,4 +1,4 @@
-import KFC from '../../images/KFC.jpg'
+import KFC from '../../../assets/images/KFC.jpg'
 
 
 export const restData = [
