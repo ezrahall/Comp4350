@@ -109,4 +109,8 @@ Default behaviour is to update the parameters that are not empty strings\
 ```
 {'success': True, 'jwt_token': "3452ubgsidbgiw"}
 ```
-            
+
+## /Api/User/Test [POST]
+Endpoint expects one param\
+@cookies    Dictionary of cookies from client\
+@returns  200 code if token is still valid, else 403 if token is invalid or expired
