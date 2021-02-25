@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import './Home.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
-import KFC from '../../images/KFC.jpg'
 import {Link} from 'react-router-dom'
 import Spinner from '../../../ui/Spinner/Spinner';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';

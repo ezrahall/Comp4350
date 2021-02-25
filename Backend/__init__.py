@@ -16,7 +16,7 @@ def create_app():
     appl.secret_key = b'"xR\xacBR\xcbx\xc4\xf6\x06\x06y\xcc\x9c\x19'
     appl.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024
 
-    cors = CORS(appl)
+    cors = CORS(appl, origins=["http://localhost:3000", "http://localhost:*"], headers=['Content-Type'], expose_headers=['Access-Control-Allow-Origin'], supports_credentials=True)
     db.init_app(appl)
     login_manager.init_app(appl)
     monkey.patch_all()

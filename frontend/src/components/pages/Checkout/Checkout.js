@@ -1,6 +1,6 @@
 import React from 'react'
 import './Checkout.css'
-import adImage from '../../images/Checkout-Banner.jpg'
+import adImage from '../../../assets/images/Checkout-Banner.jpg'
 import Subtotal from '../../Subtotal/Subtotal'
 import { useStateValue } from '../../../ContextAPI/StateProvider'
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct'

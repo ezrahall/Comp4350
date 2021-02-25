@@ -1,12 +1,11 @@
 from flask import Blueprint, request
-from flask_login import login_required, logout_user, login_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from sqlalchemy.orm import sessionmaker
 from Backend import db
-from Backend import login_manager
 from Backend.Models.user import User
 from urllib.parse import quote_plus
 import requests
+from Backend.Utilities import jwt_tools
 import json
 
 login_bp = Blueprint('login_bp', __name__)
@@ -28,16 +27,16 @@ def user_login():
     Session = sessionmaker(bind=db.engine)
     session = Session()
     user = None
+    enc_jwt = None
 
     try:
         parameters = request.json
         # Check to see if credentials match user, and the account is still active
         user = User.query.filter(User.active == 1, User.email == parameters['email']).first()
 
-        if user.check_password(parameters['password']):
-            login_user(user)
-            session.execute('update user set last_login = now() where id = :id and active = 1',
-                            {'id': user.id})
+        if user is not None and user.check_password(parameters['password']):
+            enc_jwt = jwt_tools.encode({'id': user.id, 'restaurant': user.restaurant})
+            session.execute('update user set last_login = now() where id = :id and active = 1', {'id': user.id})
         else:
             # No account matched the supplied credentials
             raise LookupError
@@ -55,7 +54,8 @@ def user_login():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return user.to_json(), 200, {'ContentType': 'application/json'}
+    response = user.to_json()[:-1] + ', "jwt_token": "'+enc_jwt+'"}'
+    return response, 200, {'ContentType': 'application/json'}
 
 
 """
@@ -175,35 +175,3 @@ def restaurant_register():
 
     session.close()
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-
-
-"""
-Endpoint for logging out the user from the application
-"""
-
-
-@login_bp.route("/Api/Logout", methods=['GET'])
-@login_required
-def logout():
-    logout_user()
-    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-
-
-"""
-Utility checks on every request that has the @login_required command that the use is actually logged in
-"""
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.filter_by(id=user_id, active=1).first()
-
-
-"""
-Utility handles the case that user has logged out and then attempted to access account information
-"""
-
-
-@login_manager.unauthorized_handler
-def unauthorized():
-    return json.dumps({'success': False}), 403, {'ContentType': 'application/json'}

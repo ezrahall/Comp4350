@@ -1,8 +1,8 @@
 from flask import Blueprint, request
-from flask_login import login_required, current_user
 from sqlalchemy.orm import sessionmaker
 from Backend import db
 from urllib.parse import parse_qs, urlparse, quote_plus
+from Backend.Utilities import jwt_tools
 import grequests
 import requests
 import math
@@ -34,17 +34,7 @@ def search():
 
     try:
         parameters = request.json
-        """
-        This is for testing purposes
-        parameters = {
-            'addr': '45 D\'arcy Dr, Winnipeg',
-            'dist': 50,
-            'query': 'salad',
-            'offset': 0,
-            'limit': 30
-        }
-        """
-
+        data = jwt_tools.decode(parameters['cookies'])
 
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
                                quote_plus(parameters['addr']) +
@@ -83,7 +73,7 @@ def search():
                                  str(address['results'][0]['geometry']['location']['lat']) + ',' +
                                  str(address['results'][0]['geometry']['location']['lng']) + '&destinations=' +
                                  str(row[3]) + ',' + str(row[4]) +
-                                 '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y') # build source and dest endpoints
+                                 '&key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y')  # build source and dest endpoints
 
         # taken from https://stackoverflow.com/questions/9110593/asynchronous-requests-with-python-requests
         all_requests = (grequests.get(u) for u in all_endpoints)
@@ -107,14 +97,22 @@ def search():
         if json_string.endswith(','):
             json_string = json_string[:-1]
 
-        json_string += ']}'
+        json_string += '], "jwt_token": "'+jwt_tools.encode(data)+'"}'
+
+    except LookupError:
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False, 'error': 'Session Timout'}), \
+               403, {'ContentType': 'application/json'}
+
     except Exception as e:
         print(str(e))
+        session.rollback()
         session.close()
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.loads(json_string)
+    return json.loads(json_string), 200, {'ContentType': 'application/json'}
 
 
 """
@@ -130,20 +128,13 @@ Returns a json of the token after each query and the results array of prediction
 def location_autocomplete():
     base_endpoint = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y'
     json_string = '{ "completions": ['
+    enc_jwt = None
 
     try:
         parameters = request.json
         token = None
 
-        """
-        This is for testing purposes
-        parameters = {
-           'addr': '45 D\'arcy Dr, Winnipeg',
-           'token': '81467e77d1b544cda694932995109be3'
-        }
-        """
-
-        if parameters['token'] is None:
+        if parameters['token'] == "":
             token = str(uuid.uuid4().hex)
         else:
             token = parameters['token']
@@ -157,9 +148,12 @@ def location_autocomplete():
         if json_string.endswith(','):
             json_string = json_string[:-1]
 
-        json_string += '], "token": "'+token+'" '
+        json_string += '], "token": "' + token + '" }'
 
-        json_string += '}'
+    except LookupError:
+        return json.dumps({'success': False, 'error': 'Session Timout'}), \
+               403, {'ContentType': 'application/json'}
+
     except Exception as e:
         print(str(e))
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
