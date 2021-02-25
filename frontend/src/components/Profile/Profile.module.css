@@ -25,8 +25,8 @@
     border-radius: 30px;
     color: tomato;
     background: rgb(209, 208, 208);
-    width: 100%;
     margin: auto;
+    float: right;
     margin-top: 100px;
 }
 
@@ -39,8 +39,6 @@
     height: 30vh;
     width: 100px;
     float: left;
-    /* background: #111111; */
-
 }
 
 .profileInfo {
@@ -55,17 +53,14 @@
 
 .infoDiv input {
     width: 720px;
+    text-align: left;
+
 }
 
 .infoDiv {
     margin-bottom: 20px;
 }
 
-
 h1 { 
     margin-bottom: 30px;
-}
-
-input { 
-    text-align: left;
 }

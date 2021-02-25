@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {StateProvider} from './ContextAPI/StateProvider';
 import reducer, {initialState} from './ContextAPI/reducer';
 
+import './index.css';
+import App from './App';
 import UserContextProvider from './context/user';
 
 

@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect } from "react";
-import { Paper, makeStyles, TextField, Button, Snackbar } from "@material-ui/core"
-import { UserContext } from '../../context/user'
+import { useState, useEffect } from "react";
+import { Paper, makeStyles, Button, Snackbar } from "@material-ui/core"
 
 import AutoCompleteTextField from "../AutoCompleteTextField/AutoCompleteTextField";
 import styles from './Address.module.css'
@@ -14,10 +13,10 @@ const useStyles = makeStyles({
     }
 })
 
-const Address = ({alertHandler}) => {
+const Address = () => {
 
     const user = JSON.parse(sessionStorage.getItem('user'))
-    const [openAlert, setOpenAlert] = useState(false)
+    const [openAlert, setOpenAlert] = useState(true)
     const [newAddress, setNewAddress] = useState(user.address)
     const classes = useStyles()
 
@@ -26,9 +25,7 @@ const Address = ({alertHandler}) => {
     }, [alert])
 
     const handleUpdate = () => {
-        console.log("sending ",newAddress);
         const data = JSON.parse(sessionStorage.getItem('user'))
-
 
         user.address = newAddress
         sessionStorage.setItem('user', JSON.stringify(user)) //Using session storage for now
@@ -40,7 +37,7 @@ const Address = ({alertHandler}) => {
         <div className={styles.profileDiv}>
             <Paper elevation={3} variant="elevation" className={styles.container}>
                 <h1>Change Your Address</h1>
-                <p>Enter your old password to confirm the change</p>
+                <p>Enter your new address to confirm the change</p>
 
                 <div>
                     <label>Addess</label>
@@ -48,12 +45,13 @@ const Address = ({alertHandler}) => {
                 </div>
 
                 <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Update Addess</Button>
-            </Paper>
-            <Snackbar open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
-                <Alert severity={"success"}>
-                  Address successfully updated!
-                </Alert> 
+                <Snackbar open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
+                    <Alert severity={"success"}>
+                    Address successfully updated!
+                    </Alert> 
             </Snackbar>
+            </Paper>
+            
         </div>
     )
 }

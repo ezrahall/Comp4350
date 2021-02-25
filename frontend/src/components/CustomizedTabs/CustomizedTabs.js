@@ -82,7 +82,7 @@ const CustomizedTabs = (props) => {
       <div className={classes.color}>
         <h1 style={props.titleStyles}>{props.title}</h1>
         <StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example"  barColor={props.barColor}>
-            {props.tabs.map((tab) => { console.log("title is ", tab.title); return <StyledTab label={tab.label} style={{margin: tab.css }}/>})}
+            {props.tabs.map((tab) => {return <StyledTab label={tab.label} style={{margin: tab.css }}/>})}
         </StyledTabs>
       </div>
       <SwipeableViews

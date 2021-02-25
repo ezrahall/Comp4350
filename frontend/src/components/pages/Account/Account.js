@@ -34,7 +34,7 @@ const Account = (props) => {
         },
         {
             label: 'Address',
-            children: <Address alertHandler={setOpenAlert} alert={openAlert}/>,
+            children: <Address/>,
             index: 2,
         },
     ]

@@ -64,7 +64,7 @@ const Login = (props) => {
         address: 'validAddress',
     }
 
-    Validator.register('validConfirmPassword', () => { console.log("checking password"); return confirmPassword === password }, 'Passwords must match');
+    Validator.register('validConfirmPassword', () => {return confirmPassword === password }, 'Passwords must match');
     Validator.register('validAddress', () => { if(!isLogin && checked) {return address !== ''} else return true}, 'Please enter an address location');
 
     const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:5',})
@@ -136,11 +136,9 @@ const Login = (props) => {
     }
 
     const validate = () => {
-        console.log("Address is ", address);
         let errors
         let result = true
         if(isLogin) {
-            console.log("loging validation passed: ", loginValidator.fails());
             if (loginValidator.fails()) {
                 errors = loginValidator.errors.all()
                 result = false
@@ -177,6 +175,7 @@ const Login = (props) => {
                         </label>
                         <Button type="submit"  className={styles.submit + " " + styles.buttonMarg} classes={buttonClasses}><span >Sign In</span></Button>
                         <br/>
+                        { checked && <h4>Hey welcome back! Hop back in to continue providing great customer experience while increasing your revenue with Safeat</h4>}
                         { isLoading &&  <CircularProgress color="secondary" size={20}/> }
                     </form>
                 </div>
@@ -218,7 +217,7 @@ const Login = (props) => {
                             </label>
                             <label id="restAddress" className={styles.invisible}>
                                 <span>Restaurant Address</span>
-                                <AutoCompleteTextField callback={(e) => {setAddress(e); console.log("Option picked")}} type="text" value={address} />
+                                <AutoCompleteTextField callback={(e) => {setAddress(e)}} type="text" value={address} />
                             </label>
                             <Button type="submit"  className={styles.submit + " " + styles.buttonMarg} classes={buttonClasses}><span>Sign Up</span></Button>
                             <br/>

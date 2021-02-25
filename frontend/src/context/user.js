@@ -17,7 +17,6 @@ const UserContextProvider = (props) => {
 	
 
 	const signIn = async (user) => {
-		console.log("Sign In", user);
 		try {
 			setIsLoading(true)
 			const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/User/Login`, {
@@ -36,7 +35,6 @@ const UserContextProvider = (props) => {
 					address: data.address
 				}
 				const stringUser = JSON.stringify(user)
-				console.log("Storing user in session ", stringUser);
 				sessionStorage.setItem("user", stringUser)
 				setHasError(false)
 				setRespMessage('')
@@ -111,7 +109,6 @@ const UserContextProvider = (props) => {
 	const updateUser = async (user) => {
 		try {
 			setIsLoading(true)
-			console.log("got", user);
 			const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/User/Update`, {
                 name: user.name,
                 email: user.email,
@@ -133,14 +130,11 @@ const UserContextProvider = (props) => {
 					phone: user.phone === '' ? oldUser.phone : user.phone,
 					address: user.address,
 				}
-				console.log("Saving this to session now", JSON.stringify(newUserDetails));
 				sessionStorage.setItem("user", JSON.stringify(newUserDetails))
 				setHasError(false)
 				setRespMessage('Update Successful')
 			}
-			console.log("Successfully updated");
 		} catch (error) {
-			console.log('error response', error.response);
 			setIsLoading(false)
 			setHasError(true)
 			if(error.response) {
