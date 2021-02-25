@@ -145,7 +145,7 @@ def location_autocomplete():
 
     try:
         parameters = request.json
-        data = jwt_tools.decode(parameters['cookies'])
+        #data = jwt_tools.decode(parameters['cookies'])
 
         token = None
 
@@ -171,8 +171,8 @@ def location_autocomplete():
         if json_string.endswith(','):
             json_string = json_string[:-1]
 
-        json_string += '], "token": "' + token + '", "jwt_token": "'
-        json_string += jwt_tools.encode(data) + '" }'
+        json_string += '], "token": "' + token + '"}'
+        #json_string += jwt_tools.encode(data) + '" }'
 
     except LookupError:
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
