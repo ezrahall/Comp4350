@@ -157,7 +157,7 @@ def location_autocomplete():
         }
         """
 
-        if parameters['token'] is None:
+        if parameters['token'] == "":
             token = str(uuid.uuid4().hex)
         else:
             token = parameters['token']
