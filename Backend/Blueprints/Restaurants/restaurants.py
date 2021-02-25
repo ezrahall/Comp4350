@@ -1,9 +1,7 @@
 from flask import Blueprint, request, send_from_directory
-from flask_login import login_required, current_user, logout_user
+from flask_login import login_required
 from sqlalchemy.orm import sessionmaker
-from Backend.Models.user import User
 from Backend.Models.restaurant import Restaurant
-from werkzeug.utils import secure_filename
 from Backend import db
 from Backend.Utilities import jwt_tools
 from PIL import Image

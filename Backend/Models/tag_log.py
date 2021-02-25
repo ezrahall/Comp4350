@@ -1,6 +1,5 @@
 from flask_login import UserMixin
 from Backend import db
-from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class TagLog(UserMixin, db.Model):
