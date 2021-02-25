@@ -1,0 +1,54 @@
+.enter-address {
+    background-color: white;
+    justify-content: center;
+    display: flex;
+    flex: 1;
+}
+
+.image-container {
+    background-image: url(../../../assets/images/banner-image.jpg);
+    background-repeat: no-repeat;
+    filter: grayscale(40%);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    color: white;
+    margin-top: 10%;
+}
+
+.address-box {
+    color: white;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    margin: 3% 10%;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.address-box > input {
+    color: white;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    outline-width: 0;
+    width: 800px;
+}
+  
+.address-box > input,
+  input::-webkit-input-placeholder {
+      color: white;
+      font-size: 20px;
+}
+    
+.address-button {
+    font-size: large;
+    color: white;
+    background-color: whitesmoke;
+}
