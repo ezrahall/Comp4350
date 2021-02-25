@@ -13,9 +13,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Delete Old Modules
+      run: |
+        cd frontend
+        rm -rf node_modules
     - name: Install dependencies
       run: |
         cd frontend
+        yarn
+    - name: Run Tests
+      run: |
+        cd frontend
+        npm test
+    
         npm update
         npm ci
     - name: Test with Jest
