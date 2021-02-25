@@ -3,14 +3,14 @@ import { Button, ButtonGroup, TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './Login.module.css'
 import { UserContext } from '../../../context/user'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import GTranslateIcon from '@material-ui/icons/GTranslate';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar'
 import MuiAlert from '@material-ui/lab/Alert';
 import Switch from '@material-ui/core/Switch';
 import { useHistory, useLocation } from 'react-router-dom'
 import * as Validator from 'validatorjs'
+
+import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField'
 
 const useStyles = makeStyles({
     root: {
@@ -44,7 +44,7 @@ const Login = (props) => {
     const [vErrorMessage, setVErrorMessage] = useState('')
     const [openError, setOpenError] = useState(false)
     const buttonClasses = useStyles()
-    const { signIn, signUp, hasError, respMessage, isLoading } = useContext(UserContext)
+    const { signIn, signUp, respMessage, isLoading } = useContext(UserContext)
     const history = useHistory()
     const location = useLocation()
 
@@ -65,7 +65,7 @@ const Login = (props) => {
     }
 
     Validator.register('validConfirmPassword', () => { console.log("checking password"); return confirmPassword === password }, 'Passwords must match');
-    Validator.register('validAddress', () => { if(!isLogin) {return address !== ''} else return true}, 'Please enter an address location');
+    Validator.register('validAddress', () => { if(!isLogin && checked) {return address !== ''} else return true}, 'Please enter an address location');
 
     const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:5',})
     const signupValidator = new Validator(data, rules)
@@ -108,6 +108,7 @@ const Login = (props) => {
                 "name" : name,
                 "email" : email,
                 "password" : password,
+                "address" : address
             }
             let res
             if(isLogin) {
@@ -128,16 +129,16 @@ const Login = (props) => {
     }
 
     const handleCheckedChange = () => {
-        console.log("changing");
         setChecked(!checked)
         dispatch({ type: checked ? "USER" : "RESTAURANT" })
         document.getElementById('restAddress').classList.toggle(styles.invisible)
+        document.getElementById('container').classList.toggle(styles.expanded)
     }
 
     const validate = () => {
+        console.log("Address is ", address);
         let errors
         let result = true
-        let message
         if(isLogin) {
             console.log("loging validation passed: ", loginValidator.fails());
             if (loginValidator.fails()) {
@@ -150,7 +151,6 @@ const Login = (props) => {
                 result = false
             } 
         }
-        console.log("error is ", errors);
         if(errors) {
             setVErrorMessage(errors.name || errors.email || errors.password || errors.address || errors.confirmPassword || '')
             setVError(true)
@@ -160,25 +160,22 @@ const Login = (props) => {
     }
     return (
         <div className={styles.loginDiv}>
-            <div className={styles.container}>
+            <div id="container" className={styles.container}>
                 <div className={styles.form + " " +styles.signIn}>
                     <form autoComplete="off"  onSubmit={handleLoginSignup}>
                         <h2> Sign In</h2>
-                        <ButtonGroup orientation="horizontal" className={styles.socialMedia} variant="text" >
-                            <Button><FacebookIcon/></Button>
-                            <Button><GTranslateIcon/></Button>
-                        </ButtonGroup>
-                        <label>Or sign in with your email address</label>
+                        <br/>
+                        <br/>
                         <label>
                             <span>Email Address</span>.
                             <TextField onChange={e => setEmail(e.target.value)} value={email} />
                         </label>
+                        
                         <label>
                             <span>Password</span>
                             <TextField onChange={e => setPassword(e.target.value)} type="password" value={password} />
                         </label>
                         <Button type="submit"  className={styles.submit + " " + styles.buttonMarg} classes={buttonClasses}><span >Sign In</span></Button>
-                        <p className={styles.forgotPass}>Forgot Password?</p>
                         <br/>
                         { isLoading &&  <CircularProgress color="secondary" size={20}/> }
                     </form>
@@ -193,13 +190,15 @@ const Login = (props) => {
                             <h2 id="login-h1-first" >{displayTexts.h1Second}</h2>
                             <p id="login-p1-secondText">{displayTexts.pSecond}</p>
                         </div>
-                        <div className={styles.imageBtn} onClick={swicthMode}>
-                            <span className={styles.mUp}>Sign Up</span>
-                            <span className={styles.mIn}>Sign In</span>
+                        <div>
+                            <div className={styles.imageBtn} onClick={swicthMode}>
+                                <span className={styles.mUp}>Sign Up</span>
+                                <span className={styles.mIn}>Sign In</span>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.form + " " + styles.signUp}>
-                        <form autoComplete="false" onSubmit={handleLoginSignup}>
+                        <form id="signupForm" autoComplete="false" onSubmit={handleLoginSignup}>
                             <h2>Sign Up</h2>
                             <label>
                                 <span>{checked ? 'Restaurant' : 'Full'} Name</span>
@@ -219,7 +218,7 @@ const Login = (props) => {
                             </label>
                             <label id="restAddress" className={styles.invisible}>
                                 <span>Restaurant Address</span>
-                                <TextField onChange={e => setAddress(e.target.value)} type="text" value={address} />
+                                <AutoCompleteTextField callback={(e) => {setAddress(e); console.log("Option picked")}} type="text" value={address} />
                             </label>
                             <Button type="submit"  className={styles.submit + " " + styles.buttonMarg} classes={buttonClasses}><span>Sign Up</span></Button>
                             <br/>
@@ -228,7 +227,7 @@ const Login = (props) => {
                     </div>
                 </div>
             </div>
-            <span style={{ position: 'relative', top: '315px', marginRight: '12px'}}>
+            <span style={{ position: 'relative', top: '315px', marginLeft: '12px'}}>
                 <Switch
                     checked={checked}
                     onChange={handleCheckedChange}
@@ -239,7 +238,7 @@ const Login = (props) => {
                 <p style={{color: '#fff'}}>Restaurant?</p>
             </span>
             <Snackbar open={openError} autoHideDuration={6000} onClose={() => setOpenError(false)}>
-                <Alert onClose={() => setOpenError(false)} severity={"error"}>
+                <Alert severity={"error"}>
                   {vError ? vErrorMessage : respMessage}
                 </Alert> 
             </Snackbar>

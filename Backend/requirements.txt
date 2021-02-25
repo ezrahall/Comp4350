@@ -11,4 +11,5 @@ uuid == 1.30
 Pillow == 7.1.1
 gevent == 21.1.2
 mysqlclient == 2.0.3
-pytest==6.2.2
+pytest == 6.2.2
+PyJWT == 2.0.1

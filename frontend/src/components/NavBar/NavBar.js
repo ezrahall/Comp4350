@@ -4,31 +4,39 @@ import { MenuItems } from './MenuItems.js';
 import './NavBar.css';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import {Link} from 'react-router-dom'
+import { useStateValue } from '../../ContextAPI/StateProvider.js';
+import SearchIcon from '@material-ui/icons/Search';
 
-class NavBar extends Component {
-    state = { clicked: false }
 
-    handleClick = () => {
+const NavBar = () => {
+
+    const [{basket},dispatch] = useStateValue();
+
+    const state = { clicked: false }
+
+    const handleClick = () => {
         this.setState({ clicked: !this.state.clicked })
     }
 
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         //event.preventDefault();
     }
 
-    render() {
+    
         return(
             <nav className="NavBarItems">
-                <h1 className="navbar-logo">Safeat</h1>
-                <div className="menu-icon" onClick={this.handleClick}></div>
-                <form  className="navbar-search" onSubmit={this.handleSubmit}>
-                    <label className="search-logo">
-                        Search
-                        <input className="search-box" type="text" name="searchQuery" placeholder="Search Restaurants"/>
-                    </label>
-                        <input className="submit-search" type="submit" value="Submit" />
+                <Link to='/' style={{ textDecoration: 'none' }}>
+                    <h1 className="navbar-logo">Safeat</h1>
+                </Link>
+                
+                <div className="menu-icon" onClick={handleClick}></div>
+                <form  className="navbar-search" onSubmit={handleSubmit}>
+                    <div className="search-box">
+                        <input type="text" name="searchQuery" placeholder="Search Restaurants"/>
+                        <SearchIcon />
+                    </div>
                 </form>
-                <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
+                <ul className={state.clicked ? 'nav-menu active' : 'nav-menu'}>
                     {MenuItems.map((item, index) => {
                         return (
                             <li key={index}>
@@ -39,12 +47,12 @@ class NavBar extends Component {
                             </li>
                         )
                     })}
-                    <Link to='/checkout'>
+                    <Link to='/checkout' style={{ textDecoration: 'none' }}>
                         <div className='navbar-basket'>
                             <ShoppingBasketIcon />
                             <span
                             className='navbar-basketCount'>
-                                0
+                                {basket?.length}
                             </span>
                         </div>
 
@@ -53,6 +61,5 @@ class NavBar extends Component {
             </nav>
         )
     }
-}
 
 export default NavBar

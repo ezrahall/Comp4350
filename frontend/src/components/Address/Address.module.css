@@ -30,3 +30,11 @@
 .actionBtns { 
     margin: auto;
 }
+
+h1 { 
+    margin-bottom: 30px;
+}
+
+input { 
+    text-align: center;
+}

@@ -8,7 +8,7 @@
   }
 
   input, Button{
-    border:none;
+    border: none;
     outline: none;
     background: none;
   }
@@ -20,6 +20,10 @@
     height: 550px;
     background: #fff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+
+  .expanded {
+    height: 750px;
   }
   
   .form{
@@ -161,7 +165,7 @@
     top: 0;
     width: 900px;
     height: 100%;
-    background-image: url(../../images/meal-background.jpg);
+    background-image: url(../../../assets/images/meal-background.jpg);
     background-size: cover;
     transition: -webkit-transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
@@ -265,18 +269,16 @@
     content: '';
     z-index: 2;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 0px;
+    top: 0px;
     width: 100%;
     height: 100%;
-    border: 2px solid #fff;
-    border-radius: 30px;
   }
   
   .imageBtn span{
     position: absolute;
-    left: 2px;
-    top: 2px;
+    left: 0px;
+    top: 0px;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack:center;
@@ -284,6 +286,8 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    border: #fff;
+    border-radius: 30px;
     -webkit-transition:-webkit-transform 1.2s;
     transition: -webkit-transform 1.2s;
     transition: transform 1.2s;

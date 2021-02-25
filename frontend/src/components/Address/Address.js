@@ -1,34 +1,39 @@
-import { useState, useContext } from "react";
-import { Paper, makeStyles, TextField, Button } from "@material-ui/core"
-import EditIcon from '@material-ui/icons/Edit';
-import styles from './Address.module.css'
+import { useState, useContext, useEffect } from "react";
+import { Paper, makeStyles, TextField, Button, Snackbar } from "@material-ui/core"
 import { UserContext } from '../../context/user'
+
+import AutoCompleteTextField from "../AutoCompleteTextField/AutoCompleteTextField";
+import styles from './Address.module.css'
+import Alert from "@material-ui/lab/Alert";
 
 
 const useStyles = makeStyles({
     root: {
         borderRadius: 20,
         margin: '30px',
-
     }
 })
 
-const Profile = () => {
-    const {updateUser, address} = useContext(UserContext)
-    const [newAddress, setNewAddress] = useState(address)
+const Address = ({alertHandler}) => {
+
+    const user = JSON.parse(sessionStorage.getItem('user'))
+    const [openAlert, setOpenAlert] = useState(false)
+    const [newAddress, setNewAddress] = useState(user.address)
     const classes = useStyles()
-    
+
+    useEffect(() => {
+        setNewAddress(user.address)
+    }, [alert])
+
     const handleUpdate = () => {
+        console.log("sending ",newAddress);
+        const data = JSON.parse(sessionStorage.getItem('user'))
 
-        const data = {
-            address: newAddress
-        }
 
-        updateUser(data)
-    }
-
-    const handleAddressChange = () => {
-        
+        user.address = newAddress
+        sessionStorage.setItem('user', JSON.stringify(user)) //Using session storage for now
+        //Call address updater here
+        setOpenAlert(true)
     }
 
     return (
@@ -39,13 +44,18 @@ const Profile = () => {
 
                 <div>
                     <label>Addess</label>
-                    <TextField value={newAddress} type="password" onChange={e => setNewAddress(e.target.value)} />
+                    <AutoCompleteTextField value={newAddress} variant='outlined' callback={setNewAddress} />
                 </div>
 
-                <Button color="primary" variant="contained" classes={classes} onClick={handleAddressChange}>Update Addess</Button>
+                <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Update Addess</Button>
             </Paper>
+            <Snackbar open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
+                <Alert severity={"success"}>
+                  Address successfully updated!
+                </Alert> 
+            </Snackbar>
         </div>
     )
 }
 
-export default Profile
+export default Address

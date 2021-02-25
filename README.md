@@ -5,7 +5,9 @@
 | Tahmidul Hasnain Zidaan | thzidaan | Front End Dev
 | Ezra Hall | ezrahall | Front End Dev
 | James Harvey | Le-DarkOverlord | Full Stack Dev
+| Michael Ukwenya | ukwenyam  | Full Stack Dev
 | Matt Lewis | Matthew9799 | Backend Dev
+
 
 ### Description
 Safeat is designed to provide customers a platform to order food from restauraunts in a safe and efficient manner. The application allows users to order off the menu of a restauraunt and pay for that order, which will then be delivered to a location specified by the customer. What makes Safeat standout from any other food ordering service is that it adds contact tracing to the delivery process. The contact tracing feature means that if any individual involved in the food delivery procees (restaurant worker, delivery driver or customer) tests positive for Covid-19 (or in the future any other illnesses) all other parties involved in the order will recieve a notification.

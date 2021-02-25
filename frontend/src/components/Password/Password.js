@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
-import { Avatar, Paper, Fab, Dialog, makeStyles, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Button } from "@material-ui/core"
-import EditIcon from '@material-ui/icons/Edit';
+import { Paper, makeStyles, TextField, Button } from "@material-ui/core"
+
 import styles from './Password.module.css'
 import { UserContext } from '../../context/user'
 
@@ -9,31 +9,28 @@ const useStyles = makeStyles({
     root: {
         borderRadius: 20,
         margin: '30px',
-
     }
 })
 
-const Profile = () => {
+const Password = ({alertHandler}) => {
     const {updateUser} = useContext(UserContext)
     const [open, setOpen] = useState(false)
-    const [oldPassword, setOldPassword] = useState('')
+    // const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const classes = useStyles()
     
     const handleUpdate = () => {
         setOpen(false)
-
+        const oldUser = JSON.parse(sessionStorage.getItem('user'))
         const data = {
-            oldPassword: oldPassword,
-            newPassword: newPassword
+            name: oldUser.name,
+            email: oldUser.email,
+            address: oldUser.address,
+            phone: oldUser.phone === undefined ? '' : oldUser.phone,
+            password: newPassword,
         }
-
         updateUser(data)
-
-    }
-
-    const handlePasswordChange = () => {
-            
+        alertHandler(true)
     }
 
     return (
@@ -43,17 +40,17 @@ const Profile = () => {
                 <p>Enter your old password to confirm the change</p>
 
                 <div>
-                    <label>Current Password</label>
-                    <TextField value={oldPassword} type="password" onChange={e => setOldPassword(e.target.value)} />
+                    {/* <label>Current Password</label>
+                    <TextField value={oldPassword} type="password" variant="outlined" onChange={e => setOldPassword(e.target.value)} /> */}
 
                     <label>New Password</label>
-                    <TextField value={newPassword} type="password" onChange={e => setNewPassword(e.target.value)} />
+                    <TextField value={newPassword} type="password" variant="outlined" onChange={e => setNewPassword(e.target.value)} />
                 </div>
 
-                <Button color="primary" variant="contained" classes={classes} onClick={handlePasswordChange}>Change Password</Button>
+                <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Change Password</Button>
             </Paper>
         </div>
     )
 }
 
-export default Profile
+export default Password

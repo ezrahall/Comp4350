@@ -4,3 +4,11 @@
     color: white;
     font-size: 60px;
 }
+
+h1 { 
+    margin-bottom: 30px;
+}
+
+input { 
+    text-align: left;
+}

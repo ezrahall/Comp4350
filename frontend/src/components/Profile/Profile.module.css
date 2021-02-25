@@ -11,19 +11,61 @@
 }
 
 .container {
-    justify-content: center;
-    align-content: center;
-    align-items: center;
     margin: auto;
     max-width: 50%;
-    padding: 30px
-}
-
-.avatar {
-    margin: auto;
+    padding: 50px;
 }
 
 .actionBtns { 
     margin: auto;
     padding-bottom: 30px;
+}
+
+.logoutBtn {
+    border-radius: 30px;
+    color: tomato;
+    background: rgb(209, 208, 208);
+    width: 100%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.editDiv {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.imgContainer {
+    height: 30vh;
+    width: 100px;
+    float: left;
+    /* background: #111111; */
+
+}
+
+.profileInfo {
+    margin-left: 40px;
+}
+
+.infoDiv label{
+    margin: 0;
+    margin-bottom: 10px;
+    left: 0;
+}
+
+.infoDiv input {
+    width: 720px;
+}
+
+.infoDiv {
+    margin-bottom: 20px;
+}
+
+
+h1 { 
+    margin-bottom: 30px;
+}
+
+input { 
+    text-align: left;
 }
