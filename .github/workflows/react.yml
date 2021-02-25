@@ -1,0 +1,27 @@
+
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Install dependecies
+        run: |
+          cd frontend
+          npm update
+          npm install
+
+      - name: Test Front End w/ Jest
+        run: |
+          cd frontend
+          npm test
