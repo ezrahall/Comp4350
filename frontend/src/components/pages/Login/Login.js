@@ -102,7 +102,7 @@ const Login = (props) => {
         e.preventDefault()
         if(validate()) {
             setVError(false)
-            const { from } = location.state || { from: { pathname: "/account" } };
+            const { from } = location.state || { from: { pathname: "/" } };
             
             const user = {
                 "name" : name,
