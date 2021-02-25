@@ -1,12 +1,10 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import './Home.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
 import KFC from '../../images/KFC.jpg'
-import Footer from '../../Footer/Footer';
 import {Link} from 'react-router-dom'
-import {restData} from './restaurantData';
 import Spinner from '../../../ui/Spinner/Spinner';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
 
@@ -29,7 +27,7 @@ const distanceData = [
     },
 ]
 
-function Home(props) {
+const Home = (props) => {
     const [restaurants,setRestaurants] = useState([])
     const [distance, setDistance] = useState(5)
     const [loadingAll, setLoadingAll] = useState(false)
@@ -67,27 +65,18 @@ function Home(props) {
     }
 
     return (
-        <div className='home'>
-            
-
+        <div className='home'>=
             <Banner />
-
-
             <div className='home__title'>
-
                 <h2>Available Restaurants Near: </h2>
                 <select
                     onChange={(change) => distanceChange(change.target.value)}
                 >
                     {distanceData.map((d) => (
                         <option key={d.id} value={d.distance}>{d.distance} Km</option>
-
                     ))}
-                    
                 </select>
             </div>
-
-            
             {loadingAll ?
                 <Spinner/>
                 : restaurants.length == 0 ?
@@ -101,11 +90,8 @@ function Home(props) {
                                 <Link key={restaurant.id} to='/restaurantmenu' style={{ textDecoration: 'none' }}>
                                     <Card id ={restaurant.id} image={KFC} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
                                 </Link>
-
                             ))}
-
                         </div>
-
                 {loadingMore ?
                     <Spinner/>
                     : <button
@@ -116,7 +102,6 @@ function Home(props) {
                     </button>
                 }
             </div>}
-
         </div>
     );
 }
