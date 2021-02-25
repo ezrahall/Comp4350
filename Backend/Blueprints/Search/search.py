@@ -34,7 +34,6 @@ def search():
 
     try:
         parameters = request.json
-        data = jwt_tools.decode(parameters['cookies'])
 
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
                                quote_plus(parameters['addr']) +
@@ -97,7 +96,7 @@ def search():
         if json_string.endswith(','):
             json_string = json_string[:-1]
 
-        json_string += '], "jwt_token": "'+jwt_tools.encode(data)+'"}'
+        json_string += ']}'
 
     except LookupError:
         session.rollback()

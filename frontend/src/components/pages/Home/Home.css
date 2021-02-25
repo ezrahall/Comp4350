@@ -8,6 +8,11 @@
   overflow-x: hidden;
 }
 
+.tags{
+  width: 80%;
+  margin: 25px 10%;
+}
+
 .home__card {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -33,16 +38,25 @@
   color: rgb(255, 0, 106);
   transition: 0.5s;
 }
-
+.search__header{
+  padding: 30px 0;
+}
 .home__title {
   display: flex;
   align-items: center;
   flex-direction: row;
   margin-left: 160px;
 }
+.home__title h2{
+  text-align: left;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+}
 
 .home__title  select {
-  margin: 8px;
+  margin-left: 20px;
+  margin-top: 4px;
   height: 20px;
   width: 80px;
 }
