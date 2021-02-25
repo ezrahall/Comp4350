@@ -28,7 +28,6 @@ def user_update():
     try:
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
-
         # Update users name
         if parameters['name'] != "":
             session.query(User).filter(User.id == data['id']).update({'name': parameters['name']})
@@ -44,7 +43,6 @@ def user_update():
             session.query(User).filter(User.id == data['id']).update({'phone': parameters['phone']})
 
         enc_jwt = jwt_tools.encode(data)
-
         session.commit()
 
     except LookupError:

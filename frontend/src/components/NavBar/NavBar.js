@@ -8,7 +8,7 @@ import { useStateValue } from '../../ContextAPI/StateProvider.js';
 import SearchIcon from '@material-ui/icons/Search';
 
 
-function NavBar() {
+const NavBar = () => {
 
     const [{basket},dispatch] = useStateValue();
 
@@ -61,6 +61,5 @@ function NavBar() {
             </nav>
         )
     }
-
 
 export default NavBar
