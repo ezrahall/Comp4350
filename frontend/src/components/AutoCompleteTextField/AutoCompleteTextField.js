@@ -1,8 +1,10 @@
 import { useState, } from "react";
-import nookies from 'nookies'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import TextField from '@material-ui/core/TextField'
 import axios from 'axios'
+
+import styles from './AutoComplete.module.css'
 
 const AutoCompleteTextField = (props) => {
     const [theToken, setTheToken] = useState('')
@@ -42,14 +44,14 @@ const AutoCompleteTextField = (props) => {
 
     return (
         <div>
-             <input
+             <TextField
                 id="auto"
                 autoComplete="off"
                 {...props}
                 onChange={e => handleAddressChange(e.target.value)}
             />
             { display && (
-                <div className="autoContainer">
+                <div className={styles.autoContainer}>
                 <List component="nav" aria-label="main mailbox folders" style={{zIndex: 9000, position: "relative", height: '100px', overflow: 'auto'}}>
                 {
                 completions

@@ -78,7 +78,7 @@ const Profile = ({alertHandler}) => {
     return (
         <div className={styles.profileDiv}>
             <Paper elevation={3} variant="elevation" className={styles.container}>
-            <h1>Profile Information</h1>
+            <h1 className={styles.header}>Profile Information</h1>
                 <div className={styles.imgContainer}>
                     <Avatar classes={classes} src="../../assets/images/avatar.png" />
                 </div>
