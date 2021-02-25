@@ -1,14 +1,16 @@
 from flask import Blueprint, request
-from werkzeug.security import generate_password_hash
-from flask_login import login_required, current_user, logout_user
 from sqlalchemy.orm import sessionmaker
-from Backend.Models.user import User
-from Backend.Models.restaurant import Restaurant
 from Backend import db
 from Backend.Utilities import jwt_tools
 import json
 
 menu_bp = Blueprint('menu_bp', __name__)
+
+"""
+Endpoint expects two params. One in url for restaurant and other in body
+@cookies   All the cookies from the client as a dictionary
+@return json of menu items. 
+"""
 
 
 @menu_bp.route('/Api/Menu/<restaurant>', methods=['POST'])

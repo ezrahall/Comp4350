@@ -49,11 +49,10 @@ Default behaviour is empty query which will return first @limit restaurants with
 Endpoint expects at least one parameter from client \
 @addr:    The address attempting to autocomplete  
 @token:   The generated token for the api call If the client doesnt send a token, one will be generated and returned.\
-@cookies:     A dictionary of cookies from client\
 Client stores token for repeated requests, discarding once user selects an autocompleted option. \
 @returns 
 ```
-{ "completions": [{"name": "The Moon"}, {"name": "Mars"}], "token": "81467e77d1b544cda694932995109be3", "jwt_token": "456sdfgsdf" }
+{ "completions": [{"name": "The Moon"}, {"name": "Mars"}], "token": "81467e77d1b544cda694932995109be3" }
 ```
 
 ## /Api/Images/<RESTAURANT_ID> [GET]
@@ -64,7 +63,7 @@ is uploaded for restaurant then a stock image is served.\
 
 
 ## /Api/Images/Upload [POST]
-Endpoint expects 1 parameter other than the image file.
+Endpoint expects 1 parameter other than the image file.\
 @cookies:     A dictionary of cookies from client\
 @returns
 ```

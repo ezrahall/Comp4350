@@ -1,13 +1,11 @@
 from flask import Blueprint, request
-from flask_login import login_required, current_user, logout_user
+from flask_login import current_user
 from werkzeug.security import generate_password_hash
 from sqlalchemy.orm import sessionmaker
 from Backend.Models.user import User
 from Backend import db
 from Backend.Utilities import jwt_tools
 import json
-import time
-import jwt
 
 users_bp = Blueprint('users__bp', __name__)
 
@@ -101,6 +99,13 @@ def user_deactivate():
 
     session.close()
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+
+
+"""
+Endpoint expects only one param
+@cookies   A dictionary of cookies from the client
+@returns whether or not the token is valid and active
+"""
 
 
 @users_bp.route('/Api/User/Test', methods=['POST'])

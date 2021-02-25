@@ -1,5 +1,4 @@
 from flask import Blueprint, request
-from flask_login import login_required, current_user
 from sqlalchemy.orm import sessionmaker
 from Backend import db
 from urllib.parse import parse_qs, urlparse, quote_plus
@@ -36,16 +35,6 @@ def search():
     try:
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
-        """
-        This is for testing purposes
-        parameters = {
-            'addr': '45 D\'arcy Dr, Winnipeg',
-            'dist': 50,
-            'query': 'salad',
-            'offset': 0,
-            'limit': 30
-        }
-        """
 
         address = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address=' +
                                quote_plus(parameters['addr']) +
@@ -100,12 +89,10 @@ def search():
 
         for row in results:
             json_string += '{"id": "' + str(row[0]) + '", ' \
-                                                      '"name": "' + str(row[1]) + '", ' \
-                                                                                  '"description": "' + str(
-                row[2]) + '",' \
-                          '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '", ' \
-                                                                                        '"address": "' + str(
-                row[5]) + '"},'
+                            '"name": "' + str(row[1]) + '", ' \
+                            '"description": "' + str(row[2]) + '",' \
+                            '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '", ' \
+                            '"address": "' + str(row[5]) + '"},'
 
         if json_string.endswith(','):
             json_string = json_string[:-1]
@@ -145,19 +132,9 @@ def location_autocomplete():
 
     try:
         parameters = request.json
-        data = jwt_tools.decode(parameters['cookies'])
-
         token = None
 
-        """
-        This is for testing purposes
-        parameters = {
-        'addr': '45 D\'arcy Dr, Winnipeg',
-        'token': '81467e77d1b544cda694932995109be3'
-        }
-        """
-
-        if parameters['token'] is None:
+        if parameters['token'] == "":
             token = str(uuid.uuid4().hex)
         else:
             token = parameters['token']
@@ -171,8 +148,7 @@ def location_autocomplete():
         if json_string.endswith(','):
             json_string = json_string[:-1]
 
-        json_string += '], "token": "' + token + '", "jwt_token": "'
-        json_string += jwt_tools.encode(data) + '" }'
+        json_string += '], "token": "' + token + '" }'
 
     except LookupError:
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
