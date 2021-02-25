@@ -1,6 +1,5 @@
 import pytest
 from Backend import create_app
-import json
 
 
 @pytest.fixture(scope='module')
