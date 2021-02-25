@@ -5,6 +5,7 @@ import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
 import {Link} from 'react-router-dom'
 import Spinner from '../../../ui/Spinner/Spinner';
+import Tags from '../../Tags/Tags';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
 
 const distanceData = [
@@ -31,10 +32,12 @@ const Home = (props) => {
     const [distance, setDistance] = useState(5)
     const [loadingAll, setLoadingAll] = useState(false)
     const [loadingMore, setLoadingMore] = useState(false)
+    const [filtered, setFiltered] = useState(false)
+    const [filter, setFilter] = useState('')
 
     useEffect(() => {
         setLoadingAll(true)
-        getRestaurants(5)
+        getRestaurants(5, filter)
             .then((data) => {
                 setRestaurants(data)
                 setLoadingAll(false)
@@ -44,7 +47,7 @@ const Home = (props) => {
     const showMoreRestaurants = () =>{
         let restaurantsArray =  restaurants
         setLoadingMore(true)
-        addRestaurants(restaurants.length, distance)
+        addRestaurants(restaurants.length, distance, filter)
             .then((data) => {
                restaurantsArray = restaurantsArray.concat(data);
                 setRestaurants(restaurantsArray)
@@ -55,7 +58,7 @@ const Home = (props) => {
 
     const distanceChange = (newDistance) =>{
         setLoadingAll(true)
-        getRestaurants(newDistance)
+        getRestaurants(newDistance, filter)
             .then((data) => {
                 setRestaurants(data)
                 setLoadingAll(false)
@@ -63,9 +66,28 @@ const Home = (props) => {
         setDistance(newDistance)
     }
 
+    const selectItem = (item) => {
+        setLoadingAll(true)
+        setFilter(item)
+        setFiltered(true)
+        getRestaurants(distance, item)
+            .then((data) => {
+                setRestaurants(data);
+                setLoadingAll(false)
+            })
+    }
+
     return (
-        <div className='home'>=
-            <Banner />
+        <div className='home'>
+            {!filtered && <Banner />}
+            <div className='tags'>
+                <Tags
+                    selectItem={selectItem}
+                />
+            </div>
+            {filtered && <div>
+                <h2 className='search__header'>Search Results For: {filter}</h2>
+            </div>}
             <div className='home__title'>
                 <h2>Available Restaurants Near: </h2>
                 <select
