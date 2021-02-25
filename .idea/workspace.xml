@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="GH-85 Create Assets Directory and moved images into it">
-      <change afterPath="$PROJECT_DIR$/frontend/src/services/restaurants/restaurantsService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/ui/Spinner/Spinner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/ui/Spinner/Spinner.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/Card.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/Card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="#98-Add-Tags-Component" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,7 +43,33 @@
       <recent name="$PROJECT_DIR$/frontend/src/hoc" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="Run Front End Tests" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/frontend/src/App.test.js" />
+      <test-names>
+        <test-name value="Run Front End Tests" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="renders learn react link" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/frontend/src/App.test.js" />
+      <test-names>
+        <test-name value="renders learn react link" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/frontend/package.json" />
       <command value="start" />
@@ -59,6 +77,12 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.Run Front End Tests" />
+        <item itemvalue="Jest.renders learn react link" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -87,7 +87,7 @@ const Home = (props) => {
 
                             {restaurants.map((restaurant) => (
                                 <Link key={restaurant.id} to='/restaurantmenu' style={{ textDecoration: 'none' }}>
-                                    <Card id ={restaurant.id} image={KFC} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
+                                    <Card id ={restaurant.id} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
                                 </Link>
                             ))}
                         </div>
