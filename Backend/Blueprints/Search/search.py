@@ -89,12 +89,10 @@ def search():
 
         for row in results:
             json_string += '{"id": "' + str(row[0]) + '", ' \
-                                                      '"name": "' + str(row[1]) + '", ' \
-                                                                                  '"description": "' + str(
-                row[2]) + '",' \
-                          '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '", ' \
-                                                                                        '"address": "' + str(
-                row[5]) + '"},'
+                            '"name": "' + str(row[1]) + '", ' \
+                            '"description": "' + str(row[2]) + '",' \
+                            '"delivery_time": "' + rest_map[(str(row[3]), str(row[4]))] + '", ' \
+                            '"address": "' + str(row[5]) + '"},'
 
         if json_string.endswith(','):
             json_string = json_string[:-1]
