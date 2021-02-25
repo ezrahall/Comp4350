@@ -1,0 +1,23 @@
+name: Node.js CI
+
+on: [push]
+
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        cd frontend
+        npm ci
+    - name: Run Tests
+      run: |
+        cd frontend
+        npm test
