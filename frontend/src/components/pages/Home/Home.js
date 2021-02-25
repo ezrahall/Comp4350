@@ -100,14 +100,14 @@ const Home = (props) => {
             </div>
             {loadingAll ?
                 <Spinner/>
-                : restaurants.length == 0 ?
+                : restaurants?.length == 0 ?
                     <div className='no__restaurants'>
                         <h2>No Available Restaurants In The Area</h2>
                     </div>
                     : <div>
                         <div className='home__card'>
 
-                            {restaurants.map((restaurant) => (
+                            {restaurants?.map((restaurant) => (
                                 <Link key={restaurant.id} to='/restaurantmenu' style={{ textDecoration: 'none' }}>
                                     <Card id ={restaurant.id} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
                                 </Link>

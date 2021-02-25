@@ -47,9 +47,16 @@
   flex-direction: row;
   margin-left: 160px;
 }
+.home__title h2{
+  text-align: left;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+}
 
 .home__title  select {
-  margin: 8px;
+  margin-left: 20px;
+  margin-top: 4px;
   height: 20px;
   width: 80px;
 }
