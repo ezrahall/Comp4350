@@ -48,6 +48,7 @@ const AutoCompleteTextField = (props) => {
                 id="auto"
                 autoComplete="off"
                 {...props}
+                className={styles.input}
                 onChange={e => handleAddressChange(e.target.value)}
             />
             { display && (
