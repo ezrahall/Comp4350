@@ -22,7 +22,6 @@ const DefaultContainer = () => {
   return(
     <div>
       <div className="container">
-        <NavBar />
           <Route path="/" exact component={Home}/>
           <Route path="/restaurantmenu"component={RestaurantMenu}/>
           <Route path="/account"component={Account}/>
