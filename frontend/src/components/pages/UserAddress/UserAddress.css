@@ -1,11 +1,17 @@
 .enter-address {
+    height: 100vh;
+    width: 100vw;
     justify-content: center;
     display: flex;
     flex: 1;
+    background: linear-gradient(to bottom right, #a300ff, rgba(163,0,255,0.73), rgba(163,0,255,0.22));
 }
-
 .image-container {
     background-repeat: no-repeat;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     filter: grayscale(40%);
     max-width: 100%;
     height: auto;
@@ -13,7 +19,9 @@
     margin-left: auto;
     margin-right: auto;
 }
-
+.image-container img{
+    margin-bottom: 50px;
+}
 .title {
     margin-top: 10%;
 }
@@ -59,4 +67,6 @@
 .address-list-item:hover {
     background-color: lightslategrey;
 }
-
+.address-button{
+    margin-top: 60px;
+}

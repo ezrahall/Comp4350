@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { MenuItems } from './MenuItems.js';
-// import { Button } from '../Button';
 import './NavBar.css';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import {Link} from 'react-router-dom'
 import { useStateValue } from '../../ContextAPI/StateProvider.js';
 import SearchIcon from '@material-ui/icons/Search';
+import SafeEat from '../../assets/images/SafeEat.svg';
 
 
 const NavBar = (props) => {
@@ -27,10 +27,14 @@ const NavBar = (props) => {
     
         return(
             <nav className="NavBarItems">
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                    <h1 className="navbar-logo">Safeat</h1>
-                </Link>
-                
+                <button
+                    className='button-logo'
+                    onClick={() => {
+                    props.reset();
+                    setSearchQuery('')
+                }}>
+                    <img className='nav-logo' src={SafeEat}/>
+                </button>
                 <div className="menu-icon" onClick={handleClick}></div>
                 <form  className="navbar-search" onSubmit={handleSubmit}>
                     <div className="search-box">

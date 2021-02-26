@@ -7,6 +7,7 @@
     background: -webkit-linear-gradient(left, #7579ff, #b224ef);
   }
 
+
   .input, .Button{
     border: none;
     outline: none;
@@ -49,6 +50,7 @@
     text-align: center;
   }
 
+
   .welcomText {
     width: 50%;
     height: 100%;
@@ -58,6 +60,7 @@
     top: 50px;
   }
   
+
   .label{
     display: block;
     width: 260px;
@@ -65,6 +68,7 @@
     text-align: center;
   }
   
+
   .label span{
     font-size: 14px;
     font-weight: 600;
@@ -87,7 +91,7 @@
   .buttonMarg {
       margin-top: 10;
   }
-
+   
   .Button {
     display: block;
     margin: 0 auto;

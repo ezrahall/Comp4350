@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom'
 
+import Logo from '../../../assets/images/SafeEat.svg';
 import './UserAddress.css';
 import { AddressContext } from './address';
+import { useStateValue } from '../../../ContextAPI/StateProvider'
 
 function UserAddress(props) {
     const FIND_RESTAURANTS = "Find Restaurants Nearby";
@@ -14,16 +17,23 @@ function UserAddress(props) {
     const [newToken, setNewToken] = useState(token)
     const [validAddress, setValidAddress] = useState(false)
     const [visible, setVisibility] = useState(false)
-    const [completeAddress, setCompleteAddress] = useState('66 Chancellors Circle, Winnipeg, MB, Canada')
+
+    const [{address},dispatch] = useStateValue();
+    let history = useHistory();
 
     const handleSubmit = (event) => {
+        event.preventDefault()
         if(validAddress) {
-            setCompleteAddress(newAddress)
+            dispatch({
+                type: 'ADD_ADDRESS',
+                address: newAddress
+            });
+            history.push('./home')
         }
         else {
-            event.preventDefault()
             setButtonAttr({name: CHOOSE_ADDRESS, color: "secondary"})
         }
+        console.log(newAddress);
     }
 
     const handleChange = (event) => {
@@ -49,7 +59,7 @@ function UserAddress(props) {
     return (
         <div className="enter-address">
             <div className="image-container">
-                <h1 className="title">Safeat: A Smarter Way To Eat</h1>
+            <img src={Logo} alt={'logo'}/>
                 <form onSubmit={handleSubmit} >
                         <div className="address-box">
                             <input type="text"
@@ -62,7 +72,7 @@ function UserAddress(props) {
                             {visible && addresses.map(address => <li key={address.name} className="address-list-item">
                             <a onClick={handleClick}>{address.name}</a></li>)}
                         </div>
-                        <Button className="address-button" type="submit" variant="contained" color={buttonAttr.color}>{buttonAttr.name}</Button>
+                        <Button style={{marginTop:'60px'}} className="address-button" type="submit" variant="contained" color={buttonAttr.color}>{buttonAttr.name}</Button>
                 </form>
             </div> 
         </div>
