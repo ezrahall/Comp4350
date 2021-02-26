@@ -36,15 +36,12 @@ const Password = ({alertHandler}) => {
     return (
         <div className={styles.profileDiv}>
             <Paper elevation={3} variant="elevation" className={styles.container}>
-                <h1>Reset You Password</h1>
+                <h1 className={styles.header}>Reset You Password</h1>
                 <p>Enter your old password to confirm the change</p>
 
                 <div>
-                    {/* <label>Current Password</label>
-                    <TextField value={oldPassword} type="password" variant="outlined" onChange={e => setOldPassword(e.target.value)} /> */}
-
-                    <label>New Password</label>
-                    <TextField value={newPassword} type="password" variant="outlined" onChange={e => setNewPassword(e.target.value)} />
+                    <label className={styles.label}><span>New Password</span></label>
+                    <TextField className={styles.input} value={newPassword} type="password" variant="outlined" onChange={e => setNewPassword(e.target.value)} />
                 </div>
 
                 <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Change Password</Button>

@@ -84,15 +84,15 @@ const Profile = ({alertHandler}) => {
                 </div>
                 <div className={styles.profileInfo}>
                     <div className={styles.infoDiv}>
-                        <label>Account Name </label>
+                        <label className={styles.label}><span>Account Name</span></label>
                         <TextField value={name} variant='outlined'/>
                     </div>
                     <div className={styles.infoDiv}>
-                        <label>Phone Number </label>
+                        <label className={styles.label}><span>Phone Number</span></label>
                         <TextField value={phoneNumber} variant='outlined'/>
                     </div>
                     <div className={styles.infoDiv}>
-                        <label>Email Address </label>
+                        <label className={styles.label}><span>Email Address</span></label>
                         <TextField value={email} variant='outlined'/>
                     </div>
                 </div>

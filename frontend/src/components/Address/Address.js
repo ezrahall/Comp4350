@@ -41,7 +41,7 @@ const Address = () => {
 
                 <div>
                     <label>Addess</label>
-                    <AutoCompleteTextField value={newAddress} variant='outlined' callback={setNewAddress} />
+                    <AutoCompleteTextField fulwidth={true} value={newAddress} variant='outlined' callback={setNewAddress} />
                 </div>
 
                 <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Update Addess</Button>
