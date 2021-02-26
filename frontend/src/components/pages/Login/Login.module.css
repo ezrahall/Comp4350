@@ -7,7 +7,8 @@
     background: -webkit-linear-gradient(left, #7579ff, #b224ef);
   }
 
-.loginDiv  input, Button{
+
+  .input, .Button{
     border: none;
     outline: none;
     background: none;
@@ -43,13 +44,14 @@
     display: none;
   }
 
-.loginDiv  h2{
+  .headerText{
     width: 100%;
     font-size: 30px;
     text-align: center;
   }
 
-.loginDiv  h4 {
+
+  .welcomText {
     width: 50%;
     height: 100%;
     font-size: 20px;
@@ -58,21 +60,23 @@
     top: 50px;
   }
   
- .loginDiv label{
+
+  .label{
     display: block;
     width: 260px;
     margin: 25px auto 0;
     text-align: center;
   }
   
- .loginDiv label span{
+
+  .label span{
     font-size: 14px;
     font-weight: 600;
     color: #505f75;
     text-transform: uppercase;
   }
   
- .loginDiv input{
+  .input{
     display: block;
     width: 100%;
     margin-top: 5px;
@@ -87,8 +91,8 @@
   .buttonMarg {
       margin-top: 10;
   }
-
- .loginDiv Button {
+   
+  .Button {
     display: block;
     margin: 0 auto;
     width: 260px;

@@ -36,12 +36,13 @@ const Address = () => {
     return (
         <div className={styles.profileDiv}>
             <Paper elevation={3} variant="elevation" className={styles.container}>
-                <h1>Change Your Address</h1>
+                <h1 className={styles.header}>Change Your Address</h1>
+                <br />
                 <p>Enter your new address to confirm the change</p>
 
                 <div>
-                    <label>Addess</label>
-                    <AutoCompleteTextField value={newAddress} variant='outlined' callback={setNewAddress} />
+                    <label className={styles.label}><span>Addess</span></label>
+                    <AutoCompleteTextField fulwidth={true} value={newAddress} variant='outlined' callback={setNewAddress} />
                 </div>
 
                 <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Update Addess</Button>
