@@ -36,7 +36,7 @@ const Address = () => {
     return (
         <div className={styles.profileDiv}>
             <Paper elevation={3} variant="elevation" className={styles.container}>
-                <h1>Change Your Address</h1>
+                <h1 className={styles.header}>Change Your Address</h1>
                 <br />
                 <p>Enter your new address to confirm the change</p>
 
