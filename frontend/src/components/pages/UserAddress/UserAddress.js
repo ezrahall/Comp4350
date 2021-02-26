@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
 
 import Logo from '../../../assets/images/SafeEat.svg';
-import './UserAddress.css';
+import styles from '../../styles/pages/UserAddress.module.css';
 import { AddressContext } from './address';
 import { useStateValue } from '../../../ContextAPI/StateProvider'
 
@@ -57,22 +57,22 @@ function UserAddress(props) {
     }
 
     return (
-        <div className="enter-address">
-            <div className="image-container">
+        <div className={styles.enter__address}>
+            <div className={styles.image__container}>
             <img src={Logo} alt={'logo'}/>
                 <form onSubmit={handleSubmit} >
-                        <div className="address-box">
+                        <div className={styles.address__box}>
                             <input type="text"
                                    onChange={handleChange} 
                                    placeholder="Please Enter Your Address"
                                    value={newAddress}/>
                             <SearchIcon />
                         </div>
-                        <div className="address-list">
-                            {visible && addresses.map(address => <li key={address.name} className="address-list-item">
+                        <div className={styles.address__list}>
+                            {visible && addresses.map(address => <li key={address.name} className={styles.address__listitem}>
                             <a onClick={handleClick}>{address.name}</a></li>)}
                         </div>
-                        <Button style={{marginTop:'60px'}} className="address-button" type="submit" variant="contained" color={buttonAttr.color}>{buttonAttr.name}</Button>
+                        <Button style={{marginTop:'60px'}} className={styles.address__button} type="submit" variant="contained" color={buttonAttr.color}>{buttonAttr.name}</Button>
                 </form>
             </div> 
         </div>
