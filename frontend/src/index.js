@@ -8,6 +8,7 @@ import reducer, {initialState} from './ContextAPI/reducer';
 import './index.css';
 import App from './App';
 import UserContextProvider from './context/user';
+import AddressContextProvider from './components/pages/UserAddress/address';
 
 
 ReactDOM.render(
@@ -15,7 +16,9 @@ ReactDOM.render(
     <StateProvider initialState={initialState} reducer={reducer}>
         <BrowserRouter>
             <UserContextProvider>
-              <App/>
+              <AddressContextProvider>
+                <App/>
+              </AddressContextProvider>
             </UserContextProvider>
         </BrowserRouter>
     </StateProvider>

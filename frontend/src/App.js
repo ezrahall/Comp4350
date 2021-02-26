@@ -7,6 +7,7 @@ import RestaurantMenu from './components/pages/RestaurantMenu/RestaurantMenu';
 import Checkout from './components/pages/Checkout/Checkout';
 import Payment from './components/pages/Payment/Payment';
 import Account from './components/pages/Account/Account';
+import UserAddress from './components/pages/UserAddress/UserAddress';
 import NavBar from './components/NavBar/NavBar';
 
 const LoginContainer = () => {
@@ -36,12 +37,11 @@ const App = () => {
   return ( 
     <div className="App">
       <Layout>
-        <AddressContextProvider>
         <Switch>
           <Route exact strict path="/login" component={LoginContainer}/>
+          <Route path="/address" component={UserAddress}/>
           <Route component={DefaultContainer} />
         </Switch>
-        </AddressContextProvider>
       </Layout>
     </div>
   );
