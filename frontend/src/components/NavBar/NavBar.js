@@ -32,7 +32,7 @@ const NavBar = (props) => {
                     props.reset();
                     setSearchQuery('')
                 }}>
-                    <img className='nav-logo' src={SafeEat}/>
+                    <img className='nav-logo' alt='' src={SafeEat}/>
                 </button>
                 <div className="menu-icon" onClick={handleClick}></div>
                 <form  className="navbar-search" onSubmit={handleSubmit}>
