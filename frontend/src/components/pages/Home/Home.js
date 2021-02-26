@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 import Spinner from '../../../ui/Spinner/Spinner';
 import Tags from '../../Tags/Tags';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
+import NavBar from "../../NavBar/NavBar";
 
 const distanceData = [
     {
@@ -79,6 +80,9 @@ const Home = (props) => {
 
     return (
         <div className='home'>
+            <NavBar
+                searchChanged={selectItem}
+            />
             {!filtered && <Banner />}
             <div className='tags'>
                 <Tags
