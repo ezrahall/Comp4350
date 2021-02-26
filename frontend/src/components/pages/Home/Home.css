@@ -39,13 +39,18 @@
   transition: 0.5s;
 }
 .search__header{
-  padding: 30px 0;
+  text-align: left;
+  padding: 30px 160px;
 }
 .home__title {
   display: flex;
+  justify-content: center;
+  margin: 20px 160px 10px;
+}
+.home__title div{
+  display: flex;
   align-items: center;
   flex-direction: row;
-  margin-left: 160px;
 }
 .home__title h2{
   text-align: left;
@@ -56,10 +61,25 @@
 
 .home__title  select {
   margin-left: 20px;
+  margin-right: 20px;
   margin-top: 4px;
   height: 20px;
   width: 80px;
 }
 .no__restaurants {
   margin: 100px;
+  text-decoration: underline;
+}
+.change{
+  color: #420e5d;
+  border: 1px solid  rgb(255, 0, 106);
+  padding: 4px 10px;
+  width: fit-content;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+.change:hover{
+  background: rgba(255, 0, 106, 0.8);
 }

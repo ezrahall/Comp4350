@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import './Home.css'
 import Banner from '../../Banner/Banner'
@@ -8,6 +9,7 @@ import Spinner from '../../../ui/Spinner/Spinner';
 import Tags from '../../Tags/Tags';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
 import NavBar from "../../NavBar/NavBar";
+import {useStateValue} from "../../../ContextAPI/StateProvider";
 
 const distanceData = [
     {
@@ -36,9 +38,13 @@ const Home = (props) => {
     const [filtered, setFiltered] = useState(false)
     const [filter, setFilter] = useState('')
 
+    const [{address},dispatch] = useStateValue();
+    let addressString = address[0];
+    const history = useHistory();
+
     useEffect(() => {
         setLoadingAll(true)
-        getRestaurants(5, filter)
+        getRestaurants(5, filter, addressString)
             .then((data) => {
                 setRestaurants(data)
                 setLoadingAll(false)
@@ -48,7 +54,7 @@ const Home = (props) => {
     const showMoreRestaurants = () =>{
         let restaurantsArray =  restaurants
         setLoadingMore(true)
-        addRestaurants(restaurants.length, distance, filter)
+        addRestaurants(restaurants.length, distance, filter, addressString)
             .then((data) => {
                restaurantsArray = restaurantsArray.concat(data);
                 setRestaurants(restaurantsArray)
@@ -59,7 +65,7 @@ const Home = (props) => {
 
     const distanceChange = (newDistance) =>{
         setLoadingAll(true)
-        getRestaurants(newDistance, filter)
+        getRestaurants(newDistance, filter, addressString)
             .then((data) => {
                 setRestaurants(data)
                 setLoadingAll(false)
@@ -71,17 +77,26 @@ const Home = (props) => {
         setLoadingAll(true)
         setFilter(item)
         setFiltered(true)
-        getRestaurants(distance, item)
+        getRestaurants(distance, item, addressString)
             .then((data) => {
                 setRestaurants(data);
                 setLoadingAll(false)
             })
     }
 
+    const goToAddress = () => {
+        history.push('./')
+    }
+
     return (
         <div className='home'>
             <NavBar
                 searchChanged={selectItem}
+                reset={() => {
+                    setFiltered(false);
+                    setFilter('')
+                    distanceChange(distance)
+                }}
             />
             {!filtered && <Banner />}
             <div className='tags'>
@@ -89,19 +104,26 @@ const Home = (props) => {
                     selectItem={selectItem}
                 />
             </div>
+            <div className='home__title'>
+                <div>
+                    <h3>Available Restaurants Within: </h3>
+                    <select
+                        onChange={(change) => distanceChange(change.target.value)}
+                    >
+                        {distanceData.map((d) => (
+                            <option key={d.id} value={d.distance}>{d.distance} Km</option>
+                        ))}
+                    </select>
+                </div>
+                    <div>
+                        <h3> of {addressString}</h3>
+                        <button className='change' onClick={() => goToAddress()}>Change Address</button>
+                    </div>
+            </div>
             {filtered && <div>
                 <h2 className='search__header'>Search Results For: {filter}</h2>
             </div>}
-            <div className='home__title'>
-                <h2>Available Restaurants Near: </h2>
-                <select
-                    onChange={(change) => distanceChange(change.target.value)}
-                >
-                    {distanceData.map((d) => (
-                        <option key={d.id} value={d.distance}>{d.distance} Km</option>
-                    ))}
-                </select>
-            </div>
+
             {loadingAll ?
                 <Spinner/>
                 : restaurants?.length == 0 ?

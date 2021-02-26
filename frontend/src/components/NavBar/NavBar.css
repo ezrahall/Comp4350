@@ -98,3 +98,17 @@ input::-webkit-input-placeholder {
   margin-left: 10px;
   margin-right: 10px;
 }
+.nav-logo {
+  height: 50px;
+  pointer-events: none;
+}
+.nav-logo:hover{
+  cursor: pointer;
+}
+.button-logo{
+  margin-left: 20px;
+  margin-right: -50px;
+}
+.button-logo:hover{
+  cursor: pointer;
+}

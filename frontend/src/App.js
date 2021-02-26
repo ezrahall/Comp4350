@@ -23,7 +23,7 @@ const DefaultContainer = () => {
   return(
     <div>
       <div className="container">
-          <Route path="/" exact component={Home}/>
+          <Route path="/home" exact component={Home}/>
           <Route path="/restaurantmenu"component={RestaurantMenu}/>
           <Route path="/account"component={Account}/>
           <Route path="/checkout"component={Checkout}/>
@@ -39,7 +39,7 @@ const App = () => {
       <Layout>
         <Switch>
           <Route exact strict path="/login" component={LoginContainer}/>
-          <Route path="/address" component={UserAddress}/>
+          <Route exact strict path="/" component={UserAddress}/>
           <Route component={DefaultContainer} />
         </Switch>
       </Layout>
