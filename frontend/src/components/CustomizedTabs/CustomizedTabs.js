@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import SwipeableViews from 'react-swipeable-views';
 import Box from '@material-ui/core/Box';
+import { Button } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -68,6 +71,8 @@ const CustomizedTabs = (props) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const theme = useTheme()
+  const history = useHistory()
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -77,9 +82,14 @@ const CustomizedTabs = (props) => {
     setValue(index);
   }
 
+  const handleClick = () => {
+    history.goBack()
+  }
+
   return (
     <div className={classes.root}>
       <div className={classes.color}>
+        <Button style={{background: 'transparent', float: 'left', color: '#fff'}} onClick={handleClick}> <ArrowBackIcon/> </Button>
         <h1 style={props.titleStyles}>{props.title}</h1>
         <StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example"  barColor={props.barColor}>
             {props.tabs.map((tab) => {return <StyledTab label={tab.label} style={{margin: tab.css }}/>})}

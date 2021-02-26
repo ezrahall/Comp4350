@@ -31,10 +31,25 @@
     margin: auto;
 }
 
-h1 { 
+.label{
+    display: block;
+    width: 260px;
+    margin: 25px auto 0;
+    text-align: center;
+    left: 0;
+}
+
+.label span{
+    font-size: 14px;
+    font-weight: 600;
+    color: #505f75;
+    text-transform: uppercase;
+}
+  
+.header { 
     margin-bottom: 30px;
 }
 
-input { 
-    text-align: center;
+.input { 
+    text-align: left;
 }

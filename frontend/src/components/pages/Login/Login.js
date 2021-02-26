@@ -131,7 +131,6 @@ const Login = (props) => {
     const handleCheckedChange = () => {
         setChecked(!checked)
         dispatch({ type: checked ? "USER" : "RESTAURANT" })
-        document.getElementById('restAddress').classList.toggle(styles.invisible)
         document.getElementById('container').classList.toggle(styles.expanded)
     }
 
@@ -161,32 +160,32 @@ const Login = (props) => {
             <div id="container" className={styles.container}>
                 <div className={styles.form + " " +styles.signIn}>
                     <form autoComplete="off"  onSubmit={handleLoginSignup}>
-                        <h2> Sign In</h2>
+                        <h2 className={styles.headerText}> Sign In</h2>
                         <br/>
                         <br/>
-                        <label>
+                        <label className={styles.label}>
                             <span>Email Address</span>.
-                            <TextField onChange={e => setEmail(e.target.value)} value={email} />
+                            <TextField className={styles.input} onChange={e => setEmail(e.target.value)} value={email} />
                         </label>
                         
-                        <label>
+                        <label className={styles.label}>
                             <span>Password</span>
-                            <TextField onChange={e => setPassword(e.target.value)} type="password" value={password} />
+                            <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type="password" value={password} />
                         </label>
-                        <Button type="submit"  className={styles.submit + " " + styles.buttonMarg} classes={buttonClasses}><span >Sign In</span></Button>
+                        <Button type="submit" className={styles.submit + " " + styles.buttonMarg  + " " + styles.Button} classes={buttonClasses}><span >Sign In</span></Button>
                         <br/>
-                        { checked && <h4>Hey welcome back! Hop back in to continue providing great customer experience while increasing your revenue with Safeat</h4>}
+                        { checked && <h4 className={styles.welcomText}>Hey welcome back! Hop back in to continue providing great customer experience while increasing your revenue with Safeat</h4>}
                         { isLoading &&  <CircularProgress color="secondary" size={20}/> }
                     </form>
                 </div>
                 <div className={styles.subContainer}>
                     <div id="image-div" className={styles.image}>
                         <div className={styles.imgText + " " + styles.mUp}>
-                            <h2 id="signup-h1-first">{displayTexts.h1First}</h2>
+                            <h2 className={styles.headerText} id="signup-h1-first">{displayTexts.h1First}</h2>
                             <p id="signup-p1-secondText">{displayTexts.pSecond}</p>
                         </div>
                         <div className={styles.imgText + " " + styles.mIn}>
-                            <h2 id="login-h1-first" >{displayTexts.h1Second}</h2>
+                            <h2 className={styles.headerText} id="login-h1-first" >{displayTexts.h1Second}</h2>
                             <p id="login-p1-secondText">{displayTexts.pSecond}</p>
                         </div>
                         <div>
@@ -198,28 +197,27 @@ const Login = (props) => {
                     </div>
                     <div className={styles.form + " " + styles.signUp}>
                         <form id="signupForm" autoComplete="false" onSubmit={handleLoginSignup}>
-                            <h2>Sign Up</h2>
-                            <label>
+                            <h2 className={styles.headerText}>Sign Up</h2>
+                            <label className={styles.label}>
                                 <span>{checked ? 'Restaurant' : 'Full'} Name</span>
-                                <TextField onChange={e => setName(e.target.value)} value={name} />
+                                <TextField className={styles.input} onChange={e => setName(e.target.value)} value={name} />
                             </label>
-                            <label>
+                            <label className={styles.label}>
                                  <span>Email Address</span>
-                                <TextField onChange={e => setEmail(e.target.value)} value={email} />
+                                <TextField className={styles.input} onChange={e => setEmail(e.target.value)} value={email} />
                             </label>
-                            <label>
+                            <label className={styles.label}>
                                 <span>Password</span>
-                                <TextField onChange={e => setPassword(e.target.value)} type="password" value={password} />
+                                <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type="password" value={password} />
                             </label>
-                            <label>
+                            <label className={styles.label}>
                                 <span>Confirm Password</span>
-                                <TextField onChange={e => setConfirmPassword(e.target.value)} type="password" value={confirmPassword} />
+                                <TextField className={styles.input} onChange={e => setConfirmPassword(e.target.value)} type="password" value={confirmPassword} />
                             </label>
-                            <label id="restAddress" className={styles.invisible}>
-                                <span>Restaurant Address</span>
-                                <AutoCompleteTextField callback={(e) => {setAddress(e)}} type="text" value={address} />
-                            </label>
-                            <Button type="submit"  className={styles.submit + " " + styles.buttonMarg} classes={buttonClasses}><span>Sign Up</span></Button>
+                            { checked && <label className={styles.label}> <span> Restaurant Address </span></label> }
+                            { checked && <AutoCompleteTextField callback={(e) => {setAddress(e)}} type="text" value={address} /> }
+                            
+                            <Button type="submit"  className={styles.submit + " " + styles.buttonMarg + " " + styles.Button} classes={buttonClasses}><span>Sign Up</span></Button>
                             <br/>
                             { isLoading && <CircularProgress color="secondary" size={20}/> }
                         </form>
