@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStateValue } from '../../ContextAPI/StateProvider'
-import './CheckoutProduct.css'
+
+import styles from '../styles/CheckoutProduct.module.css'
 
 function CheckoutProduct({id,image,title,price}) {
 
@@ -16,13 +17,13 @@ function CheckoutProduct({id,image,title,price}) {
     }
 
     return (
-        <div className='checkoutProduct'>
-            <img className='checkoutProduct__image' src={image} alt='' 
+        <div className={styles.checkoutProduct}>
+            <img className={styles.checkoutProduct__image} src={image} alt='' 
             />
 
-            <div className='checkoutProduct__info'>
-                <p className='chekcoutProduct__title'>{title}</p>
-                <p className='checkoutProduct__price'>
+            <div className={styles.checkoutProduct__info}>
+                <p className={styles.chekcoutProduct__title}>{title}</p>
+                <p className={styles.checkoutProduct__price}>
                     <small>$</small>
                     <strong>{price}</strong>
                 </p>
