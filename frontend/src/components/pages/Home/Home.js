@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+
 import './Home.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
-import KFC from '../../../assets/images/KFC.jpg'
-import Footer from '../../Footer/Footer';
 import {Link} from 'react-router-dom'
-import {restData} from './restaurantData'
+import Spinner from '../../../ui/Spinner/Spinner';
+import Tags from '../../Tags/Tags';
+import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
+import NavBar from "../../NavBar/NavBar";
 
 const distanceData = [
     {
@@ -26,71 +28,106 @@ const distanceData = [
     },
 ]
 
-function Home(props) {
+const Home = (props) => {
+    const [restaurants,setRestaurants] = useState([])
+    const [distance, setDistance] = useState(5)
+    const [loadingAll, setLoadingAll] = useState(false)
+    const [loadingMore, setLoadingMore] = useState(false)
+    const [filtered, setFiltered] = useState(false)
+    const [filter, setFilter] = useState('')
+
+    useEffect(() => {
+        setLoadingAll(true)
+        getRestaurants(5, filter)
+            .then((data) => {
+                setRestaurants(data)
+                setLoadingAll(false)
+            })
+    }, [])
+
+    const showMoreRestaurants = () =>{
+        let restaurantsArray =  restaurants
+        setLoadingMore(true)
+        addRestaurants(restaurants.length, distance, filter)
+            .then((data) => {
+               restaurantsArray = restaurantsArray.concat(data);
+                setRestaurants(restaurantsArray)
+                setLoadingMore(false)
+            })
+            .catch((e) => console.log(e))
+    }
+
+    const distanceChange = (newDistance) =>{
+        setLoadingAll(true)
+        getRestaurants(newDistance, filter)
+            .then((data) => {
+                setRestaurants(data)
+                setLoadingAll(false)
+            })
+        setDistance(newDistance)
+    }
+
+    const selectItem = (item) => {
+        setLoadingAll(true)
+        setFilter(item)
+        setFiltered(true)
+        getRestaurants(distance, item)
+            .then((data) => {
+                setRestaurants(data);
+                setLoadingAll(false)
+            })
+    }
+
     return (
         <div className='home'>
-            
-
-            <Banner />
-
-
+            <NavBar
+                searchChanged={selectItem}
+            />
+            {!filtered && <Banner />}
+            <div className='tags'>
+                <Tags
+                    selectItem={selectItem}
+                />
+            </div>
+            {filtered && <div>
+                <h2 className='search__header'>Search Results For: {filter}</h2>
+            </div>}
             <div className='home__title'>
-
                 <h2>Available Restaurants Near: </h2>
-                <select>
+                <select
+                    onChange={(change) => distanceChange(change.target.value)}
+                >
                     {distanceData.map((d) => (
-                        <option key={d.id} value={d.id} >{d.distance} Km</option>
-
+                        <option key={d.id} value={d.distance}>{d.distance} Km</option>
                     ))}
-                    
                 </select>
             </div>
+            {loadingAll ?
+                <Spinner/>
+                : restaurants?.length == 0 ?
+                    <div className='no__restaurants'>
+                        <h2>No Available Restaurants In The Area</h2>
+                    </div>
+                    : <div>
+                        <div className='home__card'>
 
-            
-                   
-            <div className='home__card'>
-
-                {restData.map((restaurant) => (
-                    <Link to='/restaurantmenu' style={{ textDecoration: 'none' }}>
-                        <Card image={KFC} title={restaurant.title} rating={restaurant.rating} description={restaurant.description} distance={restaurant.distance} />
-    
-                    </Link>
-
-
-                ))}
-
-            </div>
-            <div className='home__card'>
-                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
-                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
-                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
-
-
-            </div>
-            <div className='home__card'>
-                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
-                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
-                <Card image={KFC} title='KFC'rating='9' description='LorepIpsum' />
-
-
-            </div>
-
-            <div className='home__card'>
-
-
-            </div>
-
-            
-
-
-        
-            <Footer />
-                
-            
-            
-            
+                            {restaurants?.map((restaurant) => (
+                                <Link key={restaurant.id} to='/restaurantmenu' style={{ textDecoration: 'none' }}>
+                                    <Card id ={restaurant.id} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
+                                </Link>
+                            ))}
+                        </div>
+                {loadingMore ?
+                    <Spinner/>
+                    : <button
+                        className='show__more'
+                        onClick={() => showMoreRestaurants()}
+                    >
+                        Show More
+                    </button>
+                }
+            </div>}
         </div>
     );
 }
-
 export default Home;

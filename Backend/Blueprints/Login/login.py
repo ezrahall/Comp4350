@@ -1,9 +1,7 @@
 from flask import Blueprint, request
-from flask_login import login_required, logout_user, login_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from sqlalchemy.orm import sessionmaker
 from Backend import db
-from Backend import login_manager
 from Backend.Models.user import User
 from urllib.parse import quote_plus
 import requests

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import { MenuItems } from './MenuItems.js';
 // import { Button } from '../Button';
 import './NavBar.css';
@@ -8,7 +8,8 @@ import { useStateValue } from '../../ContextAPI/StateProvider.js';
 import SearchIcon from '@material-ui/icons/Search';
 
 
-function NavBar() {
+const NavBar = (props) => {
+    const [searchQuery, setSearchQuery] = useState('')
 
     const [{basket},dispatch] = useStateValue();
 
@@ -19,7 +20,8 @@ function NavBar() {
     }
 
     const handleSubmit = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
+        props.searchChanged(searchQuery);
     }
 
     
@@ -32,8 +34,13 @@ function NavBar() {
                 <div className="menu-icon" onClick={handleClick}></div>
                 <form  className="navbar-search" onSubmit={handleSubmit}>
                     <div className="search-box">
-                        <input type="text" name="searchQuery" placeholder="Search Restaurants"/>
-                        <SearchIcon />
+                        <input
+                            type="text"
+                            name="searchQuery"
+                            placeholder="Search Restaurants"
+                            value={searchQuery}
+                            onChange={(data) => setSearchQuery(data.target.value)}/>
+                        <button><SearchIcon /></button>
                     </div>
                 </form>
                 <ul className={state.clicked ? 'nav-menu active' : 'nav-menu'}>
@@ -61,6 +68,5 @@ function NavBar() {
             </nav>
         )
     }
-
 
 export default NavBar

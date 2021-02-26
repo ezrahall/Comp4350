@@ -1,0 +1,40 @@
+.heading { 
+    margin: 0px;
+    padding: 60px;
+    color: white;
+    font-size: 60px;
+}
+
+.profileDiv {
+    width: 100%;
+    align-items: center;
+}
+
+.container {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 50%;
+    padding: 30px
+}
+
+.div {
+    background: #6faaf7;
+}
+
+.avatar {
+    margin: auto;
+}
+
+.actionBtns { 
+    margin: auto;
+}
+
+h1 { 
+    margin-bottom: 30px;
+}
+
+input { 
+    text-align: center;
+}

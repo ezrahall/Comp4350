@@ -35,7 +35,7 @@
 .nav-links {
   color: #fff;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .nav-links:hover {
@@ -66,6 +66,9 @@
   height: 23px;
   border: 1px solid lightgray;
   border-radius: 999px;
+}
+.search-box button{
+  width: fit-content;
 }
 
 .search-box > input {

@@ -1,0 +1,40 @@
+.Tag{
+    position: relative;
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+}
+.Tag img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.Blur{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.63));
+    border-radius: 10px;
+    pointer-events: none;
+}
+.BlurDiv:hover {
+    margin-top: -20px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.Tag p{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 20px;
+    color: white;
+    z-index: 10;
+}

@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 import { useStateValue } from '../../ContextAPI/StateProvider';
 import { getBasketTotal } from '../../ContextAPI/reducer';
 
-function Subtotal() {
+const Subtotal = () => {
 
-    const [{basket},dispatch] = useStateValue();
+    const [{basket}, dispatch] = useStateValue();
 
     const history = useHistory();
 

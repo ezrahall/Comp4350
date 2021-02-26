@@ -1,23 +1,19 @@
 import React from 'react'
 import './Card.css'
-import Star from '../../assets/images/ratingStar.png'
 
 
-function Card({id,title,image,description,rating,distance}) {
+const Card = (props) => {
+
     return (
         <div className='card'>
 
-            <img src={image} alt='' />
+            <img src={`https://safeats.ca/Api/Images/${props.id}`} alt={props.title + ' Logo'} />
             <div className='card__info'>
-            <h2>{title}</h2>
-                <h4>{description}</h4>
-                <h3>{rating} <img className='card__starImage' src={Star} alt='' /> </h3>
-                <h4>Distance: {distance} KM</h4>
-                
-
+            <h2>{props.title}</h2>
+                <h4>{props.description}</h4>
+                {/*<h3>{props.rating} <img className='card__starImage' src={Star} alt='' /> </h3>*/}
+                <h4>Estimated Time: {props.time}</h4>
             </div>
-            
-            
         </div>
     )
 }

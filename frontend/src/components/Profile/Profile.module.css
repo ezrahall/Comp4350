@@ -1,0 +1,66 @@
+.heading { 
+    margin: 0px;
+    padding: 60px;
+    color: white;
+    font-size: 60px;
+}
+
+.profileDiv {
+    width: 100%;
+    align-items: center;
+}
+
+.container {
+    margin: auto;
+    max-width: 50%;
+    padding: 50px;
+}
+
+.actionBtns { 
+    margin: auto;
+    padding-bottom: 30px;
+}
+
+.logoutBtn {
+    border-radius: 30px;
+    color: tomato;
+    background: rgb(209, 208, 208);
+    margin: auto;
+    float: right;
+    margin-top: 100px;
+}
+
+.editDiv {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.imgContainer {
+    height: 30vh;
+    width: 100px;
+    float: left;
+}
+
+.profileInfo {
+    margin-left: 40px;
+}
+
+.infoDiv label{
+    margin: 0;
+    margin-bottom: 10px;
+    left: 0;
+}
+
+.infoDiv input {
+    width: 720px;
+    text-align: left;
+
+}
+
+.infoDiv {
+    margin-bottom: 20px;
+}
+
+h1 { 
+    margin-bottom: 30px;
+}
