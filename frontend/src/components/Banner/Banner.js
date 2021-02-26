@@ -14,9 +14,9 @@ function Banner() {
                 <h5>
                     Let us help you bring a safer tomorrow
                 </h5>
-                <Button 
+                <Button
                     variant="outlined">Explore
-                </Button>
+                </Button >
 
 
             </div>
