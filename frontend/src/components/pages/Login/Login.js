@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, useReducer } from 'react'
 import { Button, ButtonGroup, TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import styles from './Login.module.css'
 import { UserContext } from '../../../context/user'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar'
@@ -11,6 +10,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import * as Validator from 'validatorjs'
 
 import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField'
+import styles from '../../styles/pages/Login.module.css'
 
 const useStyles = makeStyles({
     root: {
