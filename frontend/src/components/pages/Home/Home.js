@@ -134,7 +134,7 @@ const Home = (props) => {
                         <div className='home__card'>
 
                             {restaurants?.map((restaurant) => (
-                                <Link key={restaurant.id} to='/restaurantmenu' style={{ textDecoration: 'none' }}>
+                                <Link key={restaurant.id} to='/home' style={{ textDecoration: 'none' }}>
                                     <Card id ={restaurant.id} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
                                 </Link>
                             ))}

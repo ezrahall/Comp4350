@@ -41,4 +41,5 @@
 .banner__info > button:hover {
   background-color: white;
   color: rgb(255, 0, 106);
+  cursor: none;
 }

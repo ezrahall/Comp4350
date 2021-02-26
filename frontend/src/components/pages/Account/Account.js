@@ -32,11 +32,6 @@ const Account = (props) => {
             children: <Password alertHandler={setOpenAlert} alert={openAlert}/>,
             index: 1,
         },
-        {
-            label: 'Address',
-            children: <Address/>,
-            index: 2,
-        },
     ]
 
     const titleCss = {

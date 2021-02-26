@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { MenuItems } from './MenuItems.js';
 import './NavBar.css';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
-import {Link} from 'react-router-dom'
 import { useStateValue } from '../../ContextAPI/StateProvider.js';
 import SearchIcon from '@material-ui/icons/Search';
 import SafeEat from '../../assets/images/SafeEat.svg';
@@ -58,7 +57,6 @@ const NavBar = (props) => {
                             </li>
                         )
                     })}
-                    <Link to='/checkout' style={{ textDecoration: 'none' }}>
                         <div className='navbar-basket'>
                             <ShoppingBasketIcon />
                             <span
@@ -66,8 +64,6 @@ const NavBar = (props) => {
                                 {basket?.length}
                             </span>
                         </div>
-
-                    </Link>
                 </ul>
             </nav>
         )
