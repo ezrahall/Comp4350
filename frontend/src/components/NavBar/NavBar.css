@@ -68,6 +68,8 @@
   border-radius: 999px;
 }
 .search-box button{
+  background-color: transparent;
+  border: none;
   width: fit-content;
 }
 
@@ -99,6 +101,7 @@ input::-webkit-input-placeholder {
   margin-right: 10px;
 }
 .nav-logo {
+  background-color: transparent;
   height: 50px;
   pointer-events: none;
 }
@@ -106,6 +109,8 @@ input::-webkit-input-placeholder {
   cursor: pointer;
 }
 .button-logo{
+  background-color: transparent;
+  border: none;
   margin-left: 20px;
   margin-right: -50px;
 }
