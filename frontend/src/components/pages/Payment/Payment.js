@@ -1,8 +1,11 @@
 import React from 'react'
 import { useStateValue } from '../../../ContextAPI/StateProvider'
-import './Payment.css'
-import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct'
 import {Link} from 'react-router-dom'
+
+
+import styles from '../../styles/pages/Payment.module.css'
+import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct'
+
 
 function Payment() {
 
@@ -10,18 +13,18 @@ function Payment() {
 
 
     return (
-        <div className='payment'>
-            <div className="payment__container">
+        <div className={styles.payment}>
+            <div className={styles.payment__container}>
                 <h1>
                     Checkout (<Link to="/checkout">{basket?.length} items </Link>)
                 </h1>
 
                 {/*Delivery*/}
-                <div className="payment__section">
-                    <div className="payment__title">
+                <div className={styles.payment__section}>
+                    <div className={styles.payment__title}>
                         <h3>Delivery Address</h3>
                     </div>
-                    <div className="payment__address">
+                    <div className={styles.payment__address}>
                         <p>User</p>
                         <p>123 Test Drive</p>
                         <p>Peg City, Canada</p>
@@ -29,11 +32,11 @@ function Payment() {
 
                 </div>
                 {/*Items*/}
-                <div className="payment__section">
-                    <div className="payment__title">
+                <div className={styles.payment__section}>
+                    <div className={styles.payment__title}>
                         <h3>Review items and delivery</h3>
                     </div>
-                    <div className="payment__items">
+                    <div className={styles.payment__items}>
                         {basket.map(item => (
 
                             <CheckoutProduct
@@ -48,11 +51,11 @@ function Payment() {
                     </div>
                 </div>
                 {/*Payment method*/}
-                <div className="payment__section">
-                    <div className="payment__title">
+                <div className={styles.payment__section}>
+                    <div className={styles.payment__title}>
                         <h3>Payment Method</h3>
                     </div>
-                    <div className="payment__details">
+                    <div className={styles.payment__details}>
                         
                         
                     </div>
