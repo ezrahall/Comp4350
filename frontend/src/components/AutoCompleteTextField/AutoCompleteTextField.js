@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import TextField from '@material-ui/core/TextField'
 import axios from 'axios'
 
-import styles from './AutoComplete.module.css'
+import styles from '../styles/AutoComplete.module.css'
 
 const AutoCompleteTextField = (props) => {
     const [theToken, setTheToken] = useState('')
