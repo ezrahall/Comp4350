@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
-import { MenuItems } from './MenuItems.js';
-import './NavBar.css';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
-import { useStateValue } from '../../ContextAPI/StateProvider.js';
 import SearchIcon from '@material-ui/icons/Search';
+
+import { MenuItems } from './MenuItems.js';
+import { useStateValue } from '../../ContextAPI/StateProvider.js';
+import styles from '../styles/NavBar.module.css';
 import SafeEat from '../../assets/images/SafeEat.svg';
+
 
 
 const NavBar = (props) => {
@@ -25,18 +27,18 @@ const NavBar = (props) => {
 
     
         return(
-            <nav className="NavBarItems">
+            <nav className={styles.NavBarItems}>
                 <button
-                    className='button-logo'
+                    className={styles.button__logo}
                     onClick={() => {
                     props.reset();
                     setSearchQuery('')
                 }}>
-                    <img className='nav-logo' src={SafeEat}/>
+                    <img className={styles.nav__logo} alt='' src={SafeEat}/>
                 </button>
-                <div className="menu-icon" onClick={handleClick}></div>
-                <form  className="navbar-search" onSubmit={handleSubmit}>
-                    <div className="search-box">
+                <div className={styles.menu__icon} onClick={handleClick}></div>
+                <form  className={styles.navbar__search} onSubmit={handleSubmit}>
+                    <div className={styles.search__box}>
                         <input
                             type="text"
                             name="searchQuery"
@@ -46,21 +48,21 @@ const NavBar = (props) => {
                         <button><SearchIcon /></button>
                     </div>
                 </form>
-                <ul className={state.clicked ? 'nav-menu active' : 'nav-menu'}>
+                <ul className={styles.nav__menu}>
                     {MenuItems.map((item, index) => {
                         return (
                             <li key={index}>
-                                <a className={item.cName}
+                                <a className={styles.nav__links}
                                 href={item.url}>
                                 {item.title}
                                 </a>
                             </li>
                         )
                     })}
-                        <div className='navbar-basket'>
+                        <div className={styles.navbar__basket}>
                             <ShoppingBasketIcon />
                             <span
-                            className='navbar-basketCount'>
+                            className={styles.navbar__basketCount}>
                                 {basket?.length}
                             </span>
                         </div>

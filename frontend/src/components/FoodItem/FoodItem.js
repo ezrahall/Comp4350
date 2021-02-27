@@ -1,7 +1,7 @@
 import React from 'react'
-import './FoodItem.css'
-
 import { useStateValue } from '../../ContextAPI/StateProvider'
+
+import styles from '../styles/FoodItem.module.css'
 
 
 
@@ -27,19 +27,19 @@ function FoodItem({heading,data}) {
 
 
     return (
-        <div className='fooditem'>
-            <h1 className='fooditem__heading'>{heading}</h1>
-            <div className='fooditem__wrapper'>
+        <div className={styles.fooditem}>
+            <h1 className={styles.fooditem__heading}>{heading}</h1>
+            <div className={styles.fooditem__wrapper}>
                 {data.map((product) => {
                     return(
-                        <div className='fooditem__card'>
-                            <div className='fooditem__content'>
-                            <img className='fooditem__image' src={product.img} alt='' />        
-                            <div className='fooditem__info'>
-                                <h2 className='fooditem__title'>{product.title}</h2>
-                                <p className='fooditem__desc'>{product.desc}</p>
-                                <p className='fooditem__price'>${product.price}</p>
-                                <button className='fooditem__button' onClick={(e) => addToBasket(product)}>{product.button}</button>
+                        <div className={styles.fooditem__card}>
+                            <div className={styles.fooditem__content}>
+                            <img className={styles.fooditem__image} src={product.img} alt='' />        
+                            <div className={styles.fooditem__info}>
+                                <h2 className={styles.fooditem__title}>{product.title}</h2>
+                                <p className={styles.fooditem__desc}>{product.desc}</p>
+                                <p className={styles.fooditem__price}>${product.price}</p>
+                                <button className={styles.fooditem__button} onClick={(e) => addToBasket(product)}>{product.button}</button>
                                 {/*Needs to be fixed, Subtotal not appearing */}
                             </div>          
                             </div>

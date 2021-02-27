@@ -1,15 +1,16 @@
 import React from 'react'
-import './Hero.css'
 
-function Hero(slogan) {
+import styles from '../styles/Hero.module.css'
+
+function Hero(props) {
     return (
-        <div className='hero'>
-            <div className='hero__content'>
+        <div className={styles.hero}>
+            <div className={styles.hero__content}>
             
                 
-                <div className='hero__items'>
-                <h1 className='hero__title'>Here to Help</h1>
-                <button className='hero__button'>Place Order Now</button>
+                <div className={styles.hero__items}>
+                <h1 className={styles.hero__title}>Here to Help</h1>
+                <button className={styles.hero__button}>Place Order Now</button>
                 
             </div>
 

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
-import './Home.css'
+import styles from '../../styles/pages/Home.module.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
 import {Link} from 'react-router-dom'
@@ -89,7 +89,7 @@ const Home = (props) => {
     }
 
     return (
-        <div className='home'>
+        <div className={styles.home}>
             <NavBar
                 searchChanged={selectItem}
                 reset={() => {
@@ -99,12 +99,12 @@ const Home = (props) => {
                 }}
             />
             {!filtered && <Banner />}
-            <div className='tags'>
+            <div className={styles.tags}>
                 <Tags
                     selectItem={selectItem}
                 />
             </div>
-            <div className='home__title'>
+            <div className={styles.home__title}>
                 <div>
                     <h3>Available Restaurants Within: </h3>
                     <select
@@ -117,21 +117,21 @@ const Home = (props) => {
                 </div>
                     <div>
                         <h3> of {addressString}</h3>
-                        <button className='change' onClick={() => goToAddress()}>Change Address</button>
+                        <button className={styles.change} onClick={() => goToAddress()}>Change Address</button>
                     </div>
             </div>
             {filtered && <div>
-                <h2 className='search__header'>Search Results For: {filter}</h2>
+                <h2 className={styles.search__header}>Search Results For: {filter}</h2>
             </div>}
 
             {loadingAll ?
                 <Spinner/>
                 : restaurants?.length == 0 ?
-                    <div className='no__restaurants'>
+                    <div className={styles.no__restaurants}>
                         <h2>No Available Restaurants In The Area</h2>
                     </div>
                     : <div>
-                        <div className='home__card'>
+                        <div className={styles.home__card}>
 
                             {restaurants?.map((restaurant) => (
                                 <Link key={restaurant.id} to='/home' style={{ textDecoration: 'none' }}>

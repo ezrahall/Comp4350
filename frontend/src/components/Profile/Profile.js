@@ -4,7 +4,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom'
 
 
-import styles from './Profile.module.css'
+import styles from '../styles/Profile.module.css'
 import { UserContext } from '../../context/user'
 
 const useStyles = makeStyles({

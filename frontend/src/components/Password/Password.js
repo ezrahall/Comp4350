@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Paper, makeStyles, TextField, Button } from "@material-ui/core"
 
-import styles from './Password.module.css'
+import styles from '../styles/Password.module.css'
 import { UserContext } from '../../context/user'
 
 

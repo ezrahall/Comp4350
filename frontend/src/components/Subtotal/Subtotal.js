@@ -1,7 +1,8 @@
 import React from 'react'
-import './Subtotal.css'
 import CurrencyFormat from 'react-currency-format'
 import { useHistory } from 'react-router-dom';
+
+import styles from '../styles/Subtotal.module.css'
 import { useStateValue } from '../../ContextAPI/StateProvider';
 import { getBasketTotal } from '../../ContextAPI/reducer';
 
@@ -12,7 +13,7 @@ const Subtotal = () => {
     const history = useHistory();
 
     return (
-        <div className='subtotal'>
+        <div className={styles.subtotal}>
                 <CurrencyFormat
                 renderText={(value) => (
                     <>
@@ -21,7 +22,7 @@ const Subtotal = () => {
                             Subtotal ({basket.length} items):
                             <strong>{value}</strong>
                         </p>
-                        <small className="subtotal__gift">
+                        <small className={styles.subtotal__gift}>
                             <input type="checkbox" /> Make someone happy with a gift?
                         </small>
                     </>
