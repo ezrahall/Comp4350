@@ -1,15 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'
 
 import styles from '../../styles/pages/Home.module.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
 import {Link} from 'react-router-dom'
+import * as Actions from '../../../store/actions/actions'
 import Spinner from '../../../ui/Spinner/Spinner';
 import Tags from '../../Tags/Tags';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
 import NavBar from "../../NavBar/NavBar";
-import {useStateValue} from "../../../ContextAPI/StateProvider";
 
 const distanceData = [
     {
@@ -37,14 +38,18 @@ const Home = (props) => {
     const [loadingMore, setLoadingMore] = useState(false)
     const [filtered, setFiltered] = useState(false)
     const [filter, setFilter] = useState('')
+    const address = useSelector(state => state.user.address)
 
-    const [{address},dispatch] = useStateValue();
-    let addressString = address[0];
     const history = useHistory();
+    const dispatch = useDispatch()
+
+    const incrementCounter = useCallback(() => {
+        dispatch({type: Actions.SET_CURRENT_BOOKINGS})
+    }, [dispatch])
 
     useEffect(() => {
         setLoadingAll(true)
-        getRestaurants(5, filter, addressString)
+        getRestaurants(5, filter, address)
             .then((data) => {
                 setRestaurants(data)
                 setLoadingAll(false)
@@ -54,7 +59,7 @@ const Home = (props) => {
     const showMoreRestaurants = () =>{
         let restaurantsArray =  restaurants
         setLoadingMore(true)
-        addRestaurants(restaurants.length, distance, filter, addressString)
+        addRestaurants(restaurants.length, distance, filter, address)
             .then((data) => {
                restaurantsArray = restaurantsArray.concat(data);
                 setRestaurants(restaurantsArray)
@@ -65,7 +70,7 @@ const Home = (props) => {
 
     const distanceChange = (newDistance) =>{
         setLoadingAll(true)
-        getRestaurants(newDistance, filter, addressString)
+        getRestaurants(newDistance, filter, address)
             .then((data) => {
                 setRestaurants(data)
                 setLoadingAll(false)
@@ -77,7 +82,7 @@ const Home = (props) => {
         setLoadingAll(true)
         setFilter(item)
         setFiltered(true)
-        getRestaurants(distance, item, addressString)
+        getRestaurants(distance, item, address)
             .then((data) => {
                 setRestaurants(data);
                 setLoadingAll(false)
@@ -116,7 +121,7 @@ const Home = (props) => {
                     </select>
                 </div>
                     <div>
-                        <h3> of {addressString}</h3>
+                        <h3> of {address}</h3>
                         <button className={styles.change} onClick={() => goToAddress()}>Change Address</button>
                     </div>
             </div>
@@ -134,9 +139,11 @@ const Home = (props) => {
                         <div className={styles.home__card}>
 
                             {restaurants?.map((restaurant) => (
-                                <Link key={restaurant.id} to='/home' style={{ textDecoration: 'none' }}>
+                                // <Link key={restaurant.id} to='/home' style={{ textDecoration: 'none' }}>
+                                <button onClick={incrementCounter}>
                                     <Card id ={restaurant.id} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
-                                </Link>
+                                </button>
+                                // </Link>
                             ))}
                         </div>
                 {loadingMore ?

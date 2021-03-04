@@ -3,11 +3,10 @@ import { useHistory } from 'react-router-dom'
 import CustomizedTabs from '../../CustomizedTabs/CustomizedTabs'
 import Profile from '../../Profile/Profile'
 import Password from '../../Password/Password'
-import Address from '../../Address/Address'
 import { Snackbar } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 
-import { UserContext } from '../../../context/user'
+import {useSelector} from "react-redux";
 
 const Account = (props) => {
     const history = useHistory()
@@ -19,7 +18,7 @@ const Account = (props) => {
     },[])
 
     const [openAlert, setOpenAlert] = useState(false)
-    const { respMessage, hasError } = useContext(UserContext)
+    const error = useSelector(state => state.user.error)
 
     const tabs = [
         {
@@ -40,13 +39,12 @@ const Account = (props) => {
         color: '#fff',
         fontSize: '60px',
     }
-
     return (
         <div>
             <CustomizedTabs tabs={tabs} title={'Account Settings'} titleStyles={titleCss} />
             <Snackbar open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
-                <Alert severity={hasError ? "error" : "success"}>
-                  {respMessage}
+                <Alert severity={error ? "error" : "success"}>
+                  {error}
                 </Alert> 
             </Snackbar>
         </div>

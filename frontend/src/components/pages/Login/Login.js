@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useContext, useReducer } from 'react'
 import { Button, ButtonGroup, TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import { UserContext } from '../../../context/user'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar'
 import MuiAlert from '@material-ui/lab/Alert';
 import Switch from '@material-ui/core/Switch';
 import { useHistory, useLocation } from 'react-router-dom'
 import * as Validator from 'validatorjs'
+import {useDispatch} from 'react-redux'
 
 import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField'
 import styles from '../../styles/pages/Login.module.css'
+import {signIn, signUp} from '../../../store/actions/user';
+import {useSelector} from "react-redux";
 
 const useStyles = makeStyles({
     root: {
@@ -44,9 +46,12 @@ const Login = (props) => {
     const [vErrorMessage, setVErrorMessage] = useState('')
     const [openError, setOpenError] = useState(false)
     const buttonClasses = useStyles()
-    const { signIn, signUp, respMessage, isLoading } = useContext(UserContext)
+    const error = useSelector(state => state.user.error)
+    const isLoading = useSelector(state => state.user.isLoading)
+    const user = useSelector(state => state.user.user)
     const history = useHistory()
     const location = useLocation()
+    const dispatchRedux = useDispatch();
 
     const data = {
         name: name,
@@ -69,6 +74,16 @@ const Login = (props) => {
 
     const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:5',})
     const signupValidator = new Validator(data, rules)
+
+    useEffect(() => {
+        if(user != null){
+            history.push('./')
+        }
+    },[user])
+
+    useEffect(() => {
+        setOpenError(!!error)
+    },[error])
 
     const [displayTexts, dispatch] = useReducer((displayTexts, action) => {
         switch (action.type) {
@@ -110,16 +125,10 @@ const Login = (props) => {
                 "password" : password,
                 "address" : address
             }
-            let res
             if(isLogin) {
-            res = await signIn(user)
+            dispatchRedux(signIn(user))
             } else {
-            res = await signUp(user, checked)
-            }
-            if(res) {
-                history.replace(from);
-            } else {
-                setOpenError(true);
+            dispatchRedux(signUp(user, checked))
             }
         }
     }
@@ -236,7 +245,7 @@ const Login = (props) => {
             </span>
             <Snackbar open={openError} autoHideDuration={6000} onClose={() => setOpenError(false)}>
                 <Alert severity={"error"}>
-                  {vError ? vErrorMessage : respMessage}
+                  {vError ? vErrorMessage : error}
                 </Alert> 
             </Snackbar>
         </div>

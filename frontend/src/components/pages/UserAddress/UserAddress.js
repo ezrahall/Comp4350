@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
+import {useDispatch} from 'react-redux'
 
 import Logo from '../../../assets/images/SafeEat.svg';
 import styles from '../../styles/pages/UserAddress.module.css';
 import { AddressContext } from './address';
-import { useStateValue } from '../../../ContextAPI/StateProvider'
+import {setAddress} from '../../../store/actions/adress';
 
 function UserAddress(props) {
     const FIND_RESTAURANTS = "Find Restaurants Nearby";
@@ -18,16 +19,14 @@ function UserAddress(props) {
     const [validAddress, setValidAddress] = useState(false)
     const [visible, setVisibility] = useState(false)
 
-    const [{address},dispatch] = useStateValue();
+    const dispatch = useDispatch()
+
     let history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault()
         if(validAddress) {
-            dispatch({
-                type: 'ADD_ADDRESS',
-                address: newAddress
-            });
+            dispatch(setAddress(newAddress))
             history.push('./home')
         }
         else {

@@ -12,7 +12,6 @@ import SafeEat from '../../assets/images/SafeEat.svg';
 const NavBar = (props) => {
     const [searchQuery, setSearchQuery] = useState('')
 
-    const [{basket},dispatch] = useStateValue();
 
     const state = { clicked: false }
 
@@ -63,7 +62,7 @@ const NavBar = (props) => {
                             <ShoppingBasketIcon />
                             <span
                             className={styles.navbar__basketCount}>
-                                {basket?.length}
+                                {0}
                             </span>
                         </div>
                 </ul>

@@ -2,26 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import {StateProvider} from './ContextAPI/StateProvider';
-import reducer, {initialState} from './ContextAPI/reducer';
+import { Provider } from 'react-redux'
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux'
+import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
-import UserContextProvider from './context/user';
 import AddressContextProvider from './components/pages/UserAddress/address';
+import cartReducer from './store/reducers/cartReducer';
+import userReducer from './store/reducers/userRedcuer';
+
+const rootReducer = combineReducers({
+    cart: cartReducer,
+    user: userReducer
+});
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+    rootReducer, composeEnhancers(
+        applyMiddleware(thunk)
+    ));
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider initialState={initialState} reducer={reducer}>
+    <Provider store={store}>
         <BrowserRouter>
-            <UserContextProvider>
-              <AddressContextProvider>
-                <App/>
-              </AddressContextProvider>
-            </UserContextProvider>
+          <AddressContextProvider>
+            <App/>
+          </AddressContextProvider>
         </BrowserRouter>
-    </StateProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
