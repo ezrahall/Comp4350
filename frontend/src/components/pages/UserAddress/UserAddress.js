@@ -6,22 +6,23 @@ import {useDispatch} from 'react-redux'
 
 import Logo from '../../../assets/images/SafeEat.svg';
 import styles from '../../styles/pages/UserAddress.module.css';
-import { AddressContext } from './address';
+import {enterAddress} from '../../../services/address/address';
 import {setAddress} from '../../../store/actions/adress';
 
 function UserAddress(props) {
     const FIND_RESTAURANTS = "Find Restaurants Nearby";
     const CHOOSE_ADDRESS = "Please choose an address from one of the options";
-    const {addresses, token, hasError, respMessage, isLoading, enterAddress} = useContext(AddressContext)
     const [buttonAttr, setButtonAttr] = useState({name: FIND_RESTAURANTS, color: "primary"});
     const [newAddress, setNewAddress] = useState('')
-    const [newToken, setNewToken] = useState(token)
+    const [addresses, setAddresses] = useState([])
+    const [token, setToken] = useState('')
     const [validAddress, setValidAddress] = useState(false)
     const [visible, setVisibility] = useState(false)
 
     const dispatch = useDispatch()
 
     let history = useHistory();
+    console.log(token);
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -37,11 +38,15 @@ function UserAddress(props) {
 
     const handleChange = (event) => {
         setNewAddress(event.target.value)
-        setNewToken(token)
+        setToken(token)
         setValidAddress(false)
         if(event.target.value != '') {
-            enterAddress(newAddress, newToken)
-            setVisibility(true)
+            enterAddress(newAddress, token)
+                .then((data) => {
+                    setToken(data.token);
+                    setAddresses(data.addresses)
+                    setVisibility(true)
+                })
         }
         else {
             setVisibility(false)

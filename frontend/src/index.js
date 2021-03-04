@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
-import AddressContextProvider from './components/pages/UserAddress/address';
 import cartReducer from './store/reducers/cartReducer';
 import userReducer from './store/reducers/userRedcuer';
 
@@ -29,9 +28,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
-          <AddressContextProvider>
             <App/>
-          </AddressContextProvider>
         </BrowserRouter>
     </Provider>
   </React.StrictMode>,

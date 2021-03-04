@@ -3,12 +3,10 @@ import CurrencyFormat from 'react-currency-format'
 import { useHistory } from 'react-router-dom';
 
 import styles from '../styles/Subtotal.module.css'
-import { useStateValue } from '../../ContextAPI/StateProvider';
-import { getBasketTotal } from '../../ContextAPI/reducer';
+import {useSelector} from "react-redux";
 
 const Subtotal = () => {
-
-    const [{basket}, dispatch] = useStateValue();
+    const basket = useSelector(state => state.cart.basket)
 
     const history = useHistory();
 
@@ -28,7 +26,7 @@ const Subtotal = () => {
                     </>
                 )}
                 decimalScale={2}
-                value={getBasketTotal(basket)}
+                value={basket.reduce((amount, item) => item.price + amount, 0)}
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"$"}

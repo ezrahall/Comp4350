@@ -7,10 +7,12 @@ import FoodItem from '../../FoodItem/FoodItem'
 import FeaturedItem from '../../FoodItem/FeaturedItem/FeaturedItem'
 import Footer from '../../Footer/Footer'
 import {foodData} from '../../FoodItem/data'
+import NavBar from "../../NavBar/NavBar";
 
 function RestaurantMenu() {
     return (
         <div className={styles.restaurantMenu}>
+            <NavBar/>
             <Hero />
             <FoodItem data={foodData} heading='Chicken' />
 

@@ -2,7 +2,7 @@ import {updateObject} from './utility';
 import {SET_CURRENT_BOOKINGS} from '../actions/actions';
 
 const initialState = {
-    basket: 0
+    basket: []
 };
 
 const setCurrentBooking = (state, action) => {

@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import SearchIcon from '@material-ui/icons/Search';
+import {useHistory} from 'react-router-dom'
 
 import { MenuItems } from './MenuItems.js';
-import { useStateValue } from '../../ContextAPI/StateProvider.js';
 import styles from '../styles/NavBar.module.css';
 import SafeEat from '../../assets/images/SafeEat.svg';
+import {useSelector} from "react-redux";
 
 
 
 const NavBar = (props) => {
     const [searchQuery, setSearchQuery] = useState('')
+    const basket = useSelector(state => state.cart.basket)
 
-
-    const state = { clicked: false }
+    const history = useHistory()
 
     const handleClick = () => {
         this.setState({ clicked: !this.state.clicked })
@@ -24,15 +25,22 @@ const NavBar = (props) => {
         props.searchChanged(searchQuery);
     }
 
+    const logoClicked = () => {
+        if(props.reset){
+            props.reset();
+            setSearchQuery('')
+        }else{
+            history.push('/home')
+        }
+    }
+
     
         return(
             <nav className={styles.NavBarItems}>
                 <button
                     className={styles.button__logo}
-                    onClick={() => {
-                    props.reset();
-                    setSearchQuery('')
-                }}>
+                    onClick={() => {logoClicked()}
+                }>
                     <img className={styles.nav__logo} alt='' src={SafeEat}/>
                 </button>
                 <div className={styles.menu__icon} onClick={handleClick}></div>
@@ -59,10 +67,10 @@ const NavBar = (props) => {
                         )
                     })}
                         <div className={styles.navbar__basket}>
-                            <ShoppingBasketIcon />
+                            <ShoppingBasketIcon/>
                             <span
                             className={styles.navbar__basketCount}>
-                                {0}
+                                {basket?.length}
                             </span>
                         </div>
                 </ul>
