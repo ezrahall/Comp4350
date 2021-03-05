@@ -1,11 +1,10 @@
-import { useState, useContext, useEffect } from "react";
-import { Avatar, Paper, Fab, Dialog, makeStyles, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Button } from "@material-ui/core"
+import { useState, useEffect } from "react";
+import { Avatar, Paper, Fab, Dialog, makeStyles, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Button } from "@material-ui/core";
 import EditIcon from '@material-ui/icons/Edit';
-import { useHistory } from 'react-router-dom'
-
-
-import styles from '../styles/Profile.module.css'
+import { useHistory } from 'react-router-dom';
 import {useDispatch} from "react-redux";
+
+import styles from '../../assets/styles/Profile.module.css';
 import {logOut, updateUser} from '../../store/actions/user';
 
 const useStyles = makeStyles({
@@ -16,7 +15,6 @@ const useStyles = makeStyles({
 })
 
 const Profile = ({alertHandler}) => {
-    console.log('here');
     const history = useHistory()
     const dispatch = useDispatch();
 
@@ -138,4 +136,4 @@ const Profile = ({alertHandler}) => {
     )
 }
 
-export default Profile
+export default Profile;

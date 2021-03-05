@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {KeyboardArrowLeftOutlined, KeyboardArrowRightOutlined} from '@material-ui/icons'
+import {KeyboardArrowLeftOutlined, KeyboardArrowRightOutlined} from '@material-ui/icons';
 
-import {tags} from '../../data/Tags/Tags'
+import {tags} from '../../data/Tags/Tags';
 import classes from './Tags.module.css';
 import Tag from "./Tag/Tag";
 

@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-import styles from '../../styles/pages/RestaurantMenu.module.css'
+import styles from '../../../assets/styles/pages/RestaurantMenu.module.css'
 import Hero from '../../Hero/Hero'
 import FoodItem from '../../FoodItem/FoodItem'
 import FeaturedItem from '../../FoodItem/FeaturedItem/FeaturedItem'
@@ -15,15 +14,9 @@ function RestaurantMenu() {
             <NavBar/>
             <Hero />
             <FoodItem data={foodData} heading='Chicken' />
-
             <FeaturedItem />
-
             <FoodItem data={foodData} heading='Beef' />
-
             <Footer />
-
-
-            
         </div>
     )
 }

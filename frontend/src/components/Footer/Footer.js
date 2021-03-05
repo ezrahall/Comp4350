@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from '../styles/Footer.module.css'
+import styles from '../../assets/styles/Footer.module.css'
 
 function Footer() {
     return (
@@ -12,4 +12,4 @@ function Footer() {
     )
 }
 
-export default Footer 
+export default Footer

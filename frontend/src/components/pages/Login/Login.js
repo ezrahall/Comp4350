@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext, useReducer } from 'react'
-import { Button, ButtonGroup, TextField } from '@material-ui/core'
+import React, { useState, useEffect, useReducer } from 'react'
+import { Button, TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar'
@@ -7,12 +7,11 @@ import MuiAlert from '@material-ui/lab/Alert';
 import Switch from '@material-ui/core/Switch';
 import { useHistory, useLocation } from 'react-router-dom'
 import * as Validator from 'validatorjs'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField'
-import styles from '../../styles/pages/Login.module.css'
+import styles from '../../../assets/styles/pages/Login.module.css'
 import {signIn, signUp} from '../../../store/actions/user';
-import {useSelector} from "react-redux";
 
 const useStyles = makeStyles({
     root: {

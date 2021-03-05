@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import SearchIcon from '@material-ui/icons/Search';
-import {useHistory} from 'react-router-dom'
-
-import { MenuItems } from './MenuItems.js';
-import styles from '../styles/NavBar.module.css';
-import SafeEat from '../../assets/images/SafeEat.svg';
+import {useHistory} from 'react-router-dom';
 import {useSelector} from "react-redux";
 
-
+import { MenuItems } from './MenuItems.js';
+import styles from '../../assets/styles/NavBar.module.css';
+import SafeEat from '../../assets/images/SafeEat.svg';
 
 const NavBar = (props) => {
     const [searchQuery, setSearchQuery] = useState('')
@@ -33,7 +31,6 @@ const NavBar = (props) => {
             history.push('/home')
         }
     }
-
     
         return(
             <nav className={styles.NavBarItems}>

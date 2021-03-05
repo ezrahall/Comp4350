@@ -1,13 +1,10 @@
 import React from 'react'
 
-import styles from '../styles/Card.module.css'
-
+import styles from '../../assets/styles/Card.module.css'
 
 const Card = (props) => {
-
     return (
         <div className={styles.card}>
-
             <img src={`https://safeats.ca/Api/Images/${props.id}`} alt={props.title + ' Logo'} />
             <div className={styles.card__info}>
             <h2>{props.title}</h2>

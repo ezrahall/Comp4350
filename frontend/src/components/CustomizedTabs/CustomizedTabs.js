@@ -73,7 +73,6 @@ const CustomizedTabs = (props) => {
   const theme = useTheme()
   const history = useHistory()
 
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }
