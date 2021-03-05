@@ -1,15 +1,14 @@
 import React from 'react'
-import { useStateValue } from '../../../ContextAPI/StateProvider'
 import {Link} from 'react-router-dom'
 
 
 import styles from '../../styles/pages/Payment.module.css'
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct'
+import {useSelector} from "react-redux";
 
 
 function Payment() {
-
-    const [{ basket, user }, dispatch] = useStateValue();
+    const basket = useSelector(state => state.cart.basket)
 
 
     return (

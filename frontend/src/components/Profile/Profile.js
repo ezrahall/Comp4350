@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom'
 
 
 import styles from '../styles/Profile.module.css'
-import { UserContext } from '../../context/user'
+import {useDispatch} from "react-redux";
+import {logOut, updateUser} from '../../store/actions/user';
 
 const useStyles = makeStyles({
     root: {
@@ -15,13 +16,13 @@ const useStyles = makeStyles({
 })
 
 const Profile = ({alertHandler}) => {
+    console.log('here');
     const history = useHistory()
-    const {logout, updateUser} = useContext(UserContext)
+    const dispatch = useDispatch();
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
-    const [address, setAddress] = useState('')
     const [open, setOpen] = useState(false)
     const [fullName, setFullName] = useState(name)
     const [newEmail, setNewEmail] = useState(email)
@@ -64,15 +65,17 @@ const Profile = ({alertHandler}) => {
             password: '' // We don't want to update password on this screen
         }
 
-        updateUser(data)
+        dispatch(updateUser(data))
         alertHandler(true)
         setName(data.name)
         setEmail(data.email)
         setPhoneNumber(data.phone)
+        history.push('./account')
     }
 
     const handleLogout = () => {
-        logout()
+        dispatch(logOut())
+        history.push('./login')
     }
 
     return (

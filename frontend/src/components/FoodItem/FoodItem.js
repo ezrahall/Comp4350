@@ -1,16 +1,16 @@
 import React from 'react'
-import { useStateValue } from '../../ContextAPI/StateProvider'
 
 import styles from '../styles/FoodItem.module.css'
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 function FoodItem({heading,data}) {
+    const basket = useSelector(state => state.cart.basket)
+    const dispatch = useDispatch();
 
-    const [{basket},dispatch] = useStateValue();
 
     const addToBasket = (e) => {
-        //dispatch the item in the data layer
         dispatch({
             type: 'ADD_TO_BASKET',
             item: {

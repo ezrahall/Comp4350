@@ -1,18 +1,15 @@
-export const initialState = {
-    basket: [],
-    user: null,
-    address: ''
+import {updateObject} from './utility';
+import {SET_CURRENT_BOOKINGS} from '../actions/actions';
+
+const initialState = {
+    basket: []
 };
 
-// Selector
+const setCurrentBooking = (state, action) => {
+    return updateObject(state, {...state, iceTime: action.iceTime});
+}
 
-
-export const getBasketTotal = (basket) => 
-  basket?.reduce((amount, item) => item.price + amount, 0);
-
-
-const reducer = (state,action) => {
-
+const cartReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'ADD_TO_BASKET':
             return {
@@ -45,10 +42,15 @@ const reducer = (state,action) => {
                 basket: newBasket
 
             }
+        case SET_CURRENT_BOOKINGS:
+            return {
+                ...state,
+                basket: state.basket+1
+            }
 
         default:
             return state;
     }
-};
+}
 
-export default reducer;
+export default cartReducer;

@@ -1,15 +1,14 @@
 import React from 'react'
 import adImage from '../../../assets/images/Checkout-Banner.jpg'
-import { useStateValue } from '../../../ContextAPI/StateProvider'
 
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct'
 import styles from '../../styles/pages/Checkout.module.css'
 import Subtotal from '../../Subtotal/Subtotal'
+import {useSelector} from "react-redux";
 
 
 function Checkout() {
-
-    const[{basket},dispatch] = useStateValue();
+    const basket = useSelector(state => state.cart.basket)
 
     return (
         <div className={styles.checkout}>

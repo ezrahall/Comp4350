@@ -2,7 +2,8 @@ import { useState, useContext } from "react";
 import { Paper, makeStyles, TextField, Button } from "@material-ui/core"
 
 import styles from '../styles/Password.module.css'
-import { UserContext } from '../../context/user'
+import {updateUser} from '../../store/actions/user';
+import {useDispatch} from "react-redux";
 
 
 const useStyles = makeStyles({
@@ -13,11 +14,11 @@ const useStyles = makeStyles({
 })
 
 const Password = ({alertHandler}) => {
-    const {updateUser} = useContext(UserContext)
     const [open, setOpen] = useState(false)
     // const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const classes = useStyles()
+    const dispatch = useDispatch();
     
     const handleUpdate = () => {
         setOpen(false)
@@ -29,7 +30,7 @@ const Password = ({alertHandler}) => {
             phone: oldUser.phone === undefined ? '' : oldUser.phone,
             password: newPassword,
         }
-        updateUser(data)
+        dispatch(updateUser(data))
         alertHandler(true)
     }
 
