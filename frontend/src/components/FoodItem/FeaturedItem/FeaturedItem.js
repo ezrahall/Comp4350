@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from '../../styles/FeaturedItem.module.css'
+import styles from '../../../assets/styles/FeaturedItem.module.css'
 
 function FeaturedItem() {
     return (

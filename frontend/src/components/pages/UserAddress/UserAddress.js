@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, {useState} from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 
 import Logo from '../../../assets/images/SafeEat.svg';
-import styles from '../../styles/pages/UserAddress.module.css';
+import styles from '../../../assets/styles/pages/UserAddress.module.css';
 import {enterAddress} from '../../../services/address/address';
 import {setAddress} from '../../../store/actions/adress';
 
@@ -22,7 +22,6 @@ function UserAddress(props) {
     const dispatch = useDispatch()
 
     let history = useHistory();
-    console.log(token);
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -33,7 +32,6 @@ function UserAddress(props) {
         else {
             setButtonAttr({name: CHOOSE_ADDRESS, color: "secondary"})
         }
-        console.log(newAddress);
     }
 
     const handleChange = (event) => {

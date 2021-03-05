@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import TextField from '@material-ui/core/TextField'
 import axios from 'axios'
 
-import styles from '../styles/AutoComplete.module.css'
+import styles from '../../assets/styles/AutoComplete.module.css'
 
 const AutoCompleteTextField = (props) => {
     const [theToken, setTheToken] = useState('')
@@ -53,22 +53,22 @@ const AutoCompleteTextField = (props) => {
             />
             { display && (
                 <div className={styles.autoContainer}>
-                <List component="nav" aria-label="main mailbox folders" style={{zIndex: 9000, position: "relative", height: '100px', overflow: 'auto'}}>
-                {
-                completions
-                    .map((value, i) => {
-                    return (
-                        <ListItem 
-                            button
-                            selected={selectedIndex === i}
-                            onClick={(e) => handleCB(e, i)}
-                        >
-                            {value.name}
-                        </ListItem>
-                    );
-                    })
-                }
-                </List>
+                    <List component="nav" aria-label="main mailbox folders" style={{zIndex: 9000, position: "relative", height: '100px', overflow: 'auto'}}>
+                    {
+                    completions
+                        .map((value, i) => {
+                        return (
+                            <ListItem
+                                button
+                                selected={selectedIndex === i}
+                                onClick={(e) => handleCB(e, i)}
+                            >
+                                {value.name}
+                            </ListItem>
+                        );
+                        })
+                    }
+                    </List>
                 </div>
             )}
         </div>

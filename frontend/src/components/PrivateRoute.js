@@ -1,14 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { UserContext } from '../context/user'
+import {useSelector} from "react-redux";
+
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const { isAuth } = useContext(UserContext)
+    const user = useSelector(state => state.user.user);
     return (
       <Route
         {...rest}
         render={({ location }) =>
-          !isAuth ? (
+          !user ? (
             children
           ) : (
             <Redirect
@@ -21,6 +22,6 @@ const PrivateRoute = ({ children, ...rest }) => {
         }
       />
     );
-  }
+}
 
-  export default PrivateRoute
+export default PrivateRoute;

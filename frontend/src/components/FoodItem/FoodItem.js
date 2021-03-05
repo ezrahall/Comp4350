@@ -1,30 +1,21 @@
-import React from 'react'
+import React from 'react';
+import {useDispatch} from "react-redux";
 
-import styles from '../styles/FoodItem.module.css'
-import {useDispatch, useSelector} from "react-redux";
-
-
+import styles from '../../assets/styles/FoodItem.module.css'
+import {addToBasket as addBasket} from '../../store/actions/cart';
 
 function FoodItem({heading,data}) {
-    const basket = useSelector(state => state.cart.basket)
     const dispatch = useDispatch();
 
-
     const addToBasket = (e) => {
-        dispatch({
-            type: 'ADD_TO_BASKET',
-            item: {
-                
-                id: e.id,
-                title: e.title,
-                image: e.image,
-                price: e.price,
-                ingridients: e.ingridients,
-            },
-        });
-    }
-
-
+        dispatch(addBasket({
+            id: e.id,
+            title: e.title,
+            image: e.image,
+            price: e.price,
+            ingridients: e.ingridients
+        }));
+    };
 
     return (
         <div className={styles.fooditem}>
@@ -48,11 +39,6 @@ function FoodItem({heading,data}) {
                     );
                 })}
             </div>
-
-
-
-
-            
         </div>
     )
 }

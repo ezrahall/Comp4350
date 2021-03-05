@@ -1,10 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Snackbar } from '@material-ui/core'
+import Alert from '@material-ui/lab/Alert'
+
 import CustomizedTabs from '../../CustomizedTabs/CustomizedTabs'
 import Profile from '../../Profile/Profile'
 import Password from '../../Password/Password'
-import { Snackbar } from '@material-ui/core'
-import Alert from '@material-ui/lab/Alert'
 
 import {useSelector} from "react-redux";
 
@@ -51,5 +52,4 @@ const Account = (props) => {
     )
 }
 
-
-export default Account
+export default Account;

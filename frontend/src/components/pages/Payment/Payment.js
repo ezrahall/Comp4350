@@ -1,15 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
-
-import styles from '../../styles/pages/Payment.module.css'
-import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct'
 import {useSelector} from "react-redux";
 
+import styles from '../../../assets/styles/pages/Payment.module.css'
+import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct'
 
 function Payment() {
     const basket = useSelector(state => state.cart.basket)
-
 
     return (
         <div className={styles.payment}>
@@ -17,7 +14,6 @@ function Payment() {
                 <h1>
                     Checkout (<Link to="/checkout">{basket?.length} items </Link>)
                 </h1>
-
                 {/*Delivery*/}
                 <div className={styles.payment__section}>
                     <div className={styles.payment__title}>
@@ -28,7 +24,6 @@ function Payment() {
                         <p>123 Test Drive</p>
                         <p>Peg City, Canada</p>
                     </div>
-
                 </div>
                 {/*Items*/}
                 <div className={styles.payment__section}>
@@ -37,7 +32,6 @@ function Payment() {
                     </div>
                     <div className={styles.payment__items}>
                         {basket.map(item => (
-
                             <CheckoutProduct
                                 id={item.id}
                                 title={item.title}
@@ -45,7 +39,6 @@ function Payment() {
                                 price={item.price}
                                 rating={item.rating}
                             />
-
                         ))}
                     </div>
                 </div>
@@ -55,16 +48,10 @@ function Payment() {
                         <h3>Payment Method</h3>
                     </div>
                     <div className={styles.payment__details}>
-                        
-                        
                     </div>
                 </div>
             </div>
-            
         </div>
     )
 }
-
-
-
 export default Payment

@@ -1,12 +1,11 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-import styles from '../../styles/pages/Home.module.css'
+import styles from '../../../assets/styles/pages/Home.module.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
-import {Link} from 'react-router-dom'
-import * as Actions from '../../../store/actions/actions'
 import Spinner from '../../../ui/Spinner/Spinner';
 import Tags from '../../Tags/Tags';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
@@ -41,11 +40,6 @@ const Home = (props) => {
     const address = useSelector(state => state.user.address)
 
     const history = useHistory();
-    const dispatch = useDispatch()
-
-    const incrementCounter = useCallback(() => {
-        dispatch({type: Actions.SET_CURRENT_BOOKINGS})
-    }, [dispatch])
 
     useEffect(() => {
         setLoadingAll(true)
