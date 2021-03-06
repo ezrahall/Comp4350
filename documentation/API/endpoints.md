@@ -113,3 +113,26 @@ Default behaviour is to update the parameters that are not empty strings\
 Endpoint expects one param\
 @cookies    Dictionary of cookies from client\
 @returns  200 code if token is still valid, else 403 if token is invalid or expired
+
+
+
+## /Api/Transaction/Data [POST]
+Endpoint expects one parameter \
+@cookies    Dictionary of client side cookies\
+Return json of orders for that restaurant, and jwt_token to refresh browser state
+```
+{"orders":[{"address":"45 D'arcy Dr. Winnipeg MB","id":"1","order":[{"menu_item":"Salad","quantity":"3"},{"menu_item":"Big Mac","quantity":"2"}],"state":"0"}]}
+```
+
+
+## /Api/Transaction/Update [POST]
+Endpoint expects two parameters\
+@cookies    Dictionary of client side cookies \
+@id         Id of order to update the current stage \
+Return jwt_token to refresh browser session
+```
+{"jwt_token": "345gadrhedrhd8ysj"}
+```
+Behaviour: Updates the state of the transaction into the next one. State 0 denotes that
+the order has been made but not accepted by the restaurant. State 1 is accepted and making. 
+State 2 is made meal, and delivering. Stage 4 is delivered.
