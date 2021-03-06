@@ -23,7 +23,7 @@ def test_get_orders(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Transaction/Data', json={
+    res = client.post('/Api/Restaurant/Transaction/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
@@ -40,16 +40,34 @@ def test_order_update(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Transaction/Data', json={
+    res = client.post('/Api/Restaurant/Transaction/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
     assert res.status_code == 200
     assert len(json.loads(res.data)['orders']) > 0
 
-    res = client.post('/Api/Transaction/Update', json={
+    res = client.post('/Api/Restaurant/Transaction/Update', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
         'id': json.loads(res.data)['orders'][0]['id']
     }, content_type='application/json')
 
     assert res.status_code == 200
+
+
+def test_user_order_retrieve(client):
+    # Establish an application context
+    res = client.post('/Api/User/Login', json={
+        'email': "TES@gmail.com",
+        'password': "test"
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+
+    res = client.post('/Api/User/Transaction/Get', json={
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
+        'id': 1
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+    assert len(json.loads(res.data)['order']) > 0

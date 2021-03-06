@@ -116,7 +116,7 @@ Endpoint expects one param\
 
 
 
-## /Api/Transaction/Data [POST]
+## /Api/Restaurant/Transaction/Data [POST]
 Endpoint expects one parameter \
 @cookies    Dictionary of client side cookies\
 Return json of orders for that restaurant, and jwt_token to refresh browser state
@@ -125,14 +125,25 @@ Return json of orders for that restaurant, and jwt_token to refresh browser stat
 ```
 
 
-## /Api/Transaction/Update [POST]
+## /Api/Restaurant/Transaction/Update [POST]
 Endpoint expects two parameters\
 @cookies    Dictionary of client side cookies \
-@id         Id of order to update the current stage \
+@id         ID of order to update the current stage \
 Return jwt_token to refresh browser session
 ```
 {"jwt_token": "345gadrhedrhd8ysj"}
 ```
 Behaviour: Updates the state of the transaction into the next one. State 0 denotes that
 the order has been made but not accepted by the restaurant. State 1 is accepted and making. 
-State 2 is made meal, and delivering. Stage 4 is delivered.
+State 2 is made meal. Stage 3 is delivering. Stage 4 is delivered.
+
+
+## /Api/User/Transaction/Get [POST]
+Endpoint expects two parameters\
+@cookies    Dictionary of client side cookies\
+@id         ID of order to query\
+Return jwt_token to refresh browser session, and order info 
+```
+{"order":[{"menu_item":"Pie","price":"7.49","quantity":"2"},{"menu_item":"Pie","price":"7.49","quantity":"3"}], "jwt_token": "32894ybhsef9segh8u", "restaurant_address":"45 D'Arcy Dr, Winnipeg, MB R3T 2K5, Canada","restaurant_id":"9","restaurant_name":"Bad Food Place","state":"0"}
+```
+Note that price is per unit and not for multiples or total order

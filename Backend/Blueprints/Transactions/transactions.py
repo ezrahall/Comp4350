@@ -13,7 +13,7 @@ Return json of orders for that restaurant, and jwt_token to refresh browser stat
 """
 
 
-@transaction_bp.route('/Api/Transaction/Data', methods=['POST'])
+@transaction_bp.route('/Api/Restaurant/Transaction/Data', methods=['POST'])
 def all_orders():
     Session = sessionmaker(bind=db.engine)
     session = Session()
@@ -76,7 +76,7 @@ Return jwt_token to refresh browser session
 """
 
 
-@transaction_bp.route('/Api/Transaction/Update', methods=['POST'])
+@transaction_bp.route('/Api/Restaurant/Transaction/Update', methods=['POST'])
 def update_order_state():
     Session = sessionmaker(bind=db.engine)
     session = Session()
@@ -94,6 +94,68 @@ def update_order_state():
                          'restaurant': data['restaurant']})
 
         result += '{"jwt_token": "' + jwt_tools.encode(data) + '"}'
+
+        session.commit()
+    except LookupError:
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False, 'error': 'Session Timout'}), \
+               403, {'ContentType': 'application/json'}
+
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+
+    session.close()
+    return json.loads(result)
+
+
+"""
+Endpoint expects two parameters
+@cookies    Dictionary of client side cookies
+@id         Id of order to query
+Return jwt_token to refresh browser session
+"""
+
+
+@transaction_bp.route('/Api/User/Transaction/Get', methods=['POST'])
+def user_order():
+    Session = sessionmaker(bind=db.engine)
+    session = Session()
+    result = '{'
+
+    try:
+        parameters = request.json
+        data = jwt_tools.decode(parameters['cookies'])
+
+        order = session.execute('select mi.name, ol.quantity, t.state, r.address, u.name, mi.price, r.id '
+                                'from transaction as t '
+                                '   inner join restaurant r on t.restaurant = r.id '
+                                '   inner join user u on r.id = u.restaurant '
+                                '   left join order_log ol on t.id = ol.transaction '
+                                '   inner join menu_item mi on ol.menu_item = mi.id '
+                                'where t.id = :order and t.user = :user',
+                                {'order': parameters['id'],
+                                 'user': data['id']}).fetchall()
+
+        if len(order) > 0:
+            result += '"state": "' + str(order[0][2]) +'",' \
+                      '"restaurant_address": "' + str(order[0][3]) + '", ' \
+                      '"restaurant_name": "' + str(order[0][4]) + '", ' \
+                      '"restaurant_id": "' + str(order[0][6]) + '", ' \
+                      '"order": ['
+
+        for food in order:
+            result += '{"menu_item": "' + str(food[0]) + '", ' \
+                       '"quantity": "' + str(food[1]) + '",' \
+                       '"price": "' + str(food[5]) + '"},'
+
+        if result.endswith(','):
+            result = result[:-1] + '], '
+
+        result += '"jwt_token": "' + jwt_tools.encode(data) + '"}'
 
         session.commit()
     except LookupError:
