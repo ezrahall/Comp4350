@@ -9,7 +9,7 @@ transaction_bp = Blueprint('transaction_bp', __name__)
 """
 Endpoint expects one parameter
 @cookies    Dictionary of client side cookies
-Return json of orders for that restaurant
+Return json of orders for that restaurant, and jwt_token to refresh browser state
 """
 
 
@@ -50,6 +50,50 @@ def all_orders():
             result = result[:-1]
 
         result += '], "jwt_token": "' + jwt_tools.encode(data) + '"}'
+
+        session.commit()
+    except LookupError:
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False, 'error': 'Session Timout'}), \
+               403, {'ContentType': 'application/json'}
+
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+
+    session.close()
+    return json.loads(result)
+
+
+"""
+Endpoint expects two parameters
+@cookies    Dictionary of client side cookies
+@id         Id of order to update the current stage
+Return jwt_token to refresh browser session
+"""
+
+
+@transaction_bp.route('/Api/Transaction/Update', methods=['POST'])
+def update_order_state():
+    Session = sessionmaker(bind=db.engine)
+    session = Session()
+    result = ''
+
+    try:
+        parameters = request.json
+        data = jwt_tools.decode(parameters['cookies'])
+
+        session.execute('update transaction '
+                        '   set state = state + 1 '
+                        'where id = :id and '
+                        'restaurant =:restaurant',
+                        {'id': parameters['id'],
+                         'restaurant': data['restaurant']})
+
+        result += '{"jwt_token": "' + jwt_tools.encode(data) + '"}'
 
         session.commit()
     except LookupError:
