@@ -117,11 +117,14 @@ Endpoint expects one param\
 
 
 ## /Api/Restaurant/Transaction/Data [POST]
-Endpoint expects one parameter \
-@cookies    Dictionary of client side cookies\
+Endpoint expects four parameters \
+@cookies       Dictionary of client side cookies\
+@only_active   Boolean to denote if retrieving all order or only active ones\
+@offset        For pagination offset\
+@limit         For pagination limit\
 Return json of orders for that restaurant, and jwt_token to refresh browser state
 ```
-{"orders":[{"address":"45 D'arcy Dr. Winnipeg MB","id":"1","order":[{"menu_item":"Salad","quantity":"3"},{"menu_item":"Big Mac","quantity":"2"}],"state":"0"}]}
+{"orders":[{"address":"45 D'arcy Dr. Winnipeg MB","id":"1","order":[{"menu_item":"Salad","quantity":"3"},{"menu_item":"Big Mac","quantity":"2"}],"state":"0"}], "jwt_token": "t5tgzdrg545g"}
 ```
 
 
@@ -138,12 +141,115 @@ the order has been made but not accepted by the restaurant. State 1 is accepted 
 State 2 is made meal. Stage 3 is delivering. Stage 4 is delivered.
 
 
-## /Api/User/Transaction/Get [POST]
+## /Api/User/Transaction/Data [POST]
 Endpoint expects two parameters\
-@cookies    Dictionary of client side cookies\
-@id         ID of order to query\
+@cookies       Dictionary of client side cookies\
+@id            ID of order to query. If empty string retrieves all orders\
+@offset        For pagination offset\
+@limit         For pagination limit\
 Return jwt_token to refresh browser session, and order info 
 ```
 {"order":[{"menu_item":"Pie","price":"7.49","quantity":"2"},{"menu_item":"Pie","price":"7.49","quantity":"3"}], "jwt_token": "32894ybhsef9segh8u", "restaurant_address":"45 D'Arcy Dr, Winnipeg, MB R3T 2K5, Canada","restaurant_id":"9","restaurant_name":"Bad Food Place","state":"0"}
 ```
 Note that price is per unit and not for multiples or total order
+
+
+## /Api/Restaurant/Delete/Staff [POST]
+Endpoint expects at least two parameters\
+@cookies:        A dictionary of cookies from client\
+@id:             Id of staff member to delete\
+returns new jwt_token on success
+```
+{"jwt_token": "345dgfzdfghdr"}
+```
+
+## /Api/Restaurant/Update/Staff [POST]
+Endpoint expects three parameters\
+@cookies:    A dictionary of cookies from client\
+@name:       New name of staff\
+@email:      New email of staff\
+If parameter is empty string the field will not be updated\
+return new jwt_token to client
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+## /Api/Restaurant/Create/Staff [POST]
+Endpoint expects three parameters\
+@cookies:    Dictionary of cookies from client\
+@name:       Name of staff member\
+@email:      Email of staff member
+returns new jwt_token to client on success
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+
+## /Api/Restaurant/Delete/Tag [POST]
+Endpoint expects two parameters\
+@cookies:      Dictionary of cookies from client\
+@id:           The id of the tag to delete\
+returns new jwt_token
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+
+## /Api/Restaurant/Add/Tag [POST]
+Endpoint expects two parameters\
+@cookies:       A dictionary of cookies from client\
+@tag:           The english word of the desired tag. ie "Sweet"\
+returns new jwt_token back to client
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+##/Api/Restaurant/Update/Food [POST]
+Endpoint expects 4 parameters\
+@cookies:       A dictionary of cookies from client browser\
+@descr:         New description for food\
+@name:          New name for food\
+@price:         New price for food\
+If given empty string for parameter it will not update that field\
+return jwt_token back to client
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+## /Api/Restaurant/Delete/Food [POST]
+Endpoint expects two parameters from client \
+@cookies    A dictionary of cookies from the client browser\
+@id         The id of the food to be deleted\
+return jwt_token back to client
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+## /Api/Restaurant/Create/Food [POST]
+Endpoint expects four parameters\
+@cookies   A dictionary of cookies from the client\
+@name      The name of the food item\
+@price     The price of the food item\
+@descr     A small description of the food item\
+Returns jwt_token to client
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+## /Api/Restaurant/Update/Description [POST]
+Endpoint expects two parameters\
+@cookies:  A dictionary of cookies from the client\
+@descr:    The description of the restaurant, which is to be displayed on the menu and search page\
+If value is empty than it will not be updated\
+Returns jwt_token to client
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
+
+##/Api/Restaurant/Data [POST]
+Endpoint expects one parameter\
+@cookies       A dictionary of cookies from the client browser\
+Return json of associated restaurant information of menu items, tags, staff, and jwt_token\
+```
+{"jwt_token": "2354gsdrgdzrg", "staff": [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}], "tags": [{"id": "3", "name": "Sweet"], "menu_items": [{"id": "3", "name": "Cheap burger", "price": "4.99", "description": "A shitty burger!"}]}
+```

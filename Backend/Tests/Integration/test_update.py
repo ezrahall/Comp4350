@@ -43,7 +43,7 @@ def test_rest_update(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Update', json={
+    res = client.post('/Api/Restaurant/Update/Description', json={
         'descr': "Come eat our terrible food!",
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
