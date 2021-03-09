@@ -113,30 +113,6 @@ def update_order_state():
 
 
 """
-"""
-
-
-@transaction_bp.route('/Api/Restaurant/Transaction/History', methods=['POST'])
-def restaurant_transaction_history():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    result = ''
-
-    try:
-        session.execute('', {})
-
-        session.commit()
-    except Exception as e:
-        print(str(e))
-        session.rollback()
-        session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
-
-    session.close()
-    return json.loads(result)
-
-
-"""
 Endpoint expects two parameters
 @cookies    Dictionary of client side cookies
 @id         Id of order to query

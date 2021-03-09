@@ -1,5 +1,4 @@
 from flask import Blueprint, request, send_from_directory
-from flask_login import login_required
 from sqlalchemy.orm import sessionmaker
 from Backend.Models.restaurant import Restaurant
 from Backend.Models.menu_item import MenuItem
@@ -13,8 +12,9 @@ import json
 restaurant_bp = Blueprint('restaurant_bp', __name__)
 
 """
-Endpoint expects no parameters
-Return json of associated restaurant information of menu items, tags, description, etc
+Endpoint expects one parameter
+@cookies       A dictionary of cookies from the client browser
+Return json of associated restaurant information of menu items, tags, staff, and jwt_token
 """
 
 
@@ -55,13 +55,13 @@ def restaurant_get_data():
 
             elif item[4] == "TAGS":
                 tags += '{"id": "' + str(item[0]) + '", ' \
-                         '"name": "' + str(item[1]) + '"}'
+                         '"name": "' + str(item[1]) + '"},'
 
             else:
                 menu += '{"id": "' + str(item[0]) + '", ' \
                          '"name": "' + str(item[1]) + '", ' \
                          '"price": "' + str(item[2]) + '", ' \
-                         '"description": "' + str(item[3]) + '"}'
+                         '"description": "' + str(item[3]) + '"},'
 
         if staff.endswith(','):
             staff = staff[:-1]
@@ -99,9 +99,11 @@ def restaurant_get_data():
 
 
 """
-Endpoint expects one parameter
+Endpoint expects two parameters
+@cookies:  A dictionary of cookies from the client
 @descr:    The description of the restaurant, which is to be displayed on the menu and search page
 If value is empty than it will not be updated
+Returns jwt_token to client
 """
 
 
@@ -141,6 +143,12 @@ def restaurant_update():
 
 
 """
+Endpoint expects four parameters
+@cookies   A dictionary of cookies from the client
+@name      The name of the food item
+@price     The price of the food item
+@descr     A small description of the food item
+Returns jwt_token to client
 """
 
 
@@ -182,6 +190,9 @@ def restaurant_create_food():
 
 
 """
+Endpoint expects two parameters from client
+@cookies    A dictionary of cookies from the client browser
+@id         The id of the food to be deleted
 """
 
 
@@ -221,6 +232,13 @@ def restaurant_delete_food():
 
 
 """
+Endpoint expects 4 parameters
+@cookies:       A dictionary of cookies from client browser
+@descr:         New description for food
+@name:          New name for food
+@price:         New price for food
+If given empty string for parameter it will not update that field
+return jwt_token back to client
 """
 
 
@@ -275,6 +293,10 @@ def restaurant_update_food():
 
 
 """
+Endpoint expects two parameters
+@cookies:       A dictionary of cookies from client
+@tag:           The english word of the desired tag. ie "Sweet"
+returns new jwt_token back to client
 """
 
 
@@ -316,6 +338,10 @@ def restaurant_add_tag():
 
 
 """
+Endpoint expects two parameters
+@cookies:      Dictionary of cookies from client
+@id:           The id of the tag to delete
+returns new jwt_token
 """
 
 
@@ -355,6 +381,10 @@ def restaurant_delete_tag():
 
 
 """
+Endpoint expects three parameters
+@cookies:    Dictionary of cookies from client
+@name:       Name of staff member
+@email:      Email of staff member
 """
 
 
@@ -372,7 +402,7 @@ def restaurant_create_staff():
                         {
                             'restaurant': data['restaurant'],
                             'name': parameters['name'],
-                            'price': parameters['email']
+                            'email': parameters['email']
                         })
 
         jwt_token = jwt_tools.encode(data)
@@ -395,6 +425,12 @@ def restaurant_create_staff():
 
 
 """
+Endpoint expects three parameters
+@cookies:    A dictionary of cookies from client
+@name:       New name of staff
+@email:      New email of staff
+If parameter is empty string the field will not be updated
+return new jwt_token to client
 """
 
 
@@ -443,6 +479,10 @@ def restaurant_update_staff():
 
 
 """
+Endpoint expects at least two parameters
+@cookies:        A dictionary of cookies from client
+@id:             Id of staff member to delete
+returns new jwt_token on success
 """
 
 
@@ -479,6 +519,35 @@ def restaurant_delete_staff():
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
+
+
+"""
+Endpoint expects one parameter
+@cookies:       Dictionary of cookies from client
+@limit:         Return limit amount
+@offset:        offset for pagination
+returns jwt_token and all transactions
+"""
+
+
+@restaurant_bp.route('/Api/Restaurant/Transaction/History', methods=['POST'])
+def restaurant_transaction_history():
+    Session = sessionmaker(bind=db.engine)
+    session = Session()
+    result = ''
+
+    try:
+        session.execute('', {})
+
+        session.commit()
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+
+    session.close()
+    return json.loads(result)
 
 
 """
