@@ -522,35 +522,6 @@ def restaurant_delete_staff():
 
 
 """
-Endpoint expects one parameter
-@cookies:       Dictionary of cookies from client
-@limit:         Return limit amount
-@offset:        offset for pagination
-returns jwt_token and all transactions
-"""
-
-
-@restaurant_bp.route('/Api/Restaurant/Transaction/History', methods=['POST'])
-def restaurant_transaction_history():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    result = ''
-
-    try:
-        session.execute('', {})
-
-        session.commit()
-    except Exception as e:
-        print(str(e))
-        session.rollback()
-        session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
-
-    session.close()
-    return json.loads(result)
-
-
-"""
 Endpoint expects only one param encoded in the url as an integer
 This value is then used to retrieve the image from the backend 
 """

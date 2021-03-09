@@ -24,7 +24,10 @@ def test_get_orders(client):
     assert res.status_code == 200
 
     res = client.post('/Api/Restaurant/Transaction/Data', json={
-        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
+        'only_active': False,
+        'offset': 0,
+        'limit': 20
     }, content_type='application/json')
 
     assert res.status_code == 200
@@ -41,7 +44,10 @@ def test_order_update(client):
     assert res.status_code == 200
 
     res = client.post('/Api/Restaurant/Transaction/Data', json={
-        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
+        'only_active': False,
+        'offset': 0,
+        'limit': 20
     }, content_type='application/json')
 
     assert res.status_code == 200
@@ -64,9 +70,11 @@ def test_user_order_retrieve(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/User/Transaction/Get', json={
+    res = client.post('/Api/User/Transaction/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
-        'id': 1
+        'id': 1,
+        'offset': 0,
+        'limit': 20
     }, content_type='application/json')
 
     assert res.status_code == 200

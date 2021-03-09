@@ -24,7 +24,7 @@ def test_create_staff(client):
     assert res.status_code == 200
 
     res = client.post('/Api/Restaurant/Data', json={
-        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
     }, content_type='application/json')
 
     assert res.status_code == 200
@@ -33,6 +33,23 @@ def test_create_staff(client):
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
         'name': 'joe not schmo jr.',
         'email': 'notatest@test.com'
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+
+
+def test_add_tag(client):
+    # Establish an application context
+    res = client.post('/Api/User/Login', json={
+        'email': "joblo_@test.com",
+        'password': "test"
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+
+    res = client.post('/Api/Restaurant/Add/Tag', json={
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
+        'tag': 'Sweet'
     }, content_type='application/json')
 
     assert res.status_code == 200
@@ -48,7 +65,7 @@ def test_get_all_data(client):
     assert res.status_code == 200
 
     res = client.post('/Api/Restaurant/Data', json={
-        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
     }, content_type='application/json')
 
     assert res.status_code == 200
@@ -137,23 +154,6 @@ def test_delete_food(client):
     res = client.post('/Api/Restaurant/Delete/Food', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
         'id': json.loads(res.data)['menu_items'][0]['id']
-    }, content_type='application/json')
-
-    assert res.status_code == 200
-
-
-def test_add_tag(client):
-    # Establish an application context
-    res = client.post('/Api/User/Login', json={
-        'email': "joblo_@test.com",
-        'password': "test"
-    }, content_type='application/json')
-
-    assert res.status_code == 200
-
-    res = client.post('/Api/Restaurant/Add/Tag', json={
-        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
-        'tag': 'Sweet'
     }, content_type='application/json')
 
     assert res.status_code == 200

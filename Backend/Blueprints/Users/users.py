@@ -102,35 +102,6 @@ def user_deactivate():
 
 
 """
-Endpoint expects one parameter
-@cookies:       Dictionary of cookies from client
-@limit:         Return limit amount
-@offset:        offset for pagination
-returns jwt_token and all transactions
-"""
-
-
-@users_bp.route('/Api/Users/Transaction/History', methods=['POST'])
-def user_transaction_history():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    result = ''
-
-    try:
-        session.execute('', {})
-
-        session.commit()
-    except Exception as e:
-        print(str(e))
-        session.rollback()
-        session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
-
-    session.close()
-    return json.loads(result)
-
-
-"""
 Endpoint expects only one param
 @cookies   A dictionary of cookies from the client
 @returns whether or not the token is valid and active
