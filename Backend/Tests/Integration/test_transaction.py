@@ -72,10 +72,10 @@ def test_user_order_retrieve(client):
 
     res = client.post('/Api/User/Transaction/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
-        'id': 1,
+        'id': '',
         'offset': 0,
         'limit': 20
     }, content_type='application/json')
 
     assert res.status_code == 200
-    assert len(json.loads(res.data)['order']) > 0
+    assert len(json.loads(res.data)['orders']) > 1

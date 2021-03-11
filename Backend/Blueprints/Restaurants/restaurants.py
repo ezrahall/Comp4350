@@ -14,16 +14,122 @@ restaurant_bp = Blueprint('restaurant_bp', __name__)
 """
 Endpoint expects one parameter
 @cookies       A dictionary of cookies from the client browser
-Return json of associated restaurant information of menu items, tags, staff, and jwt_token
+Return json of associated restaurant information of staff, jwt_token
 """
 
 
-@restaurant_bp.route('/Api/Restaurant/Data', methods=['POST'])
-def restaurant_get_data():
+@restaurant_bp.route('/Api/Restaurant/Staff/Data', methods=['POST'])
+def restaurant_get_staff_data():
     Session = sessionmaker(bind=db.engine)
     session = Session()
     staff = '"staff": ['
+    jwt_token = ''
+
+    try:
+        parameters = request.json
+        data = jwt_tools.decode(parameters['cookies'])
+
+        restaurant_data = session.execute('select st.id, st.name, st.email '
+                                          'from staff as st '
+                                          'where st.active = 1 '
+                                          'and st.restaurant = :restaurant ',
+                                          {'restaurant': data['restaurant']})
+
+        for item in restaurant_data:
+            staff += '{"id": "' + str(item[0]) + '", ' \
+                      '"name": "' + str(item[1]) + '", ' \
+                      '"email": "' + str(item[2]) + '"},'
+
+        if staff.endswith(','):
+            staff = staff[:-1]
+
+        staff += '], '
+
+        jwt_token = '"jwt_token": "' + jwt_tools.encode(data) + '"'
+
+        session.commit()
+
+    except LookupError:
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False, 'error': 'Session Timout'}), \
+               403, {'ContentType': 'application/json'}
+
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+
+    session.close()
+    return json.loads('{' + staff + jwt_token + '}')
+
+
+
+"""
+Endpoint expects one parameter
+@cookies       A dictionary of cookies from the client browser
+Return json of associated restaurant information of  tags, and jwt_token
+"""
+
+
+@restaurant_bp.route('/Api/Restaurant/Tag/Data', methods=['POST'])
+def restaurant_get_tag_data():
+    Session = sessionmaker(bind=db.engine)
+    session = Session()
     tags = '"tags": ['
+    jwt_token = ''
+
+    try:
+        parameters = request.json
+        data = jwt_tools.decode(parameters['cookies'])
+
+        restaurant_data = session.execute('select t.id, t.name '
+                                          'from tag_log as tl '
+                                          '   inner join tags t on tl.tag = t.id and tl.restaurant =:restaurant '
+                                          'where tl.active = 1',
+                                          {'restaurant': data['restaurant']})
+
+        for item in restaurant_data:
+            tags += '{"id": "' + str(item[0]) + '", ' \
+                     '"name": "' + str(item[1]) + '"},'
+
+        if tags.endswith(','):
+            tags = tags[:-1]
+
+        tags += '], '
+
+        jwt_token = '"jwt_token": "' + jwt_tools.encode(data) + '"'
+
+        session.commit()
+
+    except LookupError:
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False, 'error': 'Session Timout'}), \
+               403, {'ContentType': 'application/json'}
+
+    except Exception as e:
+        print(str(e))
+        session.rollback()
+        session.close()
+        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+
+    session.close()
+    return json.loads('{' + tags + jwt_token + '}')
+
+
+"""
+Endpoint expects one parameter
+@cookies       A dictionary of cookies from the client browser
+Return json of associated restaurant information of menu items and jwt_token
+"""
+
+
+@restaurant_bp.route('/Api/Restaurant/Menu/Data', methods=['POST'])
+def restaurant_get_menu_data():
+    Session = sessionmaker(bind=db.engine)
+    session = Session()
     menu = '"menu_items": ['
     jwt_token = ''
 
@@ -31,47 +137,17 @@ def restaurant_get_data():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        restaurant_data = session.execute('(select st.id, st.name, st.email, null, "STAFF" '
-                                          'from staff as st '
-                                          'where st.active = 1 '
-                                          'and st.restaurant = :restaurant) '
-                                          'union all '
-                                          '(select t.id, t.name, null, null, "TAGS" '
-                                          'from tag_log as tl '
-                                          '   inner join tags t on tl.tag = t.id and tl.restaurant =:restaurant '
-                                          'where tl.active = 1) '
-                                          'union all '
-                                          '(select mi.id, mi.name, mi.price, mi.description, "MENU"'
+        restaurant_data = session.execute('select mi.id, mi.name, mi.price, mi.description '
                                           'from menu_item as mi '
                                           'where mi.active = 1 and '
-                                          'mi.restaurant =:restaurant)',
+                                          'mi.restaurant =:restaurant',
                                           {'restaurant': data['restaurant']})
 
         for item in restaurant_data:
-            if item[4] == "STAFF":
-                staff += '{"id": "' + str(item[0]) + '", ' \
-                          '"name": "' + str(item[1]) + '", ' \
-                          '"email": "' + str(item[1]) + '"},'
-
-            elif item[4] == "TAGS":
-                tags += '{"id": "' + str(item[0]) + '", ' \
-                         '"name": "' + str(item[1]) + '"},'
-
-            else:
-                menu += '{"id": "' + str(item[0]) + '", ' \
-                         '"name": "' + str(item[1]) + '", ' \
-                         '"price": "' + str(item[2]) + '", ' \
-                         '"description": "' + str(item[3]) + '"},'
-
-        if staff.endswith(','):
-            staff = staff[:-1]
-
-        staff += '], '
-
-        if tags.endswith(','):
-            tags = tags[:-1]
-
-        tags += '], '
+            menu += '{"id": "' + str(item[0]) + '", ' \
+                     '"name": "' + str(item[1]) + '", ' \
+                     '"price": "' + str(item[2]) + '", ' \
+                     '"description": "' + str(item[3]) + '"},'
 
         if menu.endswith(','):
             menu = menu[:-1]
@@ -95,7 +171,7 @@ def restaurant_get_data():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.loads('{' + staff + tags + menu + jwt_token + '}')
+    return json.loads('{' + menu + jwt_token + '}')
 
 
 """
@@ -157,6 +233,7 @@ def restaurant_create_food():
     Session = sessionmaker(bind=db.engine)
     session = Session()
     jwt_token = ''
+    food_id = -1
 
     try:
         parameters = request.json
@@ -169,6 +246,8 @@ def restaurant_create_food():
                             'price': parameters['price'],
                             'description': parameters['descr']
                         })
+
+        food_id = session.execute('select last_insert_id()').fetchall()[0][0]
 
         jwt_token = jwt_tools.encode(data)
 
@@ -186,7 +265,7 @@ def restaurant_create_food():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
+    return json.dumps({'success': True, 'jwt_token': jwt_token, 'id': food_id}), 200, {'ContentType': 'application/json'}
 
 
 """
@@ -300,11 +379,12 @@ returns new jwt_token back to client
 """
 
 
-@restaurant_bp.route('/Api/Restaurant/Add/Tag', methods=['POST'])
+@restaurant_bp.route('/Api/Restaurant/Create/Tag', methods=['POST'])
 def restaurant_add_tag():
     Session = sessionmaker(bind=db.engine)
     session = Session()
     jwt_token = ''
+    tag_id = -1
 
     try:
         parameters = request.json
@@ -317,6 +397,8 @@ def restaurant_add_tag():
                             'restaurant': data['restaurant'],
                             'tag': parameters['tag'],
                         })
+
+        tag_id = session.execute('select last_insert_id()').fetchall()[0][0]
 
         jwt_token = jwt_tools.encode(data)
 
@@ -334,7 +416,7 @@ def restaurant_add_tag():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
+    return json.dumps({'success': True, 'jwt_token': jwt_token, 'id': tag_id}), 200, {'ContentType': 'application/json'}
 
 
 """
@@ -393,6 +475,7 @@ def restaurant_create_staff():
     Session = sessionmaker(bind=db.engine)
     session = Session()
     jwt_token = ''
+    staff_id = -1
 
     try:
         parameters = request.json
@@ -404,6 +487,8 @@ def restaurant_create_staff():
                             'name': parameters['name'],
                             'email': parameters['email']
                         })
+
+        staff_id = session.execute('select last_insert_id()').fetchall()[0][0]
 
         jwt_token = jwt_tools.encode(data)
 
@@ -421,7 +506,7 @@ def restaurant_create_staff():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
+    return json.dumps({'success': True, 'jwt_token': jwt_token, 'id': staff_id}), 200, {'ContentType': 'application/json'}
 
 
 """

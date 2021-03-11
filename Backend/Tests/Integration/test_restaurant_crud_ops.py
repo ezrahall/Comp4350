@@ -23,12 +23,6 @@ def test_create_staff(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Data', json={
-        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
-    }, content_type='application/json')
-
-    assert res.status_code == 200
-
     res = client.post('/Api/Restaurant/Create/Staff', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
         'name': 'joe not schmo jr.',
@@ -36,6 +30,7 @@ def test_create_staff(client):
     }, content_type='application/json')
 
     assert res.status_code == 200
+    assert json.loads(res.data)['id'] >= 0
 
 
 def test_add_tag(client):
@@ -47,12 +42,13 @@ def test_add_tag(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Add/Tag', json={
+    res = client.post('/Api/Restaurant/Create/Tag', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
         'tag': 'Sweet'
     }, content_type='application/json')
 
     assert res.status_code == 200
+    assert json.loads(res.data)['id'] >= 0
 
 
 def test_get_all_data(client):
@@ -64,14 +60,26 @@ def test_get_all_data(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Data', json={
+    res = client.post('/Api/Restaurant/Menu/Data', json={
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+    assert len(json.loads(res.data)['menu_items']) > 0
+
+    res = client.post('/Api/Restaurant/Staff/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
     }, content_type='application/json')
 
     assert res.status_code == 200
     assert len(json.loads(res.data)['staff']) > 0
+
+    res = client.post('/Api/Restaurant/Tag/Data', json={
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
+    }, content_type='application/json')
+
+    assert res.status_code == 200
     assert len(json.loads(res.data)['tags']) > 0
-    assert len(json.loads(res.data)['menu_items']) > 0
 
 
 def test_descr_update(client):
@@ -108,6 +116,7 @@ def test_create_food(client):
     }, content_type='application/json')
 
     assert res.status_code == 200
+    assert json.loads(res.data)['id'] >= 0
 
 
 def test_update_food(client):
@@ -119,7 +128,7 @@ def test_update_food(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Data', json={
+    res = client.post('/Api/Restaurant/Menu/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
@@ -145,7 +154,7 @@ def test_delete_food(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Data', json={
+    res = client.post('/Api/Restaurant/Menu/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
@@ -168,7 +177,7 @@ def test_delete_tag(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Data', json={
+    res = client.post('/Api/Restaurant/Tag/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
@@ -191,7 +200,7 @@ def test_update_staff(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Data', json={
+    res = client.post('/Api/Restaurant/Staff/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
@@ -216,7 +225,7 @@ def test_delete_staff(client):
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Data', json={
+    res = client.post('/Api/Restaurant/Staff/Data', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
