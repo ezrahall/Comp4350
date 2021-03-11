@@ -145,47 +145,53 @@ Return json of orders for that user, and jwt_token to refresh browser state
 def user_order():
     Session = sessionmaker(bind=db.engine)
     session = Session()
-    result = '{'
+    result = '{"orders": ['
+    prev_order = -1
 
     try:
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        order = session.execute('select mi.name, ol.quantity, t.state, r.address, u.name, mi.price, r.id '
-                                'from transaction as t '
-                                '   inner join restaurant r on t.restaurant = r.id '
-                                '   inner join user u on r.id = u.restaurant '
-                                '   left join order_log ol on t.id = ol.transaction '
-                                '   inner join menu_item mi on ol.menu_item = mi.id '
-                                '   inner join (select distinct t.id '
-                                '                   from transaction as t '
-                                '                   where t.user =:user '
-                                '                   limit :limit offset :offset) '
-                                '   as temp_table on temp_table.id = t.id '
-                                'where (:order is not null and t.id = :order) or (t.user =:user and :order is null)',
-                                {
+        orders = session.execute('select mi.name, ol.quantity, t.state, r.address, u.name, mi.price, r.id, t.id '
+                                 'from transaction as t '
+                                 '   inner join restaurant r on t.restaurant = r.id '
+                                 '   inner join user u on r.id = u.restaurant '
+                                 '   left join order_log ol on t.id = ol.transaction '
+                                 '   inner join menu_item mi on ol.menu_item = mi.id '
+                                 '   inner join (select distinct t.id '
+                                 '                   from transaction as t '
+                                 '                   where t.user =:user '
+                                 '                   limit :limit offset :offset) '
+                                 '   as temp_table on temp_table.id = t.id '
+                                 'where (:order is not null and t.id = :order) or (t.user =:user and :order is null)',
+                                 {
                                     'order': parameters['id'] if len(str(parameters['id'])) > 0 else None,
                                     'user': data['id'],
                                     'limit': parameters['limit'],
                                     'offset': parameters['offset']
-                                 }).fetchall()
+                                  })
 
-        if len(order) > 0:
-            result += '"state": "' + str(order[0][2]) +'",' \
-                      '"restaurant_address": "' + str(order[0][3]) + '", ' \
-                      '"restaurant_name": "' + str(order[0][4]) + '", ' \
-                      '"restaurant_id": "' + str(order[0][6]) + '", ' \
-                      '"order": ['
+        for order in orders:
+            if prev_order != order[7]:
+                prev_order = order[7]
 
-        for food in order:
-            result += '{"menu_item": "' + str(food[0]) + '", ' \
-                       '"quantity": "' + str(food[1]) + '",' \
-                       '"price": "' + str(food[5]) + '"},'
+                result += '{"state": "' + str(order[2]) + '",' \
+                          '"restaurant_address": "' + str(order[3]) + '", ' \
+                          '"restaurant_name": "' + str(order[4]) + '", ' \
+                          '"restaurant_id": "' + str(order[6]) + '", ' \
+                          '"id": "' + str(order[7]) + '", ' \
+                          '"order": ['
+            else:
+                result = result[:-3] + ','
+
+            result += '{"menu_item": "' + str(order[0]) + '", ' \
+                      '"quantity": "' + str(order[1]) + '",' \
+                      '"price": "' + str(order[5]) + '"}]},'
 
         if result.endswith(','):
-            result = result[:-1] + '], '
+            result = result[:-1]
 
-        result += '"jwt_token": "' + jwt_tools.encode(data) + '"}'
+        result += '], "jwt_token": "' + jwt_tools.encode(data) + '"}'
 
         session.commit()
     except LookupError:
@@ -201,4 +207,5 @@ def user_order():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
+    print(result)
     return json.loads(result)

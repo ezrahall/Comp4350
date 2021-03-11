@@ -149,7 +149,7 @@ Endpoint expects two parameters\
 @limit         For pagination limit\
 Return jwt_token to refresh browser session, and order info 
 ```
-{"order":[{"menu_item":"Pie","price":"7.49","quantity":"2"},{"menu_item":"Pie","price":"7.49","quantity":"3"}], "jwt_token": "32894ybhsef9segh8u", "restaurant_address":"45 D'Arcy Dr, Winnipeg, MB R3T 2K5, Canada","restaurant_id":"9","restaurant_name":"Bad Food Place","state":"0"}
+{"orders": [{"state": "0","restaurant_address": "45 D'Arcy Dr, Winnipeg, MB R3T 2K5, Canada", "restaurant_name": "Bad Food Place", "restaurant_id": "9", "id": "1", "order": [{"menu_item": "Generic pizza!", "quantity": "2","price": "11.99"},{"menu_item": "Generic pizza!", "quantity": "3","price": "11.99"}]},{"state": "-471","restaurant_address": "45 D'Arcy Dr, Winnipeg, MB R3T 2K5, Canada", "restaurant_name": "Bad Food Place", "restaurant_id": "9", "id": "2", "order": [{"menu_item": "Generic pizza!", "quantity": "2","price": "11.99"},{"menu_item": "Generic pizza!", "quantity": "3","price": "11.99"}]}], "jwt_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDksImV4cGlyYXRpb24iOjE2MTU0OTYxNzMuMzQ2NTc5NiwicmVzdGF1cmFudCI6bnVsbH0.xUogqLvNgu38gSdmbdN47o5ljnodqG6bh7SMy_7rM-o"}
 ```
 Note that price is per unit and not for multiples or total order
 
@@ -181,7 +181,7 @@ Endpoint expects three parameters\
 @email:      Email of staff member
 returns new jwt_token to client on success
 ```
-{"jwt_token": "2354gsdrgdzrg"}
+{"jwt_token": "2354gsdrgdzrg", "id": "545"}
 ```
 
 
@@ -195,16 +195,16 @@ returns new jwt_token
 ```
 
 
-## /Api/Restaurant/Add/Tag [POST]
+## /Api/Restaurant/Create/Tag [POST]
 Endpoint expects two parameters\
 @cookies:       A dictionary of cookies from client\
 @tag:           The english word of the desired tag. ie "Sweet"\
 returns new jwt_token back to client
 ```
-{"jwt_token": "2354gsdrgdzrg"}
+{"jwt_token": "2354gsdrgdzrg", "id": "545"}
 ```
 
-##/Api/Restaurant/Update/Food [POST]
+## /Api/Restaurant/Update/Food [POST]
 Endpoint expects 4 parameters\
 @cookies:       A dictionary of cookies from client browser\
 @descr:         New description for food\
@@ -233,7 +233,7 @@ Endpoint expects four parameters\
 @descr     A small description of the food item\
 Returns jwt_token to client
 ```
-{"jwt_token": "2354gsdrgdzrg"}
+{"jwt_token": "2354gsdrgdzrg", "id": "545"}
 ```
 
 ## /Api/Restaurant/Update/Description [POST]
@@ -246,10 +246,27 @@ Returns jwt_token to client
 {"jwt_token": "2354gsdrgdzrg"}
 ```
 
-##/Api/Restaurant/Data [POST]
+## /Api/Restaurant/Staff/Data [POST]
 Endpoint expects one parameter\
 @cookies       A dictionary of cookies from the client browser\
-Return json of associated restaurant information of menu items, tags, staff, and jwt_token\
+Return json of associated restaurant information of  staff and jwt_token\
 ```
-{"jwt_token": "2354gsdrgdzrg", "staff": [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}], "tags": [{"id": "3", "name": "Sweet"], "menu_items": [{"id": "3", "name": "Cheap burger", "price": "4.99", "description": "A shitty burger!"}]}
+{"jwt_token": "2354gsdrgdzrg", "staff": [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}]}
+```
+
+## /Api/Restaurant/Menu/Data [POST]
+Endpoint expects one parameter\
+@cookies       A dictionary of cookies from the client browser\
+Return json of associated restaurant information of menu items and jwt_token\
+```
+{"jwt_token": "2354gsdrgdzrg", "menu_items": [{"id": "3", "name": "Cheap burger", "price": "4.99", "description": "A shitty burger!"}]}
+```
+
+## /Api/Restaurant/Tag/Data [POST]
+Endpoint expects one parameter\
+@cookies       A dictionary of cookies from the client browser\
+Return json of associated restaurant information of  tags and jwt_token\
+
+```
+{"jwt_token": "2354gsdrgdzrg", "tags": [{"id": "3", "name": "Sweet"}]}
 ```
