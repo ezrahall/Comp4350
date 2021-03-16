@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import SearchIcon from '@material-ui/icons/Search';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import {useSelector} from "react-redux";
 
 import { MenuItems } from './MenuItems.js';
 import styles from '../../assets/styles/NavBar.module.css';
 import SafeEat from '../../assets/images/SafeEat.svg';
+
 
 const NavBar = (props) => {
     const [searchQuery, setSearchQuery] = useState('')
@@ -63,6 +64,7 @@ const NavBar = (props) => {
                             </li>
                         )
                     })}
+                    <Link to="/checkout">
                         <div className={styles.navbar__basket}>
                             <ShoppingBasketIcon/>
                             <span
@@ -70,6 +72,7 @@ const NavBar = (props) => {
                                 {basket?.length}
                             </span>
                         </div>
+                    </Link>
                 </ul>
             </nav>
         )
