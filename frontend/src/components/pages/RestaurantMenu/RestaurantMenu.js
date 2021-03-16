@@ -13,9 +13,10 @@ function RestaurantMenu() {
         <div className={styles.restaurantMenu}>
             <NavBar/>
             <Hero />
-            <FoodItem data={foodData} heading='Chicken' />
-            <FeaturedItem />
-            <FoodItem data={foodData} heading='Beef' />
+            <FoodItem id="1" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
+            <FoodItem id="2" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
+            <FoodItem id="3" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
+            <FoodItem id="4" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
             <Footer />
         </div>
     )
