@@ -7,16 +7,17 @@ import FeaturedItem from '../../FoodItem/FeaturedItem/FeaturedItem'
 import Footer from '../../Footer/Footer'
 import {foodData} from '../../FoodItem/data'
 import NavBar from "../../NavBar/NavBar";
+import KFC from "../../../assets/images/KFC.jpg"
 
 function RestaurantMenu() {
     return (
         <div className={styles.restaurantMenu}>
             <NavBar/>
             <Hero />
-            <FoodItem id="1" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
-            <FoodItem id="2" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
-            <FoodItem id="3" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
-            <FoodItem id="4" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
+            <FoodItem image={KFC} id="1" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
+            <FoodItem image={KFC} id="2" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
+            <FoodItem image={KFC} id="3" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
+            <FoodItem image={KFC} id="4" title="Chicken" ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda" price="13.33" />
             <Footer />
         </div>
     )
