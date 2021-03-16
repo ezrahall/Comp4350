@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 
 import styles from '../../assets/styles/FoodItem.module.css'
 import {addToBasket as addBasket} from '../../store/actions/cart';
+import RemoveIcon from '@material-ui/icons/RemoveCircle'
 
 const FoodItem = (props) => {
     const dispatch = useDispatch();
@@ -31,7 +32,10 @@ const FoodItem = (props) => {
             {/*Needs to be fixed, Subtotal not appearing */}
         </div>
         <p className={styles.fooditem__price}>${props.price}</p>
-
+        </div>
+        <div className={styles.fooditem_remove}>
+            1
+            <RemoveIcon />
         </div>
     </div>
     )

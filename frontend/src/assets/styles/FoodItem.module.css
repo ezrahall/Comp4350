@@ -1,7 +1,9 @@
 .fooditem {
   justify-content: center;
-  padding-left: 300px;
+
   padding-top: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 .fooditem__card {
@@ -77,4 +79,11 @@
   margin-top: 14px;
   margin-left: 9px;
   border-radius: 3px;
+}
+
+.fooditem_remove {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
