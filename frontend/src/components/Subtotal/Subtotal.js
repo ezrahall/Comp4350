@@ -25,7 +25,7 @@ const Subtotal = () => {
                     </>
                 )}
                 decimalScale={2}
-                value={basket.reduce((amount, item) => item.price + amount, 0)}
+                value={basket.reduce((amount, item) => parseFloat(item.price) + amount, 0)}
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"$"}
