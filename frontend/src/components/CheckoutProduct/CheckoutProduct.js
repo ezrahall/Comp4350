@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import styles from "../../assets/styles/CheckoutProduct.module.css";
 import { removeFromBasket as removeBasket } from "../../store/actions/cart";
-import CancelIcon from "@material-ui/icons/Cancel";
+import ClearIcon from '@material-ui/icons/Clear';
 
 const CheckoutProduct = (props) => {
   const dispatch = useDispatch();
@@ -23,17 +23,18 @@ const CheckoutProduct = (props) => {
           />
           <div className={styles.checkoutProduct__info}>
             <div className={styles.chekcoutProduct__title}>{props.title}</div>
-            <div className={styles.checkoutProduct__price}>
+
+          </div>
+          <div className={styles.checkoutProduct__price}>
               <small>$</small>
               <strong>{props.price}</strong>
             </div>
-          </div>
         </div>
         <div
           className={styles.checkoutProduct__remove}
           onClick={removeFromBasket}
         >
-          <CancelIcon />
+          <ClearIcon />
         </div>
       </div>
     </div>
