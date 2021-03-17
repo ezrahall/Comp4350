@@ -1,0 +1,9 @@
+.Order{
+
+}
+.OrderItems{
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 25px 10%;
+    padding: 20px;
+}

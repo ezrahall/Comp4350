@@ -10,10 +10,12 @@ import './index.css';
 import App from './App';
 import cartReducer from './store/reducers/cartReducer';
 import userReducer from './store/reducers/userRedcuer';
+import orderReducer from "./store/reducers/orderReducer";
 
 const rootReducer = combineReducers({
     cart: cartReducer,
-    user: userReducer
+    user: userReducer,
+    order: orderReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

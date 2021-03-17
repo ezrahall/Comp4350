@@ -11,3 +11,5 @@ export const AUTH_START = 'AUTH_START';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
+//orders
+export const SET_CURRENT_ORDER = 'CURRENT_ORDER';

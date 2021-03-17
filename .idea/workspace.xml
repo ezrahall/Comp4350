@@ -1,55 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="#138 Address fixed to not use context">
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/actions/cart.js" afterDir="false" />
+    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Order/OrderItem/OrderItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Order/OrderItem/OrderItem.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/Orders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/Orders.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/store/actions/orders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/store/reducers/orderReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Address/Address.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Address/Address.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AutoCompleteTextField/AutoCompleteTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AutoCompleteTextField/AutoCompleteTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Banner/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Banner/Banner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct/CheckoutProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct/CheckoutProduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CustomizedTabs/CustomizedTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CustomizedTabs/CustomizedTabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/FoodItem/FeaturedItem/FeaturedItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FoodItem/FeaturedItem/FeaturedItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Hero/Hero.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Hero/Hero.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Password/Password.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Password/Password.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Subtotal/Subtotal.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Subtotal/Subtotal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tag/Tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tag/Tag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Account/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Account/Account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/UserAddress/UserAddress.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/UserAddress/UserAddress.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Address.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Address.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/AutoComplete.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/AutoComplete.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Banner.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Banner.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Card.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Card.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/CheckoutProduct.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/CheckoutProduct.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/FeaturedItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/FeaturedItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/FoodItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/FoodItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Footer.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Hero.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Hero.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/NavBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/NavBar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Password.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Profile.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Subtotal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Subtotal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Account.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Checkout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Checkout.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Home.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Login.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Payment.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Payment.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/RestaurantMenu.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/RestaurantMenu.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/UserAddress.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/UserAddress.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/chardet/sbcharsetprober.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/chardet/sbcharsetprober.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/pip/_internal/cli/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/pip/_internal/cli/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/pip/_vendor/requests/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/pip/_vendor/requests/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/requests/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/requests/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/setuptools/_distutils/ccompiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/setuptools/_distutils/ccompiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/setuptools/_vendor/ordered_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/setuptools/_vendor/ordered_set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/ext/automap.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/ext/automap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/orm/path_registry.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/orm/path_registry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/orm/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/orm/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/orm/strategy_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/orm/strategy_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/testing/pickleable.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/sqlalchemy/testing/pickleable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/zope/interface/tests/test_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/venv/Lib/site-packages/zope/interface/tests/test_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/store/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/actions/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/reducers/cartReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/reducers/cartReducer.js" afterDir="false" />
+    </list>
+    <list id="56e1979e-43cc-4ae6-8554-8522f36a3b7a" name="main" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,10 +45,25 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="#123-Button_Background-Bug-Fix" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="3" end1="5" start2="3" end2="16" changelist="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" />
+        <range start1="6" end1="50" start2="17" end2="31" changelist="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" />
+        <range start1="51" end1="52" start2="32" end2="35" changelist="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" />
+        <range start1="64" end1="65" start2="47" end2="48" changelist="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" />
+        <range start1="68" end1="68" start2="51" end2="66" changelist="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" />
+        <range start1="131" end1="131" start2="129" end2="130" changelist="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" />
+        <range start1="145" end1="145" start2="144" end2="145" changelist="56e1979e-43cc-4ae6-8554-8522f36a3b7a" />
+        <range start1="202" end1="203" start2="202" end2="210" changelist="56e1979e-43cc-4ae6-8554-8522f36a3b7a" />
+        <range start1="213" end1="214" start2="220" end2="222" changelist="56e1979e-43cc-4ae6-8554-8522f36a3b7a" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1oWruEo7saVmZKbhhBK32tjsLku" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -129,6 +127,7 @@
         <item itemvalue="Jest.renders learn react link" />
         <item itemvalue="Jest.Run Front End Tests" />
         <item itemvalue="Jest.renders learn react link" />
+        <item itemvalue="Jest.Run Front End Tests" />
       </list>
     </recent_temporary>
   </component>

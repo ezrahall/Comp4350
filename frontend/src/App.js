@@ -9,6 +9,8 @@ import Checkout from './components/pages/Checkout/Checkout';
 import Payment from './components/pages/Payment/Payment';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';
+import Orders from "./components/pages/Orders/Orders";
+import Order from "./components/pages/Order/Order";
 
 const LoginContainer = () => {
 
@@ -28,6 +30,8 @@ const DefaultContainer = () => {
           <Route path="/account"component={Account}/>
           <Route path="/checkout"component={Checkout}/>
           <Route path="/payment"component={Payment}/>
+          <Route path="/manageOrders" exact component={Orders}/>
+          <Route path="/manageOrders/Order" component={Order}/>
       </div>
     </div>
   )
