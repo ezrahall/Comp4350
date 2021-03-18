@@ -1,4 +1,7 @@
+import {useEffect} from "react";
 import {Switch, Route, withRouter} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+
 
 import './App.css';
 import Layout from "./hoc/Layout/Layout";
@@ -9,6 +12,8 @@ import Checkout from './components/pages/Checkout/Checkout';
 import Payment from './components/pages/Payment/Payment';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';
+import CovidReport from "./components/pages/CovidReport/CovidReport";
+import {authSuccess} from './store/actions/user';
 
 const LoginContainer = () => {
 
@@ -28,12 +33,20 @@ const DefaultContainer = () => {
           <Route path="/account"component={Account}/>
           <Route path="/checkout"component={Checkout}/>
           <Route path="/payment"component={Payment}/>
+          <Route path="/report"component={CovidReport}/>
       </div>
     </div>
   )
 }
 
 const App = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        if(user) {
+            dispatch(authSuccess(user))
+        }
+    }, [])
   return ( 
     <div className="App">
       <Layout>
