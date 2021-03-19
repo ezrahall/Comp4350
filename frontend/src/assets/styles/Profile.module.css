@@ -36,6 +36,7 @@
 }
 
 .imgContainer {
+    top: 0;
     height: 30vh;
     width: 100px;
     float: left;
