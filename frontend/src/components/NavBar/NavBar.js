@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import SearchIcon from '@material-ui/icons/Search';
 import {useHistory, Link} from 'react-router-dom';
@@ -12,6 +12,17 @@ import SafeEat from '../../assets/images/SafeEat.svg';
 const NavBar = (props) => {
     const [searchQuery, setSearchQuery] = useState('')
     const basket = useSelector(state => state.cart.basket)
+
+    const [basketCount, setbasketCount] = useState(0);
+
+    useEffect(() => {
+        let count = 0;
+        basket.forEach((item) => {
+          count += item.qty;
+        });
+    
+        setbasketCount(count);
+      }, [basket, basketCount]);
 
     const history = useHistory()
 
@@ -69,7 +80,7 @@ const NavBar = (props) => {
                             <ShoppingBasketIcon/>
                             <span
                             className={styles.navbar__basketCount}>
-                                {basket?.length}
+                                {basketCount}
                             </span>
                         </div>
                     </Link>

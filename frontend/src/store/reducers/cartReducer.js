@@ -1,42 +1,45 @@
-import {updateObject} from './utility';
-import {ADD_TO_BASKET, REMOVE_FROM_BASKET} from '../actions/actions';
+import { updateObject } from "./utility";
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from "../actions/actions";
 
 const initialState = {
-    basket: []
+  basket: [],
 };
 
-
 const cartReducer = (state = initialState, action) => {
-    switch(action.type) {
-        case ADD_TO_BASKET:
-            return {
-                ...state,
-                basket: [...state.basket,action.item],
-            };
+  switch (action.type) {
+    case ADD_TO_BASKET:
+      const inBasket = state.basket.find((item) =>
+        item.id === action.item.id ? true : false
+      );
 
-        case REMOVE_FROM_BASKET:
-            const index = state.basket.findIndex(
-                (basketItem) => basketItem.id === action.id
-            );
+      let newBasket = [...state.basket];
 
-            let newBasket = [...state.basket];
+      if (!inBasket) {
+        newBasket = [...state.basket, {...action.item, qty: 1}];
+      }
+      else {
+        
+        const index = state.basket.findIndex((item) => item.id === action.item.id)
 
-            if (index >= 0) {
-                newBasket.splice(index,1)
+        newBasket[index].qty += 1
 
-            }
-            else {
-                console.warn('Cant Remove Product (id: $({action.id}) as it is not in the basket  ')
-            }
-            return {
-                ...state,
-                basket: newBasket
+      }
 
-            }
 
-        default:
-            return state;
-    }
-}
+      return {
+        ...state,
+        basket: newBasket,
+      };
+
+    case REMOVE_FROM_BASKET:
+      return {
+        ...state,
+        basket: state.basket.filter((item) => item.id !== action.id),
+      };
+
+    default:
+      return state;
+  }
+};
 
 export default cartReducer;
