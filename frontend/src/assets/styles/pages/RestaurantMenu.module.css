@@ -1,3 +1,44 @@
+.restaurantMenu__titleContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.restaurantMenu__title {
+  font-size: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 180px;
+  font-weight: 500;
+  color: #eae6ff;
+  background-color: #4400cc;
+  width: max-content;
+
+  border-radius: 8px;
+}
+
+.restaurantMenu__subtitle {
+  margin-left: 10px;
+  font-size: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-weight: 500;
+  color: #eae6ff;
+  background-color: #4400cc;
+  width: max-content;
+  border-radius: 8px;
+}
+
+.restaurantMenu__title:hover {
+  background-color: #2a0080;
+}
+
 .restaurantMenu {
-    background-color: #EAE6FF;
+  display: flex;
+  flex-direction: column;
+  background-color: #eae6ff;
 }
