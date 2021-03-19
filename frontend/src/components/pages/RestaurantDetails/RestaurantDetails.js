@@ -5,16 +5,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import LoyaltyIcon from '@material-ui/icons/Loyalty';
-import ListAltIcon from '@material-ui/icons/ListAlt';
 import PeopleIcon from '@material-ui/icons/People';
-import RestaurantMenu from '../RestaurantMenu/RestaurantMenu'
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -25,8 +21,8 @@ import { useHistory } from 'react-router-dom'
 import Staff from '../../Staff/Staff';
 import Dashboard from '../../Dashboard/Dashboard';
 import { logOut } from '../../../store/actions/user';
-import styles from '../../../assets/styles/pages/RestaurantDetails.module.css'
-import { blueGrey, grey } from '@material-ui/core/colors';
+import { blueGrey } from '@material-ui/core/colors';
+import CovidReport from '../CovidReport/CovidReport';
 
 
 const drawerWidth = 240;
@@ -81,39 +77,34 @@ const RestaurantDetails = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [auth, setAuth] = useState(JSON.parse(sessionStorage.getItem('user')))
   const [currentTab, setCurrentTab] = useState({
-          text:'Dashboard',
-          icon: <DashboardIcon />,
-          component: <Dashboard />
-      })
+    text:'Staff',
+    icon: <PeopleIcon />,
+    component: <Staff /> 
+})
 
   const open = Boolean(anchorEl)
 
+  // Created a Details page for restaurants where all things restaurant can be housed. You can add a new tab for restaurants by adding to an array called tabs in the RestaurantDetails file. The format for adding is included.
+
+  // Add new tabs for restaurants here by adding a new object in the array with
+  // a text  field which is the field to be displayed on the navbar
+  // an icon field which is the icon to be displayed for that that tab. 
+  // visit https://material-ui.com/components/material-icons/ and search for an icon that best
+  // describes your field name. the simply add the import and add it to the icon field
+  // then finally the component to be rendered for that tab in the component field 
+
   const tabs = [
-          {
-              text:'Dashboard',
-              icon: <DashboardIcon />,
-              component: <Dashboard />
-          },
-          {
-              text:'Menu',
-              icon: <RestaurantMenuIcon />,
-              component: <RestaurantMenu />
-          },
-          {
-              text:'Tags',
-              icon: <LoyaltyIcon />,
-              component: <Dashboard /> 
-          },
-          {
-              text:'Order',
-              icon: <ListAltIcon />,
-              component: <Dashboard /> 
-          },
+
           {
               text:'Staff',
               icon: <PeopleIcon />,
               component: <Staff /> 
-          }
+          },
+          {
+            text:'Reports',
+            icon: <AssessmentIcon />,
+            component: <CovidReport /> 
+        }
       ]
 
       const handleTabChange = (tab) => {
