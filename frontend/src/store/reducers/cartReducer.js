@@ -1,5 +1,5 @@
 import { updateObject } from "./utility";
-import { ADD_TO_BASKET, REMOVE_FROM_BASKET, DECREASE_ITEM_QUATITY } from "../actions/actions";
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET, DECREASE_ITEM_QUATITY, ADJUST_ITEM_QUANTITY } from "../actions/actions";
 
 const initialState = {
   basket: [],
@@ -58,6 +58,43 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         basket: newCurrentBasket,
       };
+
+      case ADJUST_ITEM_QUANTITY:
+
+        const inAdjustedBasket = state.basket.find((item) =>
+        item.id === action.item.id ? true : false
+        );
+
+        let newAdjustedBasket = [...state.basket];
+
+        if(inAdjustedBasket){
+
+          const adjustedItemIndex = state.basket.findIndex((item) => item.id === action.item.id)
+
+          const changedQuantity = action.item.value
+
+          const currentQuantity = parseInt(newAdjustedBasket[adjustedItemIndex].qty)
+
+          if (changedQuantity < currentQuantity){
+              
+            newAdjustedBasket[adjustedItemIndex].qty -= 1
+          }
+          else{
+
+            
+            newAdjustedBasket[adjustedItemIndex].qty += 1
+
+          }
+
+          
+
+        }
+
+
+        return {
+          ...state,
+          basket: newAdjustedBasket,
+        };
 
     default:
       return state;

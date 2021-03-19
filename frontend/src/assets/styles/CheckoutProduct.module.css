@@ -67,3 +67,18 @@
   transform: scale(1.2) rotate(360deg);
   background-color: #990000;
 }
+
+.checkoutProduct__qty {
+  display: flex;
+  align-items: center;
+  margin-right: 100px;
+}
+
+.checkoutProduct__qty input {
+  padding: 10px;
+  margin-left: 0.4rem;
+  width: 30px;
+  border-radius: 10px;
+  border: 1px solid var(--secondary-color);
+  outline: none;
+}
