@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import styles from "../../assets/styles/CheckoutProduct.module.css";
 import { removeFromBasket as removeBasket } from "../../store/actions/cart";
-import ClearIcon from '@material-ui/icons/Clear';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const CheckoutProduct = (props) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const CheckoutProduct = (props) => {
   };
 
   return (
-    <div class={styles.container}>
+    <div className={styles.container}>
       <div className={styles.checkoutProduct}>
         <div className={styles.checkoutProduct__container}>
           <img
@@ -34,7 +34,7 @@ const CheckoutProduct = (props) => {
           className={styles.checkoutProduct__remove}
           onClick={removeFromBasket}
         >
-          <ClearIcon />
+          <DeleteForeverIcon className={styles.checkoutProduct__removeBtn} />
         </div>
       </div>
     </div>
@@ -42,3 +42,5 @@ const CheckoutProduct = (props) => {
 };
 
 export default CheckoutProduct;
+
+
