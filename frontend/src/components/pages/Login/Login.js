@@ -71,12 +71,16 @@ const Login = (props) => {
     Validator.register('validConfirmPassword', () => {return confirmPassword === password }, 'Passwords must match');
     Validator.register('validAddress', () => { if(!isLogin && checked) {return address !== ''} else return true}, 'Please enter an address location');
 
-    const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:5',})
+    const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:5'})
     const signupValidator = new Validator(data, rules)
 
     useEffect(() => {
         if(user != null){
-            history.push('./')
+            console.log('checked', checked);
+            sessionStorage.setItem('isOwner', checked)
+            const destination = checked ? '/dashboard' : '/'
+            console.log('Destination route is', destination);
+            history.push(destination)
         }
     },[user])
 
