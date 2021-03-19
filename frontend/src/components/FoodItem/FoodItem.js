@@ -64,7 +64,7 @@ const FoodItem = (props) => {
         </div>
       </div>
 
-      {activeItem ? (
+      {activeItem && itemCount !== 0 ? (
         <div className={styles.fooditem_remove}  onClick={decreaseItemQuantity}>
           {itemCount}  
           <RemoveIcon style={{ color: "#26004D" }}/>
