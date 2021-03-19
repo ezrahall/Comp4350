@@ -14,8 +14,9 @@ function RestaurantMenu() {
   return (
     <div className={styles.restaurantMenu}>
       <NavBar />
-      <Hero />
       <br />
+      <Hero />
+      
       <br />
       <div className={styles.restaurantMenu__titleContainer}>
         <div className={styles.restaurantMenu__title}>Menu:</div>
