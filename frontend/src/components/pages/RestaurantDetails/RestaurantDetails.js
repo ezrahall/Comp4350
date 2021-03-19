@@ -19,13 +19,14 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import Tags from '../../Tags/Tags';
 import Staff from '../../Staff/Staff';
 import Dashboard from '../../Dashboard/Dashboard';
 import { logOut } from '../../../store/actions/user';
+import styles from '../../../assets/styles/pages/RestaurantDetails.module.css'
+import { blueGrey, grey } from '@material-ui/core/colors';
 
 
 const drawerWidth = 240;
@@ -55,6 +56,13 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: theme.spacing(10),
       
     },
+    selected: {
+      backgroundColor: blueGrey[900],
+      color: '#fff',
+      '&:hover': {
+        backgroundColor: blueGrey[900],
+      }
+    }
   }));
 
 const RestaurantDetails = () => {
@@ -71,7 +79,7 @@ const RestaurantDetails = () => {
   const classes = useStyles()
   const history = useHistory()  
   const [anchorEl, setAnchorEl] = useState(null);
-  const [auth, setAuth] = useState(sessionStorage.getItem('user'))
+  const [auth, setAuth] = useState(JSON.parse(sessionStorage.getItem('user')))
   const [currentTab, setCurrentTab] = useState({
           text:'Dashboard',
           icon: <DashboardIcon />,
@@ -133,35 +141,36 @@ const RestaurantDetails = () => {
                   {currentTab.text}
                 </Typography>
                 {auth && (
-            <div>
-              <IconButton
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </div> )}
+                <div>
+                    {auth.name}
+                  <IconButton
+                    onClick={handleMenu}
+                    color="inherit"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={open}
+                    onClose={handleClose}
+                  >
+                    {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </Menu>
+                </div> )}
               </Toolbar>
             </AppBar>
-            <CustomDrawer tabs={tabs} handleTabChange={handleTabChange} />
+            <CustomDrawer tabs={tabs} handleTabChange={handleTabChange} selectedTab={currentTab} />
             <main className={classes.content}>
               {currentTab.component}
             </main>
@@ -169,7 +178,7 @@ const RestaurantDetails = () => {
     )
 }
 
-const CustomDrawer = ({tabs, handleTabChange}) => {
+const CustomDrawer = ({tabs, handleTabChange, selectedTab}) => {
   const classes = useStyles();
 
   return (
@@ -186,8 +195,8 @@ const CustomDrawer = ({tabs, handleTabChange}) => {
         <div className={classes.drawerContainer}>
           <List>
             {tabs.map((tab) => (
-              <ListItem button key={tab.text} onClick={() => handleTabChange(tab)}>
-                <ListItemIcon>{tab.icon}</ListItemIcon>
+              <ListItem button key={tab.text} onClick={() => handleTabChange(tab)}  className={selectedTab.text === tab.text ? classes.selected : ''}>
+                <ListItemIcon >{tab.icon}</ListItemIcon>
                 <ListItemText primary={tab.text} />
               </ListItem>
             ))}
