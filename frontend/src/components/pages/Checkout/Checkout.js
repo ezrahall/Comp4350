@@ -5,22 +5,26 @@ import {useSelector} from "react-redux";
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct';
 import styles from '../../../assets/styles/pages/Checkout.module.css';
 import Subtotal from '../../Subtotal/Subtotal';
+import NavBar from '../../NavBar/NavBar';
 
 function Checkout() {
     const basket = useSelector(state => state.cart.basket)
 
     return (
         <div className={styles.checkout}>
+            <NavBar />
             <div className={styles.checkout__left}>
                 <img
                     className={styles.checkout__ad}
                     src={adImage}
                     alt=''
                 />
-                <div>
-                    <h3>Hello User </h3>
-                    <h2 className={styles.checkout__title}>Your Shopping Basket:</h2>
+                <div className={styles.checkout__titleContainer}>
+                    <p>Hello User </p>
+                    <p className={styles.checkout__title}>Your Shopping Basket:</p>
                 </div>
+                <br />
+    
                 {basket.map(item => (
                     <CheckoutProduct 
                         key = {item.id}
@@ -32,9 +36,12 @@ function Checkout() {
                     />
                 ))}
             </div>
-            <div className={styles.checkout__right}>
+            <div className={styles.checkout__subtotal}>
                 <Subtotal/>
-            </div>             
+            </div> 
+            <br />
+            <br />    
+                  
         </div>
     )
 }
