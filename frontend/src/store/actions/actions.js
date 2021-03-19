@@ -1,6 +1,7 @@
 //cart
 export const ADD_TO_BASKET = 'ADD_TO_BASKET';
 export const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
+export const DECREASE_ITEM_QUATITY = 'DECREASE_ITEM_QUANTITY'
 
 //address
 export const SET_CURRENT_ADDRESS = 'SET_CURRENT_ADDRESS';
