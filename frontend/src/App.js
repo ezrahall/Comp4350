@@ -1,4 +1,4 @@
-import {Switch, Route, withRouter} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router';
 
 import './App.css';
 import Layout from "./hoc/Layout/Layout";
