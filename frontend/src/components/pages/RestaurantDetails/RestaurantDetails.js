@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import PeopleIcon from '@material-ui/icons/People';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import IconButton from '@material-ui/core/IconButton';
@@ -23,6 +23,7 @@ import Dashboard from '../../Dashboard/Dashboard';
 import { logOut } from '../../../store/actions/user';
 import { blueGrey } from '@material-ui/core/colors';
 import CovidReport from '../CovidReport/CovidReport';
+import RestaurantTags from '../../RestaurantTags/RestaurantTags';
 
 
 const drawerWidth = 240;
@@ -84,8 +85,6 @@ const RestaurantDetails = () => {
 
   const open = Boolean(anchorEl)
 
-  // Created a Details page for restaurants where all things restaurant can be housed. You can add a new tab for restaurants by adding to an array called tabs in the RestaurantDetails file. The format for adding is included.
-
   // Add new tabs for restaurants here by adding a new object in the array with
   // a text  field which is the field to be displayed on the navbar
   // an icon field which is the icon to be displayed for that that tab. 
@@ -96,16 +95,21 @@ const RestaurantDetails = () => {
   const tabs = [
 
           {
-              text:'Staff',
-              icon: <PeopleIcon />,
-              component: <Staff /> 
+            text:'Staff',
+            icon: <PeopleIcon />,
+            component: <Staff /> 
+          },
+          {
+            text:'Tags',
+            icon: <LoyaltyIcon />,
+            component: <RestaurantTags /> 
           },
           {
             text:'Reports',
             icon: <AssessmentIcon />,
             component: <CovidReport /> 
-        }
-      ]
+          }
+        ]
 
       const handleTabChange = (tab) => {
         setCurrentTab(tab)

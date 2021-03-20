@@ -101,6 +101,7 @@ const Home = (props) => {
             <div className={styles.tags}>
                 <Tags
                     selectItem={selectItem}
+                    title={'Cuisine Catefories'}
                 />
             </div>
             <div className={styles.home__title}>
