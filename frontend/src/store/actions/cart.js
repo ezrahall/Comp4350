@@ -1,4 +1,4 @@
-import {ADD_TO_BASKET, REMOVE_FROM_BASKET} from './actions';
+import {ADD_TO_BASKET, REMOVE_FROM_BASKET,DECREASE_ITEM_QUATITY, ADJUST_ITEM_QUANTITY} from './actions';
 
 export const addToBasket = (item) => {
     return dispatch => {
@@ -17,3 +17,21 @@ export const removeFromBasket = (id) => {
         })
     }
 }
+
+export const decreaseItemQuantity = (id) => {
+    return dispatch => {
+        dispatch({
+            type: DECREASE_ITEM_QUATITY,
+            id
+        })
+    }
+}
+
+export const adjustItemQuantity = (item) => {
+    return dispatch => {
+        dispatch({
+            type: ADJUST_ITEM_QUANTITY,
+            item
+        })
+    }
+  }
