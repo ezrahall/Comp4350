@@ -72,7 +72,7 @@ const CheckoutProduct = (props) => {
           className={styles.checkoutProduct__remove}
           onClick={removeFromBasket}
         >
-          <DeleteForeverIcon className={styles.checkoutProduct__removeBtn} />
+          <DeleteForeverIcon style={{ color: "#2a0080"}} className={styles.checkoutProduct__removeBtn} />
         </div>
       </div>
     </div>

@@ -38,9 +38,8 @@ function Checkout() {
             </div>
             <div className={styles.checkout__subtotal}>
                 <Subtotal/>
-            </div> 
-            <br />
-            <br />    
+            </div>
+ 
                   
         </div>
     )
