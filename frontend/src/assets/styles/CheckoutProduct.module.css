@@ -1,33 +1,100 @@
 .checkoutProduct {
+  padding-top: 3px;
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  flex-direction: row;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  background-color: #d1bffd;
+  margin: 2px;
+  line-height: 1;
+  width: 450px;
+  height: 70px;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.checkoutProduct__info {
-  padding-left: 20px;
-}
-
-.checkoutProduct__info > button {
-  background: purple;
-  border: 1px solid;
-  margin-top: 10px;
-  border-color: #b224ef;
-  color: #111;
-  background-color: none;
+.checkoutProduct__container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .checkoutProduct__image {
-  object-fit: contain;
-  width: 180px;
-  height: 180px;
+  width: 70px;
+  height: 55px;
+  float: left;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  margin-left: 9px;
 }
 
-.checkoutProduct__rating {
+.checkoutProduct__info {
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 21px;
+}
+
+.checkoutProduct__remove {
+  float: right;
+  margin-right: 10px;
+}
+
+.container {
+  margin-left: 250px;
+  margin-top: 8px;
+}
+
+.checkoutProduct__price {
+  margin-left: 330px;
+  position: absolute;
+  margin-top: 2px;
+  font-size: large;
+}
+
+.checkoutProduct__removeBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all ease-in-out 0.7s;
+  outline: none;
+}
+
+.checkoutProduct__removeBtn:hover {
+  animation: rotate 1s linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.checkoutProduct__removeBtn:hover {
+  transform: scale(1.2) rotate(360deg);
+  background-color: #990000;
+}
+
+.checkoutProduct__qty {
   display: flex;
+  align-items: center;
+  margin-right: 100px;
 }
 
-.checkoutProduct__title {
-  font-size: 17px;
-  font-weight: 800;
+.checkoutProduct__qty input {
+  padding: 10px;
+  margin-left: 0.4rem;
+  width: 30px;
+  border-radius: 10px;
+  border: 1px solid #e6b3ff;
+  outline: none;
 }

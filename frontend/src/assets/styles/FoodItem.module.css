@@ -1,6 +1,11 @@
+.fooditem__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .fooditem {
   justify-content: center;
-
   padding-top: 10px;
   display: flex;
   flex-direction: row;
@@ -71,7 +76,6 @@
   transform: scale(1.03);
 }
 
-
 .fooditem__image {
   width: 70px;
   height: 55px;
@@ -82,8 +86,8 @@
 }
 
 .fooditem_remove {
-  padding-left: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: 15px;
 }
