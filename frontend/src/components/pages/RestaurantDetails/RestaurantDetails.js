@@ -19,7 +19,6 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import Staff from '../../Staff/Staff';
-import Dashboard from '../../Dashboard/Dashboard';
 import { logOut } from '../../../store/actions/user';
 import { blueGrey } from '@material-ui/core/colors';
 import CovidReport from '../CovidReport/CovidReport';

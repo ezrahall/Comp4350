@@ -21,7 +21,6 @@ const Tags = (props) => {
     }
 
     var tagsToUse = props.tags ? props.tags : tags
-    console.log("Tags to use is", tagsToUse);
 
     return (
         <div>
