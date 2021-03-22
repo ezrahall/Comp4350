@@ -1,55 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="#138 Address fixed to not use context">
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/actions/cart.js" afterDir="false" />
+    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Address/Address.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Address/Address.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AutoCompleteTextField/AutoCompleteTextField.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AutoCompleteTextField/AutoCompleteTextField.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Banner/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Banner/Banner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct/CheckoutProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CheckoutProduct/CheckoutProduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/CustomizedTabs/CustomizedTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CustomizedTabs/CustomizedTabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/FoodItem/FeaturedItem/FeaturedItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FoodItem/FeaturedItem/FeaturedItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/FoodItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/FoodItem.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/Hero.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Hero.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Hero/Hero.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Hero/Hero.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Password/Password.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Password/Password.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Subtotal/Subtotal.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Subtotal/Subtotal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tag/Tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tag/Tag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Account/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Account/Account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Payment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/UserAddress/UserAddress.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/UserAddress/UserAddress.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Address.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Address.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/AutoComplete.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/AutoComplete.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Banner.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Banner.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Card.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Card.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/CheckoutProduct.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/CheckoutProduct.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/FeaturedItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/FeaturedItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/FoodItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/FoodItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Footer.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Hero.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Hero.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/NavBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/NavBar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Password.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Password.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Profile.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/Subtotal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Subtotal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Account.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Account.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Checkout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Checkout.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Home.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Login.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/Payment.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Payment.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/RestaurantMenu.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/RestaurantMenu.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/pages/UserAddress.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/UserAddress.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/actions/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/reducers/cartReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/reducers/cartReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="#123-Button_Background-Bug-Fix" />
+        <entry key="$PROJECT_DIR$" value="#163-PullMenuFromBackend" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -129,6 +86,7 @@
         <item itemvalue="Jest.renders learn react link" />
         <item itemvalue="Jest.Run Front End Tests" />
         <item itemvalue="Jest.renders learn react link" />
+        <item itemvalue="Jest.Run Front End Tests" />
       </list>
     </recent_temporary>
   </component>
@@ -200,17 +158,44 @@
       <option name="project" value="LOCAL" />
       <updated>1614899754222</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="#163">
+      <created>1616432301292</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1616432301292</updated>
+    </task>
+    <task id="LOCAL-00010" summary="#163">
+      <created>1616432671498</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616432671498</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GH-42 Created Raact Front End Base Template" />
     <MESSAGE value="GH-86 Added Material-Ui Dependencies to package.json" />
     <MESSAGE value="GH-85 Create Assets Directory and moved images into it" />
     <MESSAGE value="#138 Address fixed to not use context" />
-    <option name="LAST_COMMIT_MESSAGE" value="#138 Address fixed to not use context" />
+    <MESSAGE value="#163" />
+    <option name="LAST_COMMIT_MESSAGE" value="#163" />
   </component>
 </project>

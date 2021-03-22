@@ -1,7 +1,9 @@
 .hero {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
-    url(../images/KFC.jpg);
-  height: 50vh;
+  url(../../assets/images/KFC.jpg);
+  height: 500px;
+  width: 80%;
+  margin-left: 150px;
   background-position: center;
   background-size: cover;
 }

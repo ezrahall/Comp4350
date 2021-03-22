@@ -4,6 +4,7 @@ import styles from '../../../assets/styles/pages/RestaurantMenu.module.css'
 import Hero from '../../Hero/Hero'
 import FoodItem from '../../FoodItem/FoodItem'
 import NavBar from "../../NavBar/NavBar";
+import KFC from '../../../assets/images/KFC.jpg';
 import {getRestaurantMenu} from "../../../services/restaurants/restaurantsService";
 
 function RestaurantMenu() {
@@ -20,9 +21,29 @@ function RestaurantMenu() {
 
     return (
         <div className={styles.restaurantMenu}>
-            <NavBar/>
+            <NavBar />
+            <br />
             <Hero />
-            <FoodItem data={menuItems}/>
+            <br />
+            <div className={styles.restaurantMenu__titleContainer}>
+                <div className={styles.restaurantMenu__title}>Menu:</div>
+
+                <div className={styles.restaurantMenu__subtitle}>
+                    Click below to select items
+                </div>
+
+            </div>
+            {menuItems.map((item) => <FoodItem
+                image={KFC}
+                id={item.id}
+                title={item.title}
+                ing={item.description}
+                price={item.price}
+            />)}
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
     )
 }

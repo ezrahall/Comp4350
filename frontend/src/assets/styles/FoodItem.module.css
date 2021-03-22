@@ -1,39 +1,55 @@
+.fooditem__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .fooditem {
-  background: #150f0f;
-  color: #fff;
-  padding: 40px;
+  justify-content: center;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
-.fooditem__heading {
-  font-size: clamp(2rem, 2.5vw, 3rem);
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.fooditem__image {
-  height: 300px;
-  min-width: 300px;
-  max-width: 100%;
-  box-shadow: 8px 8px purple;
+.fooditem__card {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+  rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  background-color: #d1bffd;
+  margin: 2px;
+  line-height: 1;
+  width: 800px;
+  height: 80px;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .fooditem__title {
-  font-weight: 400;
+  font-weight: 450;
   font-size: 1.5rem;
 }
 
-.fooditem__desc {
-  margin-bottom: 1rem;
+.fooditem__ing {
+  padding-top: 5px;
+  font-size: 0.8rem;
+  padding-right: 80px;
+  margin-bottom: 0.4rem;
+  padding-right: 30px;
 }
 
 .fooditem__price {
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  float: right;
+  padding-top: 30px;
+  padding-right: 40px;
+  z-index: 1;
 }
 
 .fooditem__button {
   font-size: 1rem;
-  padding: 1rem 4rem;
+  padding: 1rem 3rem;
   border: none;
   background: -webkit-linear-gradient(left, #7579ff, #b224ef);
   color: #fff;
@@ -47,15 +63,31 @@
   color: #000;
 }
 
-.fooditem__wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0;
+.fooditem__info {
+  overflow: hidden;
+  flex-direction: row;
+  float: left;
+  padding: 15px;
+  text-align: left;
+  width: 300px;
 }
 
-.fooditem__card {
-  margin: 2rem 2rem;
-  line-height: 2;
-  width: 300px;
+.fooditem:hover {
+  transform: scale(1.03);
+}
+
+.fooditem__image {
+  width: 70px;
+  height: 55px;
+  float: left;
+  margin-top: 14px;
+  margin-left: 9px;
+  border-radius: 3px;
+}
+
+.fooditem_remove {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 15px;
 }
