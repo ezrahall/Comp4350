@@ -16,7 +16,12 @@ def create_app():
     appl.secret_key = b'"xR\xacBR\xcbx\xc4\xf6\x06\x06y\xcc\x9c\x19'
     appl.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024
 
-    cors = CORS(appl, origins=["http://localhost:3000", "http://localhost:*"], headers=['Content-Type'], expose_headers=['Access-Control-Allow-Origin'], supports_credentials=True)
+    cors = CORS(appl,
+                origins=["http://localhost:3000", "http://localhost:*"],
+                headers=['Content-Type'],
+                expose_headers=['Access-Control-Allow-Origin'],
+                supports_credentials=True)
+
     db.init_app(appl)
     login_manager.init_app(appl)
     monkey.patch_all()
@@ -29,6 +34,7 @@ def create_app():
         from Backend.Blueprints.Users import users
         from Backend.Blueprints.Menu import menu
         from Backend.Blueprints.Transactions import transactions
+        from Backend.Blueprints.Tracing import tracing
 
         appl.register_blueprint(errors.error_bp)
         appl.register_blueprint(login.login_bp)
@@ -37,5 +43,6 @@ def create_app():
         appl.register_blueprint(users.users_bp)
         appl.register_blueprint(menu.menu_bp)
         appl.register_blueprint(transactions.transaction_bp)
+        appl.register_blueprint(tracing.tracing_bp)
 
         return appl
