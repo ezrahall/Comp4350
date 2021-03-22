@@ -41,11 +41,7 @@ function FoodItem({heading,data}) {
                 })}
             </div>
         </div>
-      ) : (
-        <div></div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default FoodItem;
