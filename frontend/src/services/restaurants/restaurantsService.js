@@ -37,11 +37,18 @@ export const addRestaurants = async (offset, distance, filter, address) => {
 }
 
 export const getRestaurantMenu = async (id) =>{
+    const result = [];
+    let count = 0
     try{
         const res = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Menu/${id}`, {
             cookies: genCookies()
         })
-        return res.data.menu
+        res.data.menu.forEach((item) => {
+            result.push({...item, id:count});
+            count++;
+        })
+        console.log(result)
+        return result
     }catch (e){
         console.log(e)
     }

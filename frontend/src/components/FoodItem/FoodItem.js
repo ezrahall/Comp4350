@@ -17,7 +17,6 @@ const FoodItem = (props) => {
     const decreaseItemQuantity = () => {
         dispatch(decreaseQuantity(props.id));
     };
-
     useEffect(() => {
         let count = 0;
 
@@ -41,7 +40,7 @@ const FoodItem = (props) => {
             })
         );
     };
-
+    console.log(props)
     return (
         <div className={styles.fooditem__container}>
             <div
