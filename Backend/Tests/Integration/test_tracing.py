@@ -30,7 +30,7 @@ def test_tracing_send_email(client):
 
     res = client.post('/Api/Tracing/Report', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
-        'date': "Sat Mar 20 2021 22:02:24 GMT-0500"
+        'date': "Sat Mar 20 2021 22:02:24 GMT-0500 "
     }, content_type='application/json')
 
     assert res.status_code == 200
