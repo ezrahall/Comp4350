@@ -78,7 +78,6 @@ export const signIn = (user) => {
 }
 export const signUp = (user, type) => {
     return dispatch => {
-        console.log(user);
         const restaurantAPI = '/Api/Restaurant/Register'
         const userApi = '/Api/User/Register'
         const endPoint = type ? restaurantAPI : userApi
@@ -99,7 +98,6 @@ export const signUp = (user, type) => {
                 }
             })
             .catch((error) => {
-                console.log(error)
                 if (error.response) {
                     switch (error.response.status) {
                         case 403:

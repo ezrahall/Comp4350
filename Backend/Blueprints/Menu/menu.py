@@ -17,13 +17,12 @@ Endpoint expects two params. One in url for restaurant and other in body
 def restaurant_menu(restaurant):
     Session = sessionmaker(bind=db.engine)
     session = Session()
+    token = ''
     result = '{ '
 
     try:
         parameters = request.json
-        print(parameters)
-        data = jwt_tools.decode(parameters['cookies'])
-        print('hekllo')
+
         menu = session.execute('select r.address, mi.name, mi.price, mi.description '
                                'from restaurant as r '
                                '    left join menu_item mi on r.id = mi.restaurant and mi.active = 1 '
@@ -43,10 +42,14 @@ def restaurant_menu(restaurant):
 
             result += '], '
 
-        result += '"jwt_token": "'+jwt_tools.encode(data)+'"}'
+        # Endpoint doesnt care if user is logged in or not
+        # Checks if token was provided and refreshes it
+        if 'jwt_token' in parameters['cookies']:
+            token = jwt_tools.encode(jwt_tools.decode(parameters['cookies']))
+
+        result += '"jwt_token": "' + token + '"}'
 
         session.commit()
-
     except LookupError:
         session.rollback()
         session.close()

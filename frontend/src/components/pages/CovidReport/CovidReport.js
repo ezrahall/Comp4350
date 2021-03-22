@@ -17,7 +17,6 @@ const CovidReport = (props) => {
 
     return (
         <div>
-            <NavBar/>
             <div className={classes.Body}>
                 <h1>Report Employee Covid Exposure</h1>
                 <h3>{restaurantName}</h3>
