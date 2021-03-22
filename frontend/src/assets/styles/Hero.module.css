@@ -1,6 +1,6 @@
 .hero {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
-    url(../../assets/images/KFC.jpg);
+  url(../../assets/images/KFC.jpg);
   height: 500px;
   width: 80%;
   margin-left: 150px;
@@ -34,4 +34,14 @@
   margin-bottom: 1rem;
   box-shadow: 1px 3px #d1bffd;
   letter-spacing: 3px;
+}
+.hero__description{
+  font-size: clamp(1.5rem, 5vw, 1rem);
+  margin: 10px 40px;
+  text-align: left;
+}
+.hero__rating{
+  font-size: clamp(1rem, 2.5vw, 0.5rem);
+  margin: 10px 40px;
+  text-align: left;
 }

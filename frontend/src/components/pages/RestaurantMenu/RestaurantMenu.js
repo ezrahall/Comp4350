@@ -1,68 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from 'react'
 
-import styles from "../../../assets/styles/pages/RestaurantMenu.module.css";
-import Hero from "../../Hero/Hero";
-import FoodItem from "../../FoodItem/FoodItem";
-import FeaturedItem from "../../FoodItem/FeaturedItem/FeaturedItem";
-import Footer from "../../Footer/Footer";
-import { foodData } from "../../FoodItem/data";
+import styles from '../../../assets/styles/pages/RestaurantMenu.module.css'
+import Hero from '../../Hero/Hero'
+import FoodItem from '../../FoodItem/FoodItem'
 import NavBar from "../../NavBar/NavBar";
-import KFC from "../../../assets/images/KFC.jpg";
+import KFC from '../../../assets/images/KFC.jpg';
+import {getRestaurantMenu} from "../../../services/restaurants/restaurantsService";
 
 function RestaurantMenu() {
+    const [menuItems, setMenuItems] = useState([])
 
-  return (
-    <div className={styles.restaurantMenu}>
-      <NavBar />
-      <br />
-      <Hero />
-      
-      <br />
-      <div className={styles.restaurantMenu__titleContainer}>
-        <div className={styles.restaurantMenu__title}>Menu:</div>
 
-        <div className={styles.restaurantMenu__subtitle}>
-          Click below to select items
-        </div> 
 
-      </div>
-      <br />
+    useEffect(() =>{
+        let id = window.location.href.split('/');
+        id = id[id.length-1]
+        getRestaurantMenu(id)
+            .then(data => setMenuItems(data))
+    },[])
 
-      <FoodItem
-        image={KFC}
-        id="1"
-        title="Chicken"
-        ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda"
-        price="13.33"
-      />
-      <FoodItem
-        image={KFC}
-        id="2"
-        title="Chicken"
-        ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda"
-        price="13.33"
-      />
-      <FoodItem
-        image={KFC}
-        id="3"
-        title="Chicken"
-        ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda"
-        price="13.33"
-      />
-      <FoodItem
-        image={KFC}
-        id="4"
-        title="Chicken"
-        ing="ashdkajshdaljsdhasjdgakhjsdgashdgaslhjdagsda"
-        price="13.33"
-      />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className={styles.restaurantMenu}>
+            <NavBar />
+            <br />
+            <Hero />
+            <br />
+            <div className={styles.restaurantMenu__titleContainer}>
+                <div className={styles.restaurantMenu__title}>Menu:</div>
+
+                <div className={styles.restaurantMenu__subtitle}>
+                    Click below to select items
+                </div>
+
+            </div>
+            {menuItems.map((item) => <FoodItem
+                image={KFC}
+                id={item.id}
+                title={item.title}
+                ing={item.description}
+                price={item.price}
+            />)}
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    )
 }
 
 export default RestaurantMenu;
