@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 import classes from '../../../assets/styles/CovidReport.module.css'
 import NavBar from "../../NavBar/NavBar";
 import OpenModal from "../../../ui/OpenModal/OpenModal";
+import {reportPositive} from '../../../services/covidReport/covidReport';
 
 const CovidReport = (props) => {
     const [date, setDate] = useState(new Date);
@@ -12,7 +13,10 @@ const CovidReport = (props) => {
     const restaurantName = useSelector(state => state.user.user?.name);
 
     const report = () => {
-
+        if(date instanceof Date && !isNaN(date)) {
+            reportPositive(date)
+            setVerifySubmit(false)
+        }
     }
 
     return (
