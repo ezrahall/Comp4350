@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {genCookies} from "../genCookies";
 
 export const getRestaurants = async (distance, filter, address) => {
     console.log(address)
@@ -11,6 +12,7 @@ export const getRestaurants = async (distance, filter, address) => {
             'offset': 0,
             'limit': 6
         })
+        console.log(res.data.restaurants[0])
         return res.data.restaurants
     } catch (e){
         console.log(e)
@@ -31,5 +33,16 @@ export const addRestaurants = async (offset, distance, filter, address) => {
     } catch (e){
         console.log(e)
         return []
+    }
+}
+
+export const getRestaurantMenu = async (id) =>{
+    try{
+        const res = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Menu/${id}`, {
+            cookies: genCookies()
+        })
+        return res.data.menu
+    }catch (e){
+        console.log(e)
     }
 }

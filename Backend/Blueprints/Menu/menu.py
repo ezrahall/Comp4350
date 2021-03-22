@@ -21,8 +21,9 @@ def restaurant_menu(restaurant):
 
     try:
         parameters = request.json
+        print(parameters)
         data = jwt_tools.decode(parameters['cookies'])
-
+        print('hekllo')
         menu = session.execute('select r.address, mi.name, mi.price, mi.description '
                                'from restaurant as r '
                                '    left join menu_item mi on r.id = mi.restaurant and mi.active = 1 '
