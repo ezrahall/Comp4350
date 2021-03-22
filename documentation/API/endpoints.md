@@ -272,3 +272,13 @@ Return json of associated restaurant information of  tags and jwt_token\
 ```
 {"jwt_token": "2354gsdrgdzrg", "tags": [{"id": "3", "name": "Sweet"}]}
 ```
+
+## /Api/Tracing/Report [POST]
+Endpoint expects 2 parameters from the client\
+@cookies:   Dictionary of client side cookies\
+@date:      DateTime date of reported infection\
+Sends an email to all staff employed by the restaurant and all users who placed an order within a 2 week period\
+Returns jwt_token to client\
+```
+{"jwt_token": "2354gsdrgdzrg"}
+```
