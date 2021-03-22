@@ -32,13 +32,14 @@ def tracing_send_email():
         date_start, date_end = get_date_range(parameters['date'])
         data = jwt_tools.decode(parameters['cookies'])
 
-        staff = session.execute('select s.name, s.email, s.restaurant '
+        staff = session.execute('select s.name, s.email, u.name '
                                 'from staff as s '
+                                '   inner join user as u on u.restaurant = s.restaurant '
                                 'where s.active = 1 '
                                 'and s.restaurant = :restaurant',
                                 {'restaurant': data['restaurant'],})
 
-        users = session.execute('select u.name, u.email, t.restaurant '
+        users = session.execute('select u.name, u.email, t.created_on '
                                 'from user as u '
                                 '   inner join transaction as t on t.user = u.id '
                                 '   and t.restaurant = :restaurant '
@@ -89,21 +90,23 @@ def send_message(contacts, date, isStaff):
     message = MIMEMultipart('alternative')
     message['Subject'] = 'Potential Exposure Notification'
     message['From'] = formataddr(('Safeat', sender))
-    content = ''
-    if isStaff:
-        content = 'We have notified all staff as a precaution, please contact your manager.'
-    else:
-        content = 'Although Safeat takes all necessary precautions to limit the spread of disease, \
-                   we also let our customers know anytime there has been any reported case from \
-                   a restaurant they have ordered from.'
+
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL('smtp.gmail.com', port, context=context) as server:
         server.login(sender, password)
         for contact in contacts:
             message['To'] = contact.email
+            content = ''
+            if isStaff:
+                content = 'An employee at %s has tested positive for Covid-19 on %s.\n\
+                           We have notified all staff as a precaution, please contact your manager.' % (contact[2], date)
+            else:
+                content = 'A staff member at one of the restaurants you ordered from on %s has tested positive for Covid-19 on %s.\n\
+                           Although Safeat takes all necessary precautions to limit the spread of disease, \
+                           we also let our customers know anytime there has been any reported case from \
+                           a restaurant they have ordered from.' % (contact[2], date)
             text = """\
             Hi %s,
-            An employee at %s has tested positive for Covid-19 on %s.
             %s
             
             For more information check out:     
@@ -116,12 +119,11 @@ def send_message(contacts, date, isStaff):
             https://safeats.ca
             Email: safeat.stripe@gmail.com
         
-            """ % (contact.name, contact.restaurant, date, content)
+            """ % (contact[0], content)
             html = """\
             <html>
                 <body>
                     <h3>Hi %s,<br>
-                        An employee at %s has tested positive for Covid-19 on %s.<br>
                         %s
                     </h3>
                     <h4>
@@ -143,7 +145,7 @@ def send_message(contacts, date, isStaff):
                     </p>
                 </body>
             </html>
-            """ % (contact.name, contact.restaurant, date, content)
+            """ % (contact[0], content)
             part1 = MIMEText(text, 'plain')
             part2 = MIMEText(html, 'html')
             message.attach(part1)
