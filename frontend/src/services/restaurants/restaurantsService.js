@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-export const getRestaurants = async (distance, filter, address) => {
-    console.log(address)
-    console.log(address?.split(',')[0])
+export let getRestaurants = async (distance, filter, address) => {
     try {
         const res = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Search`, {
             'addr': address?.split(',')[0],
@@ -18,7 +16,7 @@ export const getRestaurants = async (distance, filter, address) => {
     }
 }
 
-export const addRestaurants = async (offset, distance, filter, address) => {
+export let addRestaurants = async (offset, distance, filter, address) => {
     try {
         const res = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Search`, {
             'addr': address?.split(',')[0],

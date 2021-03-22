@@ -25,7 +25,7 @@ const Tags = (props) => {
             <h2 className={classes.Title}> Cuisine Categories</h2>
             <div className={classes.Tags}>
                 <div  style={{marginLeft: shift + 'px'}} className={classes.TagsHolder}>
-                    {tags.map((tag) => <div className={classes.Tag}>
+                    {tags.map((tag) => <div key ={tag.name} className={classes.Tag}>
                         <Tag
                             name={tag.name}
                             img={tag.img}

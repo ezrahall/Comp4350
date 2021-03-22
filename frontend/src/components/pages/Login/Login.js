@@ -6,7 +6,6 @@ import Snackbar from '@material-ui/core/Snackbar'
 import MuiAlert from '@material-ui/lab/Alert';
 import Switch from '@material-ui/core/Switch';
 import { useHistory, useLocation } from 'react-router-dom'
-import * as Validator from 'validatorjs'
 import {useDispatch, useSelector} from 'react-redux'
 
 import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField'
@@ -49,7 +48,6 @@ const Login = (props) => {
     const isLoading = useSelector(state => state.user.isLoading)
     const user = useSelector(state => state.user.user)
     const history = useHistory()
-    const location = useLocation()
     const dispatchRedux = useDispatch();
 
     const data = {
@@ -60,19 +58,6 @@ const Login = (props) => {
         address: address,
     }
 
-    const rules = {
-        name: 'required',
-        email: 'required|email',
-        password: 'required|min:5',
-        confirmPassword: 'required|validConfirmPassword',
-        address: 'validAddress',
-    }
-
-    Validator.register('validConfirmPassword', () => {return confirmPassword === password }, 'Passwords must match');
-    Validator.register('validAddress', () => { if(!isLogin && checked) {return address !== ''} else return true}, 'Please enter an address location');
-
-    const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:5',})
-    const signupValidator = new Validator(data, rules)
 
     useEffect(() => {
         if(user != null){
@@ -116,7 +101,6 @@ const Login = (props) => {
         e.preventDefault()
         if(validate()) {
             setVError(false)
-            const { from } = location.state || { from: { pathname: "/" } };
             
             const user = {
                 "name" : name,
@@ -143,18 +127,30 @@ const Login = (props) => {
     }
 
     const validate = () => {
-        let errors
+        let errors = {};
         let result = true
         if(isLogin) {
-            if (loginValidator.fails()) {
-                errors = loginValidator.errors.all()
+            if (!email) {
+                errors.email = 'Email Required'
                 result = false
             }
         } else {
-            if (signupValidator.fails()) {
-                errors = signupValidator.errors.all()
+            if (!email) {
+                errors.email = 'Email Required'
                 result = false
-            } 
+            }
+            if(!name){
+                errors.name = 'Name Required'
+                result = false
+            }
+            if(!password || password.length <4){
+                errors.password ='Password must Be at least 4 characters'
+                result = false
+            }
+            if(confirmPassword !== password){
+                errors.confirmPassword = 'Make sure passwords match'
+                result = false
+            }
         }
         if(errors) {
             setVErrorMessage(errors.name || errors.email || errors.password || errors.address || errors.confirmPassword || '')
