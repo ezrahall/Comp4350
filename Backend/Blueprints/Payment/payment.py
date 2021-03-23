@@ -69,7 +69,7 @@ Endpoint used to create a webhook after each session has been successfully compl
 
 
 @payment_bp.route('/Api/Restaurant/Payment/Webhook', methods=['POST'])
-def my_webhook_view():
+def webhook():
     payload = request.get_data(as_text=True)
     sig_header = request.headers.get("Stripe-Signature")
 
