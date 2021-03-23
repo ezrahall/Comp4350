@@ -89,7 +89,7 @@ def webhook():
     if event["type"] == "checkout.session.completed":
         print("Payment was successful.")
         user_info['Payment'] = 'succeded'
-        # TODO: Database
+        # TODO:
 
     return "Success", 200
 
