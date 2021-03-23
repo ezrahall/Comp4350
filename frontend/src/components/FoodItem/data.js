@@ -9,7 +9,6 @@ export const foodData = [
         ingridients: 'since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only fiv',
         price: '25.00',
         button:'Add to Cart'
-
     },
     {
         id: 2,

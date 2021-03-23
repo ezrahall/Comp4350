@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Snackbar } from '@material-ui/core'
+import { CircularProgress, Snackbar } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
+import nookies from 'nookies'
+import axios from 'axios'
 
 import CustomizedTabs from '../../CustomizedTabs/CustomizedTabs'
 import Profile from '../../Profile/Profile'
 import Password from '../../Password/Password'
+import Staff from '../../Staff/Staff'
 
 import {useSelector} from "react-redux";
 
-const Account = (props) => {
+const Account = () => {
     const history = useHistory()
 
     useEffect(() => {
@@ -21,28 +24,50 @@ const Account = (props) => {
     const [openAlert, setOpenAlert] = useState(false)
     const error = useSelector(state => state.user.error)
 
-    const tabs = [
-        {
-            label: 'Profile',
-            children: <Profile alertHandler={setOpenAlert} alert={openAlert}/>,
-            index: 0,
-        },
-        {
-            label: 'Password',
-            children: <Password alertHandler={setOpenAlert} alert={openAlert}/>,
-            index: 1,
-        },
-    ]
+    const user = {
+        tabs : [
+            {
+                label: 'Profile',
+                children: <Profile alertHandler={setOpenAlert} alert={openAlert}/>,
+                index: 0,
+            },
+            {
+                label: 'Password',
+                children: <Password alertHandler={setOpenAlert} alert={openAlert}/>,
+                index: 1,
+            }
+        ],
+        title: "Account Settings"
+    }
 
+    const restaurant = {
+        tabs : [
+            {
+                label: 'Profile',
+                children: <Profile alertHandler={setOpenAlert} alert={openAlert}/>,
+                index: 0,
+            },
+            {
+                label: 'Password',
+                children: <Password word alertHandler={setOpenAlert} alert={openAlert}/>,
+                index: 1,
+            },
+        ],
+        title: "Restaurant Overview"
+    }
+
+    const tabs = sessionStorage.getItem('isOwner') ? restaurant : user
+        
     const titleCss = {
         margin: 0,
         padding: '60px',
         color: '#fff',
         fontSize: '60px',
     }
+
     return (
         <div>
-            <CustomizedTabs tabs={tabs} title={'Account Settings'} titleStyles={titleCss} />
+            <CustomizedTabs tabs={tabs.tabs} title={tabs.title} titleStyles={titleCss} />
             <Snackbar open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
                 <Alert severity={error ? "error" : "success"}>
                   {error}

@@ -2,6 +2,7 @@ import axios from "axios";
 import nookies from 'nookies';
 
 import {AUTH_SUCCESS, AUTH_START, AUTH_FAIL, AUTH_LOGOUT} from './actions';
+import {genCookies} from "../../services/genCookies";
 
 export const authStart = () => {
     return {
@@ -77,7 +78,6 @@ export const signIn = (user) => {
 }
 export const signUp = (user, type) => {
     return dispatch => {
-        console.log(user);
         const restaurantAPI = '/Api/Restaurant/Register'
         const userApi = '/Api/User/Register'
         const endPoint = type ? restaurantAPI : userApi
@@ -98,7 +98,6 @@ export const signUp = (user, type) => {
                 }
             })
             .catch((error) => {
-                console.log(error)
                 if (error.response) {
                     switch (error.response.status) {
                         case 403:
@@ -166,18 +165,3 @@ export const updateUser = (user) => {
     }
 }
 
-const genCookies = () => {
-
-    return (
-        document.cookie.split(';').map(function(c) {
-            return c.trim().split('=').map(decodeURIComponent);
-        }).reduce(function(a, b) {
-            try {
-                a[b[0]] = JSON.parse(b[1]);
-            } catch (e) {
-                a[b[0]] = b[1];
-            }
-            return a;
-        }, {})
-    )
-}

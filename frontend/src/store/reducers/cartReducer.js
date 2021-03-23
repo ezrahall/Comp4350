@@ -1,42 +1,104 @@
-import {updateObject} from './utility';
-import {ADD_TO_BASKET, REMOVE_FROM_BASKET} from '../actions/actions';
+import { updateObject } from "./utility";
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET, DECREASE_ITEM_QUATITY, ADJUST_ITEM_QUANTITY } from "../actions/actions";
 
 const initialState = {
-    basket: []
+  basket: [],
 };
 
-
 const cartReducer = (state = initialState, action) => {
-    switch(action.type) {
-        case ADD_TO_BASKET:
-            return {
-                ...state,
-                basket: [...state.basket,action.item],
-            };
+  switch (action.type) {
+    case ADD_TO_BASKET:
+      const inBasket = state.basket.find((item) =>
+        item.id === action.item.id ? true : false
+      );
 
-        case REMOVE_FROM_BASKET:
-            const index = state.basket.findIndex(
-                (basketItem) => basketItem.id === action.id
-            );
+      let newBasket = [...state.basket];
 
-            let newBasket = [...state.basket];
+      if (!inBasket) {
+        newBasket = [...state.basket, {...action.item, qty: 1}];
+      }
+      else {
+        
+        const index = state.basket.findIndex((item) => item.id === action.item.id)
 
-            if (index >= 0) {
-                newBasket.splice(index,1)
+        newBasket[index].qty += 1
 
-            }
-            else {
-                console.warn('Cant Remove Product (id: $({action.id}) as it is not in the basket  ')
-            }
-            return {
-                ...state,
-                basket: newBasket
+      }
 
-            }
 
-        default:
-            return state;
-    }
-}
+      return {
+        ...state,
+        basket: newBasket,
+      };
+
+    case REMOVE_FROM_BASKET:
+      return {
+        ...state,
+        basket: state.basket.filter((item) => item.id !== action.id),
+      };
+
+    case DECREASE_ITEM_QUATITY:
+
+      const inCurrentBasket = state.basket.find((item) =>
+      item.id === action.id ? true : false
+      );
+
+      let newCurrentBasket = [...state.basket];
+
+      if(inCurrentBasket){
+
+        const itemIndex = state.basket.findIndex((item) => item.id === action.id)
+
+        newCurrentBasket[itemIndex].qty -= 1
+
+      }
+
+      
+      return{
+        ...state,
+        basket: newCurrentBasket,
+      };
+
+      case ADJUST_ITEM_QUANTITY:
+
+        const inAdjustedBasket = state.basket.find((item) =>
+        item.id === action.item.id ? true : false
+        );
+
+        let newAdjustedBasket = [...state.basket];
+
+        if(inAdjustedBasket){
+
+          const adjustedItemIndex = state.basket.findIndex((item) => item.id === action.item.id)
+
+          const changedQuantity = action.item.value
+
+          const currentQuantity = parseInt(newAdjustedBasket[adjustedItemIndex].qty)
+
+          if (changedQuantity < currentQuantity){
+              
+            newAdjustedBasket[adjustedItemIndex].qty -= 1
+          }
+          else{
+
+            
+            newAdjustedBasket[adjustedItemIndex].qty += 1
+
+          }
+
+          
+
+        }
+
+
+        return {
+          ...state,
+          basket: newAdjustedBasket,
+        };
+
+    default:
+      return state;
+  }
+};
 
 export default cartReducer;

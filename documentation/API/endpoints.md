@@ -85,6 +85,7 @@ Endpoint retrieves the menu of the url encoded id of restaurant. expects one par
 ```
 {"addr": "45 D'arcy Dr, Winnipeg MB", "menu": [{"name": "Sweet Tacos", "price": 3.99, "description": "Delicious Tacos you'll regret the next morning!"}], "jwt_token": "324wtsg"}
 ```
+Note that cookies can be empty. If empty jwt_token will be an empty string
 
 ## /Api/Restaurant/Update [POST]
 Endpoint expects two parameters \
@@ -261,6 +262,7 @@ Return json of associated restaurant information of menu items and jwt_token\
 ```
 {"jwt_token": "2354gsdrgdzrg", "menu_items": [{"id": "3", "name": "Cheap burger", "price": "4.99", "description": "A shitty burger!"}]}
 ```
+Note that this endpoint should be used for pulling this data when a restaurant is editing its menu
 
 ## /Api/Restaurant/Tag/Data [POST]
 Endpoint expects one parameter\
@@ -269,4 +271,14 @@ Return json of associated restaurant information of  tags and jwt_token\
 
 ```
 {"jwt_token": "2354gsdrgdzrg", "tags": [{"id": "3", "name": "Sweet"}]}
+```
+
+## /Api/Tracing/Report [POST]
+Endpoint expects 2 parameters from the client\
+@cookies:   Dictionary of client side cookies\
+@date:      DateTime date of reported infection\
+Sends an email to all staff employed by the restaurant and all users who placed an order within a 2 week period\
+Returns jwt_token to client\
+```
+{"jwt_token": "2354gsdrgdzrg"}
 ```
