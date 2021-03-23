@@ -1,6 +1,8 @@
 import {useEffect} from "react";
 import {Switch, Route, withRouter} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 
 import './App.css';
@@ -15,6 +17,9 @@ import UserAddress from './components/pages/UserAddress/UserAddress';
 import RestaurantDetails from './components/pages/RestaurantDetails/RestaurantDetails';
 import CovidReport from "./components/pages/CovidReport/CovidReport";
 import {authSuccess} from './store/actions/user';
+
+
+const stripePromise = loadStripe('pk_test_51IWvOsCXMychAZM499t1cB9kFug8Z5AvB9FpXhSnpsCcOGCXz1OervvAlKPzbg5VzYz2Ro5UGDxtYQHk2A0p1zw0002D2xp1OP');
 
 const LoginContainer = () => {
 
@@ -33,8 +38,9 @@ const DefaultContainer = () => {
           <Route path="/restaurantmenu"component={RestaurantMenu}/>
           <Route path="/account"component={Account}/>
           <Route path="/dashboard" component={RestaurantDetails}/>
+          <Elements stripe={stripePromise}>
           <Route path="/checkout"component={Checkout}/>
-          <Route path="/payment"component={Payment}/>
+          </Elements>     
           <Route path="/report"component={CovidReport}/>
       </div>
     </div>
