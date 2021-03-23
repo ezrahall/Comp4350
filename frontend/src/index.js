@@ -10,11 +10,13 @@ import './index.css';
 import App from './App';
 import cartReducer from './store/reducers/cartReducer';
 import userReducer from './store/reducers/userRedcuer';
+import orderReducer from "./store/reducers/orderReducer";
 import restaurantReducer from "./store/reducers/restaurantReducer";
 
 const rootReducer = combineReducers({
     cart: cartReducer,
     user: userReducer,
+    order: orderReducer
     restaurant: restaurantReducer
 });
 
