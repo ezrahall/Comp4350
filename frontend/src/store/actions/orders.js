@@ -1,4 +1,5 @@
-import {SET_CURRENT_ORDER} from '../actions/actions';
+import axios from "axios";
+import {SET_CURRENT_ORDER, UPDATE_CURRENT_ORDER} from '../actions/actions';
 
 export const setOrder = (order) => {
     return dispatch => {
@@ -7,4 +8,35 @@ export const setOrder = (order) => {
             order
         })
     }
+}
+
+export const increaseState = (id) =>{
+    return dispatch => {
+        axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Restaurant/Transaction/Update`,{
+            cookies: genCookies(),
+            id
+        })
+            .then(() =>{
+                dispatch({
+                    type: UPDATE_CURRENT_ORDER,
+                    id
+                })
+            })
+            .catch((error) => console.log(error))
+    }
+}
+const genCookies = () => {
+
+    return (
+        document.cookie.split(';').map(function(c) {
+            return c.trim().split('=').map(decodeURIComponent);
+        }).reduce(function(a, b) {
+            try {
+                a[b[0]] = JSON.parse(b[1]);
+            } catch (e) {
+                a[b[0]] = b[1];
+            }
+            return a;
+        }, {})
+    )
 }

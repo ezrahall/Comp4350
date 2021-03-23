@@ -63,7 +63,7 @@ const Login = (props) => {
     const rules = {
         name: 'required',
         email: 'required|email',
-        password: 'required|min:5',
+        password: 'required|min:3',
         confirmPassword: 'required|validConfirmPassword',
         address: 'validAddress',
     }
@@ -71,7 +71,7 @@ const Login = (props) => {
     Validator.register('validConfirmPassword', () => {return confirmPassword === password }, 'Passwords must match');
     Validator.register('validAddress', () => { if(!isLogin && checked) {return address !== ''} else return true}, 'Please enter an address location');
 
-    const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:5',})
+    const loginValidator = new Validator({email: email, password: password}, {email: 'required|email', password: 'required|min:4',})
     const signupValidator = new Validator(data, rules)
 
     useEffect(() => {

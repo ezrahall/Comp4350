@@ -13,3 +13,4 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 //orders
 export const SET_CURRENT_ORDER = 'CURRENT_ORDER';
+export const UPDATE_CURRENT_ORDER = 'UPDATE_CURRENT_ORDER';

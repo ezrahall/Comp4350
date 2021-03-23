@@ -1,9 +1,41 @@
-.Order{
-
+.Order h1{
+    margin: 20px;
 }
 .OrderItems{
     border-radius: 10px;
     border: 1px solid black;
     margin: 25px 10%;
     padding: 20px;
+}
+.Complete{
+    padding: 10px;
+    color: white;
+    background-color: #a300ff;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 0.5s;
+}
+.Cancel{
+    padding: 10px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 0.5s;
+}
+.Cancel:hover{
+    background-color: rgba(0,0,0,0.36);
+    cursor: pointer;
+}
+.Complete:hover{
+    background-color: rgba(163,0,255,0.29);
+    cursor: pointer;
+    color: #a300ff;
+}
+.Complete:disabled{
+    background-color: rgba(0,0,0,0.29);
+    color: white;
+    cursor: none;
 }

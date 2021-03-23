@@ -23,10 +23,10 @@ const OrderSummary = (props) => {
             className={classes.Order}
             onClick={goToOrder}
         >
-            <p><b>Order Id: </b>{props.order.orderId}</p>
-            <p><b>Date Placed: </b>{props.order.orderDate}</p>
-            <p><b>Order Items: </b>{props.order.orderItems.join(', ')}</p>
-            <p><b>Order Total: </b> ${props.order.orderTotal}</p>
+            <p><b>Order Id: </b>{props.order.id}</p>
+            <p><b>Address: </b>{props.order.address}</p>
+            <p><b>Order Items </b></p>
+            {props.order.order.map((order) => <p><b>{order.quantity}x </b>{order.menu_item}</p>)}
         </div>
     );
 };
