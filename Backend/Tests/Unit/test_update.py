@@ -34,19 +34,30 @@ def test_user_update(client):
     assert res.status_code == 200
 
 
-def test_rest_update(client):
+def test_login_status(client):
     # Establish an application context
     res = client.post('/Api/User/Login', json={
-        'email': "joblo_@test.com",
+        'email': "TES@gmail.com",
         'password': "test"
     }, content_type='application/json')
 
     assert res.status_code == 200
 
-    res = client.post('/Api/Restaurant/Update/Description', json={
-        'descr': "Come eat our terrible food!",
+    res = client.post('/Api/User/Test', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
     }, content_type='application/json')
 
     assert res.status_code == 200
+
+
+def test_login_status_fail(client):
+    res = client.post('/Api/User/Test', json={
+        'cookies': {'jwt_token': ''}
+    }, content_type='application/json')
+
+    assert res.status_code == 403
+
+
+
+
 
