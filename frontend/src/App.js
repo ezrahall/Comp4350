@@ -10,6 +10,7 @@ import Layout from "./hoc/Layout/Layout";
 import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
 import RestaurantMenu from './components/pages/RestaurantMenu/RestaurantMenu';
+import PaymentSucess from './components/pages/Payment/Sucesss'
 import Checkout from './components/pages/Checkout/Checkout';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';
@@ -41,6 +42,7 @@ const DefaultContainer = () => {
           <Route path="/checkout"component={Checkout}/>
           </Elements>     
           <Route path="/report"component={CovidReport}/>
+          <Route path="/payment/success" component={PaymentSucess}/>
       </div>
     </div>
   )
