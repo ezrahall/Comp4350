@@ -42,7 +42,7 @@ const Subtotal = () => {
                 thousandSeparator={true}
                 prefix={"$"}
             />
-            <button onClick={e=>history.push('/payment')}>Proceed to Checkout</button>
+            
         </div>
     )
 }
