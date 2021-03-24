@@ -114,12 +114,8 @@ def user_test():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-    except LookupError:
+    except Exception:
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
-
-    except Exception as e:
-        print(str(e))
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}

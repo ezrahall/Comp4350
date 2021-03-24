@@ -7,8 +7,10 @@
       <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.test.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/UserAddress/UserAddress.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/restaurants/restaurantsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/restaurants/restaurantsService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="#123-Button_Background-Bug-Fix" />
+        <entry key="$PROJECT_DIR$" value="#163-PullMenuFromBackend" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -130,6 +132,11 @@
         <item itemvalue="Jest.Login.test.js" />
         <item itemvalue="Jest.Sign In Invalid Email Customer" />
         <item itemvalue="Jest.Sign In Invalid Password Customer" />
+        <item itemvalue="Jest.Run Front End Tests" />
+        <item itemvalue="Jest.renders learn react link" />
+        <item itemvalue="Jest.Run Front End Tests" />
+        <item itemvalue="Jest.renders learn react link" />
+        <item itemvalue="Jest.Run Front End Tests" />
       </list>
     </recent_temporary>
   </component>
@@ -214,6 +221,19 @@
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
       <updated>1616545300872</updated>
+    <task id="LOCAL-00009" summary="#163">
+      <created>1616432301292</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1616432301292</updated>
+    </task>
+    <task id="LOCAL-00010" summary="#163">
+      <created>1616432671498</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616432671498</updated>
     </task>
     <option name="localTasksCounter" value="11" />
     <servers />
@@ -222,6 +242,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
@@ -231,5 +260,7 @@
     <MESSAGE value="#138 Address fixed to not use context" />
     <MESSAGE value="#162 Sprint 2 Tests" />
     <option name="LAST_COMMIT_MESSAGE" value="#162 Sprint 2 Tests" />
+    <MESSAGE value="#163" />
+    <option name="LAST_COMMIT_MESSAGE" value="#163" />
   </component>
 </project>

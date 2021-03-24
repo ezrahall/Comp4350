@@ -1,0 +1,29 @@
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-left: 10vw;
+    width: 80vw;
+    max-height: 90vh;
+    left: 0;
+    top: 5%;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.Body{
+    top: 0;
+}
+@media (min-width: 600px) {
+    .Modal {
+        width: 60%;
+        left: 20%;
+        margin: 0;
+        padding: 0;
+    }
+    .Body{
+        position: relative;
+        top:0;
+        left: 0;
+    }
+}

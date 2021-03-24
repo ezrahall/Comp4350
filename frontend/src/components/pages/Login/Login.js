@@ -61,7 +61,9 @@ const Login = (props) => {
 
     useEffect(() => {
         if(user != null){
-            history.push('./')
+            sessionStorage.setItem('isOwner', checked)
+            const destination = checked ? '/dashboard' : '/'
+            history.push(destination)
         }
     },[user])
 

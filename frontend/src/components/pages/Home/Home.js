@@ -101,6 +101,7 @@ const Home = (props) => {
             <div className={styles.tags}>
                 <Tags
                     selectItem={selectItem}
+                    title={'Cuisine Catefories'}
                 />
             </div>
             <div className={styles.home__title}>
@@ -133,7 +134,7 @@ const Home = (props) => {
                         <div className={styles.home__card}>
 
                             {restaurants?.map((restaurant) => (
-                                <Link key={restaurant.id} to='/restaurantmenu' style={{ textDecoration: 'none' }}>
+                                <Link key={restaurant.id} to={'/restaurantmenu/'+restaurant.id} style={{ textDecoration: 'none' }}>
                                     <Card id ={restaurant.id} title={restaurant.name} rating={restaurant.rating} description={restaurant.description} time={restaurant.delivery_time} />
                                 </Link>
                             ))}

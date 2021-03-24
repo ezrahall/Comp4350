@@ -35,7 +35,6 @@ const Profile = ({alertHandler}) => {
             setPhoneNumber(user.phone)
         } else {
             history.replace('/login')
-
         }
     }, [])
 

@@ -20,12 +20,14 @@ const Tags = (props) => {
         }
     }
 
+    var tagsToUse = props.tags ? props.tags : tags
+
     return (
         <div>
-            <h2 className={classes.Title}> Cuisine Categories</h2>
+            <h2 className={classes.Title}>{props.title}</h2>
             <div className={classes.Tags}>
                 <div  style={{marginLeft: shift + 'px'}} className={classes.TagsHolder}>
-                    {tags.map((tag) => <div key ={tag.name} className={classes.Tag}>
+                    {tagsToUse.map((tag) => <div className={classes.Tag}>
                         <Tag
                             name={tag.name}
                             img={tag.img}
