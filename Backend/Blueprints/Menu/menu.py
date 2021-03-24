@@ -23,19 +23,23 @@ def restaurant_menu(restaurant):
     try:
         parameters = request.json
 
-        menu = session.execute('select r.address, mi.name, mi.price, mi.description '
+        menu = session.execute('select r.address, mi.name, mi.price, mi.description, mi.id, r.id, r.comment '
                                'from restaurant as r '
                                '    left join menu_item mi on r.id = mi.restaurant and mi.active = 1 '
                                'where r.active = 1 '
                                'and r.id = :id '
                                'order by mi.name', {'id': restaurant}).fetchall()
         if len(menu) > 0:
-            result += '"addr": "' + str(menu[0][0]) + '", "menu": ['
+            result += '"addr": "' + str(menu[0][0]) + '", ' \
+                      '"id": "' + str(menu[0][5]) + '", ' \
+                      '"descr": "' + str(menu[0][6]) + '", '\
+                      '"menu": ['
 
             for item in menu:
                 result += '{"name": "' + str(item[1]) + '", ' \
                           '"price": "' + str(item[2]) + '", ' \
-                          '"description": "' + str(item[3]) + '"},'
+                          '"description": "' + str(item[3]) + '" ' \
+                          '"id": "' + str(item[4]) + '"},'
 
             if result.endswith(','):
                 result = result[:-1]
