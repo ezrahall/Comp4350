@@ -18,6 +18,10 @@ export let getOrders = async () => {
     }
 }
 
+export let getOrderCustomer = async () => {
+
+}
+
 const genCookies = () => {
     return (
         document.cookie.split(';').map(function(c) {

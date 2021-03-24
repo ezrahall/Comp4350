@@ -96,6 +96,12 @@ input::-webkit-input-placeholder {
   color: white;
 }
 
+.navbar__orders{
+  margin-left: 40px;
+  align-items: center;
+  color: white;
+}
+
 .navbar__basketCount {
   margin-left: 10px;
   margin-right: 10px;
