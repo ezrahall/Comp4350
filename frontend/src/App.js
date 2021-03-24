@@ -1,6 +1,5 @@
 import {Switch, Route, withRouter} from 'react-router';
 import {useEffect} from "react";
-import {Switch, Route, withRouter} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
