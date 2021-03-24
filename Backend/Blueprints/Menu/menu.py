@@ -38,7 +38,7 @@ def restaurant_menu(restaurant):
             for item in menu:
                 result += '{"name": "' + str(item[1]) + '", ' \
                           '"price": "' + str(item[2]) + '", ' \
-                          '"description": "' + str(item[3]) + '" ' \
+                          '"description": "' + str(item[3]) + '", ' \
                           '"id": "' + str(item[4]) + '"},'
 
             if result.endswith(','):
