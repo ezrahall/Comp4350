@@ -4,20 +4,20 @@ import nookies from 'nookies';
 import {AUTH_SUCCESS, AUTH_START, AUTH_FAIL, AUTH_LOGOUT} from './actions';
 import {genCookies} from "../../services/genCookies";
 
-export const authStart = () => {
+export let authStart = () => {
     return {
         type:AUTH_START
     };
 };
 
-export const authSuccess = (user) => {
+export let authSuccess = (user) => {
     return{
         type: AUTH_SUCCESS,
         user
     };
 };
 
-export const authFail = (error) => {
+export let authFail = (error) => {
     return{
         type: AUTH_FAIL,
         error: error
@@ -76,7 +76,7 @@ export const signIn = (user) => {
             })
     }
 }
-export const signUp = (user, type) => {
+export let signUp = (user, type) => {
     return dispatch => {
         const restaurantAPI = '/Api/Restaurant/Register'
         const userApi = '/Api/User/Register'
