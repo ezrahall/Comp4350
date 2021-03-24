@@ -42,8 +42,7 @@ const DefaultContainer = () => {
           <Route path="/dashboard" component={RestaurantDetails}/>
           <Elements stripe={stripePromise}>
           <Route path="/checkout"component={Checkout}/>
-          </Elements>     
-          <Route path="/payment"component={Payment}/>
+          </Elements>
           <Route path="/manageOrders" exact component={Orders}/>
           <Route path="/manageOrders/Order" component={Order}/>
           <Route path="/report"component={CovidReport}/>
