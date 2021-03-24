@@ -1,24 +1,51 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import styles from '../../../assets/styles/pages/RestaurantMenu.module.css'
 import Hero from '../../Hero/Hero'
 import FoodItem from '../../FoodItem/FoodItem'
-import FeaturedItem from '../../FoodItem/FeaturedItem/FeaturedItem'
-import Footer from '../../Footer/Footer'
-import {foodData} from '../../FoodItem/data'
 import NavBar from "../../NavBar/NavBar";
+import KFC from '../../../assets/images/KFC.jpg';
+import {getRestaurantMenu} from "../../../services/restaurants/restaurantsService";
 
 function RestaurantMenu() {
+    const [menuItems, setMenuItems] = useState([])
+
+
+
+    useEffect(() =>{
+        let id = window.location.href.split('/');
+        id = id[id.length-1]
+        getRestaurantMenu(id)
+            .then(data => setMenuItems(data))
+    },[])
+
     return (
         <div className={styles.restaurantMenu}>
-            <NavBar/>
+            <NavBar />
+            <br />
             <Hero />
-            <FoodItem data={foodData} heading='Chicken' />
-            <FeaturedItem />
-            <FoodItem data={foodData} heading='Beef' />
-            <Footer />
+            <br />
+            <div className={styles.restaurantMenu__titleContainer}>
+                <div className={styles.restaurantMenu__title}>Menu:</div>
+
+                <div className={styles.restaurantMenu__subtitle}>
+                    Click below to select items
+                </div>
+
+            </div>
+            {menuItems.map((item) => <FoodItem
+                image={KFC}
+                id={item.id}
+                title={item.title}
+                ing={item.description}
+                price={item.price}
+            />)}
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
     )
 }
 
-export default RestaurantMenu
+export default RestaurantMenu;

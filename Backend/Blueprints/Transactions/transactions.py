@@ -27,8 +27,6 @@ def all_orders():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        print(data)
-
         orders = session.execute('select * from (select t.id, t.address, mi.name, ol.quantity, t.state '
                                  'from transaction as t '
                                  '       inner join user on t.user = user.id '
@@ -106,7 +104,8 @@ def update_order_state():
         session.execute('update transaction '
                         '   set state = state + 1 '
                         'where id = :id and '
-                        'restaurant =:restaurant',
+                        'restaurant =:restaurant '
+                        'and state >= 0',
                         {
                             'id': parameters['id'],
                             'restaurant': data['restaurant']

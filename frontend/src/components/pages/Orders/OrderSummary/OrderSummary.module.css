@@ -1,0 +1,11 @@
+.Order{
+    border: 1px solid black;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 30px 50px;
+    text-align: left;
+}
+.Order:hover{
+    background-color: rgba(100,100,100,0.36);
+    cursor: pointer;
+}
