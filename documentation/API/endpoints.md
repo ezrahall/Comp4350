@@ -83,7 +83,7 @@ Endpoint retrieves the menu of the url encoded id of restaurant. expects one par
 @cookies:     A dictionary of cookies from client\
 @returns JSON of form
 ```
-{"addr": "45 D'arcy Dr, Winnipeg MB", "menu": [{"name": "Sweet Tacos", "price": 3.99, "description": "Delicious Tacos you'll regret the next morning!"}], "jwt_token": "324wtsg"}
+{"addr": "45 D'arcy Dr, Winnipeg MB", "descr": "Your favorite place to dine!", "id": 9, "menu": [{"id": 44, name": "Sweet Tacos", "price": 3.99, "description": "Delicious Tacos you'll regret the next morning!"}], "jwt_token": "324wtsg"}
 ```
 Note that cookies can be empty. If empty jwt_token will be an empty string
 
@@ -282,3 +282,21 @@ Returns jwt_token to client\
 ```
 {"jwt_token": "2354gsdrgdzrg"}
 ```
+
+## /Api/Restaurant/Payment [POST]
+Endpoint used to send basket info to the server and create a checkout session and requires one parameter\
+@cookies    : Dictionary of client cookies\
+@basket     : [{"id": 33, "qty": 5}] Stores food id and quantity\
+@addr       : String of users address to deliver to\
+@restaurant : ID of restaurant this transaction is occuring with\
+@returns stripe session json.
+
+
+## /Api/Restaurant/Payment/Data [POST]
+Endpoint used to retrieve the meta data of a certain checkout session\
+@id        : The session id of the stripe transaction\
+@cookies   : Dictionary of client side cookies\
+@return the meta data of the whole session
+
+
+
