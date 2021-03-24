@@ -15,7 +15,6 @@ const OrderSummary = (props) => {
             props.order
         )
         dispatch(setOrder(props.order))
-        history.push('manageOrders/order');
     }
 
     return (

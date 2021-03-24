@@ -23,6 +23,8 @@ import { logOut } from '../../../store/actions/user';
 import { blueGrey } from '@material-ui/core/colors';
 import CovidReport from '../CovidReport/CovidReport';
 import RestaurantTags from '../../RestaurantTags/RestaurantTags';
+import ManageOrders from "../Orders/ManageOrders/ManageOrders";
+import ManagePastOrders from "../Orders/ManagePastOrders/ManagePastOrders";
 
 
 const drawerWidth = 240;
@@ -92,11 +94,20 @@ const RestaurantDetails = () => {
   // then finally the component to be rendered for that tab in the component field 
 
   const tabs = [
-
           {
             text:'Staff',
             icon: <PeopleIcon />,
             component: <Staff /> 
+          },
+            {
+                text: 'Current Orders',
+                icon: <PeopleIcon/>,
+                component: <ManageOrders/>
+            },
+          {
+              text: 'Past Orders',
+              icon: <PeopleIcon/>,
+              component: <ManagePastOrders/>
           },
           {
             text:'Tags',

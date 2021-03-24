@@ -39,3 +39,12 @@
     color: white;
     cursor: none;
 }
+.Back{
+    background-color: transparent;
+    border: none;
+}
+.ButtonHolder{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
