@@ -2,28 +2,25 @@ import {render, screen, fireEvent, waitFor, waitForElementToBeRemoved} from '@te
 import { act } from 'react-dom/test-utils';
 import {MemoryRouter} from "react-router";
 import {Provider} from "react-redux";
-import {combineReducers, createStore} from "redux";
-import cartReducer from "./store/reducers/cartReducer";
-import userReducer from "./store/reducers/userRedcuer";
 import UserAddress from "./components/pages/UserAddress/UserAddress";
 import * as addressService from './services/address/address'
 import * as restaurantService from './services/restaurants/restaurantsService'
 import Home from "./components/pages/Home/Home";
 import {restaurants, restaurantsAdd, restaurantsFiltered} from "./data/restaurants/restaurants";
 import Login from "./components/pages/Login/Login";
+import thunk from "redux-thunk";
+import configureStore from 'redux-mock-store'
+import Profile from "./components/Profile/Profile";
+import Password from "./components/Password/Password";
 const mockEnterAddress = (addressService.enterAddress = jest.fn());
 const mockGetRestaurants = (restaurantService.getRestaurants = jest.fn());
 const mockAddRestaurants = (restaurantService.addRestaurants = jest.fn());
-jest.genMockFromModule('validatorjs')
 
-const rootReducer = combineReducers({
-    cart: cartReducer,
-    user: userReducer
-});
+const mockStore = configureStore([thunk]);
 
-const store = createStore(rootReducer)
 
 test('Address Page Test With Working Address', async () => {
+    const store = mockStore({})
     //Mock the addresses gotten by address service
     mockEnterAddress.mockResolvedValue({addresses: [{name: '66 Chancelor Drive'}], token:''})
     //render page
@@ -49,6 +46,7 @@ test('Address Page Test With Working Address', async () => {
     act(() => {fireEvent.click(getByText('Find Restaurants Nearby'))})
 });
 test('Address Page Test With Bad Address', async () => {
+    const store = mockStore({})
     //Mock the addresses gotten by address service
     mockEnterAddress.mockResolvedValue({addresses: [{name: '66 Chancelor Drive'}], token:''})
     //render page
@@ -73,6 +71,10 @@ test('Address Page Test With Bad Address', async () => {
     getByText('Please choose an address from one of the options')
 });
 test('Browse Restaurants', async () => {
+    const store = mockStore({
+        user: {address: '66 Chancelor Drive'},
+        cart: {basket: []}
+    })
     //render page
     mockGetRestaurants.mockResolvedValue(restaurants)
     mockAddRestaurants.mockResolvedValue(restaurantsAdd)
@@ -90,6 +92,10 @@ test('Browse Restaurants', async () => {
 
 test('Filter Restaurants', async () => {
     //render page
+    const store = mockStore({
+        user: {address: '66 Chancelor Drive'},
+        cart: {basket: []}
+    })
     mockGetRestaurants.mockResolvedValue(restaurants)
     await act(async () => {
         const { getAllByText, getByText} = render(<Provider store={store}><MemoryRouter initialEntries={['/']}>
@@ -105,6 +111,10 @@ test('Filter Restaurants', async () => {
 });
 test('Search Restaurants By Tag', async () => {
     //render page
+    const store = mockStore({
+        user: {address: '66 Chancelor Drive'},
+        cart: {basket: []}
+    })
     mockGetRestaurants.mockResolvedValue(restaurants)
     await act(async () => {
         const { getAllByText, getByText, getByPlaceholderText} = render(<Provider store={store}><MemoryRouter initialEntries={['/']}>
@@ -122,6 +132,10 @@ test('Search Restaurants By Tag', async () => {
 });
 test('Search Restaurants By Name', async () => {
     //render page
+    const store = mockStore({
+        user: {address: '66 Chancelor Drive'},
+        cart: {basket: []}
+    })
     mockGetRestaurants.mockResolvedValue(restaurants)
     await act(async () => {
         const { getAllByText, getByText, getByPlaceholderText} = render(<Provider store={store}><MemoryRouter initialEntries={['/']}>
@@ -137,11 +151,314 @@ test('Search Restaurants By Name', async () => {
         getByText('Search Results For: R3')
     })
 });
-test('Sign Up For Account', async () => {
+test('Sign Up For Account Valid Values Customer', async () => {
     //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
     await act(async () => {
-        const { getAllByText, getByText, getByPlaceholderText} = render(<Provider store={store}><MemoryRouter initialEntries={['/']}>
+        const { getAllByText, getByDisplayValue, getByLabelText, getAllByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
             <Login/>
         </MemoryRouter></Provider>);
+        fireEvent.click(getAllByText('Sign Up')[0])
+        let input = getByLabelText('Full Name')
+        fireEvent.input(input, {target: {value: 'John Smith'}})
+        await waitFor(() => getByDisplayValue('John Smith'))
+        input = getByLabelText('Email Address')
+        fireEvent.input(input, {target: {value: 'johnsmith@test.com'}})
+        input = getAllByLabelText('Password')[1]
+        fireEvent.input(input, {target: {value: 'test1234'}})
+        input = getByLabelText('Confirm Password')
+        fireEvent.input(input, {target: {value: 'test1234'}})
+        fireEvent.click(getAllByText('Sign Up')[2])
+        expect(store.getActions()[0].type).toBe('AUTH_START')
     })
+
 });
+test('Sign Up For Account Invalid Name Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getByText, getAllByDisplayValue, getByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        fireEvent.click(getAllByText('Sign Up')[0])
+        let input = getByLabelText('Email Address')
+        fireEvent.input(input, {target: {value: 'johnsmith@test.com'}})
+        await waitFor(() => getAllByDisplayValue('johnsmith@test.com'))
+        fireEvent.click(getAllByText('Sign Up')[2])
+        await waitFor(() => getByText('Name Required'))
+    })
+
+});
+test('Sign Up For Account Invalid Email Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getByText, getByDisplayValue, getByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        fireEvent.click(getAllByText('Sign Up')[0])
+        let input = getByLabelText('Full Name')
+        fireEvent.input(input, {target: {value: 'John Smith'}})
+        await waitFor(() => getByDisplayValue('John Smith'))
+        fireEvent.click(getAllByText('Sign Up')[2])
+        await waitFor(() => getByText('Email Required'))
+    })
+
+});
+
+test('Sign Up For Account Invalid Password Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getByText, getByDisplayValue, getAllByDisplayValue, getByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        fireEvent.click(getAllByText('Sign Up')[0])
+        let input = getByLabelText('Full Name')
+        fireEvent.input(input, {target: {value: 'John Smith'}})
+        await waitFor(() => getByDisplayValue('John Smith'))
+        input = getByLabelText('Email Address')
+        fireEvent.input(input, {target: {value: 'johnsmith@test.com'}})
+        await waitFor(() => getAllByDisplayValue('johnsmith@test.com'))
+        fireEvent.click(getAllByText('Sign Up')[2])
+        await waitFor(() => getByText('Password must Be at least 4 characters'))
+    })
+
+});
+test('Sign Up For Account Invalid Confirm Password Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getByText, getAllByDisplayValue, getByLabelText, getAllByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        fireEvent.click(getAllByText('Sign Up')[0])
+        let input = getByLabelText('Full Name')
+        fireEvent.input(input, {target: {value: 'John Smith'}})
+        input = getByLabelText('Email Address')
+        fireEvent.input(input, {target: {value: 'johnsmith@test.com'}})
+        input = getAllByLabelText('Password')[1]
+        fireEvent.input(input, {target: {value: 'test1234'}})
+        await waitFor(() => getAllByDisplayValue('test1234'))
+        fireEvent.click(getAllByText('Sign Up')[2])
+        await waitFor(() => getByText('Make sure passwords match'))
+    })
+
+});
+
+test('Sign In Valid Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getAllByDisplayValue, getByLabelText, getAllByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        let input = getByLabelText('Email Address')
+        fireEvent.input(input, {target: {value: 'johnsmith@test.com'}})
+        input = getAllByLabelText('Password')[1]
+        fireEvent.input(input, {target: {value: 'test1234'}})
+        await waitFor(() => getAllByDisplayValue('test1234'))
+        fireEvent.click(getAllByText('Sign In')[1])
+        expect(store.getActions()[0].type).toBe('AUTH_START')
+    })
+
+});
+
+test('Sign In Invalid Email Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getByText, getAllByDisplayValue, getAllByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        let input = getAllByLabelText('Password')[1]
+        fireEvent.input(input, {target: {value: 'test1234'}})
+        await waitFor(() => getAllByDisplayValue('test1234'))
+        fireEvent.click(getAllByText('Sign In')[1])
+        getByText('Email Required')
+    })
+
+});
+test('Sign In Invalid Password Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getByText, getAllByDisplayValue, getByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        let input = getByLabelText('Email Address')
+        fireEvent.input(input, {target: {value: 'johnsmith@test.com'}})
+        await waitFor(() => getAllByDisplayValue('johnsmith@test.com'))
+        fireEvent.click(getAllByText('Sign In')[1])
+        getByText('Password Required')
+    })
+
+});
+
+test('Sign In Invalid Password Customer', async () => {
+    //render page
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getAllByText, getByText, getAllByDisplayValue, getByLabelText} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Login/>
+        </MemoryRouter></Provider>);
+        let input = getByLabelText('Email Address')
+        fireEvent.input(input, {target: {value: 'johnsmith@test.com'}})
+        await waitFor(() => getAllByDisplayValue('johnsmith@test.com'))
+        fireEvent.click(getAllByText('Sign In')[1])
+        getByText('Password Required')
+    })
+
+});
+test('Edit Account Info', async () => {
+    //render page
+    JSON.parse = jest.fn().mockImplementation(() => {
+        return {
+            name: 'Ezra',
+            phone:'',
+            email: 'test@test.com'
+        }
+    })
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const {getByText, getByDisplayValue, getAllByDisplayValue} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Profile alertHandler={jest.fn()}/>
+        </MemoryRouter></Provider>);
+        await waitFor(() => getByDisplayValue('Ezra'))
+        getByDisplayValue('test@test.com')
+        fireEvent.click(getByText('Edit'))
+        let input = getAllByDisplayValue('Ezra')[1]
+        fireEvent.input(input, {target:{value: 'Matt'}})
+        getByDisplayValue('Matt')
+        input = getAllByDisplayValue('test@test.com')[1]
+        fireEvent.input(input, {target:{value: 'newemail@test.com'}})
+        getByDisplayValue('newemail@test.com')
+        fireEvent.click(getByText('Update'))
+        expect(getAllByDisplayValue('Matt').length).toBe(2)
+        expect(getAllByDisplayValue('newemail@test.com').length).toBe(2)
+        expect(store.getActions()[0].type).toBe('AUTH_START')
+    })
+
+});
+
+test('Change Password', async () => {
+    //render page
+    JSON.parse = jest.fn().mockImplementation(() => {
+        return {
+            name: 'Ezra',
+            phone:'',
+            email: 'test@test.com'
+        }
+    })
+    let store = mockStore({
+        user: {
+            address: '66 Chancelor Drive',
+            isLoading: false,
+            error: null,
+            user: null
+        },
+        cart: {basket: []}
+    })
+
+    await act(async () => {
+        const { getByText, getByDisplayValue} = render(<Provider store={store}><MemoryRouter initialEntries={['/login']}>
+            <Password alertHandler={jest.fn()}/>
+        </MemoryRouter></Provider>);
+        let input = getByDisplayValue('')
+        fireEvent.input(input, {target: {value: '123456789'}})
+        fireEvent.click(getByText('Change Password'))
+        expect(store.getActions()[0].type).toBe('AUTH_START')
+    })
+
+});
+
