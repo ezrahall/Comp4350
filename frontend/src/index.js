@@ -16,7 +16,7 @@ import restaurantReducer from "./store/reducers/restaurantReducer";
 const rootReducer = combineReducers({
     cart: cartReducer,
     user: userReducer,
-    order: orderReducer
+    order: orderReducer,
     restaurant: restaurantReducer
 });
 
