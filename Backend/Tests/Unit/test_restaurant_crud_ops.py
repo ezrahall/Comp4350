@@ -237,3 +237,20 @@ def test_delete_staff(client):
     }, content_type='application/json')
 
     assert res.status_code == 200
+
+
+def test_rest_descr_update(client):
+    # Establish an application context
+    res = client.post('/Api/User/Login', json={
+        'email': "joblo_@test.com",
+        'password': "test"
+    }, content_type='application/json')
+
+    assert res.status_code == 200
+
+    res = client.post('/Api/Restaurant/Update/Description', json={
+        'descr': "Come eat our terrible food!",
+        'cookies': {'jwt_token': json.loads(res.data)['jwt_token']}
+    }, content_type='application/json')
+
+    assert res.status_code == 200

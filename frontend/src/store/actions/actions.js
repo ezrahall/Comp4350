@@ -13,5 +13,9 @@ export const AUTH_START = 'AUTH_START';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
+//orders
+export const SET_CURRENT_ORDER = 'CURRENT_ORDER';
+export const UPDATE_CURRENT_ORDER = 'UPDATE_CURRENT_ORDER';
+
 //restaurant
 export const SET_RESTAURANT = 'SET_RESTAURANT';

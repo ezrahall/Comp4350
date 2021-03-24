@@ -14,6 +14,8 @@ import PaymentSucess from './components/pages/Payment/Sucesss'
 import Checkout from './components/pages/Checkout/Checkout';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';
+import Orders from "./components/pages/Orders/Orders";
+import Order from "./components/pages/Order/Order";
 import RestaurantDetails from './components/pages/RestaurantDetails/RestaurantDetails';
 import CovidReport from "./components/pages/CovidReport/CovidReport";
 import {authSuccess} from './store/actions/user';
@@ -41,6 +43,9 @@ const DefaultContainer = () => {
           <Elements stripe={stripePromise}>
           <Route path="/checkout"component={Checkout}/>
           </Elements>     
+          <Route path="/payment"component={Payment}/>
+          <Route path="/manageOrders" exact component={Orders}/>
+          <Route path="/manageOrders/Order" component={Order}/>
           <Route path="/report"component={CovidReport}/>
           <Route path="/payment/success" component={PaymentSucess}/>
       </div>

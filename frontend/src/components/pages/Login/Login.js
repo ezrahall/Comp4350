@@ -63,7 +63,7 @@ const Login = (props) => {
     const rules = {
         name: 'required',
         email: 'required|email',
-        password: 'required|min:5',
+        password: 'required|min:3',
         confirmPassword: 'required|validConfirmPassword',
         address: 'validAddress',
     }
