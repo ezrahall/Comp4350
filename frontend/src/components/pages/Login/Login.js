@@ -109,9 +109,9 @@ const Login = (props) => {
                 "address" : address
             }
             if(isLogin) {
-            dispatchRedux(signIn(user))
+                dispatchRedux(signIn(user))
             } else {
-            dispatchRedux(signUp(user, checked))
+                dispatchRedux(signUp(user, checked))
             }
         }
     }
@@ -132,6 +132,10 @@ const Login = (props) => {
         if(isLogin) {
             if (!email) {
                 errors.email = 'Email Required'
+                result = false
+            }
+            if (!password){
+                errors.password = 'Password Required'
                 result = false
             }
         } else {
