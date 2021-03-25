@@ -1,11 +1,19 @@
 import axios from "axios";
-import {SET_CURRENT_ORDER, UPDATE_CURRENT_ORDER} from '../actions/actions';
+import {SET_CURRENT_ORDER, UPDATE_CURRENT_ORDER, NULL_ORDER} from '../actions/actions';
 
 export const setOrder = (order) => {
     return dispatch => {
         dispatch({
             type:SET_CURRENT_ORDER,
             order
+        })
+    }
+}
+
+export const orderNull = () => {
+    return dispatch => {
+        dispatch({
+            type: NULL_ORDER
         })
     }
 }
