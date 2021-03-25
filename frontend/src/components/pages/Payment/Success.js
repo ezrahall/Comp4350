@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import styles from '../../../assets/styles/pages/Success.module.css'
 
+import styles from '../../../assets/styles/pages/Success.module.css'
 import Safeat from '../../../assets/images/SafeEat.svg'
 
 const Success = () => {
@@ -48,10 +48,7 @@ const Success = () => {
 
 
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
+
             
         </div>
     )
