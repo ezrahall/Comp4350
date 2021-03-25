@@ -27,7 +27,7 @@ def all_orders():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        orders = session.execute('select * from (select t.id, t.address, mi.name, ol.quantity, t.state '
+        orders = session.execute('select * from (select t.stripe_transaction, t.address, mi.name, ol.quantity, t.state, t.id '
                                  'from transaction as t '
                                  '       inner join user on t.user = user.id '
                                  '       left join order_log ol on t.id = ol.transaction '
@@ -103,7 +103,7 @@ def update_order_state():
 
         session.execute('update transaction '
                         '   set state = state + 1 '
-                        'where id = :id and '
+                        'where stripe_transaction = :id and '
                         'restaurant =:restaurant '
                         'and state >= 0',
                         {
@@ -151,7 +151,7 @@ def user_order():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        orders = session.execute('select mi.name, ol.quantity, t.state, r.address, u.name, mi.price, r.id, t.id '
+        orders = session.execute('select mi.name, ol.quantity, t.state, r.address, u.name, mi.price, r.id, t.stripe_transaction '
                                  'from transaction as t '
                                  '   inner join restaurant r on t.restaurant = r.id '
                                  '   inner join user u on r.id = u.restaurant '
@@ -162,7 +162,7 @@ def user_order():
                                  '                   where t.user =:user '
                                  '                   limit :limit offset :offset) '
                                  '   as temp_table on temp_table.id = t.id '
-                                 'where (:order is not null and t.id = :order) or (t.user =:user and :order is null)',
+                                 'where (:order is not null and t.stripe_transaction = :order) or (t.user =:user and :order is null)',
                                  {
                                     'order': parameters['id'] if len(str(parameters['id'])) > 0 else None,
                                     'user': data['id'],

@@ -4,12 +4,7 @@
   justify-content: center;
   display: flex;
   flex: 1;
-  background: linear-gradient(
-    to bottom right,
-    #a300ff,
-    rgba(163, 0, 255, 0.73),
-    rgba(163, 0, 255, 0.22)
-  );
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
 }
 .image__container {
   background-repeat: no-repeat;
