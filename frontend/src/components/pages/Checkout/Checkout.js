@@ -7,9 +7,13 @@ import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct';
 import styles from '../../../assets/styles/pages/Checkout.module.css';
 import Subtotal from '../../Subtotal/Subtotal';
 import NavBar from '../../NavBar/NavBar';
+import {genCookies} from '../../../services/genCookies'
 
 function Checkout() {
     const basket = useSelector(state => state.cart.basket)
+    const restaurant = useSelector(state => state.restaurant.restaurant)
+    const user_address = useSelector(state => state.user.address)
+    
 
     const stripe = useStripe();
     
@@ -26,6 +30,10 @@ function Checkout() {
           body: JSON.stringify({
     
             basket: basket,
+            restaurant: restaurant,
+            cookies: genCookies(),
+            address: user_address,
+
           }),
         })
         .then((response) => response.json())

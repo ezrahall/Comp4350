@@ -36,6 +36,9 @@
 .restaurantMenu__title:hover {
   background-color: #2a0080;
 }
+.restaurantMenu__subtitle:hover {
+  background-color: #2a0080;
+}
 
 .restaurantMenu {
   display: flex;

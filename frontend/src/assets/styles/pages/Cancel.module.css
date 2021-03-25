@@ -1,0 +1,89 @@
+.cancel {
+  display: flex;
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+  padding-bottom: 170px;
+}
+
+.cancel__container {
+  background: #eae6ff;
+  width: 1240px;
+  height: 580px;
+  margin-left: 100px;
+  margin-top: 80px;
+  z-index: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cancel__title {
+  font-size: 50px;
+  margin-top: 50px;
+  color: #cc0044;
+  font-weight: 600;
+}
+
+.cancel__subtitle {
+  margin-top: 15px;
+  font-size: 15px;
+  color: #2a0080;
+  font-weight: 500;
+}
+
+.cancel__content {
+  display: flex;
+  flex-direction: row;
+  margin-top: 45px;
+  justify-content: center;
+  z-index: -1;
+}
+
+.cancel__contentImageContainer {
+  width: 300px;
+  height: 230px;
+  background: #bb99ff;
+  border-radius: 10px;
+  margin-left: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+.cancel_contentImage {
+  margin-top: 70px;
+}
+
+.cancel__contentTeam {
+  color: #26004d;
+  font-weight: 500;
+  margin-top: 60px;
+}
+
+.cancel__contentTeamName {
+  margin-top: 130px;
+  margin-left: -30px;
+  color: #26004d;
+  font-weight: 600;
+}
+
+.cancel__buttons {
+  margin-right: 330px;
+  z-index: 1;
+  margin-top: -30px;
+}
+
+.cancel__buttonStyle {
+  background: #2a0080;
+  border: none;
+  color: white;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  font-weight: 900;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.cancel__buttonStyle:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
