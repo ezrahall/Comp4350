@@ -1,6 +1,7 @@
 import React from 'react';
 import adImage from '../../../assets/images/Checkout-Banner.jpg';
 import {useSelector} from "react-redux";
+import { useStripe } from "@stripe/react-stripe-js";
 
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct';
 import styles from '../../../assets/styles/pages/Checkout.module.css';
@@ -9,6 +10,34 @@ import NavBar from '../../NavBar/NavBar';
 
 function Checkout() {
     const basket = useSelector(state => state.cart.basket)
+
+    const stripe = useStripe();
+    
+
+    const handleSubmit = async (event) => {
+
+        event.preventDefault();        
+    
+        fetch('http://localhost:5000/Api/Restaurant/Payment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+    
+            basket: basket,
+          }),
+        })
+        .then((response) => response.json())
+        .then((session) => {
+          stripe.redirectToCheckout({
+            sessionId: session.id
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      };
 
     return (
         <div className={styles.checkout}>
@@ -38,6 +67,7 @@ function Checkout() {
             </div>
             <div className={styles.checkout__subtotal}>
                 <Subtotal/>
+                <button onClick={handleSubmit}>Proceed to Pay</button>
             </div>
  
                   

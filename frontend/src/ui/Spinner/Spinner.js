@@ -4,6 +4,7 @@ import classes from './Spinner.module.css';
 
 const spinner = () => (
     <div className={classes.Spinner}>
+        Spinner
         <div className={classes.LdsRing}>
             <div></div>
             <div></div>

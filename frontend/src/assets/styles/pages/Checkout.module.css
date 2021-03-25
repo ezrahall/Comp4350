@@ -36,3 +36,21 @@
   margin-left: 800px;
   z-index: 1;
 }
+
+.checkout__subtotal > button {
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: violet;
+  color: #111;
+}
+
+.checkout__subtotal > button:hover {
+  background: -webkit-linear-gradient(left, #b224ef, #7579ff);
+  transition: 0.2s ease-out;
+  cursor: pointer;
+  color: #000;
+}

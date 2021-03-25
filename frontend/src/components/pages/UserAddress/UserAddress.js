@@ -52,7 +52,7 @@ function UserAddress(props) {
     }
 
     const handleClick = (event) => {
-        setNewAddress(event.target.innerText)
+        setNewAddress(event.target.textContent)
         setVisibility(false)
         setValidAddress(true)
         setButtonAttr({name: FIND_RESTAURANTS, color: "primary"})

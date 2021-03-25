@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const enterAddress = async(currAddress,currToken) => {
+export let enterAddress = async(currAddress,currToken) => {
     try {
         const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Search/Autocomplete`, {
             addr: currAddress,

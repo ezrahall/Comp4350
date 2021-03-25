@@ -35,6 +35,7 @@ def create_app():
         from Backend.Blueprints.Menu import menu
         from Backend.Blueprints.Transactions import transactions
         from Backend.Blueprints.Tracing import tracing
+        from Backend.Blueprints.Payment import payment
 
         appl.register_blueprint(errors.error_bp)
         appl.register_blueprint(login.login_bp)
@@ -44,5 +45,6 @@ def create_app():
         appl.register_blueprint(menu.menu_bp)
         appl.register_blueprint(transactions.transaction_bp)
         appl.register_blueprint(tracing.tracing_bp)
+        appl.register_blueprint(payment.payment_bp)
 
         return appl
