@@ -19,6 +19,7 @@ import Order from "./components/pages/Order/Order";
 import RestaurantDetails from './components/pages/RestaurantDetails/RestaurantDetails';
 import CovidReport from "./components/pages/CovidReport/CovidReport";
 import {authSuccess} from './store/actions/user';
+import OrderTracker from "./components/pages/OrderTracker/OrderTracker";
 
 
 const stripePromise = loadStripe('pk_test_51IWvOsCXMychAZM499t1cB9kFug8Z5AvB9FpXhSnpsCcOGCXz1OervvAlKPzbg5VzYz2Ro5UGDxtYQHk2A0p1zw0002D2xp1OP');
@@ -47,6 +48,8 @@ const DefaultContainer = () => {
           <Route path="/manageOrders/Order" component={Order}/>
           <Route path="/report"component={CovidReport}/>
           <Route path="/payment/success" component={PaymentSucess}/>
+
+          <Route path="/orderTracker" component={OrderTracker}/>
           <Route path="/payment/cancel" component={PaymentCancel}/>
       </div>
     </div>
