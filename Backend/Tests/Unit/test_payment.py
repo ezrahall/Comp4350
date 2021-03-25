@@ -25,8 +25,10 @@ def test_create_session(client):
     res = client.post('/Api/Restaurant/Payment', json={
         'cookies': {'jwt_token': json.loads(res.data)['jwt_token']},
         'basket': [{'id': 4, 'qty': 1, 'price': '2.99'}],
-        'addr': '45 D\'arcy Dr. Winnipeg MB',
-        'restaurant': 4
+        'address': '45 D\'arcy Dr. Winnipeg MB',
+        'restaurant': {
+            'id': 4
+        }
     }, content_type='application/json')
 
     assert res.status_code == 200

@@ -1,10 +1,10 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import classes from './Order.module.css'
-import NavBar from "../../NavBar/NavBar";
 import OrderItem from "./OrderItem/OrderItem";
-import {increaseState} from "../../../store/actions/orders";
+import {increaseState, orderNull} from "../../../store/actions/orders";
 
 const Order = (props) => {
     const order = useSelector(state => state.order.currentOrder)
@@ -34,22 +34,33 @@ const Order = (props) => {
         dispatch(increaseState(order.id))
     }
 
+    const allOrders = () => {
+        dispatch(orderNull())
+    }
+
     return (
         <div className={classes.Order}>
-            <NavBar/>
+            <div className={classes.ButtonHolder}>
+            <button
+                className={classes.Back}
+                onClick={allOrders}
+            >
+                <ArrowBackIcon/>
+            </button>
+            </div>
             <h1>Order {order.id}</h1>
             <h3>Address: {order.address}</h3>
             <div className={classes.OrderItems}>
                 <h3>Order Items</h3>
                 {order.order.map((item) => <OrderItem item={item}/>)}
             </div>
-            <div className={classes.OrderItems}>
+            {!(order.state < 0 || order.state > 4) &&<div className={classes.OrderItems}>
                 <h4>Order State: {orderState}</h4>
                 <div>
                     <button className={classes.Complete} onClick={increaseStateFromActions} disabled={parseInt(order.state) >= 4}>Mark State As Complete</button>
                     <button className={classes.Cancel}>Cancel Order</button>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };

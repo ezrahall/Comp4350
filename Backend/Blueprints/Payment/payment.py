@@ -29,12 +29,15 @@ def create_session():
 
     try:
         data = json.loads(request.data)
+
         user_data = jwt_tools.decode(data['cookies'])
         quant_map = {}
         price = 0.0
 
+        restaurant_id = int(data['restaurant']['id'])
+
         for food in data['basket']:
-            quant_map[food['id']] = int(food['qty'])
+            quant_map[int(food['id'])] = int(food['qty'])
 
         food = session.execute('select mi.id, mi.price '
                                'from menu_item as mi '
@@ -42,7 +45,7 @@ def create_session():
                                'and mi.id in :id_list '
                                'and mi.active = 1',
                                {
-                                   'restaurant': data['restaurant'],
+                                   'restaurant': restaurant_id,
                                    'id_list': list(quant_map.keys())
                                })
         # iterate through result so that client cant send wrong prices
@@ -69,15 +72,16 @@ def create_session():
             )
         else:
             # Pull max key from database for testing key generation
-            max_key = session.execute('select max(t.id) from transaction as t').fetchall()[0][0]
+            max_key = session.execute(
+                'select max(t.id) from transaction as t').fetchall()[0][0]
             stripe_session = {'id': 'test_' + str(max_key + 1)}
 
         # Create transaction in our data model
         session.execute('insert into transaction values(default,:user,:restaurant,:addr,:cost,0,:stripe_id,now())',
                         {
                             'user': user_data['id'],
-                            'restaurant': data['restaurant'],
-                            'addr': data['addr'],
+                            'restaurant': restaurant_id,
+                            'addr': data['address'],
                             'cost': price,
                             'stripe_id': stripe_session['id']
                         })
@@ -98,7 +102,7 @@ def create_session():
         session.close()
         print(str(e))
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
-               403, {'ContentType': 'application/json'}
+            403, {'ContentType': 'application/json'}
 
     except Exception as e:
         session.rollback()
@@ -152,7 +156,7 @@ def retrieve_session():
         session.close()
         print(str(e))
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
-               403, {'ContentType': 'application/json'}
+            403, {'ContentType': 'application/json'}
 
     except Exception as e:
         session.rollback()

@@ -29,6 +29,7 @@ const Tags = (props) => {
                 <div  style={{marginLeft: shift + 'px'}} className={classes.TagsHolder}>
                     {tagsToUse.map((tag) => <div className={classes.Tag}>
                         <Tag
+                            key={tag.name}
                             name={tag.name}
                             img={tag.img}
                             selectItem={props.selectItem}

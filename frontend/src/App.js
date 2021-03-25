@@ -1,5 +1,5 @@
+import {Switch, Route, withRouter} from 'react-router';
 import {useEffect} from "react";
-import {Switch, Route, withRouter} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -10,7 +10,8 @@ import Layout from "./hoc/Layout/Layout";
 import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
 import RestaurantMenu from './components/pages/RestaurantMenu/RestaurantMenu';
-import PaymentSucess from './components/pages/Payment/Sucesss'
+import PaymentSucess from './components/pages/Payment/Success'
+import PaymentCancel from './components/pages/Payment/Cancel'
 import Checkout from './components/pages/Checkout/Checkout';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';
@@ -42,12 +43,12 @@ const DefaultContainer = () => {
           <Route path="/dashboard" component={RestaurantDetails}/>
           <Elements stripe={stripePromise}>
           <Route path="/checkout"component={Checkout}/>
-          </Elements>     
-          {/* <Route path="/payment"component={Payment}/> */}
+          </Elements>
           <Route path="/manageOrders" exact component={Orders}/>
           <Route path="/manageOrders/Order" component={Order}/>
           <Route path="/report"component={CovidReport}/>
           <Route path="/payment/success" component={PaymentSucess}/>
+          <Route path="/payment/cancel" component={PaymentCancel}/>
       </div>
     </div>
   )

@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Password/Profile.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/UserAddress/UserAddress.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/restaurants/restaurantsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/restaurants/restaurantsService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +51,7 @@
       <recent name="$PROJECT_DIR$/frontend/src/hoc" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.Sign In Valid Customer">
+  <component name="RunManager" selected="npm.start">
     <configuration name="Login.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -132,11 +128,6 @@
         <item itemvalue="Jest.Login.test.js" />
         <item itemvalue="Jest.Sign In Invalid Email Customer" />
         <item itemvalue="Jest.Sign In Invalid Password Customer" />
-        <item itemvalue="Jest.Run Front End Tests" />
-        <item itemvalue="Jest.renders learn react link" />
-        <item itemvalue="Jest.Run Front End Tests" />
-        <item itemvalue="Jest.renders learn react link" />
-        <item itemvalue="Jest.Run Front End Tests" />
       </list>
     </recent_temporary>
   </component>
@@ -208,19 +199,6 @@
       <option name="project" value="LOCAL" />
       <updated>1614899754222</updated>
     </task>
-    <task id="LOCAL-00009" summary="#162 Sprint 2 Tests">
-      <created>1616544831656</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1616544831656</updated>
-    </task>
-    <task id="LOCAL-00010" summary="#162 Sprint 2 Tests">
-      <created>1616545300872</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1616545300872</updated>
     <task id="LOCAL-00009" summary="#163">
       <created>1616432301292</created>
       <option name="number" value="00009" />
@@ -259,7 +237,6 @@
     <MESSAGE value="GH-85 Create Assets Directory and moved images into it" />
     <MESSAGE value="#138 Address fixed to not use context" />
     <MESSAGE value="#162 Sprint 2 Tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="#162 Sprint 2 Tests" />
     <MESSAGE value="#163" />
     <option name="LAST_COMMIT_MESSAGE" value="#163" />
   </component>
