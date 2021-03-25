@@ -10,6 +10,7 @@ import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
 import RestaurantMenu from './components/pages/RestaurantMenu/RestaurantMenu';
 import PaymentSucess from './components/pages/Payment/Success'
+import PaymentCancel from './components/pages/Payment/Cancel'
 import Checkout from './components/pages/Checkout/Checkout';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';
@@ -46,6 +47,7 @@ const DefaultContainer = () => {
           <Route path="/manageOrders/Order" component={Order}/>
           <Route path="/report"component={CovidReport}/>
           <Route path="/payment/success" component={PaymentSucess}/>
+          <Route path="/payment/cancel" component={PaymentCancel}/>
       </div>
     </div>
   )
