@@ -1,0 +1,25 @@
+.OrderTracker{
+    margin: 20px;
+}
+
+.Title{
+    margin: 40px;
+}
+.RestaurantName{
+    margin: 20px;
+}
+.OrderInfo{
+    margin: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+.OrderInfo h3{
+    margin-bottom: 10px;
+}
+.Tracker{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

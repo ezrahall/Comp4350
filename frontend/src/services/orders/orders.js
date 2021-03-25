@@ -18,6 +18,17 @@ export let getOrders = async () => {
     }
 }
 
+
+export let getOrderCustomer = async () => {
+    let res = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/User/Transaction/Data`, {
+        cookies: genCookies(),
+        id: '',
+        offset: 0,
+        limit: 1
+    })
+    console.log(res.data)
+    return res.data.orders
+}
 export let getPastOrders = async () => {
     let result = [];
     try {

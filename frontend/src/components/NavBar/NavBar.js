@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import Orders from '@material-ui/icons/EmojiTransportation'
 import SearchIcon from '@material-ui/icons/Search';
 import {useHistory, Link} from 'react-router-dom';
 import {useSelector} from "react-redux";
@@ -64,6 +65,11 @@ const NavBar = (props) => {
                         <button><SearchIcon /></button>
                     </div>
                 </form>
+                <Link to="/orderTracker">
+                    <div className={styles.navbar__orders}>
+                        <Orders/>
+                    </div>
+                </Link>
                 <ul className={styles.nav__menu}>
                     {MenuItems.map((item, index) => {
                         return (
