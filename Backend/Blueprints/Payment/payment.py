@@ -29,14 +29,12 @@ def create_session():
 
     try:
         data = json.loads(request.data)
-        print(data)
+
         user_data = jwt_tools.decode(data['cookies'])
         quant_map = {}
         price = 0.0
 
         restaurant_id = int(data['restaurant']['id'])
-
-        print('restaurant ID : ' + str(restaurant_id))
 
         for food in data['basket']:
             quant_map[int(food['id'])] = int(food['qty'])
