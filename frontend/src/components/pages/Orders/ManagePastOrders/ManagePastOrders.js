@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from '../ManageOrders/ManageOrders.module.css'
 import OrderSummary from "../OrderSummary/OrderSummary";
-import Order from '../../Order/Order';
 import {getPastOrders} from "../../../../services/orders/orders";
-import {useSelector} from "react-redux";
 
 // const orders = [
 //     {orderId: 1, orderDate: new Date().toDateString(), orderItems: ['tacos', 'fish', '1919'], orderTotal: 22.22},
@@ -14,7 +12,6 @@ import {useSelector} from "react-redux";
 
 const ManagePastOrders = (props) => {
     const [orders, setOrders] = useState([])
-    const order = useSelector(state => state.order.currentOrder)
 
 
     useEffect(() => {
@@ -24,12 +21,11 @@ const ManagePastOrders = (props) => {
 
     return (
         <div className={classes.ManageOrders}>
-            {order ?
-                <Order/> :
-                (orders.length > 0 ? orders.map((order) =>
+            {orders.length > 0 ? orders.map((order) =>
                 <OrderSummary
                     order={order}
-                />) : (<p>No Current Orders</p>))}
+                    pastOrder={true}
+                />) : (<p>No Current Orders</p>)}
         </div>
     );
 };

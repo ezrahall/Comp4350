@@ -7,14 +7,12 @@ import {setOrder} from '../../../../store/actions/orders';
 
 
 const OrderSummary = (props) => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const goToOrder = () => {
-        console.log(
-            props.order
-        )
-        dispatch(setOrder(props.order))
+        if(!props.pastOrder) {
+            dispatch(setOrder(props.order))
+        }
     }
 
     return (
