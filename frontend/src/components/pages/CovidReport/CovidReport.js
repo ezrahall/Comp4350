@@ -10,12 +10,14 @@ import {reportPositive} from '../../../services/covidReport/covidReport';
 const CovidReport = (props) => {
     const [date, setDate] = useState(new Date);
     const [verifySubmit, setVerifySubmit] = useState(false);
+    const [verifyConfirm, setVerifyConfirm] = useState(false);
     const restaurantName = useSelector(state => state.user.user?.name);
 
     const report = () => {
         if(date instanceof Date && !isNaN(date)) {
             reportPositive(date)
             setVerifySubmit(false)
+            setVerifyConfirm(true)
         }
     }
 
@@ -53,6 +55,15 @@ const CovidReport = (props) => {
                     <div>
                         <button className={classes.SubmitButton} onClick={report}>Confirm</button>
                         <button className={classes.CancelButton} onClick={() => setVerifySubmit(false)}>Cancel</button>
+                    </div>
+                </OpenModal>
+                <OpenModal
+                    show={verifyConfirm}
+                    closeModal={() => setVerifyConfirm(false)}
+                >
+                    <h1>Report Has Been Confirmed</h1>
+                    <div>
+                        <button className={classes.SubmitButton} onClick={() => setVerifyConfirm(false)}>OK</button>
                     </div>
                 </OpenModal>
             </div>
