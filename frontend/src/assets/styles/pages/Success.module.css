@@ -1,9 +1,7 @@
-body {
-  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
-}
-
 .success {
   display: flex;
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+  padding-bottom: 170px;
 }
 
 .success__container {

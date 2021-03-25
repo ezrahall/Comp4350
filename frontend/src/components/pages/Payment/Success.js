@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import styles from '../../../assets/styles/pages/Success.module.css'
 
 import Safeat from '../../../assets/images/SafeEat.svg'
@@ -33,15 +34,24 @@ const Success = () => {
                 </div>
 
                 <div className={styles.success__buttons}>
+                    <Link>
                     <button className={styles.success__buttonStyle1}>
                         Track Order
                     </button>
+                    </Link>
+                    <Link to='/home'>
                     <button className={styles.success__buttonStyle2}>Main Menu</button>
+                    </Link>
                 </div>
+                
                 
 
 
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
             
         </div>
     )
