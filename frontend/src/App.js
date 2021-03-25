@@ -43,7 +43,7 @@ const DefaultContainer = () => {
           <Elements stripe={stripePromise}>
           <Route path="/checkout"component={Checkout}/>
           </Elements>     
-          <Route path="/payment"component={Payment}/>
+          {/* <Route path="/payment"component={Payment}/> */}
           <Route path="/manageOrders" exact component={Orders}/>
           <Route path="/manageOrders/Order" component={Order}/>
           <Route path="/report"component={CovidReport}/>
