@@ -9,7 +9,7 @@ import Layout from "./hoc/Layout/Layout";
 import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
 import RestaurantMenu from './components/pages/RestaurantMenu/RestaurantMenu';
-import PaymentSucess from './components/pages/Payment/Sucesss'
+import PaymentSucess from './components/pages/Payment/Success'
 import Checkout from './components/pages/Checkout/Checkout';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';

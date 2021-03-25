@@ -1,0 +1,93 @@
+body {
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+}
+
+.success {
+  display: flex;
+}
+
+.success__container {
+  background: #eae6ff;
+  width: 1240px;
+  height: 580px;
+  margin-left: 100px;
+  margin-top: 80px;
+  z-index: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.success__title {
+  font-size: 50px;
+  margin-top: 50px;
+  color: #2a0080;
+  font-weight: 600;
+}
+
+.success__subtitle {
+  margin-top: 15px;
+  font-size: 15px;
+  color: #2a0080;
+  font-weight: 500;
+}
+
+.success__content {
+  display: flex;
+  flex-direction: row;
+  margin-top: 45px;
+  justify-content: center;
+  z-index: -1;
+}
+
+.success__contentImageContainer {
+  width: 300px;
+  height: 230px;
+  background: #bb99ff;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.success_contentImage {
+  margin-top: 70px;
+}
+
+.success__contentTeam {
+  color: #26004d;
+  font-weight: 500;
+  margin-top: 60px;
+}
+
+.success__contentTeamName {
+  margin-top: 130px;
+  margin-left: -30px;
+  color: #26004d;
+  font-weight: 600;
+}
+
+.success__buttons {
+  margin-right: 330px;
+  z-index: 1;
+  margin-top: -30px;
+}
+
+.success__buttonStyle1 {
+  background: #b3003b;
+  color: white;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  font-weight: 900;
+  font-size: 20px;
+  margin-right: 60px;
+}
+
+.success__buttonStyle2 {
+  background: #2a0080;
+  color: white;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  font-weight: 900;
+  font-size: 20px;
+}
