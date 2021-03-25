@@ -42,7 +42,7 @@ export const getRestaurantMenu = async (id) =>{
             cookies: genCookies()
         })
         res.data.menu.forEach((item) => {
-            result.push({...item, id:count});
+            result.push(item);
             count++;
         })
         console.log(result)
