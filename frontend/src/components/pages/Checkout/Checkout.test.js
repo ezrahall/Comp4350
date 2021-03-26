@@ -17,7 +17,7 @@ const mockStore = configureStore([thunk]);
 test('Put Item In Cart', async () => {
     fetch.mockResolvedValue(JSON.stringify({the: 'test'}))
     const store = mockStore({
-        user: {address: '66 Chancelor Drive'},
+        user: {address: '66 Chancelor Drive',user: { name: 'Test'}},
         restaurant: {
             restaurant:{
                 id:1,
