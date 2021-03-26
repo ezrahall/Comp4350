@@ -9,7 +9,7 @@ export const addToBasket = (item) => {
     }
 }
 
-export const removeFromBasket = (id) => {
+export let removeFromBasket = (id) => {
     return dispatch => {
         dispatch({
             type: REMOVE_FROM_BASKET,

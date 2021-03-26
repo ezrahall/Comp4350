@@ -13,6 +13,7 @@ function Checkout() {
     const basket = useSelector(state => state.cart.basket)
     const restaurant = useSelector(state => state.restaurant.restaurant)
     const user_address = useSelector(state => state.user.address)
+    const user_name = useSelector(state => state.user.user.name)
     
 
     const stripe = useStripe();
@@ -57,7 +58,7 @@ function Checkout() {
                     alt=''
                 />
                 <div className={styles.checkout__titleContainer}>
-                    <p>Hello User </p>
+                    <p>Hello {user_name} </p>
                     <p className={styles.checkout__title}>Your Shopping Basket:</p>
                 </div>
                 <br />

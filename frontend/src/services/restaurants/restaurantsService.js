@@ -34,7 +34,7 @@ export let addRestaurants = async (offset, distance, filter, address) => {
     }
 }
 
-export const getRestaurantMenu = async (id) =>{
+export let getRestaurantMenu = async (id) =>{
     const result = [];
     let count = 0
     try{
