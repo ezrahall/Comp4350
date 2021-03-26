@@ -26,10 +26,10 @@ const OrderTracker = (props) => {
                 <div className={classes.OrderInfo}>
                     <h3>Order Info</h3>
                     {order.order.map((item) =>
-                        <div>
+                        <div key={item.menu_item}>
                             <h4>{item.menu_item}</h4>
                             <p>Quantity: {item.quantity}</p>
-                            <p>Price: {item.price}</p>
+                            <p>Price: ${item.price}</p>
                         </div>
                     )}
                 </div>

@@ -101,7 +101,7 @@ const Home = (props) => {
             <div className={styles.tags}>
                 <Tags
                     selectItem={selectItem}
-                    title={'Cuisine Catefories'}
+                    title={'Cuisine Categories'}
                 />
             </div>
             <div className={styles.home__title}>
@@ -142,7 +142,7 @@ const Home = (props) => {
                 {loadingMore ?
                     <Spinner/>
                     : <button
-                        className='show__more'
+                        className={styles.show__more}
                         onClick={() => showMoreRestaurants()}
                     >
                         Show More

@@ -5,12 +5,6 @@ import {getOrders} from "../../../../services/orders/orders";
 import Order from "../../Order/Order";
 import {useSelector} from "react-redux";
 
-// const orders = [
-//     {orderId: 1, orderDate: new Date().toDateString(), orderItems: ['tacos', 'fish', '1919'], orderTotal: 22.22},
-//     {orderId: 2, orderDate: new Date().toDateString(), orderItems: ['tacos', 'fish', '1919'], orderTotal: 22.22},
-//     {orderId: 3, orderDate: new Date().toDateString(), orderItems: ['tacos', 'fish', '1919'], orderTotal: 22.22},
-//     {orderId: 4, orderDate: new Date().toDateString(), orderItems: ['tacos', 'fish', '1919'], orderTotal: 22.22},
-// ];
 
 const ManageOrders = (props) => {
     const [orders, setOrders] = useState([])
@@ -27,6 +21,7 @@ const ManageOrders = (props) => {
                 <Order/> :
                 (orders.length > 0 ? orders.map((order, index) =>
                     <OrderSummary
+                        key={order.id}
                         order={order}
                     />) : (<p>No Current Orders</p>))}
         </div>
