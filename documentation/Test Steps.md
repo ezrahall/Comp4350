@@ -183,7 +183,7 @@ Organized by features, each feature has all user story tests listed with their s
 ### Test: Confirm Report
 1. Mock sign in with valid credentials
 2. Mock store with valid address
-3. Get Restaurant Details page
+3. Get Restaurant Details page 
 4. Open report component
 5. Clear Date and Time
 6. Open Calendar
@@ -227,5 +227,168 @@ Organized by features, each feature has all user story tests listed with their s
 9. Click 'Cancel'
 
 **Acceptance Criteria:** Report modal stays open and confirm report button does not work 
+
+## Staff Management
+### Test: Get Staff Details
+1. Mock response from axios post request
+2. Open Staff Page
+3. Wait for employee information to load
+4. Check that request for employee information was made only once
+5. Check that every employee information loads in and has no duplication
+
+**Acceptance Criteria:** All employee information shows up in a table with their ID, Name, Email and Actions that can be performed for each employee
+
+### Test: Add One New Staff Member
+1. Mock initial response from axios post request to load in initial employee data
+2. Mock response from axios post request to load employee information after new employee is added
+3. Open Staff Page
+4. Wait for employee information to load
+5. Check that request for employee information was made only once
+6. Check that every employee information loads in and has no duplication
+7. Check that new employee to be added does not exist yet
+8. Click on 'Add New Staff Member' 
+9. Pop up opens to enter new employee information
+10. Input New employee name 'James Does' into Staff Name field
+11. Input New employee email 'jamesd@test.com' into Staff Email field
+12. Click on 'Create'
+13. Wait for New employee information to load
+14. Check that new employee information is added to table
+
+**Acceptance Criteria:** New employee information is loaded into employee table after creation
+
+### Test: Edit a Staff Member
+1. Mock initial response from axios post request to load in initial employee data
+2. Mock response from axios post request to load employee information after employee is editted
+3. Open Staff Page
+4. Wait for employee information to load
+5. Check that request for employee information was made only once
+6. Check that every employee information loads in and has no duplication
+7. Check that new employee to be added does not exist yet
+8. Click on the actions field on the employee row to be editted
+9. Click on 'Edit' 
+10. Pop up opens to edit employee information
+11. Edit employee name from 'James Doe' to 'Jameson Doe'
+12. Edit employee email from 'jamesd@test.com' to 'jamesond@test.com'
+13. Click on 'Update'
+14. Wait for New employee information to load
+15. Check that employee with name 'Jameson Doe' is in the table
+16. Check that employee with name 'James Doe' is in not the table
+
+**Acceptance Criteria:** Editted employee information is loaded into employee table without craeting a new employee
+ 
+ ### Test: Delete a Staff Member
+1. Mock initial response from axios post request to load in initial employee data
+2. Mock response from axios post request to load employee information after employee is removed
+3. Open Staff Page
+4. Wait for employee information to load
+5. Check that request for employee information was made only once
+6. Check that every employee information loads in and has no duplication
+7. Check that new employee to be added does not exist yet
+8. Click on the actions field on the employee row to be removed
+9. Click on 'Delete' 
+10. Click on 'Continue' on the pop up that shows to confirm deletion of employee
+11. Wait for New employee information to load
+12. Check that deleted employee information is not present in table
+
+**Acceptance Criteria:** Employee information isn't loaded into employee table after deletion
+
+### Test: Add a Staff Member twice
+1. Mock initial response from axios post request to load in initial employee data
+2. Mock response from axios post request to load employee information after new employee is added
+3. Open Staff Page
+4. Wait for employee information to load
+5. Check that request for employee information was made only once
+6. Check that every employee information loads in and has no duplication
+7. Check that new employee to be added does not exist yet
+8. Click on 'Add New Staff Member' 
+9. Pop up opens to enter new employee information
+10. Input New employee name 'James Does' into Staff Name field
+11. Input New employee email 'jamesd@test.com' into Staff Email field
+12. Click on 'Create'
+13. Wait for New employee information to load
+14. Check that new employee information is added to table
+15. Click on 'Add New Staff Member' 
+16. Pop up opens to enter new employee information
+17. Input the same employee name 'James Does' into Staff Name field
+18. Input the same employee email 'jamesd@test.com' into Staff Email field
+19. Click on 'Create'
+20. Wait for New employee information to load
+21. Check that the employee information is only shown on the table once
+
+**Acceptance Criteria:** Employee information is loaded into employee table only once after adding twice 
+
+## Restaurant Tag Management
+### Test: Get all restaurant tags
+1. Mock response from axios post request
+2. Open Tag Page
+3. Check that all tags appear once to make sure only 'Cuisine Categories' tags are shown
+4. Wait for restaurant tags to load
+5. Check that only restaurant tags that are loaded are shown twice on the screen
+
+**Acceptance Criteria:** All restaurant tag data loads into the 'My Tag Categories' area
+
+
+### Test: Update Tags with 'Spicy' tag
+1. Mock initial response from axios post request to load in initial restaurant tag data
+2. Mock response from axios post request to load restaurant tag data after tags are updated
+3. Open Tag Page
+4. Check that all tags appear once to make sure only 'Cuisine Categories' tags are shown
+6. Wait for restaurant tags to load
+7. Check that only restaurant tags that are loaded are shown twice on the screen
+8. Click on the 'spicy' tag from the 'Cuisine Categories'
+9. Wait for the new restaurant tag data to be loaded
+10. Check that the 'spicy' tag appears twice
+
+**Acceptance Criteria:** Updated restaurant tag data loads into the 'My Tag Categories' area with the newly added tag
+
+
+### Test: Add Spicy tag only once  
+1. Mock initial response from axios post request to load in initial restaurant tag data
+3. Open Tag Page
+4. Check that the 'spicy' tag appears once to make sure only 'Cuisine Categories' tags are shown
+5. Click on the 'spicy' tag to add it to restaurant tag data
+6. Wait for the new restaurant tag data to be loaded
+7. Check that the 'spicy' tag appears twice, one for the 'Cuisine Categories' and 'My Tag Categories'
+8. Click on the 'spicy' tag in the 'Cuisine Categories' to add it to restaurant tag data again
+9. Wait for the new restaurant tag data to be loaded
+10. Check that the 'spicy' tag appears twice, one for the 'Cuisine Categories' and 'My Tag Categories'
+
+**Acceptance Criteria:** Updated restaurant tag only shows up once in the 'My Tag Categories' area after being added twice
+
+### Test: Remove Spicy Tag from restaurant tags
+1. Mock initial response from axios post request to load in initial restaurant tag data
+2. Mock response from axios post request to load restaurant tag data after tag is removed
+3. Open Tag Page
+4. Check that all tags appear once to make sure only 'Cuisine Categories' tags are shown
+6. Wait for restaurant tags to load
+7. Check that only restaurant tags that are loaded are shown twice on the screen
+8. Click on the 'spicy' tag from the 'My Tag Categories'
+9. Wait for the new restaurant tag data to be loaded
+10. Check that the 'spicy' tag doesn't appears in the 'My Tag Categories' area
+
+**Acceptance Criteria:** Removed restaurant tag data doesn't load into the 'My Tag Categories' area after it was removed
+
+### Test: Remove all Tags from restaurant tags list
+1. Mock initial response from axios post request to load in initial restaurant tag data
+2. Mock response from axios post request to load restaurant tag data after each tag is removed
+3. Open Tag Page
+4. Check that all tags appear once to make sure only 'Cuisine Categories' tags are shown
+6. Wait for restaurant tags to load
+7. Check that only restaurant tags that are loaded are shown twice on the screen
+8. Click on the 'spicy' tag from the 'My Tag Categories'
+9. Wait for the new restaurant tag data to be loaded
+10. Check that the 'spicy' tag doesn't appears in the 'My Tag Categories' area
+11. Click on the 'sweet' tag from the 'My Tag Categories'
+12. Wait for the new restaurant tag data to be loaded
+13. Check that the 'sweet' tag doesn't appears in the 'My Tag Categories' area
+14. Click on the 'wraps' tag from the 'My Tag Categories'
+15. Wait for the new restaurant tag data to be loaded
+16. Check that the 'wraps' tag doesn't appears in the 'My Tag Categories' area
+17. Click on the 'korean' tag from the 'My Tag Categories'
+18. Wait for the new restaurant tag data to be loaded
+19. Check that the 'korean' tag doesn't appears in the 'My Tag Categories' area
+20. Check that all tags in the 'My Tag Categories' area are empty
+
+**Acceptance Criteria:** All restaurant tags initially loaded are removed and restaurant has no tag data
 
 ## Placing and Tracking Orders
