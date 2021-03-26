@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
+    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="main fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManagePastOrders/ManagePastOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManagePastOrders/ManagePastOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Success.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Success.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.js" afterDir="false" />
-
     </list>
+    <list id="d24c4763-b771-4796-87df-ecef6a7ae0ba" name="#187- Feature 3 Tests Done" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="#211-CheckoutTests" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,9 +34,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/src/components/pages/UserAddress" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -63,7 +52,20 @@
       <recent name="$PROJECT_DIR$/frontend/src/hoc" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Jest.Load App.js">
+    <configuration name="Load App.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.test.js" />
+      <test-names>
+        <test-name value="Load App.js" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="Login.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -84,19 +86,6 @@
       <test-file value="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" />
       <test-names>
         <test-name value="Sign In Invalid Email Customer" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Sign In Invalid Password Customer" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/frontend" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" />
-      <test-names>
-        <test-name value="Sign In Invalid Password Customer" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -133,13 +122,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="Jest.Load App.js" />
+      <item itemvalue="Jest.Login.test.js" />
+      <item itemvalue="Jest.Sign In Invalid Email Customer" />
+      <item itemvalue="Jest.Sign In Valid Customer" />
+      <item itemvalue="Jest.Sign Up For Account Valid Values Customer" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Sign In Valid Customer" />
         <item itemvalue="Jest.Sign Up For Account Valid Values Customer" />
-        <item itemvalue="Jest.Login.test.js" />
+        <item itemvalue="Jest.Sign In Valid Customer" />
         <item itemvalue="Jest.Sign In Invalid Email Customer" />
-        <item itemvalue="Jest.Sign In Invalid Password Customer" />
+        <item itemvalue="Jest.Login.test.js" />
+        <item itemvalue="Jest.Load App.js" />
       </list>
     </recent_temporary>
   </component>
@@ -154,6 +151,10 @@
       <workItem from="1613413410805" duration="3977000" />
       <workItem from="1614121735109" duration="321000" />
       <workItem from="1614191900158" duration="9522000" />
+      <workItem from="1616719531121" duration="217000" />
+      <workItem from="1616719774573" duration="82000" />
+      <workItem from="1616719859869" duration="225000" />
+      <workItem from="1616720414114" duration="7487000" />
     </task>
     <task id="LOCAL-00001" summary="GH-42 Created Raact Front End Base Template">
       <created>1613413609708</created>
@@ -239,7 +240,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616715277959</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="#187- Feature 3 Tests Done">
+      <created>1616727195095</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1616727195095</updated>
+    </task>
+    <task id="LOCAL-00014" summary="#187- Feature 3 Tests Done">
+      <created>1616776424647</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1616776424647</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +280,7 @@
     <MESSAGE value="#162 Sprint 2 Tests" />
     <MESSAGE value="#163" />
     <MESSAGE value="#192 Customer Order Hooked Into Backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="#192 Customer Order Hooked Into Backend" />
+    <MESSAGE value="#187- Feature 3 Tests Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="#187- Feature 3 Tests Done" />
   </component>
 </project>
