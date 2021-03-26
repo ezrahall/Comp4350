@@ -392,3 +392,101 @@ Organized by features, each feature has all user story tests listed with their s
 **Acceptance Criteria:** All restaurant tags initially loaded are removed and restaurant has no tag data
 
 ## Placing and Tracking Orders
+
+### Test: Browse Menu
+1. Mock initial response from axios post request to load menu items
+3. Open Restaurant Menu Page
+4. Check that the restaurant name is displayed
+5. Check that the restaurant description is displayed
+6. Check that the delivery time is displayed
+7. Check that the menu item is displayed (wait for it to be displayed as it has to load)
+8. Check that the menu item desciption is displayed
+9. Check that the price of the menu item is displayed
+
+**Acceptance Criteria:**  A user should be able to see the menu items each restaurant offers
+
+### Test: Put Item in Cart
+1. Mock initial response from axios post request to load menu items
+3. Open Restaurant Menu Page
+4. Check that the menu item is displayed (wait for it to be displayed as it has to load)
+5. Check that the menu item desciption is displayed
+6. Check that the price of the menu item is displayed
+7. Click On the Menu Item
+8. Verify that the Redux action ADD_TO_CART has been called
+
+**Acceptance Criteria:**  A user should be able to add menu items to their cart
+
+### Test: Remove Item From Cart
+1. Mock initial response from axios post request to load menu items
+2. Mock Redux store so that the menu item is in the cart
+3. Open Restaurant Menu Page
+4. Check that the menu item is displayed (wait for it to be displayed as it has to load)
+5. Click on the item
+6. Verify the item called add to redux store
+7. Click the remove button linked to the item
+8. Verify DECREASE_ITEM_QUANITITY action was called in the redux store
+
+
+**Acceptance Criteria:**  A user should be able to remove an item from their cart
+
+### Test: Put Items In Cart
+1. Mock items in basket in redux store
+2. Open Checkout Page
+3. Check if the item name is displayed
+4. Check if the item price is displayed
+
+**Acceptance Criteria:**  A user should be able to see the menu items in their cart
+
+### Test: Make Purchase of Items (Make Payment)
+1. Mock items in basket in redux store
+2. Mock Calls to fetch
+3. Open Checkout Page
+4. Check if the item name is displayed
+5. Check if the item price is displayed
+6. Press Proceed to Checkout
+7. Check if call to fetch is made for redirect to payment
+
+**Acceptance Criteria:**  A user should be able to pay for the menu items in their cart
+
+### Test: Get Order Info Active
+1. Mock order staus recieved from axios
+2. Open Order Tracker Page
+3. Verify Order Tracker is Displayed
+4. Verify Order State is Displayed
+5. Verify Order Items Quantity Are Displayed
+6. Verify Order Items Price Are Displayed
+7. Verify Order Items Names Are Displayed
+
+**Acceptance Criteria:**  A user should be able to see the state of an active order
+
+### Test: Get Order Info Most Recent
+1. Mock order staus recieved from axios
+2. Open Order Tracker Page
+3. Verify Most Recent Order is Displayed
+4. Verify Order State is Displayed
+5. Verify Order Items Quantity Are Displayed
+6. Verify Order Items Price Are Displayed
+7. Verify Order Items Names Are Displayed
+
+**Acceptance Criteria:**  A user should be able to see the state and information of their most recent order
+
+### Test: Get Order Info No Orders
+1. Mock order staus recieved from axios
+2. Open Order Tracker Page
+3. Verify No Current Order Is Displayed
+
+**Acceptance Criteria:**  A user should be able to see that no current order is dispayed given they havent made an order
+
+### Test: Get Orders (Restaurant)
+1. Mock orders for restaurant from axios
+2. Open Manage Orders Page
+3. Verify menu item is displayed
+4. Verify menu item quantity is displayed
+5. Verify order id is displayed
+6. Verify delivery address is displayed
+
+**Acceptance Criteria:**  A restaurant should be able to see all orders
+
+
+
+
