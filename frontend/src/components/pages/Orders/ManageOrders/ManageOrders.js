@@ -25,7 +25,7 @@ const ManageOrders = (props) => {
         <div className={classes.ManageOrders}>
             {order ?
                 <Order/> :
-                (orders.length > 0 ? orders.map((order) =>
+                (orders.length > 0 ? orders.map((order, index) =>
                     <OrderSummary
                         order={order}
                     />) : (<p>No Current Orders</p>))}

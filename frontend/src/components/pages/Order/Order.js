@@ -48,7 +48,7 @@ const Order = (props) => {
                 <ArrowBackIcon/>
             </button>
             </div>
-            <h1>Order {order.id}</h1>
+            <h1>Order {order.id.slice(10, 15)}</h1>
             <h3>Address: {order.address}</h3>
             <div className={classes.OrderItems}>
                 <h3>Order Items</h3>
