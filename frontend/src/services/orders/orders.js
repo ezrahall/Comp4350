@@ -10,7 +10,6 @@ export let getOrders = async () => {
             limit: 20
         })
         result = res.data.orders.filter((order) => order.state >= 0 && order.state <=4 )
-        console.log(result)
         return result
     } catch (e) {
         console.log(e)
@@ -24,10 +23,9 @@ export let getOrderCustomer = async () => {
         cookies: genCookies(),
         id: '',
         offset: 0,
-        limit: 1
+        limit: 2
     })
-    console.log(res.data)
-    return res.data.orders
+    return res.data.orders[res.data.orders.length-1]
 }
 export let getPastOrders = async () => {
     let result = [];
@@ -38,9 +36,7 @@ export let getPastOrders = async () => {
             offset: 0,
             limit: 20
         })
-        console.log(res.data)
-        result = res.data.orders.filter((order) => order.state < 0 || order.state > 4 )
-        console.log(result)
+        result = res.data.orders.filter((order) => order.state < 0 || order.state >= 4 )
         return result
     } catch (e) {
         console.log(e)

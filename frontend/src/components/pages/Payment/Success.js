@@ -34,7 +34,7 @@ const Success = () => {
                 </div>
 
                 <div className={styles.success__buttons}>
-                    <Link>
+                    <Link to='/orderTracker'>
                     <button className={styles.success__buttonStyle1}>
                         Track Order
                     </button>

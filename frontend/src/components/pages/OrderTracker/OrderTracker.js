@@ -10,14 +10,14 @@ const OrderTracker = (props) => {
 
     useEffect(()=>{
         getOrderCustomer()
-            .then((data) => setOrder(data[0]))
+            .then((data) => setOrder(data))
     },[])
 
     return (
         <div>
             <NavBar/>
             {order ? <div className={classes.OrderTracker}>
-                <h1 className={classes.Title}>Order Tracker</h1>
+                <h1 className={classes.Title}>{order.state >=4 ? 'Most Recent Order' : 'Order Tracker'}</h1>
                 <h3 className={classes.RestaurantName}>Currently Tracking Order From {order.restaurant_name}</h3>
                 <h3>Order Stage: {order.state}</h3>
                 <div className={classes.Tracker}>
@@ -38,5 +38,4 @@ const OrderTracker = (props) => {
         </div>
     );
 };
-
 export default OrderTracker;

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="" />
+    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManagePastOrders/ManagePastOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManagePastOrders/ManagePastOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Success.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Success.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="#192-CustomerOrderTracker" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -214,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616713828828</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="#192 Customer Order Hooked Into Backend">
+      <created>1616715277959</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1616715277959</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
