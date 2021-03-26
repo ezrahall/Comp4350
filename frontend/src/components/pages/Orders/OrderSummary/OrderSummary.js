@@ -23,7 +23,7 @@ const OrderSummary = (props) => {
             <p><b>Order Id: </b>{props.order.id.slice(10,15)}</p>
             <p><b>Address: </b>{props.order.address}</p>
             <p><b>Order Items </b></p>
-            {props.order.order.map((order) => <p><b>{order.quantity}x </b>{order.menu_item}</p>)}
+            {props.order.order.map((order) => <p key={order.menu_item}><b>{order.quantity}x </b>{order.menu_item}</p>)}
         </div>
     );
 };

@@ -34,6 +34,7 @@ function RestaurantMenu() {
 
             </div>
             {menuItems.map((item) => <FoodItem
+                key={item.id}
                 image={KFC}
                 id={item.id}
                 title={item.name}
