@@ -58,6 +58,7 @@ const Login = (props) => {
         address: address,
     }
 
+
     useEffect(() => {
         if(user != null){
             sessionStorage.setItem('isOwner', checked)

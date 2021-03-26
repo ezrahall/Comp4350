@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Order/Order.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" afterDir="false" />
@@ -12,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Success.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Payment/Success.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.js" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

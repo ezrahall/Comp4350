@@ -130,13 +130,14 @@ const StaffDetail = ({staff, handleDelete, handleSetup}) => {
                 <StyledTableCell align="left"><MoreVertIcon onClick={(e) => setAnchorEl(e.currentTarget)}/></StyledTableCell>
                 <Menu
                     id='staff-menu-actions'
+                    data-testid={staff.name + "-menu"}
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem onClick={handleOptionClick}>Edit</MenuItem>
-                    <MenuItem onClick={() => {setOpenWarning(true); handleClose()}}>Delete</MenuItem>
+                    <MenuItem data-testid={staff.name + '-edit'} onClick={handleOptionClick}>Edit</MenuItem>
+                    <MenuItem data-testid={staff.name + '-delete'} onClick={() => {setOpenWarning(true); handleClose()}}>Delete</MenuItem>
                 </Menu>
                 <Dialog
                     open={openWarning}
@@ -156,6 +157,7 @@ const StaffDetail = ({staff, handleDelete, handleSetup}) => {
                             Cancel
                         </Button>
                         <Button 
+                            data-testid={staff.name + '-continue'}
                             color="primary"
                             variant="contained"
                             onClick={() => {handleDelete(staff.id); setOpenWarning(false)}}>
@@ -208,8 +210,6 @@ const Staff = () => {
         setOpenCreate(false)
     }
 
-   
-
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
     };
@@ -242,13 +242,14 @@ const Staff = () => {
             if (error.response) {
                 switch (error.response.status) {
                     case 403:
-                        history.push('./login')
+                        setOpen(true)
+                        setErrorMessage('Trouble making that change to your staff list. It\'s possible that another staff with that email already exists')
                         break
 
                     case 404:
                     case 500:
                         setOpen(true)
-                        setErrorMessage('Trouble making that change to your staff list. It\'s possible that another staff with that email already exists')
+                        setErrorMessage('Oops somthing went wrong, please try again later')
                         break
                 }
             }
@@ -329,6 +330,7 @@ const Staff = () => {
             <Paper elevation={3} variant="elevation" className={styles.container}>
             { open && 
                 <Alert 
+                    data-testid="errorAlert"
                     variant="filled" 
                     severity="error" 
                     action={
@@ -362,7 +364,7 @@ const Staff = () => {
                         ? staffList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         : staffList
                         ).map((staff) => (
-                        <StaffDetail staff={staff} handleUpdate={handleCreateUpdateStaff} handleDelete={handleDeleteStaff} handleSetup={prepare}/>
+                        <StaffDetail key={staff.id} staff={staff} handleUpdate={handleCreateUpdateStaff} handleDelete={handleDeleteStaff} handleSetup={prepare}/>
                     ))}
                     {emptyRows > 0 && (
                         <TableRow style={{ height: 53 * emptyRows }}>
@@ -395,10 +397,10 @@ const Staff = () => {
                     <DialogContentText>
                         <form noValidate autoComplete="off">
                             <div>
-                                <label>Name</label>
-                                <TextField value={staffName} fullWidth onChange={e => setStaffName(e.target.value)} />
-                                <label>Email Address</label>
-                                <TextField value={staffEmail} fullWidth onChange={e => setStaffEmail(e.target.value)} />
+                                <label htmlFor="staffName">Staff Name</label>
+                                <TextField id="staffName" value={staffName} fullWidth onChange={e => setStaffName(e.target.value)} />
+                                <label htmlFor="staffEmail">Staff Email Address</label>
+                                <TextField id="staffEmail" value={staffEmail} fullWidth onChange={e => setStaffEmail(e.target.value)} />
                             </div>
                         </form> 
                     </DialogContentText>

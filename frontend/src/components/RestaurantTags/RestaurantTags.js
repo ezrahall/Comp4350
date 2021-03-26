@@ -153,7 +153,7 @@ const RestaurantTags = () => {
             <Divider />
             <br />
             <h1>Click on a tag here to remove it from your restaurant menu tags</h1>
-            <Tags selectItem={handleRemoveItem} title='My Tag Categories' tags={selectedTags}/>
+            { selectedTags.length > 0 && <Tags selectItem={handleRemoveItem} title='My Tag Categories' tags={selectedTags}/> }
             <br />
         </div>
     )
