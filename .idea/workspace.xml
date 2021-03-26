@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="main fix">
+    <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.test.js" afterDir="false" />
     </list>
-    <list id="d24c4763-b771-4796-87df-ecef6a7ae0ba" name="#187- Feature 3 Tests Done" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="#211-CheckoutTests" />
+        <entry key="$PROJECT_DIR$" value="#211-SplitCheckoutTests" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -254,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616776424647</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="main fix">
+      <created>1616776592176</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1616776592176</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +288,7 @@
     <MESSAGE value="#163" />
     <MESSAGE value="#192 Customer Order Hooked Into Backend" />
     <MESSAGE value="#187- Feature 3 Tests Done" />
-    <option name="LAST_COMMIT_MESSAGE" value="#187- Feature 3 Tests Done" />
+    <MESSAGE value="main fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="main fix" />
   </component>
 </project>

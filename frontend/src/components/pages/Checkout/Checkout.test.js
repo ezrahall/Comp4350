@@ -44,6 +44,39 @@ test('Put Item In Cart', async () => {
         </MemoryRouter></Provider>);
         await waitFor(() => getByText('item'))
         getByText('$22.22')
+    })
+});
+
+test('Put For Items', async () => {
+    fetch.mockResolvedValue(JSON.stringify({the: 'test'}))
+    const store = mockStore({
+        user: {address: '66 Chancelor Drive',user: { name: 'Test'}},
+        restaurant: {
+            restaurant:{
+                id:1,
+                title:'restaurant',
+                description:'restaurant description',
+                time: '20 minutes'
+            }
+        },
+        cart: {basket: [
+                {
+                    id:'1',
+                    title:'item',
+                    price: 22.22,
+                    qty:1
+                }
+            ]}
+    })
+    //render page
+    await act(async () => {
+        const {getByText, getByDisplayValue} = render(<Provider store={store}><MemoryRouter initialEntries={['/']}>
+            <Elements stripe={stripePromise}>
+                <Checkout/>
+            </Elements>
+        </MemoryRouter></Provider>);
+        await waitFor(() => getByText('item'))
+        getByText('$22.22')
         fireEvent.click(getByText('Proceed to Pay'))
         expect(fetch).toBeCalledTimes(1)
     })
