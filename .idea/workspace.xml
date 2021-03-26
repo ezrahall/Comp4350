@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616776592176</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="main fix">
+      <created>1616777860975</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1616777860975</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

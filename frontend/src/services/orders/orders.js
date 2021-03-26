@@ -23,7 +23,7 @@ export let getOrderCustomer = async () => {
         cookies: genCookies(),
         id: '',
         offset: 0,
-        limit: 2
+        limit: 30
     })
     return res.data.orders[res.data.orders.length-1]
 }
