@@ -11,10 +11,14 @@ login_manager = LoginManager()
 
 def create_app():
     appl = Flask(__name__, static_folder=os.path.abspath(''))
-    appl.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user_1:&Q?kXvA7XQ@159.203.34.38:3306/safeat'
     appl.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     appl.secret_key = b'"xR\xacBR\xcbx\xc4\xf6\x06\x06y\xcc\x9c\x19'
     appl.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024
+
+    if os.environ.get('SAFEAT_ACCEPTANCE_TEST') is not None:
+        appl.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user_1:&Q?kXvA7XQ@159.203.34.38:3306/safeat_prod'
+    else:
+        appl.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user_1:&Q?kXvA7XQ@159.203.34.38:3306/safeat'
 
     cors = CORS(appl,
                 origins=["http://localhost:3000", "http://localhost:*"],
