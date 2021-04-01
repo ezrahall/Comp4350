@@ -28,6 +28,6 @@ jobs:
         cd Backend
         export SAFEAT_ACCEPTANCE_TEST=0
         flask run & export SAFEAT_ACCEPTANCE_TEST=$(echo $!)
-        cd frontend
+        cd ../frontend
         kill $SAFEAT_ACCEPTANCE_TEST
         export SAFEAT_ACCEPTANCE_TEST=
