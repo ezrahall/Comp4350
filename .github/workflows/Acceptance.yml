@@ -23,14 +23,11 @@ jobs:
         cd Backend
         python3 -m pip install --upgrade pip
         pip3 install -r requirements.txt
-    - name: Start Server
+    - name: Run Tests
       run: |
         cd Backend
+        export SAFEAT_ACCEPTANCE_TEST=0
         flask run & export SAFEAT_ACCEPTANCE_TEST=$(echo $!)
-    - name: Start Acceptance Tests
-      run: |
         cd frontend
-    - name: Kill Server
-      run: |
         kill $SAFEAT_ACCEPTANCE_TEST
         export SAFEAT_ACCEPTANCE_TEST=
