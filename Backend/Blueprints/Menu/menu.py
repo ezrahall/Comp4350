@@ -15,8 +15,7 @@ Endpoint expects two params. One in url for restaurant and other in body
 
 @menu_bp.route('/Api/Menu/<restaurant>', methods=['POST'])
 def restaurant_menu(restaurant):
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
     token = ''
     result = '{ '
 

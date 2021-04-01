@@ -20,10 +20,8 @@ Return json of associated restaurant information of staff, jwt_token
 
 @restaurant_bp.route('/Api/Restaurant/Staff/Data', methods=['POST'])
 def restaurant_get_staff_data():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
     staff = '"staff": ['
-    jwt_token = ''
 
     try:
         parameters = request.json
@@ -75,10 +73,8 @@ Return json of associated restaurant information of  tags, and jwt_token
 
 @restaurant_bp.route('/Api/Restaurant/Tag/Data', methods=['POST'])
 def restaurant_get_tag_data():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
     tags = '"tags": ['
-    jwt_token = ''
 
     try:
         parameters = request.json
@@ -128,10 +124,8 @@ Return json of associated restaurant information of menu items and jwt_token
 
 @restaurant_bp.route('/Api/Restaurant/Menu/Data', methods=['POST'])
 def restaurant_get_menu_data():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
     menu = '"menu_items": ['
-    jwt_token = ''
 
     try:
         parameters = request.json
@@ -185,9 +179,7 @@ Returns jwt_token to client
 
 @restaurant_bp.route('/Api/Restaurant/Update/Description', methods=['POST'])
 def restaurant_update():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = None
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -230,10 +222,7 @@ Returns jwt_token to client
 
 @restaurant_bp.route('/Api/Restaurant/Create/Food', methods=['POST'])
 def restaurant_create_food():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = ''
-    food_id = -1
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -277,9 +266,7 @@ Endpoint expects two parameters from client
 
 @restaurant_bp.route('/Api/Restaurant/Delete/Food', methods=['POST'])
 def restaurant_delete_food():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = ''
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -323,9 +310,7 @@ return jwt_token back to client
 
 @restaurant_bp.route('/Api/Restaurant/Update/Food', methods=['POST'])
 def restaurant_update_food():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = None
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -381,10 +366,7 @@ returns new jwt_token back to client
 
 @restaurant_bp.route('/Api/Restaurant/Create/Tag', methods=['POST'])
 def restaurant_add_tag():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = ''
-    tag_id = -1
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -429,9 +411,7 @@ returns new jwt_token
 
 @restaurant_bp.route('/Api/Restaurant/Delete/Tag', methods=['POST'])
 def restaurant_delete_tag():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = ''
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -472,10 +452,7 @@ Endpoint expects three parameters
 
 @restaurant_bp.route('/Api/Restaurant/Create/Staff', methods=['POST'])
 def restaurant_create_staff():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = ''
-    staff_id = -1
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -521,9 +498,7 @@ return new jwt_token to client
 
 @restaurant_bp.route('/Api/Restaurant/Update/Staff', methods=['POST'])
 def restaurant_update_staff():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = None
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -573,9 +548,7 @@ returns new jwt_token on success
 
 @restaurant_bp.route('/Api/Restaurant/Delete/Staff', methods=['POST'])
 def restaurant_delete_staff():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    jwt_token = ''
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -667,8 +640,6 @@ Uses current session information to delete image
 
 @restaurant_bp.route('/Api/Images/Delete', methods=['POST'])
 def delete_image():
-    jwt_token = None
-
     try:
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])

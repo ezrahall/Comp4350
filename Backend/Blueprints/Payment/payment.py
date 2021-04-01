@@ -24,8 +24,7 @@ Endpoint used to send basket info to the server and create a checkout session an
 
 @payment_bp.route('/Api/Restaurant/Payment', methods=['POST'])
 def create_session():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
 
     try:
         data = json.loads(request.data)
@@ -72,8 +71,7 @@ def create_session():
             )
         else:
             # Pull max key from database for testing key generation
-            max_key = session.execute(
-                'select max(t.id) from transaction as t').fetchall()[0][0]
+            max_key = session.execute('select max(t.id) from transaction as t').fetchall()[0][0]
             stripe_session = {'id': 'test_' + str(max_key + 1)}
 
         # Create transaction in our data model
@@ -124,8 +122,7 @@ Endpoint used to retrieve the meta data of a certain checkout session
 
 @payment_bp.route('/Api/Restaurant/Payment/Data', methods=['POST'])
 def retrieve_session():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
 
     try:
         data = json.loads(request.data)
@@ -176,8 +173,7 @@ Endpoint used to create a webhook after each session has been successfully compl
 
 @payment_bp.route('/Api/Restaurant/Payment/Webhook', methods=['POST'])
 def webhook():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
 
     payload = request.get_data(as_text=True)
     sig_header = request.headers.get("Stripe-Signature")

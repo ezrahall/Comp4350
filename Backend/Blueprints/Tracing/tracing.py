@@ -22,12 +22,12 @@ Endpoint expects 2 parameters from client
 Returns jwt_token to client
 """
 
+
 @tracing_bp.route('/Api/Tracing/Report', methods=['POST'])
 def tracing_send_email():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    try:
+    session = sessionmaker(bind=db.engine)()
 
+    try:
         parameters = request.json
         date_start, date_end = get_date_range(parameters['date'])
         data = jwt_tools.decode(parameters['cookies'])
@@ -50,8 +50,7 @@ def tracing_send_email():
                                     'date_start': date_start,
                                     'date_end': date_end
                                 })
-
-        #Only send email if not a test
+        # Only send email if not a test
         if "pytest" not in sys.modules:
             send_message(staff, parameters['date'], True)
             send_message(users, parameters['date'], False)
@@ -75,6 +74,14 @@ def tracing_send_email():
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
 
+
+"""
+Accessory function; parses date
+date        : string of date of event 
+@returns    : tuple of start and end date two weeks apart
+"""
+
+
 def get_date_range(date):
     date = re.sub(r"\([^()]*\)", "", date)
     date = datetime.strptime(date, '%a %b %d %Y %H:%M:%S %Z%z ')
@@ -83,7 +90,16 @@ def get_date_range(date):
 
     return date_start, date_end
 
-def send_message(contacts, date, isStaff):
+
+"""
+Accessory function; sends emails 
+contacts         : array of all people who may have come into contact
+date             : string of the date of report
+is_staff         : boolean for if array is of staff
+"""
+
+
+def send_message(contacts, date, is_staff):
     port = 465
     sender = 'safeat.stripe@gmail.com'
     password = '^$26x*%!DD'
@@ -97,7 +113,7 @@ def send_message(contacts, date, isStaff):
         for contact in contacts:
             message['To'] = contact.email
             content = ''
-            if isStaff:
+            if is_staff:
                 content = 'An employee at %s has tested positive for Covid-19 on %s.\n\
                            We have notified all staff as a precaution, please contact your manager.' % (contact[2], date)
             else:
