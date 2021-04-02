@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from Backend.Utilities import jwt_tools
 from Backend import db
 import sys
+import os
 import stripe
 import json
 
@@ -53,7 +54,7 @@ def create_session():
             price += quant_map[entry[0]] * entry[1]
 
         # Make API Call to Stripe to set up transaction only if not testing
-        if "pytest" not in sys.modules:
+        if "pytest" not in sys.modules and os.environ.get('SAFEAT_ACCEPTANCE_TEST') is None:
             stripe_session = stripe.checkout.Session.create(
                 success_url='http://localhost:3000/payment/success?id={CHECKOUT_SESSION_ID}',
                 cancel_url='http://localhost:3000/payment/cancel',
@@ -140,7 +141,7 @@ def retrieve_session():
             raise Exception("These dam hackers thinking they're clever.....")
         else:
             # Contact Stripe API
-            if "pytest" not in sys.modules:
+            if "pytest" not in sys.modules and os.environ.get('SAFEAT_ACCEPTANCE_TEST') is None:
                 stripe_session = stripe.checkout.Session.retrieve(
                     data['id'],
                     expand=['payment_intent']
@@ -175,11 +176,11 @@ Endpoint used to create a webhook after each session has been successfully compl
 def webhook():
     session = sessionmaker(bind=db.engine)()
 
-    payload = request.get_data(as_text=True)
-    sig_header = request.headers.get("Stripe-Signature")
-
     try:
-        if "pytest" not in sys.modules:
+        if "pytest" not in sys.modules and os.environ.get('SAFEAT_ACCEPTANCE_TEST') is None:
+            payload = request.get_data(as_text=True)
+            sig_header = request.headers.get("Stripe-Signature")
+
             event = stripe.Webhook.construct_event(
                 payload, sig_header, endpoint_secret
             )
