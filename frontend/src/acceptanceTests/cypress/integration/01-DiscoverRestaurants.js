@@ -11,14 +11,4 @@ describe('Discover Restaurants', ()=>{
         cy.findByText('Tony Romas')
         cy.findByText('Burrito Place')
     })
-    it("Filter Restaurants", () =>{
-        cy.findByText('Korean').click()
-        cy.findByText('Search Results For: Korean')
-        cy.findByText('Korean Food')
-    })
-    it("Search Restaurants", () =>{
-        cy.findByPlaceholderText('Search Restaurants').type('Korean{enter}')
-        cy.findByText('Search Results For: Korean')
-        cy.findByText('Korean Food')
-    })
 })

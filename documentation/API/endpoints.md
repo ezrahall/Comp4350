@@ -298,5 +298,10 @@ Endpoint used to retrieve the meta data of a certain checkout session\
 @cookies   : Dictionary of client side cookies\
 @return the meta data of the whole session
 
+## /Api/Dump [POST]
+Endpoint used to delete inserted data from database after acceptance testing\
+No parameters are required\
+@returns 200 upon success or 500 on failure or if not in testing state
+
 
 

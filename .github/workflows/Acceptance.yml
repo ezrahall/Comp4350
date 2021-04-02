@@ -1,0 +1,37 @@
+name: Acceptance C.I
+
+on: [push]
+
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [14.x]
+        python-version: [3.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Javascript Dependencies
+      run: |
+        cd frontend
+        npm ci
+    - name: Install Python Dependencies
+      run: |
+        cd Backend
+        python3 -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+    - name: Run Tests
+      run: |
+        cd Backend
+        export SAFEAT_ACCEPTANCE_TEST=0
+        flask run --host=0.0.0.0 & export SAFEAT_ACCEPTANCE_TEST=$(echo $!)
+        cd ../frontend
+        npm start & export SAFEAT_ACCEPTANCE_FRONT=$(echo $!)
+        sleep 70
+        npm run acceptance
+        kill $SAFEAT_ACCEPTANCE_TEST
+        kill $SAFEAT_ACCEPTANCE_FRONT
+        export SAFEAT_ACCEPTANCE_TEST=

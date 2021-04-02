@@ -24,10 +24,7 @@ this and getting the email or password wrong or an email that doesnt exist all g
 @login_bp.route('/Api/User/Login', methods=['POST'])
 def user_login():
     # Initialize the database connection
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    user = None
-    enc_jwt = None
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -41,6 +38,7 @@ def user_login():
             # No account matched the supplied credentials
             raise LookupError
 
+        response = user.to_json()[:-1] + ', "jwt_token": "' + enc_jwt + '"}'
     except LookupError:
         session.rollback()
         session.close()
@@ -54,7 +52,6 @@ def user_login():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    response = user.to_json()[:-1] + ', "jwt_token": "'+enc_jwt+'"}'
     return response, 200, {'ContentType': 'application/json'}
 
 
@@ -73,9 +70,7 @@ is to silently fail which is telling the adversary the same information, and pot
 @login_bp.route('/Api/User/Register', methods=['POST'])
 def user_register():
     # Initialize database
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    user = None
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -127,9 +122,7 @@ is to silently fail which is telling the adversary the same information, and pot
 
 @login_bp.route('/Api/Restaurant/Register', methods=['POST'])
 def restaurant_register():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    user = None
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
