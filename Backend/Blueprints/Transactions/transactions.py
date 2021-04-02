@@ -148,18 +148,29 @@ def user_order():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        orders = session.execute('select mi.name, ol.quantity, t.state, r.address, u.name, mi.price, r.id, t.stripe_transaction '
+        orders = session.execute('select * '
+                                 'from (select mi.name, '
+                                 '             ol.quantity, '
+                                 '              t.state, '
+                                 '              r.address, '
+                                 '              u.name as user_name, '
+                                 '              mi.price, '
+                                 '              r.id, '
+                                 '              t.stripe_transaction, '
+                                 '              t.id as transaction_id '
                                  'from transaction as t '
-                                 '   inner join restaurant r on t.restaurant = r.id '
-                                 '   inner join user u on r.id = u.restaurant '
-                                 '   left join order_log ol on t.id = ol.transaction '
-                                 '   inner join menu_item mi on ol.menu_item = mi.id '
-                                 '   inner join (select distinct t.id '
-                                 '                   from transaction as t '
-                                 '                   where t.user =:user '
-                                 '                   limit :limit offset :offset) '
-                                 '   as temp_table on temp_table.id = t.id '
-                                 'where (:order is not null and t.stripe_transaction = :order) or (t.user =:user and :order is null)',
+                                 '  inner join restaurant r on t.restaurant = r.id '
+                                 '  inner join user u on r.id = u.restaurant '
+                                 '  left join order_log ol on t.id = ol.transaction '
+                                 '  inner join menu_item mi on ol.menu_item = mi.id '
+                                 '  inner join (select distinct t.id '
+                                 '      from transaction as t '
+                                 '      where t.user = :user '
+                                 '      limit :limit offset :offset) '
+                                 '      as temp_table on temp_table.id = t.id '
+                                 'where (:order is not null and t.stripe_transaction = :order) '
+                                 '   or (t.user = :user and :order is null)) as orders '
+                                 'order by orders.transaction_id desc',
                                  {
                                     'order': parameters['id'] if len(str(parameters['id'])) > 0 else None,
                                     'user': data['id'],

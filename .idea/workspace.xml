@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="main fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/Backend/Blueprints/Login/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Blueprints/Login/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Blueprints/Menu/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Blueprints/Menu/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Blueprints/Misc/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Blueprints/Misc/misc.py" afterDir="false" />
@@ -16,6 +17,9 @@
       <change beforePath="$PROJECT_DIR$/Backend/Blueprints/Transactions/transactions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Blueprints/Transactions/transactions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Blueprints/Users/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Blueprints/Users/users.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Utilities/jwt_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Utilities/jwt_tools.py" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-DiscoverRestaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-DiscoverRestaurants.js" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +43,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1oWruEo7saVmZKbhhBK32tjsLku" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -71,69 +83,64 @@
       <recent name="$PROJECT_DIR$/frontend/src/hoc" />
     </key>
   </component>
+
   <component name="RunManager" selected="Python.app">
     <configuration name="Load App.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+
+  <component name="RunManager" selected="npm.cypress-open">
+    <configuration name="Address Screen.Page Loaded" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$/frontend" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.test.js" />
+      <test-file value="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-Address.js" />
       <test-names>
-        <test-name value="Load App.js" />
+        <test-name value="Address Screen" />
+        <test-name value="Page Loaded" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Login.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="acceptance" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="acceptance" />
+      </scripts>
       <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/frontend" />
       <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="Sign In Invalid Email Customer" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="cypress-open" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="cypress-open" />
+      </scripts>
       <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/frontend" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" />
-      <test-names>
-        <test-name value="Sign In Invalid Email Customer" />
-      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Sign In Valid Customer" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="eject" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="eject" />
+      </scripts>
       <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/frontend" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" />
-      <test-names>
-        <test-name value="Sign In Valid Customer" />
-      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Sign Up For Account Valid Values Customer" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="start" />
       <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/frontend" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.test.js" />
-      <test-names>
-        <test-name value="Sign Up For Account Valid Values Customer" />
-      </test-names>
       <method v="2" />
     </configuration>
+
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -187,13 +194,20 @@
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+
+    <configuration name="stop" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+
       <package-json value="$PROJECT_DIR$/frontend/package.json" />
-      <command value="start" />
+      <command value="run" />
+      <scripts>
+        <script value="stop" />
+      </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
     <list>
+
       <item itemvalue="Flask server.Flask (Backend/app.py)" />
       <item itemvalue="Jest.Load App.js" />
       <item itemvalue="Jest.Login.test.js" />
@@ -202,14 +216,22 @@
       <item itemvalue="Jest.Sign Up For Account Valid Values Customer" />
       <item itemvalue="npm.start" />
       <item itemvalue="Python.app" />
+
+      <item itemvalue="npm.start" />
+      <item itemvalue="Jest.Address Screen.Page Loaded" />
+      <item itemvalue="npm.acceptance" />
+      <item itemvalue="npm.cypress-open" />
+      <item itemvalue="npm.eject" />
+      <item itemvalue="npm.stop" />
+
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Sign Up For Account Valid Values Customer" />
-        <item itemvalue="Jest.Sign In Valid Customer" />
-        <item itemvalue="Jest.Sign In Invalid Email Customer" />
-        <item itemvalue="Jest.Login.test.js" />
-        <item itemvalue="Jest.Load App.js" />
+        <item itemvalue="npm.cypress-open" />
+        <item itemvalue="npm.stop" />
+        <item itemvalue="npm.eject" />
+        <item itemvalue="npm.acceptance" />
+        <item itemvalue="Jest.Address Screen.Page Loaded" />
       </list>
     </recent_temporary>
   </component>
@@ -343,6 +365,7 @@
       <option name="project" value="LOCAL" />
       <updated>1616777860975</updated>
     </task>
+
     <task id="LOCAL-00017" summary="#215 Changed ordering of orders">
       <created>1617229507793</created>
       <option name="number" value="00017" />
@@ -358,6 +381,37 @@
       <updated>1617230609950</updated>
     </task>
     <option name="localTasksCounter" value="19" />
+
+    <task id="LOCAL-00017" summary="#231-Added Address Acceptance Test">
+      <created>1617324220350</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1617324220350</updated>
+    </task>
+    <task id="LOCAL-00018" summary="#231-Kill Port Added">
+      <created>1617325093729</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1617325093729</updated>
+    </task>
+    <task id="LOCAL-00019" summary="#231-Kill Port Added">
+      <created>1617326095461</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1617326095461</updated>
+    </task>
+    <task id="LOCAL-00020" summary="#231-Added All Cypress Files To Git">
+      <created>1617326780925</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1617326780925</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,11 +439,18 @@
     <MESSAGE value="#192 Customer Order Hooked Into Backend" />
     <MESSAGE value="#187- Feature 3 Tests Done" />
     <MESSAGE value="main fix" />
+
     <MESSAGE value="#215 Changed ordering of orders" />
     <MESSAGE value="#218 Initial implementation of switching" />
     <option name="LAST_COMMIT_MESSAGE" value="#218 Initial implementation of switching" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp4350$app.coverage" NAME="app Coverage Results" MODIFIED="1617302601999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
+
+    <MESSAGE value="#231-Added Address Acceptance Test" />
+    <MESSAGE value="#231-Kill Port Added" />
+    <MESSAGE value="#231-Added All Cypress Files To Git" />
+    <option name="LAST_COMMIT_MESSAGE" value="#231-Added All Cypress Files To Git" />
+
   </component>
 </project>
