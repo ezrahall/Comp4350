@@ -81,7 +81,7 @@ const NavBar = (props) => {
                             </li>
                         )
                     })}
-                    <Link to="/checkout">
+                    <Link id='Checkout' to="/checkout">
                         <div className={styles.navbar__basket}>
                             <ShoppingBasketIcon/>
                             <span

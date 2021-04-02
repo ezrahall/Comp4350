@@ -38,7 +38,7 @@ const Password = ({alertHandler}) => {
             <Paper elevation={3} variant="elevation" className={styles.container}>
                 <h1 className={styles.header}>Reset You Password</h1>
                 <div>
-                    <TextField className={styles.input} label={'New Password'} value={newPassword} type="password" variant="outlined" onChange={e => setNewPassword(e.target.value)} />
+                    <TextField id='NewPassword' className={styles.input} label={'New Password'} value={newPassword} type="password" variant="outlined" onChange={e => setNewPassword(e.target.value)} />
                 </div>
                 <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Change Password</Button>
             </Paper>

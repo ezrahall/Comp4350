@@ -175,14 +175,14 @@ const Login = (props) => {
                         <br/>
                         <label className={styles.label}>
                             <span>Email Address</span>.
-                            <TextField className={styles.input} onChange={e => setEmail(e.target.value)} value={email} />
+                            <TextField id='enterEmail' className={styles.input} onChange={e => setEmail(e.target.value)} value={email} />
                         </label>
                         
                         <label className={styles.label}>
                             <span>Password</span>
-                            <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type="password" value={password} />
+                            <TextField id='enterPassword' className={styles.input} onChange={e => setPassword(e.target.value)} type="password" value={password} />
                         </label>
-                        <Button type="submit" className={styles.submit + " " + styles.buttonMarg  + " " + styles.Button} classes={buttonClasses}><span >Sign In</span></Button>
+                        <Button id='SubmitSign' type="submit" className={styles.submit + " " + styles.buttonMarg  + " " + styles.Button} classes={buttonClasses}><span >Sign In</span></Button>
                         <br/>
                         { checked && <h4 className={styles.welcomText}>Hey welcome back! Hop back in to continue providing great customer experience while increasing your revenue with Safeat</h4>}
                         { isLoading &&  <CircularProgress color="secondary" size={20}/> }
@@ -236,6 +236,7 @@ const Login = (props) => {
             </div>
             <span style={{ position: 'relative', top: '315px', marginLeft: '12px'}}>
                 <Switch
+                    id='LoginSwitch'
                     checked={checked}
                     onChange={handleCheckedChange}
                     color="secondary"
