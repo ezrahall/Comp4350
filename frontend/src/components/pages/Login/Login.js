@@ -62,7 +62,9 @@ const Login = (props) => {
     useEffect(() => {
         if(user != null){
             sessionStorage.setItem('isOwner', checked)
-            const destination = checked ? '/dashboard' : '/'
+            const userRoute = sessionStorage.getItem('address') ? '/home' : '/'
+            const ownerRoute = '/dashboard'
+            const destination = checked ? ownerRoute : userRoute
             history.push(destination)
         }
     },[user])
