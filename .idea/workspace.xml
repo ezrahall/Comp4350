@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-Address.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-DiscoverRestaurants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +60,7 @@
       <recent name="$PROJECT_DIR$/frontend/src/hoc" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.stop">
+  <component name="RunManager" selected="npm.cypress-open">
     <configuration name="Address Screen.Page Loaded" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -133,9 +132,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.cypress-open" />
         <item itemvalue="npm.stop" />
         <item itemvalue="npm.eject" />
-        <item itemvalue="npm.cypress-open" />
         <item itemvalue="npm.acceptance" />
         <item itemvalue="Jest.Address Screen.Page Loaded" />
       </list>
@@ -276,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617324220350</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="#231-Kill Port Added">
+      <created>1617325093729</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1617325093729</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +311,7 @@
     <MESSAGE value="#187- Feature 3 Tests Done" />
     <MESSAGE value="main fix" />
     <MESSAGE value="#231-Added Address Acceptance Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="#231-Added Address Acceptance Test" />
+    <MESSAGE value="#231-Kill Port Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="#231-Kill Port Added" />
   </component>
 </project>
