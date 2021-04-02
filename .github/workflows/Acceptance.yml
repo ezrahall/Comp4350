@@ -27,9 +27,11 @@ jobs:
       run: |
         cd Backend
         export SAFEAT_ACCEPTANCE_TEST=0
-        flask run & export SAFEAT_ACCEPTANCE_TEST=$(echo $!)
-        cd ../frontend/src/acceptanceTests/cypress
-        npm install
+        flask run --host=0.0.0.0 & export SAFEAT_ACCEPTANCE_TEST=$(echo $!)
+        cd ../frontend
+        npm start & export SAFEAT_ACCEPTANCE_FRONT=$(echo $!)
+        sleep 70
         npm run acceptance
         kill $SAFEAT_ACCEPTANCE_TEST
+        kill $SAFEAT_ACCEPTANCE_FRONT
         export SAFEAT_ACCEPTANCE_TEST=
