@@ -5,7 +5,7 @@
     font-size: 60px;
 }
 
-.profileDiv {
+.profile__div {
     width: 100%;
     align-items: center;
 }
@@ -16,12 +16,12 @@
     padding: 50px;
 }
 
-.actionBtns { 
+.action__btns { 
     margin: auto;
     padding-bottom: 30px;
 }
 
-.logoutBtn {
+.logout__btn {
     border-radius: 30px;
     color: tomato;
     background: rgb(209, 208, 208);
@@ -30,35 +30,35 @@
     margin-top: 100px;
 }
 
-.editDiv {
+.edit__div {
     width: 100%;
     padding-bottom: 30px;
 }
 
-.imgContainer {
+.img__container {
     top: 0;
     height: 30vh;
     width: 100px;
     float: left;
 }
 
-.profileInfo {
+.profile__info {
     margin-left: 40px;
 }
 
-.infoDiv label{
+.info__div label{
     margin: 0;
     margin-bottom: 10px;
     left: 0;
 }
 
-.infoDiv input {
+.info__div input {
     width: 720px;
     text-align: left;
 
 }
 
-.infoDiv {
+.info__div {
     margin-bottom: 20px;
 }
 

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from '../ManageOrders/ManageOrders.module.css'
-import OrderSummary from "../OrderSummary/OrderSummary";
-import {getPastOrders} from "../../../../services/orders/orders";
+import OrderSummary from '../OrderSummary/OrderSummary';
+import {getPastOrders} from '../../../../services/orders/orders';
 
 const ManagePastOrders = (props) => {
     const [orders, setOrders] = useState([])

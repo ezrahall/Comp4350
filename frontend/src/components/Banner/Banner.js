@@ -2,7 +2,7 @@ import React from 'react'
 import BannerImage from '../../assets/images/banner-image2.jpg'
 import {Button} from '@material-ui/core';
 
-import styles from "../../assets/styles/Banner.module.css"
+import styles from '../../assets/styles/Banner.module.css'
 
 function Banner() {
     return (
@@ -15,7 +15,7 @@ function Banner() {
                     Let us help you bring a safer tomorrow
                 </h5>
                 <Button 
-                    variant="outlined">Explore
+                    variant='outlined'>Explore
                 </Button>
             </div>
             <div className={styles.banner__image}>

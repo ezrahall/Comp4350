@@ -1,6 +1,6 @@
 import React ,{useEffect,useState} from 'react';
 import CurrencyFormat from 'react-currency-format';
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import styles from '../../assets/styles/Subtotal.module.css';
@@ -32,15 +32,15 @@ const Subtotal = () => {
                             <strong>{value}</strong>
                         </p>
                         <small className={styles.subtotal__gift}>
-                            <input type="checkbox" /> Share as a Gift?
+                            <input type='checkbox' /> Share as a Gift?
                         </small>
                     </>
                 )}
                 decimalScale={2}
                 value={basket.reduce((amount, item) => (parseFloat(item.price) * item.qty )+ amount, 0)}
-                displayType={"text"}
+                displayType={'text'}
                 thousandSeparator={true}
-                prefix={"$"}
+                prefix={'$'}
             />
             
         </div>

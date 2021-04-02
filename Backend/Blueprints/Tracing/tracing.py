@@ -12,7 +12,6 @@ from sqlalchemy.orm import sessionmaker
 from Backend import db
 from Backend.Utilities import jwt_tools
 
-
 tracing_bp = Blueprint('tracing_bp', __name__)
 
 """
@@ -21,6 +20,7 @@ Endpoint expects 2 parameters from client
 @date:      DateTime date of reported infection
 Returns jwt_token to client
 """
+
 
 @tracing_bp.route('/Api/Tracing/Report', methods=['POST'])
 def tracing_send_email():
@@ -75,6 +75,7 @@ def tracing_send_email():
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
 
+
 def get_date_range(date):
     date = re.sub(r"\([^()]*\)", "", date)
     date = datetime.strptime(date, '%a %b %d %Y %H:%M:%S %Z%z ')
@@ -82,6 +83,7 @@ def get_date_range(date):
     date_end = date + timedelta(days=14)
 
     return date_start, date_end
+
 
 def send_message(contacts, date, isStaff):
     port = 465

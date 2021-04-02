@@ -4,63 +4,42 @@ This style guide uses the most popular coding styles from the web for JavaScript
 ## Basic Rules
   - Only include one React component per file.
   - Exports go at the bottom of the file ex. `export default Login`
-
-## Class vs stateless
-
-
+  - Package/React imports at the top of a file followed by a space then local imports. 
+  - Styles are separated into modules and go in styles directory.
+  - Styles are lower case and contain two underscores ex. `.cancel__contentImageContainer`.
 
 ## Naming
 
   - **Extensions**: Use `.js` extension for React components.
-  - **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.js`.
-  - **Reference Naming**: Use PascalCase for React components and camelCase for their instances.
+  - **Filename**: Use PascalCase for filenames, use camelCase for `styles` or services.
 
     ```jsx
     // bad
-    import reservationCard from './ReservationCard';
+    import autoCompleteTextField from './AutoCompleteTextField';
 
     // good
-    import ReservationCard from './ReservationCard';
+    import AutoCompleteTextField from './AutoCompleteTextField';
 
     // bad
-    const ReservationItem = <ReservationCard />;
+    import SignIn from '../../../store/actions/user';
 
     // good
-    const reservationItem = <ReservationCard />;
+    import signIn from '../../../store/actions/user';
     ```
 
-  - **Component Naming**: Use the filename as the component name. For example, `ReservationCard.jsx` should have a reference name of `ReservationCard`. However, for root components of a directory, use `index.jsx` as the filename and use the directory name as the component name:
+  - **Component Naming**: Use the filename as the component name and as the directory name.
 
     ```jsx
     // bad
-    import Footer from './Footer/Footer';
+    import Footer from '.Thing/Address';
 
-    // bad
-    import Footer from './Footer/index';
-
-    // good
-    import Footer from './Footer';
+    // good 
+    import Footer from './Address/Address';
     ```
-
-  - **Props Naming**: Avoid using DOM component prop names for different purposes.
-
-    > Why? People expect props like `style` and `className` to mean one specific thing. Varying this API for a subset of your app makes the code less readable and less maintainable, and may cause bugs.
-
-    ```jsx
-    // bad
-    <MyComponent style="fancy" />
-
-    // bad
-    <MyComponent className="fancy" />
-
-    // good
-    <MyComponent variant="fancy" />
-    ```
-
 
 ## Alignment
 
-  - When lines become too long...
+  - When lines become too long.
 
     ```jsx
     // bad
@@ -139,7 +118,7 @@ This style guide uses the most popular coding styles from the web for JavaScript
 
 ## Spacing
 
-  - Always include no space in your self-closing tag.
+  - Always include no space in the closing tag.
 
     ```jsx
     // good
@@ -149,7 +128,7 @@ This style guide uses the most popular coding styles from the web for JavaScript
     <Foo     />
     ```
 
-  - Do not pad JSX curly braces with spaces.
+  - Do not pad JS curly braces with spaces.
 
     ```jsx
     // bad
@@ -178,32 +157,9 @@ This style guide uses the most popular coding styles from the web for JavaScript
     />
     ```
 
-  - Avoid using an array index as `key` prop, prefer a stable ID.
-
-
-We don’t recommend using indexes for keys if the order of items may change.
-
-  ```jsx
-  // bad
-  {todos.map((todo, index) =>
-    <Todo
-      {...todo}
-      key={index}
-    />
-  )}
-
-  // good
-  {todos.map(todo => (
-    <Todo
-      {...todo}
-      key={todo.id}
-    />
-  ))}
-  ```
-
 ## Parentheses
 
-  - Wrap JSX tags in parentheses when they span more than one line.
+  - Wrap JS tags in parentheses when they span more than one line.
     ```jsx
     // bad
     render() {
@@ -242,31 +198,8 @@ We don’t recommend using indexes for keys if the order of items may change.
   - Use arrow functions always.
 
     ```jsx
-    function ItemList(props) {
-      return (
-        <ul>
-          {props.items.map((item, index) => (
-            <Item
-              key={item.key}
-              onClick={(event) => { doSomethingWith(event, item.name, index); }}
-            />
-          ))}
-        </ul>
-      );
-    }
-    ```
-
-  - Be sure to return a value in your `render` methods.
-
-    ```jsx
-    // bad
-    render() {
-      (<div />);
-    }
-
-    // good
-    render() {
-      return (<div />);
+    const Login = (props) => {
+      // do stuff
     }
     ```
 
@@ -287,3 +220,111 @@ We don’t recommend using indexes for keys if the order of items may change.
   1. `render` or `return`
 
 # Backend Guide
+
+## Basic Rules
+- Use tabs for indentation.
+- Only one Blueprint/Model/Test Suite per file.
+- Methods in a file should be local only.
+
+## Continuing long statements
+- To continue a statement you can use backslashes in which case you should align the next line with the last dot or equal sign, or indent.
+  ```python
+  this_is_a_very_long(function_call, 'with many parameters') \
+      .that_returns_an_object_with_an_attribute
+
+  MyModel.query.filter(MyModel.scalar > 120) \
+              .order_by(MyModel.name.desc()) \
+              .limit(10)
+  ```
+- If statement is `SQL` query then end of lines need one space and no backslash.
+  ```python
+      restaurant_data = session.execute('select st.id, st.name, st.email '
+                                        'from staff as st '
+                                        'where st.active = 1 '
+                                        'and st.restaurant = :restaurant ',
+                                        {'restaurant': data['restaurant']})
+  ```
+- If you break in a statement with parentheses, align to the parentheses.
+  ```python
+  this_is_a_very_long(function_call, 'with many parameters',
+                      23, 42, 'and even more')
+  ```
+- If you break in a json statement with braces, align text with beginning of json and align closing braces with variable name.
+  ```python
+  res = client.post('/Api/User/Login', json={
+        'email': "TES@gmail.com",
+        'password': "test"
+  }, content_type='application/json')
+  ```
+
+## Blank lines
+- Top level functions and classes are separated by two lines, everything else by one. Do not use too many blank lines to separate logical segments in code. 
+  ```python
+    def hello(name):
+        print 'Hello %s!' % name
+
+
+    def goodbye(name):
+        print 'See you %s.' % name
+
+
+    class MyClass(object):
+
+        def __init__(self, name):
+            self.name = name
+
+        def get_annoying_name(self):
+            return self.name.upper() + '!!!!111'
+  ```
+
+## Expressions and Statements
+- No whitespace for unary operators that are not words (e.g.: -, ~ etc.) as well on the inner side of parentheses.
+  ```python
+  # good
+  exp = -1.05
+  value = (item_value / item_count) * offset / exp
+  value = my_list[index]
+  value = my_dict['key']
+
+  # bad
+  exp = - 1.05
+  value = ( item_value / item_count ) * offset / exp
+  value = (item_value/item_count)*offset/exp
+  value=( item_value/item_count ) * offset/exp
+  value = my_list[ index ]
+  value = my_dict ['key']
+  ```
+
+## Comparisons
+- Against arbitrary types use `==` and `!=`.
+- Against singletons with `is` and `is not`.
+- Never compare something with True or False use `not truthy`.
+
+
+## Naming
+- **Class names**: PascalCase, with acronyms kept uppercase
+- **Variable names**: lowercase_with_underscores
+- **Method and function names**: lowercase_with_underscores
+- **Constants**: UPPERCASE_WITH_UNDERSCORES
+  ```python
+  class Restaurant(UserMixin, db.Model):
+
+  date_start, date_end = get_date_range(parameters['date'])
+
+  def get_date_range(date):
+  ```
+
+## Comments
+- If it’s just one line, the closing triple quote is on the same line as the opening, otherwise the text is on the same line as the opening quote and the triple quote that closes the string on its own line.
+  ```python
+  def foo():
+      """This is a string"""
+
+
+  def bar():
+      """This is a longer string with so much information in there
+      that it spans three lines.  In this case the closing triple quote
+      is on its own line.
+      """
+  ```
+

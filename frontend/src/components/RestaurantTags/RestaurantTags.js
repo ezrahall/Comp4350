@@ -129,18 +129,18 @@ const RestaurantTags = () => {
         <div>
             { openError && 
                 <Alert 
-                    variant="filled" 
-                    severity="error" 
+                    variant='filled' 
+                    severity='error' 
                     action={
                         <IconButton
-                            aria-label="close"
-                            color="inherit"
-                            size="small"
+                            aria-label='close'
+                            color='inherit'
+                            size='small'
                             onClick={() => {
                                 setOpenError(false);
                             }}
                         >
-                            <CloseIcon fontSize="inherit" />
+                            <CloseIcon fontSize='inherit' />
                         </IconButton>
                     }
                 >

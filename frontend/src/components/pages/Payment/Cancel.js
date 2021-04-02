@@ -14,7 +14,6 @@ const Cancel = () =>
                     Sorry!! But something went wrong !! 
                 </div>
                 
-
                 <div className={styles.cancel__content}>
                     <p className={styles.cancel__contentTeam}>
                         We apologize for the inconvenience. Don't worry<br/> 
@@ -37,13 +36,7 @@ const Cancel = () =>
                     <button className={styles.cancel__buttonStyle}>Main Menu</button>
                     </Link>
                 </div>
-                
-                
-
-
-            </div>
-
-            
+            </div>   
         </div>
     )
 }

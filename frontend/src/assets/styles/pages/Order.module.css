@@ -1,7 +1,7 @@
 .Order h1{
     margin: 20px;
 }
-.OrderItems{
+.order__items{
     border-radius: 10px;
     border: 1px solid black;
     margin: 25px 10%;

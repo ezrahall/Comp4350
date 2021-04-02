@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk';
 
-import './index.css';
+import './assets/styles/index.css';
 import App from './App';
 import cartReducer from './store/reducers/cartReducer';
 import userReducer from './store/reducers/userRedcuer';

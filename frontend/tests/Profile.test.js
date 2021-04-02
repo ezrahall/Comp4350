@@ -1,10 +1,10 @@
-import {act} from "react-dom/test-utils";
-import {fireEvent, render, waitFor} from "@testing-library/react";
-import {Provider} from "react-redux";
-import {MemoryRouter} from "react-router";
-import Profile from "./Profile";
-import configureStore from "redux-mock-store";
-import thunk from "redux-thunk";
+import {act} from 'react-dom/test-utils';
+import {fireEvent, render, waitFor} from '@testing-library/react';
+import {Provider} from 'react-redux';
+import {MemoryRouter} from 'react-router';
+import Profile from '../src/components/Profile/Profile';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
 
