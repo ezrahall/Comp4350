@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-Address.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,21 +61,7 @@
       <recent name="$PROJECT_DIR$/frontend/src/hoc" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.cypress-open">
-    <configuration name="Address Screen.Page Loaded (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/frontend" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-Address.test.js" />
-      <test-names>
-        <test-name value="Address Screen" />
-        <test-name value="Page Loaded" />
-      </test-names>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.stop">
     <configuration name="Address Screen.Page Loaded" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -112,11 +96,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="cypress" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="eject" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/frontend/package.json" />
       <command value="run" />
       <scripts>
-        <script value="cypress" />
+        <script value="eject" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -129,21 +113,31 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="stop" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="stop" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="npm.start" />
-      <item itemvalue="npm.cypress" />
       <item itemvalue="Jest.Address Screen.Page Loaded" />
-      <item itemvalue="Jest.Address Screen.Page Loaded (1)" />
       <item itemvalue="npm.acceptance" />
       <item itemvalue="npm.cypress-open" />
+      <item itemvalue="npm.eject" />
+      <item itemvalue="npm.stop" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.stop" />
+        <item itemvalue="npm.eject" />
         <item itemvalue="npm.cypress-open" />
         <item itemvalue="npm.acceptance" />
         <item itemvalue="Jest.Address Screen.Page Loaded" />
-        <item itemvalue="npm.cypress" />
-        <item itemvalue="Jest.Address Screen.Page Loaded (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616777860975</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="#231-Added Address Acceptance Test">
+      <created>1617324220350</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1617324220350</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +304,7 @@
     <MESSAGE value="#192 Customer Order Hooked Into Backend" />
     <MESSAGE value="#187- Feature 3 Tests Done" />
     <MESSAGE value="main fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="main fix" />
+    <MESSAGE value="#231-Added Address Acceptance Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="#231-Added Address Acceptance Test" />
   </component>
 </project>
