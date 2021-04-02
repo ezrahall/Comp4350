@@ -21,9 +21,7 @@ If the field is an empty string than it will not be updated
 
 @users_bp.route('/Api/User/Update', methods=['POST'])
 def user_update():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
-    enc_jwt = None
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
@@ -69,8 +67,7 @@ Endpoint will deactivate user or restaurant if requested. Will also log them out
 
 @users_bp.route('/Api/User/Deactivate', methods=['POST'])
 def user_deactivate():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
 
     try:
         parameters = request.json
