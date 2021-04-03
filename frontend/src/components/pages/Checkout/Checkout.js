@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import adImage from '../../../assets/images/Checkout-Banner.jpg';
-import {useSelector} from 'react-redux';
-import { useStripe } from '@stripe/react-stripe-js';
+import { useSelector } from "react-redux";
+import { useStripe } from "@stripe/react-stripe-js";
+import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from "@material-ui/core"
+import {useDispatch} from 'react-redux'
+
 
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct';
 import styles from '../../../assets/styles/pages/Checkout.module.css';
 import Subtotal from '../../Subtotal/Subtotal';
 import NavBar from '../../NavBar/NavBar';
 import {genCookies} from '../../../services/genCookies'
+import {setAddress} from '../../../store/actions/adress';
+import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField';
 
 function Checkout() {
     const basket = useSelector(state => state.cart.basket)
@@ -15,6 +20,9 @@ function Checkout() {
     const user_address = useSelector(state => state.user.address)
     const user_name = useSelector(state => state.user.user.name)
     
+    const [ openChangeAddress, setOpenChangeAddress ] = useState(false)
+    const [ newAddress, setNewAddress ] = useState('')
+    const dispatch = useDispatch()
 
     const stripe = useStripe();
     
@@ -48,6 +56,21 @@ function Checkout() {
         });
       };
 
+      const handleClick = () => {
+        setOpenChangeAddress(true)
+      };
+
+      const handleAddressChange = () => {
+        sessionStorage.setItem('address', newAddress)
+        dispatch(setAddress(newAddress))
+        handleClose()
+        setNewAddress('')
+      };
+
+      const handleClose = () => {
+        setOpenChangeAddress(false)
+      }
+
     return (
         <div className={styles.checkout}>
             <NavBar />
@@ -78,7 +101,32 @@ function Checkout() {
                 <Subtotal/>
                 <button onClick={handleSubmit}>Proceed to Pay</button>
             </div>
- 
+            <br />
+            <div className={styles.checkout__deliveryInfo}>
+              <h4>Your order will be delivered to: {user_address} </h4>
+              <Button color="secondary" variant="contained" style={{margin: '10px'}} onClick={handleClick}>Change delivery address</Button>
+            </div>
+
+            <Dialog  fullWidth={true} maxWidth="sm" open={openChangeAddress} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogContent>
+                    <DialogContentText>
+                        <form noValidate autoComplete="off">
+                            <div>
+                                <label htmlFor="newAddress">Enter new address</label>
+                                <AutoCompleteTextField id="newAddress" value={newAddress} fullWidth callback={setNewAddress}/>
+                            </div>
+                        </form> 
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions className={styles.actionBtns}>
+                    <Button onClick={handleClose} color="secondary" variant="contained">
+                      Cancel
+                    </Button>
+                    <Button onClick={handleAddressChange} color="primary" variant="contained">
+                      Change
+                    </Button> 
+                </DialogActions>
+            </Dialog>
                   
         </div>
     )

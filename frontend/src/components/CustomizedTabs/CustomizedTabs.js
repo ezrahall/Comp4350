@@ -1,59 +1,13 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom'
-import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
-import Box from '@material-ui/core/Box';
 import { Button } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-const TabPanel = (props) => {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role='tabpanel'
-        hidden={value !== index}
-        id={`full-width-tabpanel-${index}`}
-        aria-labelledby={`full-width-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box p={3}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-
-const StyledTabs = withStyles({
-  indicator: {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    '& > span': {
-      maxWidth: 300,
-      width: '100%',
-      backgroundColor: '#6faaf7',
-    },
-  },
-})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
-
-const StyledTab = withStyles((theme) => ({
-  root: {
-    textTransform: 'none',
-    color: '#fff',
-    margin: 'auto',
-    fontWeight: theme.typography.fontWeightRegular,
-    fontSize: theme.typography.pxToRem(15),
-    '&:focus': {
-      opacity: 1,
-    },
-  },
-}))((props) => <Tab disableRipple {...props} />);
+import StyledTabs from './StyledTabs'
+import StyledTab from './StyledTab'
+import TabPanel from './TabPanel'
 
 const useStyles = makeStyles((theme) => ({
   root: {

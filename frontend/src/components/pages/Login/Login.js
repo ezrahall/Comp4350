@@ -3,12 +3,12 @@ import { Button, TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar'
-import MuiAlert from '@material-ui/lab/Alert';
 import Switch from '@material-ui/core/Switch';
 import { useHistory, useLocation } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 
 import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField'
+import Alert from './Alert'
 import styles from '../../../assets/styles/pages/Login.module.css'
 import {signIn, signUp} from '../../../store/actions/user';
 
@@ -20,10 +20,6 @@ const useStyles = makeStyles({
         color: '#fff',
     }
 })
-
-function Alert(props) {
-    return <MuiAlert elevation={6} variant='filled' {...props} />;
-}
 
 const Login = (props) => {
 

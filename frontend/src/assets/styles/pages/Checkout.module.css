@@ -37,6 +37,10 @@
   z-index: 1;
 }
 
+.checkout__deliveryInfo {
+     margin-top: 150px;
+}
+
 .checkout__subtotal > button {
   background: -webkit-linear-gradient(left, #7579ff, #b224ef);
   border-radius: 2px;

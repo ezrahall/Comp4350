@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { CircularProgress, Snackbar } from '@material-ui/core'
+import { Snackbar } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
-import nookies from 'nookies'
-import axios from 'axios'
 
 import CustomizedTabs from '../../CustomizedTabs/CustomizedTabs'
 import Profile from '../../Profile/Profile'
 import Password from '../../Password/Password'
-import Staff from '../../Staff/Staff'
 
 import {useSelector} from 'react-redux';
 
