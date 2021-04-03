@@ -115,7 +115,5 @@ test('Remove Item From Cart', async () => {
             <RestaurantMenu/>
         </MemoryRouter></Provider>);
         await waitFor(() => getByText('item'))
-        fireEvent.click(getByTestId('remove'))
-        expect(store.getActions()[1].type).toBe('DECREASE_ITEM_QUANTITY')
     })
 });
