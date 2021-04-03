@@ -1,6 +1,6 @@
 import {Switch, Route, withRouter} from 'react-router';
 import {useEffect} from "react";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -35,22 +35,20 @@ const LoginContainer = () => {
 }
 
 const DefaultContainer = () => {
+    const user = useSelector(state => state.user.user)
   return(
     <div>
       <div className="container">
           <Route path="/home" exact component={Home}/>
           <Route path="/restaurantmenu"component={RestaurantMenu}/>
           <Route path="/account"component={Account}/>
-          <Route path="/dashboard" component={RestaurantDetails}/>
+          <Route path="/dashboard" component={user ? RestaurantDetails: Login}/>
           <Elements stripe={stripePromise}>
-          <Route path="/checkout"component={Checkout}/>
+          <Route path="/checkout"component={user ? Checkout : Login}/>
           </Elements>
-          <Route path="/manageOrders" exact component={Orders}/>
-          <Route path="/manageOrders/Order" component={Order}/>
-          <Route path="/report"component={CovidReport}/>
           <Route path="/payment/success" component={PaymentSucess}/>
 
-          <Route path="/orderTracker" component={OrderTracker}/>
+          <Route path="/orderTracker" component={user ? OrderTracker: Login}/>
           <Route path="/payment/cancel" component={PaymentCancel}/>
       </div>
     </div>
