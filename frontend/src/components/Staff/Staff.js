@@ -125,9 +125,9 @@ const StaffDetail = ({staff, handleDelete, handleSetup}) => {
     return (
             <StyledTableRow key={staff.id}>
                 <StyledTableCell >{staff.id}</StyledTableCell>
-                <StyledTableCell align='left'>{staff.name}</StyledTableCell>
-                <StyledTableCell align='left'>{staff.email}</StyledTableCell>
-                <StyledTableCell align='left'><MoreVertIcon onClick={(e) => setAnchorEl(e.currentTarget)}/></StyledTableCell>
+                <StyledTableCell align="left">{staff.name}</StyledTableCell>
+                <StyledTableCell align="left">{staff.email}</StyledTableCell>
+                <StyledTableCell align="left"><MoreVertIcon id='Actions' onClick={(e) => setAnchorEl(e.currentTarget)}/></StyledTableCell>
                 <Menu
                     id='staff-menu-actions'
                     data-testid={staff.name + '-menu'}
