@@ -102,7 +102,7 @@ function Checkout() {
                 <button onClick={handleSubmit}>Proceed to Pay</button>
             </div>
             <br />
-            <div>
+            <div className={styles.checkout__deliveryInfo}>
               <h4>Your order will be delivered to: {user_address} </h4>
               <Button color="secondary" variant="contained" style={{margin: '10px'}} onClick={handleClick}>Change delivery address</Button>
             </div>

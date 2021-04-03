@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
-import classes from './OrderTracker.module.css'
-import NavBar from "../../NavBar/NavBar";
-import Tracker from "../../../ui/Tracker/Tracker";
-import {getOrderCustomer} from "../../../services/orders/orders";
+import classes from '../../../assets/styles/pages/OrderTracker.module.css'
+import NavBar from '../../NavBar/NavBar';
+import Tracker from '../../../ui/Tracker/Tracker';
+import {getOrderCustomer} from '../../../services/orders/orders';
 
 const OrderTracker = (props) => {
     const [order, setOrder] = useState(null)

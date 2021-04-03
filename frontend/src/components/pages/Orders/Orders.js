@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Orders.module.css';
-import NavBar from "../../NavBar/NavBar";
-import ManageOrders from "./ManageOrders/ManageOrders";
+import NavBar from '../../NavBar/NavBar';
+import ManageOrders from './ManageOrders/ManageOrders';
 
 const Orders = (props) => {
     const user = JSON.parse(sessionStorage.getItem('user'))

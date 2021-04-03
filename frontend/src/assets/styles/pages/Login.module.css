@@ -1,4 +1,4 @@
-  .loginDiv{
+  .login__div{
     width: 100%;
     height: 100vh;
     display: flex;
@@ -44,14 +44,14 @@
     display: none;
   }
 
-  .headerText{
+  .header__text{
     width: 100%;
     font-size: 30px;
     text-align: center;
   }
 
 
-  .welcomText {
+  .welcome__text {
     width: 70%;
     height: 100%;
     font-size: 20px;
@@ -88,7 +88,7 @@
     font-family: 'Nunito', sans-serif; 
   }
   
-  .buttonMarg {
+  .button__marg {
       margin-top: 10;
   }
    
@@ -119,7 +119,7 @@
     background: -webkit-linear-gradient(left, #b224ef, #7579ff);
   }
   
-  .forgotPass{
+  .forgot__pass{
     margin-top: 15px;
     text-align: center;
     font-size: 14px;
@@ -128,22 +128,22 @@
     cursor: pointer;
   }
   
-  .forgotPass:hover{
+  .forgot__pass:hover{
     color: red;
   }
   
-  .socialMedia{
+  .social__media{
     width: 200px;
     text-align: center;
     margin-top: 20px;
   }
   
-  .socialMedia Button{
+  .social__media Button{
     display: inline-block;
     cursor: pointer;
   }
  
-  .subContainer{
+  .sub__container{
     overflow: hidden;
     position: absolute;
     left: 640px;
@@ -157,7 +157,7 @@
     transition: transform 1.2s ease-in-out;
   }
   
-  .container.sSignUp .subContainer{
+  .container.sSignUp .sub__container{
     -webkit-transform:translate3d(-640px, 0, 0);
             transform:translate3d(-640px, 0, 0);
   }
@@ -201,7 +201,7 @@
             transform:translate3d(640px, 0, 0);
   }
   
-  .imgText{
+  .img__text{
     z-index: 2;
     position: absolute;
     left: 0;
@@ -215,39 +215,39 @@
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
   }
   
-  .imgText h2{
+  .img__text h2{
     margin-bottom: 10px;
     font-weight: normal;
   }
   
-  .imgText p{
+  .img__text p{
     font-size: 14px;
     line-height: 1.5;
   }
 
-  .container.sSignUp .imgText.mUp{
+  .container.sSignUp .img__text.mUp{
     -webkit-transform:translateX(520px);
             transform:translateX(520px);
   }
   
-  .imgText.mIn{
+  .img__text.mIn{
     -webkit-transform:translateX(-520px);
             transform:translateX(-520px);
   }
   
-  .container.sSignUp .imgText.mIn{
+  .container.sSignUp .img__text.mIn{
     -webkit-transform:translateX(0);
             transform:translateX(0);
   }
   
   
-  .signIn{
+  .sign__in{
     padding-top: 65px;
     -webkit-transition-timing-function:ease-out;
             transition-timing-function:ease-out;
   }
   
-  .container.sSignUp .signIn{
+  .container.sSignUp .sign__in{
     -webkit-transition-timing-function:ease-in-out;
             transition-timing-function:ease-in-out;
     -webkit-transition-duration:1.2s;
@@ -267,7 +267,7 @@
 
   }
 
-  .imageBtn{
+  .image__btn{
     overflow: hidden;
     z-index: 2;
     position: relative;
@@ -280,7 +280,7 @@
     cursor: pointer;
   }
   
-  .imageBtn:after{
+  .image__btn:after{
     content: '';
     z-index: 2;
     position: absolute;
@@ -290,7 +290,7 @@
     height: 100%;
   }
   
-  .imageBtn span{
+  .image__btn span{
     position: absolute;
     left: 0px;
     top: 0px;
@@ -309,27 +309,27 @@
     transition: transform 1.2s, -webkit-transform 1.2s;
   }
   
-  .imageBtn span.mIn{
+  .image__btn span.mIn{
     -webkit-transform:translateY(-72px);
             transform:translateY(-72px);
   }
   
-  .container.sSignUp .imageBtn span.mIn{
+  .container.sSignUp .image__btn span.mIn{
     -webkit-transform:translateY(0);
             transform:translateY(0);
   }
   
-  .container.sSignUp .imageBtn span.mUp{
+  .container.sSignUp .image__btn span.mUp{
     -webkit-transform:translateY(72px);
             transform:translateY(72px);
   }
   
-  .signUp{
+  .sign__up{
     -webkit-transform:translate3d(-900px, 0, 0);
             transform:translate3d(-900px, 0, 0);
   }
   
-  .container.sSignUp .signUp{
+  .container.sSignUp .sign__up{
     -webkit-transform:translate3d(0, 0, 0);
             transform:translate3d(0, 0, 0);
   }

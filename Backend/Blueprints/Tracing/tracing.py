@@ -12,7 +12,6 @@ from sqlalchemy.orm import sessionmaker
 from Backend import db
 from Backend.Utilities import jwt_tools
 
-
 tracing_bp = Blueprint('tracing_bp', __name__)
 
 """

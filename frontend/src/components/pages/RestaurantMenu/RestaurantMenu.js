@@ -3,9 +3,9 @@ import React, {useEffect, useState} from 'react'
 import styles from '../../../assets/styles/pages/RestaurantMenu.module.css'
 import Hero from '../../Hero/Hero'
 import FoodItem from '../../FoodItem/FoodItem'
-import NavBar from "../../NavBar/NavBar";
+import NavBar from '../../NavBar/NavBar';
 import KFC from '../../../assets/images/KFC.jpg';
-import {getRestaurantMenu} from "../../../services/restaurants/restaurantsService";
+import {getRestaurantMenu} from '../../../services/restaurants/restaurantsService';
 
 function RestaurantMenu() {
     const [menuItems, setMenuItems] = useState([])

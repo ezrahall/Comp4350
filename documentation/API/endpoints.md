@@ -289,19 +289,36 @@ Endpoint used to send basket info to the server and create a checkout session an
 @basket     : [{"id": 33, "qty": 5}] Stores food id and quantity\
 @addr       : String of users address to deliver to\
 @restaurant : ID of restaurant this transaction is occuring with\
-@returns stripe session json.
+@returns stripe session json.\
+@note if testing environment var is set, then doesnt fire api request and generates a json of
+```
+{"id": "stripe_test_id_3342234"}
+```
 
 
 ## /Api/Restaurant/Payment/Data [POST]
 Endpoint used to retrieve the meta data of a certain checkout session\
 @id        : The session id of the stripe transaction\
 @cookies   : Dictionary of client side cookies\
-@return the meta data of the whole session
+@return the meta data of the whole session\
+@note if testing environment var is set, then doesnt fire api request and searches blindly
+based on id and returns
+```
+{"id": "stripe_id_test_3424234dfg"}
+```
 
 ## /Api/Dump [POST]
 Endpoint used to delete inserted data from database after acceptance testing\
 No parameters are required\
 @returns 200 upon success or 500 on failure or if not in testing state
+
+
+## /Api/Restaurant/Payment/Webhook [POST]
+Webhook for Stripe to update transaction to being completed or cancelled\
+@returns 200 upon success or 500 on failure\
+@note if testing environment var is set, then endpoint expects \
+@id of the transaction to move to the next state
+
 
 
 
