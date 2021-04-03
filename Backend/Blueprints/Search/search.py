@@ -25,12 +25,11 @@ Default behaviour is empty query which will return first 30 restaurants within r
 
 @search_bp.route('/Api/Search', methods=['POST'])
 def search():
+    session = sessionmaker(bind=db.engine)()
     base_endpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins='
     all_endpoints = []
     json_string = ''
     rest_map = {}
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
 
     try:
         parameters = request.json
@@ -127,11 +126,9 @@ Returns a json of the token after each query and the results array of prediction
 def location_autocomplete():
     base_endpoint = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyBo-qegIezm3c7-cPJgEyXftnrc5Q4Sa-Y'
     json_string = '{ "completions": ['
-    enc_jwt = None
 
     try:
         parameters = request.json
-        token = None
 
         if parameters['token'] == "":
             token = str(uuid.uuid4().hex)

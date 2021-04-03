@@ -18,8 +18,7 @@ Return json of orders for that restaurant, and jwt_token to refresh browser stat
 
 @transaction_bp.route('/Api/Restaurant/Transaction/Data', methods=['POST'])
 def all_orders():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
     prev_order = -1
     result = '{ "orders": ['
 
@@ -92,8 +91,7 @@ Return jwt_token to refresh browser session
 
 @transaction_bp.route('/Api/Restaurant/Transaction/Update', methods=['POST'])
 def update_order_state():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
     result = ''
 
     try:
@@ -142,8 +140,7 @@ Return json of orders for that user, and jwt_token to refresh browser state
 
 @transaction_bp.route('/Api/User/Transaction/Data', methods=['POST'])
 def user_order():
-    Session = sessionmaker(bind=db.engine)
-    session = Session()
+    session = sessionmaker(bind=db.engine)()
     result = '{"orders": ['
     prev_order = -1
 
