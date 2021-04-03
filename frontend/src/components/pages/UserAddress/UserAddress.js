@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import SearchIcon from '@material-ui/icons/Search';
-import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 
@@ -11,8 +9,8 @@ import {setAddress} from '../../../store/actions/adress';
 
 function UserAddress(props) {
     const FIND_RESTAURANTS = 'Find Restaurants Nearby';
-    const CHOOSE_ADDRESS = 'Please choose an address from one of the options';
-    const [buttonAttr, setButtonAttr] = useState({name: FIND_RESTAURANTS, color: 'primary'});
+    const CHOOSE_ADDRESS = 'Please choose from one of the options';
+    const [buttonAttr, setButtonAttr] = useState({name: FIND_RESTAURANTS});
     const [newAddress, setNewAddress] = useState('')
     const [addresses, setAddresses] = useState([])
     const [token, setToken] = useState('')
@@ -31,7 +29,7 @@ function UserAddress(props) {
             history.push('./home')
         }
         else {
-            setButtonAttr({name: CHOOSE_ADDRESS, color: 'secondary'})
+            setButtonAttr({name: CHOOSE_ADDRESS})
         }
     }
 
@@ -56,7 +54,7 @@ function UserAddress(props) {
         setNewAddress(event.target.textContent)
         setVisibility(false)
         setValidAddress(true)
-        setButtonAttr({name: FIND_RESTAURANTS, color: 'primary'})
+        setButtonAttr({name: FIND_RESTAURANTS})
     }
 
     return (
@@ -69,13 +67,12 @@ function UserAddress(props) {
                                    onChange={handleChange} 
                                    placeholder='Please Enter Your Address'
                                    value={newAddress}/>
-                            <SearchIcon />
                         </div>
                         <div className={styles.address__list}>
                             {visible && addresses.map(address => <li key={address.name} className={styles.address__listitem}>
                             <a onClick={handleClick}>{address.name}</a></li>)}
                         </div>
-                        <Button style={{marginTop:'60px'}} className={styles.address__button} type='submit' variant='contained' color={buttonAttr.color}>{buttonAttr.name}</Button>
+                        {!visible && <button className={styles.address__button} type='submit'>{buttonAttr.name}</button>}
                 </form>
             </div> 
         </div>
