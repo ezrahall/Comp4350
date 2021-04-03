@@ -5,7 +5,7 @@
     font-size: 60px;
 }
 
-.profileDiv {
+.profile__div {
     width: 100%;
     align-items: center;
 }
@@ -27,7 +27,7 @@
     margin: auto;
 }
 
-.actionBtns { 
+.action__btns { 
     margin: auto;
 }
 

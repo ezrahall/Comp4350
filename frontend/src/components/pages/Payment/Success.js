@@ -43,13 +43,7 @@ const Success = () => {
                     <button className={styles.success__buttonStyle2}>Main Menu</button>
                     </Link>
                 </div>
-                
-                
-
-
-            </div>
-
-            
+            </div>   
         </div>
     )
 }

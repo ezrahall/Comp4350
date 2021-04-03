@@ -1,9 +1,9 @@
-import { act } from "react-dom/test-utils";
-import { fireEvent, render, waitFor } from "@testing-library/react";
-import { MemoryRouter } from "react-router";
-import axios from "axios";
+import { act } from 'react-dom/test-utils';
+import { fireEvent, render, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
+import axios from 'axios';
 
-import RestaurantTags from "./RestaurantTags";
+import RestaurantTags from '../components/RestaurantTags/RestaurantTags';
 
 jest.mock('axios');
 
@@ -13,7 +13,7 @@ test('Get all restaurant tags', async () => {
         axios.post = jest.fn()
             .mockResolvedValue({
                 data: {
-                    tags: [{ "id": "1", "name": "Spicy" }, { "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '1', 'name': 'Spicy' }, { 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
@@ -50,13 +50,13 @@ test('Update Tags with Spicy tag', async () => {
         axios.post = jest.fn()
             .mockResolvedValue({
                 data: {
-                    tags: [{ "id": "3", "name": "Spicy" }, { "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '3', 'name': 'Spicy' }, { 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
             .mockResolvedValueOnce({
                 data: {
-                    tags: [{ "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
@@ -92,7 +92,7 @@ test('Add Spicy tag only once', async () => {
         axios.post = jest.fn()
             .mockResolvedValue({
                 data: {
-                    tags: [{ "id": "3", "name": "Spicy" }]
+                    tags: [{ 'id': '3', 'name': 'Spicy' }]
                 },
                 status: 200
             })
@@ -119,13 +119,13 @@ test('Remove Spicy Tag from restaurant tags', async () => {
         axios.post = jest.fn()
             .mockResolvedValue({
                 data: {
-                    tags: [{ "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
             .mockResolvedValueOnce({
                 data: {
-                    tags: [{ "id": "3", "name": "Spicy" }, { "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '3', 'name': 'Spicy' }, { 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
@@ -161,23 +161,13 @@ test('Remove all Tags from restaurant tags list', async () => {
         axios.post = jest.fn()
             .mockResolvedValue({
                 data: {
-                    tags: [{ "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
             .mockResolvedValueOnce({
                 data: {
-                    tags: [{ "id": "3", "name": "Spicy" }, { "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
-                },
-                status: 200
-            })
-            .mockResolvedValueOnce({
-                data: [],
-                status: 200
-            })
-            .mockResolvedValueOnce({
-                data: {
-                    tags: [{ "id": "2", "name": "Sweet" }, { "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '3', 'name': 'Spicy' }, { 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
@@ -187,7 +177,7 @@ test('Remove all Tags from restaurant tags list', async () => {
             })
             .mockResolvedValueOnce({
                 data: {
-                    tags: [{ "id": "4", "name": "Wraps" }, { "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '2', 'name': 'Sweet' }, { 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })
@@ -197,7 +187,17 @@ test('Remove all Tags from restaurant tags list', async () => {
             })
             .mockResolvedValueOnce({
                 data: {
-                    tags: [{ "id": "3", "name": "Korean" }]
+                    tags: [{ 'id': '4', 'name': 'Wraps' }, { 'id': '3', 'name': 'Korean' }]
+                },
+                status: 200
+            })
+            .mockResolvedValueOnce({
+                data: [],
+                status: 200
+            })
+            .mockResolvedValueOnce({
+                data: {
+                    tags: [{ 'id': '3', 'name': 'Korean' }]
                 },
                 status: 200
             })

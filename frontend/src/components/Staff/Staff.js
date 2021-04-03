@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useHistory }  from 'react-router-dom'
 import { withStyles, makeStyles, useTheme } from '@material-ui/core/styles'
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from "@material-ui/core"
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from '@material-ui/core'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -83,24 +83,24 @@ const TablePaginationActions = (props) => {
         <IconButton
           onClick={handleFirstPageButtonClick}
           disabled={page === 0}
-          aria-label="first page"
+          aria-label='first page'
         >
           {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
         </IconButton>
-        <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
+        <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label='previous page'>
           {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
         </IconButton>
         <IconButton
           onClick={handleNextButtonClick}
           disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="next page"
+          aria-label='next page'
         >
           {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
         </IconButton>
         <IconButton
           onClick={handleLastPageButtonClick}
           disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="last page"
+          aria-label='last page'
         >
           {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
         </IconButton>
@@ -130,7 +130,7 @@ const StaffDetail = ({staff, handleDelete, handleSetup}) => {
                 <StyledTableCell align="left"><MoreVertIcon id='Actions' onClick={(e) => setAnchorEl(e.currentTarget)}/></StyledTableCell>
                 <Menu
                     id='staff-menu-actions'
-                    data-testid={staff.name + "-menu"}
+                    data-testid={staff.name + '-menu'}
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
@@ -144,22 +144,22 @@ const StaffDetail = ({staff, handleDelete, handleSetup}) => {
                     keepMounted
                     onClose={() => setOpenWarning(false)}
                     fullWidth
-                    aria-labelledby="alert-dialog-slide-title"
-                    aria-describedby="alert-dialog-slide-description">
-                    <DialogTitle id="alert-dialog-slide-title">Warning!</DialogTitle>
+                    aria-labelledby='alert-dialog-slide-title'
+                    aria-describedby='alert-dialog-slide-description'>
+                    <DialogTitle id='alert-dialog-slide-title'>Warning!</DialogTitle>
                     <DialogContent>
-                        <DialogContentText id="alert-dialog-slide-description">
+                        <DialogContentText id='alert-dialog-slide-description'>
                             <p>You are about to remove {staff.name} from your staff list. This step cannot be reversed</p>
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => setOpenWarning(false)} color="primary">
+                        <Button onClick={() => setOpenWarning(false)} color='primary'>
                             Cancel
                         </Button>
                         <Button 
                             data-testid={staff.name + '-continue'}
-                            color="primary"
-                            variant="contained"
+                            color='primary'
+                            variant='contained'
                             onClick={() => {handleDelete(staff.id); setOpenWarning(false)}}>
                             Continue
                         </Button>
@@ -327,36 +327,36 @@ const Staff = () => {
 
     return (
         <div>
-            <Paper elevation={3} variant="elevation" className={styles.container}>
+            <Paper elevation={3} variant='elevation' className={styles.container}>
             { open && 
                 <Alert 
-                    data-testid="errorAlert"
-                    variant="filled" 
-                    severity="error" 
+                    data-testid='errorAlert'
+                    variant='filled' 
+                    severity='error' 
                     action={
                         <IconButton
-                            aria-label="close"
-                            color="inherit"
-                            size="small"
+                            aria-label='close'
+                            color='inherit'
+                            size='small'
                             onClick={() => {
                                 setOpen(false);
                             }}
                         >
-                            <CloseIcon fontSize="inherit" />
+                            <CloseIcon fontSize='inherit' />
                         </IconButton>
                     }
                 >
                     {errorMessage}
                 </Alert>
             }
-                <Button variant="contained" color="primary" style={{float: 'right', marginBottom: '10px'}} onClick={() => prepare(null, true)}>Add New Staff Member</Button>
-            { staffList.length > 0 ? <Table className={classes.table} aria-label="customized table">
+                <Button variant='contained' color='primary' style={{float: 'right', marginBottom: '10px'}} onClick={() => prepare(null, true)}>Add New Staff Member</Button>
+            { staffList.length > 0 ? <Table className={classes.table} aria-label='customized table'>
                 <TableHead>
                     <TableRow>
                         <StyledTableCell>ID</StyledTableCell>
-                        <StyledTableCell align="left">Name</StyledTableCell>
-                        <StyledTableCell align="left">Email</StyledTableCell>
-                        <StyledTableCell align="left">Actions</StyledTableCell>
+                        <StyledTableCell align='left'>Name</StyledTableCell>
+                        <StyledTableCell align='left'>Email</StyledTableCell>
+                        <StyledTableCell align='left'>Actions</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -391,25 +391,25 @@ const Staff = () => {
                 <h1>No Staff</h1>
                 }
             </Paper>
-            <Dialog  fullWidth={true} maxWidth="sm" open={openCreate} onClose={handleCancel} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Staff Information</DialogTitle>
+            <Dialog  fullWidth={true} maxWidth='sm' open={openCreate} onClose={handleCancel} aria-labelledby='form-dialog-title'>
+                <DialogTitle id='form-dialog-title'>Staff Information</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        <form noValidate autoComplete="off">
+                        <form noValidate autoComplete='off'>
                             <div>
-                                <label htmlFor="staffName">Staff Name</label>
-                                <TextField id="staffName" value={staffName} fullWidth onChange={e => setStaffName(e.target.value)} />
-                                <label htmlFor="staffEmail">Staff Email Address</label>
-                                <TextField id="staffEmail" value={staffEmail} fullWidth onChange={e => setStaffEmail(e.target.value)} />
+                                <label htmlFor='staffName'>Staff Name</label>
+                                <TextField id='staffName' value={staffName} fullWidth onChange={e => setStaffName(e.target.value)} />
+                                <label htmlFor='staffEmail'>Staff Email Address</label>
+                                <TextField id='staffEmail' value={staffEmail} fullWidth onChange={e => setStaffEmail(e.target.value)} />
                             </div>
                         </form> 
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions className={styles.actionBtns}>
-                    <Button onClick={handleCancel} color="secondary" variant="contained">
+                <DialogActions className={styles.action__btns}>
+                    <Button onClick={handleCancel} color='secondary' variant='contained'>
                         Cancel
                     </Button>
-                        <Button onClick={() => handleCreateUpdateStaff(true)} color="primary" variant="contained">
+                        <Button onClick={() => handleCreateUpdateStaff(true)} color='primary' variant='contained'>
                         {isCreate ? 'Create' : 'Update'}
                     </Button> 
                 </DialogActions>

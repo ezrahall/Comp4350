@@ -1,12 +1,12 @@
-import configureStore from "redux-mock-store";
-import thunk from "redux-thunk";
-import {act} from "react-dom/test-utils";
-import {fireEvent, render, waitFor, waitForElementToBeRemoved} from "@testing-library/react";
-import {Provider} from "react-redux";
-import {MemoryRouter} from "react-router";
-import RestaurantMenu from "./RestaurantMenu";
-import * as RestaurantService from '../../../services/restaurants/restaurantsService';
-import React from "react";
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import {act} from 'react-dom/test-utils';
+import {fireEvent, render, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
+import {Provider} from 'react-redux';
+import {MemoryRouter} from 'react-router';
+import RestaurantMenu from '../components/pages/RestaurantMenu/RestaurantMenu';
+import * as RestaurantService from '../services/restaurants/restaurantsService';
+import React from 'react';
 
 const mockRestaurantsMenu = (RestaurantService.getRestaurantMenu = jest.fn())
 

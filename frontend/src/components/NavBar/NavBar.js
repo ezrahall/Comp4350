@@ -3,7 +3,7 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import Orders from '@material-ui/icons/EmojiTransportation'
 import SearchIcon from '@material-ui/icons/Search';
 import {useHistory, Link} from 'react-router-dom';
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux';
 
 import { MenuItems } from './MenuItems.js';
 import styles from '../../assets/styles/NavBar.module.css';
@@ -46,7 +46,7 @@ const NavBar = (props) => {
     }
     
         return(
-            <nav className={styles.NavBarItems}>
+            <nav className={styles.navbar__items}>
                 <button
                     className={styles.button__logo}
                     onClick={() => {logoClicked()}
@@ -57,15 +57,15 @@ const NavBar = (props) => {
                 <form  className={styles.navbar__search} onSubmit={handleSubmit}>
                     <div className={styles.search__box}>
                         <input
-                            type="text"
-                            name="searchQuery"
-                            placeholder="Search Restaurants"
+                            type='text'
+                            name='searchQuery'
+                            placeholder='Search Restaurants'
                             value={searchQuery}
                             onChange={(data) => setSearchQuery(data.target.value)}/>
                         <button><SearchIcon /></button>
                     </div>
                 </form>
-                <Link to="/orderTracker">
+                <Link to='/orderTracker'>
                     <div className={styles.navbar__orders}>
                         <Orders/>
                     </div>
@@ -82,6 +82,7 @@ const NavBar = (props) => {
                         )
                     })}
                     <Link id='Checkout' to="/checkout">
+
                         <div className={styles.navbar__basket}>
                             <ShoppingBasketIcon/>
                             <span

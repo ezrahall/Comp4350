@@ -3,7 +3,7 @@ import {KeyboardArrowLeftOutlined, KeyboardArrowRightOutlined} from '@material-u
 
 import {tags} from '../../data/Tags/Tags';
 import classes from './Tags.module.css';
-import Tag from "./Tag/Tag";
+import Tag from './Tag/Tag';
 
 const Tags = (props) => {
     const [shift, setShift] = useState(0)

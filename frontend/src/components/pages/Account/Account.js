@@ -10,7 +10,7 @@ import Profile from '../../Profile/Profile'
 import Password from '../../Password/Password'
 import Staff from '../../Staff/Staff'
 
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux';
 
 const Account = () => {
     const history = useHistory()
@@ -37,7 +37,7 @@ const Account = () => {
                 index: 1,
             }
         ],
-        title: "Account Settings"
+        title: 'Account Settings'
     }
 
     const restaurant = {
@@ -53,7 +53,7 @@ const Account = () => {
                 index: 1,
             },
         ],
-        title: "Restaurant Overview"
+        title: 'Restaurant Overview'
     }
 
     const tabs = sessionStorage.getItem('isOwner') ? restaurant : user
@@ -69,7 +69,7 @@ const Account = () => {
         <div>
             <CustomizedTabs tabs={tabs.tabs} title={tabs.title} titleStyles={titleCss} />
             <Snackbar open={openAlert} autoHideDuration={6000} onClose={() => setOpenAlert(false)}>
-                <Alert severity={error ? "error" : "success"}>
+                <Alert severity={error ? 'error' : 'success'}>
                   {error}
                 </Alert> 
             </Snackbar>

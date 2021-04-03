@@ -1,6 +1,6 @@
-import {useState} from "react";
-import { Paper, makeStyles, TextField, Button } from "@material-ui/core"
-import {useDispatch} from "react-redux";
+import {useState} from 'react';
+import { Paper, makeStyles, TextField, Button } from '@material-ui/core'
+import {useDispatch} from 'react-redux';
 
 import styles from '../../assets/styles/Password.module.css'
 import {updateUser} from '../../store/actions/user';
@@ -34,13 +34,13 @@ const Password = ({alertHandler}) => {
     }
 
     return (
-        <div className={styles.profileDiv}>
-            <Paper elevation={3} variant="elevation" className={styles.container}>
+        <div className={styles.profile__div}>
+            <Paper elevation={3} variant='elevation' className={styles.container}>
                 <h1 className={styles.header}>Reset You Password</h1>
                 <div>
                     <TextField id='NewPassword' className={styles.input} label={'New Password'} value={newPassword} type="password" variant="outlined" onChange={e => setNewPassword(e.target.value)} />
                 </div>
-                <Button color="primary" variant="contained" classes={classes} onClick={handleUpdate}>Change Password</Button>
+                <Button color='primary' variant='contained' classes={classes} onClick={handleUpdate}>Change Password</Button>
             </Paper>
         </div>
     )

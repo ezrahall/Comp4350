@@ -23,8 +23,8 @@ import { logOut } from '../../../store/actions/user';
 import { blueGrey } from '@material-ui/core/colors';
 import CovidReport from '../CovidReport/CovidReport';
 import RestaurantTags from '../../RestaurantTags/RestaurantTags';
-import ManageOrders from "../Orders/ManageOrders/ManageOrders";
-import ManagePastOrders from "../Orders/ManagePastOrders/ManagePastOrders";
+import ManageOrders from '../Orders/ManageOrders/ManageOrders';
+import ManagePastOrders from '../Orders/ManagePastOrders/ManagePastOrders';
 
 
 const drawerWidth = 240;
@@ -140,9 +140,9 @@ const RestaurantDetails = () => {
 
     return (
         <div>
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position='fixed' className={classes.appBar}>
               <Toolbar>
-                <Typography variant="h6" noWrap style={{flexGrow: 1}}>
+                <Typography variant='h6' noWrap style={{flexGrow: 1}}>
                   {currentTab.text}
                 </Typography>
                 {auth && (
@@ -150,12 +150,12 @@ const RestaurantDetails = () => {
                     {auth.name}
                   <IconButton
                     onClick={handleMenu}
-                    color="inherit"
+                    color='inherit'
                   >
                     <MenuIcon />
                   </IconButton>
                   <Menu
-                    id="menu-appbar"
+                    id='menu-appbar'
                     anchorEl={anchorEl}
                     anchorOrigin={{
                       vertical: 'top',
@@ -191,7 +191,7 @@ const CustomDrawer = ({tabs, handleTabChange, selectedTab}) => {
       
       <Drawer
         className={classes.drawer}
-        variant="permanent"
+        variant='permanent'
         classes={{
           paper: classes.drawerPaper,
         }}

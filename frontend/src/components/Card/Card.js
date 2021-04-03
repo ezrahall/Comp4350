@@ -2,7 +2,7 @@ import React from 'react'
 import {useDispatch} from 'react-redux';
 
 import styles from '../../assets/styles/Card.module.css'
-import {setRestaurant} from "../../store/actions/restaurant";
+import {setRestaurant} from '../../store/actions/restaurant';
 
 const Card = (props) => {
     const dispatch = useDispatch()

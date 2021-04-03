@@ -14,7 +14,7 @@ const TabPanel = (props) => {
   
     return (
       <div
-        role="tabpanel"
+        role='tabpanel'
         hidden={value !== index}
         id={`full-width-tabpanel-${index}`}
         aria-labelledby={`full-width-tab-${index}`}
@@ -90,7 +90,7 @@ const CustomizedTabs = (props) => {
       <div className={classes.color}>
         <Button style={{background: 'transparent', float: 'left', color: '#fff'}} onClick={handleClick}> <ArrowBackIcon/> </Button>
         <h1 style={props.titleStyles}>{props.title}</h1>
-        <StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example"  barColor={props.barColor}>
+        <StyledTabs value={value} onChange={handleChange} aria-label='styled tabs example'  barColor={props.barColor}>
             {props.tabs.map((tab) => {return <StyledTab label={tab.label} style={{margin: tab.css }}/>})}
         </StyledTabs>
       </div>

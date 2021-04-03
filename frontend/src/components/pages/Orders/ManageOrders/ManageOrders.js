@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import classes from './ManageOrders.module.css'
-import OrderSummary from "../OrderSummary/OrderSummary";
-import {getOrders} from "../../../../services/orders/orders";
-import Order from "../../Order/Order";
-import {useSelector} from "react-redux";
+import OrderSummary from '../OrderSummary/OrderSummary';
+import {getOrders} from '../../../../services/orders/orders';
+import Order from '../../Order/Order';
+import {useSelector} from 'react-redux';
 
 
 const ManageOrders = (props) => {
