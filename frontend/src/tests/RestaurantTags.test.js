@@ -3,7 +3,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import axios from 'axios';
 
-import RestaurantTags from '../src/components/RestaurantTags/RestaurantTags';
+import RestaurantTags from '../components/RestaurantTags/RestaurantTags';
 
 jest.mock('axios');
 

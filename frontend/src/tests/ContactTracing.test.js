@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store'
-import RestaurantDetails from '../src/components/pages/RestaurantDetails/RestaurantDetails';
+import RestaurantDetails from '../components/pages/RestaurantDetails/RestaurantDetails';
 
 const mockStore = configureStore([thunk]);
 

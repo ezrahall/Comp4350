@@ -3,7 +3,7 @@ import {fireEvent, render, waitFor, within} from '@testing-library/react';
 import {MemoryRouter} from 'react-router';
 import axios from 'axios'
 
-import Staff from '../src/components/Staff/Staff';
+import Staff from '../components/Staff/Staff';
 
 jest.mock('axios'); 
 

@@ -4,8 +4,8 @@ import {act} from 'react-dom/test-utils';
 import {fireEvent, render, waitFor} from '@testing-library/react';
 import {Provider} from 'react-redux';
 import {MemoryRouter} from 'react-router';
-import OrderTracker from '../src/components/pages/OrderTracker/OrderTracker';
-import * as OrderService from '../src/services/orders/orders';
+import OrderTracker from '../components/pages/OrderTracker/OrderTracker';
+import * as OrderService from '../services/orders/orders';
 const mockGetOrder = (OrderService.getOrderCustomer = jest.fn())
 const mockStore = configureStore([thunk]);
 

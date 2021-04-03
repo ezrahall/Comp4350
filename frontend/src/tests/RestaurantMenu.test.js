@@ -4,8 +4,8 @@ import {act} from 'react-dom/test-utils';
 import {fireEvent, render, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
 import {Provider} from 'react-redux';
 import {MemoryRouter} from 'react-router';
-import RestaurantMenu from '../src/components/pages/RestaurantMenu/RestaurantMenu';
-import * as RestaurantService from '../src/services/restaurants/restaurantsService';
+import RestaurantMenu from '../components/pages/RestaurantMenu/RestaurantMenu';
+import * as RestaurantService from '../services/restaurants/restaurantsService';
 import React from 'react';
 
 const mockRestaurantsMenu = (RestaurantService.getRestaurantMenu = jest.fn())

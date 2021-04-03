@@ -1,11 +1,11 @@
 import {fireEvent, render, waitFor} from '@testing-library/react';
 import {Provider} from 'react-redux';
 import {MemoryRouter} from 'react-router';
-import UserAddress from '../src/components/pages/UserAddress/UserAddress';
+import UserAddress from '../components/pages/UserAddress/UserAddress';
 import {act} from 'react-dom/test-utils';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as addressService from '../src/services/address/address';
+import * as addressService from '../services/address/address';
 const mockStore = configureStore([thunk]);
 const mockEnterAddress = (addressService.enterAddress = jest.fn());
 

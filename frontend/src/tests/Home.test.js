@@ -1,10 +1,10 @@
-import {restaurants, restaurantsAdd, restaurantsFiltered} from '../src/data/restaurants/restaurants';
+import {restaurants, restaurantsAdd, restaurantsFiltered} from '../data/restaurants/restaurants';
 import {act} from 'react-dom/test-utils';
 import {fireEvent, render, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
 import {Provider} from 'react-redux';
 import {MemoryRouter} from 'react-router';
-import Home from '../src/components/pages/Home/Home';
-import * as restaurantService from '../src/services/restaurants/restaurantsService';
+import Home from '../components/pages/Home/Home';
+import * as restaurantService from '../services/restaurants/restaurantsService';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 const mockGetRestaurants = (restaurantService.getRestaurants = jest.fn());

@@ -4,7 +4,7 @@ import {act} from 'react-dom/test-utils';
 import {fireEvent, render, waitFor} from '@testing-library/react';
 import {Provider} from 'react-redux';
 import {MemoryRouter} from 'react-router';
-import Checkout from '../src/components/pages/Checkout/Checkout';
+import Checkout from '../components/pages/Checkout/Checkout';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 const stripePromise = loadStripe('pk_test_51IWvOsCXMychAZM499t1cB9kFug8Z5AvB9FpXhSnpsCcOGCXz1OervvAlKPzbg5VzYz2Ro5UGDxtYQHk2A0p1zw0002D2xp1OP');

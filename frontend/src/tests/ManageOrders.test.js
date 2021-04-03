@@ -4,8 +4,8 @@ import {act} from 'react-dom/test-utils';
 import {render, waitFor} from '@testing-library/react';
 import {Provider} from 'react-redux';
 import {MemoryRouter} from 'react-router';
-import ManageOrders from '../src/components/pages/Orders/ManageOrders/ManageOrders';
-import * as OrderService from '../src/services/orders/orders'
+import ManageOrders from '../components/pages/Orders/ManageOrders/ManageOrders';
+import * as OrderService from '../services/orders/orders'
 const mockGetOrders = (OrderService.getOrders = jest.fn())
 
 const mockStore = configureStore([thunk]);
