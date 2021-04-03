@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {useHistory} from 'react-router-dom'
 
 import styles from '../../assets/styles/FoodItem.module.css';
 import { decreaseItemQuantity as decreaseQuantity } from '../../store/actions/cart';
@@ -10,6 +11,8 @@ const FoodItem = (props) => {
     const dispatch = useDispatch();
 
     const basket = useSelector((state) => state.cart.basket);
+    const user = useSelector((state) => state.user.user)
+    const history = useHistory()
 
     const [itemCount, setItemCount] = useState(0);
     const [activeItem, setActiveItem] = useState(false);
@@ -45,8 +48,12 @@ const FoodItem = (props) => {
             <div
                 className={styles.fooditem}
                 onClick={(e) => {
-                    addToBasket();
-                    setActiveItem(true);
+                    if(user) {
+                        addToBasket();
+                        setActiveItem(true);
+                    }else{
+                        history.push('/login')
+                    }
                 }}
             >
                 <div className={styles.fooditem__card}>

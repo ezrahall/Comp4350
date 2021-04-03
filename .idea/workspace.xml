@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/04-ContactTracing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-DiscoverRestaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/01-DiscoverRestaurants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/03-PlacingAndTrackingOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/03-PlacingAndTrackingOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Staff/Staff.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Staff/Staff.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/FoodItem/FoodItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617335847389</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="#241-Order Tracker Fixed">
+      <created>1617469976627</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1617469976627</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,6 +350,7 @@
     <MESSAGE value="#231-Added All Cypress Files To Git" />
     <MESSAGE value="#231-Added Acceptance Tests For Discover Restaurants Feature" />
     <MESSAGE value="#231-Tests Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="#231-Tests Added" />
+    <MESSAGE value="#241-Order Tracker Fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="#241-Order Tracker Fixed" />
   </component>
 </project>
