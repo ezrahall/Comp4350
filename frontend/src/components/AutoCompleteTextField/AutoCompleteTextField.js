@@ -1,4 +1,4 @@
-import { useState, } from "react";
+import { useState, } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import TextField from '@material-ui/core/TextField'
@@ -45,15 +45,15 @@ const AutoCompleteTextField = (props) => {
     return (
         <div>
              <TextField
-                id="auto"
-                autoComplete="off"
+                id='auto'
+                autoComplete='off'
                 {...props}
                 className={styles.input}
                 onChange={e => handleAddressChange(e.target.value)}
             />
             { display && (
                 <div className={styles.autoContainer}>
-                    <List component="nav" aria-label="main mailbox folders" style={{zIndex: 9000, position: "relative", height: '100px', overflow: 'auto'}}>
+                    <List component='nav' aria-label='main mailbox folders' style={{zIndex: 9000, position: 'relative', height: '100px', overflow: 'auto'}}>
                     {
                     completions
                         .map((value, i) => {

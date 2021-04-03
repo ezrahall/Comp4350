@@ -22,22 +22,22 @@ const useStyles = makeStyles({
 })
 
 function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
+    return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
 
 const Login = (props) => {
 
     useEffect(() => {
-        document.getElementsByClassName(styles.imageBtn)[0].addEventListener('click', () => {
+        document.getElementsByClassName(styles.image__btn)[0].addEventListener('click', () => {
             document.getElementsByClassName(styles.container)[0].classList.toggle(styles.sSignUp)
         })
     }, [])
 
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [address, setAddress] = useState("")
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [address, setAddress] = useState('')
     const [isLogin, setIsLogin] = useState(true)
     const [checked, setChecked] = useState(false)
     const [vError, setVError] = useState(false)
@@ -105,10 +105,10 @@ const Login = (props) => {
             setVError(false)
             
             const user = {
-                "name" : name,
-                "email" : email,
-                "password" : password,
-                "address" : address
+                'name' : name,
+                'email' : email,
+                'password' : password,
+                'address' : address
             }
             if(isLogin) {
                 dispatchRedux(signIn(user))
@@ -124,7 +124,7 @@ const Login = (props) => {
 
     const handleCheckedChange = () => {
         setChecked(!checked)
-        dispatch({ type: checked ? "USER" : "RESTAURANT" })
+        dispatch({ type: checked ? 'USER' : 'RESTAURANT' })
         document.getElementById('container').classList.toggle(styles.expanded)
     }
 
@@ -166,11 +166,11 @@ const Login = (props) => {
         return result
     }
     return (
-        <div className={styles.loginDiv}>
-            <div id="container" className={styles.container}>
-                <div className={styles.form + " " +styles.signIn}>
-                    <form autoComplete="off"  onSubmit={handleLoginSignup}>
-                        <h2 className={styles.headerText}> Sign In</h2>
+        <div className={styles.login__div}>
+            <div id='container' className={styles.container}>
+                <div className={styles.form + ' ' +styles.sign__in}>
+                    <form autoComplete='off'  onSubmit={handleLoginSignup}>
+                        <h2 className={styles.header__text}> Sign In</h2>
                         <br/>
                         <br/>
                         <label className={styles.label}>
@@ -180,34 +180,34 @@ const Login = (props) => {
                         
                         <label className={styles.label}>
                             <span>Password</span>
-                            <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type="password" value={password} />
+                            <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type='password' value={password} />
                         </label>
-                        <Button type="submit" className={styles.submit + " " + styles.buttonMarg  + " " + styles.Button} classes={buttonClasses}><span >Sign In</span></Button>
+                        <Button type='submit' className={styles.submit + ' ' + styles.button__marg  + ' ' + styles.Button} classes={buttonClasses}><span >Sign In</span></Button>
                         <br/>
-                        { checked && <h4 className={styles.welcomText}>Hey welcome back! Hop back in to continue providing great customer experience while increasing your revenue with Safeat</h4>}
-                        { isLoading &&  <CircularProgress color="secondary" size={20}/> }
+                        { checked && <h4 className={styles.welcome__text}>Hey welcome back! Hop back in to continue providing great customer experience while increasing your revenue with Safeat</h4>}
+                        { isLoading &&  <CircularProgress color='secondary' size={20}/> }
                     </form>
                 </div>
-                <div className={styles.subContainer}>
-                    <div id="image-div" className={styles.image}>
-                        <div className={styles.imgText + " " + styles.mUp}>
-                            <h2 className={styles.headerText} id="signup-h1-first">{displayTexts.h1First}</h2>
-                            <p id="signup-p1-secondText">{displayTexts.pSecond}</p>
+                <div className={styles.sub__container}>
+                    <div id='image-div' className={styles.image}>
+                        <div className={styles.img__text + ' ' + styles.mUp}>
+                            <h2 className={styles.header__text} id='signup-h1-first'>{displayTexts.h1First}</h2>
+                            <p id='signup-p1-secondText'>{displayTexts.pSecond}</p>
                         </div>
-                        <div className={styles.imgText + " " + styles.mIn}>
-                            <h2 className={styles.headerText} id="login-h1-first" >{displayTexts.h1Second}</h2>
-                            <p id="login-p1-secondText">{displayTexts.pSecond}</p>
+                        <div className={styles.img__text + ' ' + styles.mIn}>
+                            <h2 className={styles.header__text} id='login-h1-first' >{displayTexts.h1Second}</h2>
+                            <p id='login-p1-secondText'>{displayTexts.pSecond}</p>
                         </div>
                         <div>
-                            <div className={styles.imageBtn} onClick={swicthMode}>
+                            <div className={styles.image__btn} onClick={swicthMode}>
                                 <span className={styles.mUp}>Sign Up</span>
                                 <span className={styles.mIn}>Sign In</span>
                             </div>
                         </div>
                     </div>
-                    <div className={styles.form + " " + styles.signUp}>
-                        <form id="signupForm" autoComplete="false" onSubmit={handleLoginSignup}>
-                            <h2 className={styles.headerText}>Sign Up</h2>
+                    <div className={styles.form + ' ' + styles.sign__up}>
+                        <form id='signupForm' autoComplete='false' onSubmit={handleLoginSignup}>
+                            <h2 className={styles.header__text}>Sign Up</h2>
                             <label className={styles.label}>
                                 <span>{checked ? 'Restaurant' : 'Full'} Name</span>
                                 <TextField className={styles.input} onChange={e => setName(e.target.value)} value={name} />
@@ -218,18 +218,18 @@ const Login = (props) => {
                             </label>
                             <label className={styles.label}>
                                 <span>Password</span>
-                                <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type="password" value={password} />
+                                <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type='password' value={password} />
                             </label>
                             <label className={styles.label}>
                                 <span>Confirm Password</span>
-                                <TextField className={styles.input} onChange={e => setConfirmPassword(e.target.value)} type="password" value={confirmPassword} />
+                                <TextField className={styles.input} onChange={e => setConfirmPassword(e.target.value)} type='password' value={confirmPassword} />
                             </label>
                             { checked && <label className={styles.label}> <span> Restaurant Address </span></label> }
-                            { checked && <AutoCompleteTextField callback={(e) => {setAddress(e)}} type="text" value={address} /> }
+                            { checked && <AutoCompleteTextField callback={(e) => {setAddress(e)}} type='text' value={address} /> }
                             
-                            <Button type="submit"  className={styles.submit + " " + styles.buttonMarg + " " + styles.Button} classes={buttonClasses}><span>Sign Up</span></Button>
+                            <Button type='submit'  className={styles.submit + ' ' + styles.button__marg + ' ' + styles.Button} classes={buttonClasses}><span>Sign Up</span></Button>
                             <br/>
-                            { isLoading && <CircularProgress color="secondary" size={20}/> }
+                            { isLoading && <CircularProgress color='secondary' size={20}/> }
                         </form>
                     </div>
                 </div>
@@ -238,14 +238,14 @@ const Login = (props) => {
                 <Switch
                     checked={checked}
                     onChange={handleCheckedChange}
-                    color="secondary"
-                    name="Restaurant?"
+                    color='secondary'
+                    name='Restaurant?'
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
                 <p style={{color: '#fff'}}>Restaurant?</p>
             </span>
             <Snackbar open={openError} autoHideDuration={6000} onClose={() => setOpenError(false)}>
-                <Alert severity={"error"}>
+                <Alert severity={'error'}>
                   {vError ? vErrorMessage : error}
                 </Alert> 
             </Snackbar>

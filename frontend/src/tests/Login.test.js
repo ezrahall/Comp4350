@@ -1,10 +1,10 @@
-import {act} from "react-dom/test-utils";
-import {fireEvent, render, waitFor} from "@testing-library/react";
-import {Provider} from "react-redux";
-import {MemoryRouter} from "react-router";
-import Login from "./Login";
-import configureStore from "redux-mock-store";
-import thunk from "redux-thunk";
+import {act} from 'react-dom/test-utils';
+import {fireEvent, render, waitFor} from '@testing-library/react';
+import {Provider} from 'react-redux';
+import {MemoryRouter} from 'react-router';
+import Login from '../components/pages/Login/Login';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import axios from 'axios';
 
 jest.mock('axios');

@@ -3,7 +3,7 @@ import DatePicker from 'react-datetime-picker';
 import {useSelector} from 'react-redux'
 
 import classes from '../../../assets/styles/CovidReport.module.css'
-import OpenModal from "../../../ui/OpenModal/OpenModal";
+import OpenModal from '../../../ui/OpenModal/OpenModal';
 import {reportPositive} from '../../../services/covidReport/covidReport';
 const CovidReport = (props) => {
     const [date, setDate] = useState(new Date);
@@ -37,7 +37,7 @@ const CovidReport = (props) => {
                     </div>
                     <p>*Before you submit the report make sure that all details are correct as this is not reversible</p>
                     <button
-                        className={classes.SubmitButton}
+                        className={classes.submit__button}
                         onClick={() => setVerifySubmit(true)}
                     >
                         Submit Report
@@ -51,8 +51,8 @@ const CovidReport = (props) => {
                     <h3>On: {new Date(date).toDateString() + ' ' +new Date(date).toLocaleTimeString()}</h3>
                     <h3>At: {restaurantName}</h3>
                     <div>
-                        <button className={classes.SubmitButton} onClick={report}>Confirm</button>
-                        <button className={classes.CancelButton} onClick={() => setVerifySubmit(false)}>Cancel</button>
+                        <button className={classes.submit__button} onClick={report}>Confirm</button>
+                        <button className={classes.cancel__button} onClick={() => setVerifySubmit(false)}>Cancel</button>
                     </div>
                 </OpenModal>
                 <OpenModal
@@ -61,7 +61,7 @@ const CovidReport = (props) => {
                 >
                     <h1>Report Has Been Confirmed</h1>
                     <div>
-                        <button className={classes.SubmitButton} onClick={() => setVerifyConfirm(false)}>OK</button>
+                        <button className={classes.submit__button} onClick={() => setVerifyConfirm(false)}>OK</button>
                     </div>
                 </OpenModal>
             </div>

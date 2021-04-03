@@ -5,7 +5,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
 
-import './App.css';
+import './assets/styles/App.css';
 import Layout from "./hoc/Layout/Layout";
 import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";

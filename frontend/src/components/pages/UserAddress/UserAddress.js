@@ -10,9 +10,9 @@ import {enterAddress} from '../../../services/address/address';
 import {setAddress} from '../../../store/actions/adress';
 
 function UserAddress(props) {
-    const FIND_RESTAURANTS = "Find Restaurants Nearby";
-    const CHOOSE_ADDRESS = "Please choose an address from one of the options";
-    const [buttonAttr, setButtonAttr] = useState({name: FIND_RESTAURANTS, color: "primary"});
+    const FIND_RESTAURANTS = 'Find Restaurants Nearby';
+    const CHOOSE_ADDRESS = 'Please choose an address from one of the options';
+    const [buttonAttr, setButtonAttr] = useState({name: FIND_RESTAURANTS, color: 'primary'});
     const [newAddress, setNewAddress] = useState('')
     const [addresses, setAddresses] = useState([])
     const [token, setToken] = useState('')
@@ -30,7 +30,7 @@ function UserAddress(props) {
             history.push('./home')
         }
         else {
-            setButtonAttr({name: CHOOSE_ADDRESS, color: "secondary"})
+            setButtonAttr({name: CHOOSE_ADDRESS, color: 'secondary'})
         }
     }
 
@@ -55,7 +55,7 @@ function UserAddress(props) {
         setNewAddress(event.target.textContent)
         setVisibility(false)
         setValidAddress(true)
-        setButtonAttr({name: FIND_RESTAURANTS, color: "primary"})
+        setButtonAttr({name: FIND_RESTAURANTS, color: 'primary'})
     }
 
     return (
@@ -64,9 +64,9 @@ function UserAddress(props) {
             <img src={Logo} alt={'logo'}/>
                 <form onSubmit={handleSubmit} >
                         <div className={styles.address__box}>
-                            <input type="text"
+                            <input type='text'
                                    onChange={handleChange} 
-                                   placeholder="Please Enter Your Address"
+                                   placeholder='Please Enter Your Address'
                                    value={newAddress}/>
                             <SearchIcon />
                         </div>
@@ -74,7 +74,7 @@ function UserAddress(props) {
                             {visible && addresses.map(address => <li key={address.name} className={styles.address__listitem}>
                             <a onClick={handleClick}>{address.name}</a></li>)}
                         </div>
-                        <Button style={{marginTop:'60px'}} className={styles.address__button} type="submit" variant="contained" color={buttonAttr.color}>{buttonAttr.name}</Button>
+                        <Button style={{marginTop:'60px'}} className={styles.address__button} type='submit' variant='contained' color={buttonAttr.color}>{buttonAttr.name}</Button>
                 </form>
             </div> 
         </div>

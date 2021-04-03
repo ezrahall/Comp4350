@@ -1,7 +1,7 @@
 import React from 'react';
 import adImage from '../../../assets/images/Checkout-Banner.jpg';
-import {useSelector} from "react-redux";
-import { useStripe } from "@stripe/react-stripe-js";
+import {useSelector} from 'react-redux';
+import { useStripe } from '@stripe/react-stripe-js';
 
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct';
 import styles from '../../../assets/styles/pages/Checkout.module.css';

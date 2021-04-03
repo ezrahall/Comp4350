@@ -25,7 +25,7 @@
 .Date p{
     margin-right: 10px;
 }
-.SubmitButton{
+.submit__button{
     font-size: 18px;
     padding: 10px 20px;
     color: white;
@@ -35,11 +35,11 @@
     margin: 80px 20px;
     transition: background-color 0.5s;
 }
-.SubmitButton:hover{
+.submit__button:hover{
     background-color: #420e5d;
     cursor: pointer;
 }
-.CancelButton{
+.cancel__button{
     font-size: 18px;
     padding: 10px 20px;
     color: black;
@@ -49,7 +49,7 @@
     margin: 80px 20px;
     transition: background-color 0.5s;
 }
-.CancelButton:hover{
+.cancel__button:hover{
     background-color: rgba(100,100,100,0.36);
     cursor: pointer;
 }

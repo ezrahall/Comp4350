@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux';
 
 
 const PrivateRoute = ({ children, ...rest }) => {
@@ -14,7 +14,7 @@ const PrivateRoute = ({ children, ...rest }) => {
           ) : (
             <Redirect
               to={{
-                pathname: "/login",
+                pathname: '/login',
                 state: { from: location }
               }}
             />

@@ -1,9 +1,9 @@
-import {act} from "react-dom/test-utils";
-import {fireEvent, render, waitFor, within} from "@testing-library/react";
-import {MemoryRouter} from "react-router";
-import axios from "axios"
+import {act} from 'react-dom/test-utils';
+import {fireEvent, render, waitFor, within} from '@testing-library/react';
+import {MemoryRouter} from 'react-router';
+import axios from 'axios'
 
-import Staff from "./Staff";
+import Staff from '../components/Staff/Staff';
 
 jest.mock('axios'); 
 
@@ -15,7 +15,7 @@ test('Get Staff Details', async () => {
         axios.post = jest.fn()
         .mockResolvedValue({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}]
             },
             status: 200
         })
@@ -44,13 +44,13 @@ test('Add One New Staff Member', async () => {
         axios.post = jest.fn()
         .mockResolvedValue({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}, {"id": "4", "name": "James Doe", "email": "jamesd@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}, {'id': '4', 'name': 'James Doe', 'email': 'jamesd@test.com'}]
             },
             status: 200
         })
         .mockResolvedValueOnce({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}]
             },
             status: 200
         })
@@ -94,13 +94,13 @@ test('Edit a Staff Member', async () => {
         axios.post = jest.fn()
         .mockResolvedValue({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"},  {"id": "4", "name": "Jameson Doe", "email": "jamesond@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'},  {'id': '4', 'name': 'Jameson Doe', 'email': 'jamesond@test.com'}]
             },
             status: 200
         })
         .mockResolvedValueOnce({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}, {"id": "4", "name": "James Doe", "email": "jamesd@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}, {'id': '4', 'name': 'James Doe', 'email': 'jamesd@test.com'}]
             },
             status: 200
         })
@@ -150,13 +150,13 @@ test('Delete a Staff Member', async () => {
         axios.post = jest.fn()
         .mockResolvedValue({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}]
             },
             status: 200
         })
         .mockResolvedValueOnce({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}, {"id": "4", "name": "James Doe", "email": "jamesd@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}, {'id': '4', 'name': 'James Doe', 'email': 'jamesd@test.com'}]
             },
             status: 200
         })
@@ -199,13 +199,13 @@ test('Add a Staff Member twice', async () => {
         axios.post = jest.fn()
         .mockResolvedValue({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}, {"id": "4", "name": "James Doe", "email": "jamesd@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}, {'id': '4', 'name': 'James Doe', 'email': 'jamesd@test.com'}]
             },
             status: 200
         })
         .mockResolvedValueOnce({
             data: {
-                staff: [{"id": "1", "name": "Joe schmoe", "email": "test@test.com"}, {"id": "2", "name": "Joe Smith", "email": "joeTest@test.com"}, {"id": "3", "name": "John Doe", "email": "jdoe@test.com"}]
+                staff: [{'id': '1', 'name': 'Joe schmoe', 'email': 'test@test.com'}, {'id': '2', 'name': 'Joe Smith', 'email': 'joeTest@test.com'}, {'id': '3', 'name': 'John Doe', 'email': 'jdoe@test.com'}]
             },
             status: 200
         })

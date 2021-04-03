@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { Avatar, Paper, Fab, Dialog, makeStyles, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Button } from "@material-ui/core";
+import { useState, useEffect } from 'react';
+import { Avatar, Paper, Fab, Dialog, makeStyles, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom';
-import {useDispatch} from "react-redux";
+import {useDispatch} from 'react-redux';
 
 import styles from '../../assets/styles/Profile.module.css';
 import {logOut, updateUser} from '../../store/actions/user';
@@ -76,41 +76,41 @@ const Profile = ({alertHandler}) => {
     }
 
     return (
-        <div className={styles.profileDiv}>
-            <Paper elevation={3} variant="elevation" className={styles.container}>
+        <div className={styles.profile__div}>
+            <Paper elevation={3} variant='elevation' className={styles.container}>
             <h1 className={styles.header}>Profile Information</h1>
-                <div className={styles.imgContainer}>
-                    <Avatar classes={classes} src="../../assets/images/avatar.png" />
+                <div className={styles.img__container}>
+                    <Avatar classes={classes} src='../../assets/images/avatar.png' />
                 </div>
-                <div className={styles.profileInfo}>
-                    <div className={styles.infoDiv}>
+                <div className={styles.profile__info}>
+                    <div className={styles.info__div}>
                         <label className={styles.label}><span>Account Name</span></label>
                         <TextField value={name} variant='outlined'/>
                     </div>
-                    <div className={styles.infoDiv}>
+                    <div className={styles.info__div}>
                         <label className={styles.label}><span>Phone Number</span></label>
                         <TextField value={phoneNumber} variant='outlined'/>
                     </div>
-                    <div className={styles.infoDiv}>
+                    <div className={styles.info__div}>
                         <label className={styles.label}><span>Email Address</span></label>
                         <TextField value={email} variant='outlined'/>
                     </div>
                 </div>
-                <div className={styles.editDiv}>
-                        <Fab color="primary" aria-label="edit" variant="extended" onClick={handleEdit} className={styles.editBtn}>
+                <div className={styles.edit__div}>
+                        <Fab color='primary' aria-label='edit' variant='extended' onClick={handleEdit} className={styles.editBtn}>
                             <EditIcon />
                             Edit
                         </Fab>
                     </div>
-                <Button onClick={handleLogout} variant="contained" className={styles.logoutBtn}>
+                <Button onClick={handleLogout} variant='contained' className={styles.logout__btn}>
                         Logout
                 </Button>
             </Paper>
-            <Dialog  fullWidth={true} maxWidth="sm" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Edit Accouont Information</DialogTitle>
+            <Dialog  fullWidth={true} maxWidth='sm' open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
+                <DialogTitle id='form-dialog-title'>Edit Accouont Information</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        <form noValidate autoComplete="off">
+                        <form noValidate autoComplete='off'>
                             <div>
                                 <label>Name</label>
                                 <TextField value={fullName} fullWidth onChange={e => setFullName(e.target.value)} />
@@ -122,11 +122,11 @@ const Profile = ({alertHandler}) => {
                         </form> 
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions className={styles.actionBtns}>
-                    <Button onClick={handleClose} color="secondary" variant="contained">
+                <DialogActions className={styles.action__btns}>
+                    <Button onClick={handleClose} color='secondary' variant='contained'>
                         Cancel
                     </Button>
-                        <Button onClick={handleUpdate} color="primary" variant="contained">
+                        <Button onClick={handleUpdate} color='primary' variant='contained'>
                         Update
                     </Button> 
                 </DialogActions>

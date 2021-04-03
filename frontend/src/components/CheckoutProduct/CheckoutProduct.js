@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
-import { useDispatch } from "react-redux";
-import {useSelector} from "react-redux";
+import React, {useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import {useSelector} from 'react-redux';
 
-import styles from "../../assets/styles/CheckoutProduct.module.css";
-import { removeFromBasket as removeBasket } from "../../store/actions/cart";
-import { adjustItemQuantity as adjustQuantity } from "../../store/actions/cart";
+import styles from '../../assets/styles/CheckoutProduct.module.css';
+import { removeFromBasket as removeBasket } from '../../store/actions/cart';
+import { adjustItemQuantity as adjustQuantity } from '../../store/actions/cart';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const CheckoutProduct = (props) => {
@@ -12,9 +12,8 @@ const CheckoutProduct = (props) => {
 
   const basket = useSelector(state => state.cart.basket)
 
-
   const [input, setInput] = useState(0);
-  const [basketID,setBasketID] = useState("");
+  const [basketID,setBasketID] = useState('');
 
   useEffect(() => {
 
@@ -57,12 +56,12 @@ const CheckoutProduct = (props) => {
         </div>
 
         <div className={styles.checkoutProduct__qty}>
-          <label htmlFor="qty">Qty</label>
+          <label htmlFor='qty'>Qty</label>
           <input
-            min="1"
-            type="number"
-            id="qty"
-            name="qty"
+            min='1'
+            type='number'
+            id='qty'
+            name='qty'
             value={input}
             onChange={onChangeHandler}
           />
@@ -72,7 +71,7 @@ const CheckoutProduct = (props) => {
           className={styles.checkoutProduct__remove}
           onClick={removeFromBasket}
         >
-          <DeleteForeverIcon style={{ color: "#2a0080"}} className={styles.checkoutProduct__removeBtn} />
+          <DeleteForeverIcon style={{ color: '#2a0080'}} className={styles.checkoutProduct__removeBtn} />
         </div>
       </div>
     </div>

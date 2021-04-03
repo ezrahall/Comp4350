@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import styles from "../../assets/styles/FoodItem.module.css";
-import { decreaseItemQuantity as decreaseQuantity } from "../../store/actions/cart";
-import { addToBasket as addBasket } from "../../store/actions/cart";
-import RemoveIcon from "@material-ui/icons/RemoveCircle";
+import styles from '../../assets/styles/FoodItem.module.css';
+import { decreaseItemQuantity as decreaseQuantity } from '../../store/actions/cart';
+import { addToBasket as addBasket } from '../../store/actions/cart';
+import RemoveIcon from '@material-ui/icons/RemoveCircle';
 
 const FoodItem = (props) => {
     const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const FoodItem = (props) => {
                 }}
             >
                 <div className={styles.fooditem__card}>
-                    <img className={styles.fooditem__image} src={props.image} alt="" />
+                    <img className={styles.fooditem__image} src={props.image} alt='' />
 
                     <div className={styles.fooditem__info}>
                         <h2 className={styles.fooditem__title}>{props.title}</h2>
@@ -65,7 +65,7 @@ const FoodItem = (props) => {
             {activeItem && itemCount !== 0 ? (
                 <div className={styles.fooditem_remove}  data-testid='remove' onClick={decreaseItemQuantity}>
                     {itemCount}
-                    <RemoveIcon style={{ color: "#26004D" }}/>
+                    <RemoveIcon style={{ color: '#26004D' }}/>
                 </div>
             ) : (
                 <div></div>
