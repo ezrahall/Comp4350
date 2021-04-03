@@ -23,9 +23,10 @@ export let getOrderCustomer = async () => {
         cookies: genCookies(),
         id: '',
         offset: 0,
-        limit: 30
+        limit: 100
     })
-    return res.data.orders[res.data.orders.length-1]
+    console.log(res)
+    return res.data.orders[0]
 }
 export let getPastOrders = async () => {
     let result = [];
