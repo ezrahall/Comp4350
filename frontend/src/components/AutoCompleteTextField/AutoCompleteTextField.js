@@ -14,23 +14,19 @@ const AutoCompleteTextField = (props) => {
 
     const handleAddressChange = async (address) => {
         props.callback(address)
-        if(address.length >= 3) {
-            try{
-                const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Search/Autocomplete`, {
-                    addr: address,
-                    token: theToken,
-                })
+        try{
+            const resp = await axios.post(`${process.env.REACT_APP_PUBLIC_SERVER_URL}/Api/Search/Autocomplete`, {
+                addr: address,
+                token: theToken,
+            })
 
-                const data = resp.data
-                setCompletions(data.completions)
-                setTheToken(data.token)
-                setDisplay(true)
-            } 
-            catch (error) {
-                setCompletions([])
-                setDisplay(false)
-            }
-        } else {
+            const data = resp.data
+            setCompletions(data.completions)
+            setTheToken(data.token)
+            setDisplay(true)
+        } 
+        catch (error) {
+            setCompletions([])
             setDisplay(false)
         }
     }
