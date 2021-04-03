@@ -27,6 +27,7 @@ function UserAddress(props) {
         event.preventDefault()
         if(validAddress) {
             dispatch(setAddress(newAddress))
+            sessionStorage.setItem('address', newAddress)
             history.push('./home')
         }
         else {
