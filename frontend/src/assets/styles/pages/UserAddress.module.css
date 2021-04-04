@@ -37,7 +37,7 @@
 }
 
 .address__box > input {
-  color:white;
+  color: white;
   background-color: transparent;
   border: none;
   padding: 10px;
@@ -101,3 +101,48 @@
   outline: none;
 }
 
+.address__buttonsContainer {
+  width: 300px;
+  height: 100px;
+  margin-left: 1000px;
+  position: absolute;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.address__login {
+  background: none;
+  border: none;
+  color: #eee6ff;
+  width: 80px;
+  height: 35px;
+  border-radius: 10px;
+  font-weight: 550;
+  font-size: 16px;
+  transition: 0.3s;
+  margin-right: 10px;
+}
+
+.address__login:hover {
+  background: #6600cc;
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.address__signUp {
+  background: none;
+  border: none;
+  color: #eee6ff;
+  width: 90px;
+  height: 35px;
+  border-radius: 10px;
+  font-weight: 550;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.address__signUp:hover {
+  background: #330099;
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
