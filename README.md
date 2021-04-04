@@ -24,11 +24,19 @@ Design and develop a safe and secure food delivery app that incorporates a Covid
 
 ### Meetings Notes
 
-- Meeting notes can be found [here](https://github.com/ezrahall/Comp4350/tree/main/documentation/meetingNotes).
+- Meeting notes can be found [here](https://github.com/ezrahall/Comp4350/tree/main/documentation/MeetingNotes).
 
 ### System Architecture Design
 
 - Architecture can be found [here](https://github.com/ezrahall/Comp4350/wiki/Architecture).
+
+### Data Model and Flow Diagrams
+
+- Class diagram can be found [here](https://github.com/ezrahall/Comp4350/wiki/Data-Model) and sequence diagram can be found [here](https://github.com/ezrahall/Comp4350/wiki/Flow).
+
+### Enforce Coding Styles
+
+- A list of coding styles enforced by Safeat can be found [here](https://github.com/ezrahall/Comp4350/wiki/Coding-Styles)
 
 ### Core Features
 
