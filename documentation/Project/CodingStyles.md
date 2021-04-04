@@ -1,5 +1,6 @@
-# Safeat Coding Style
-This style guide uses the most popular coding styles from the web for JavaScript and python. It is a combination of styles from industry professionals and leading edge technology companies as well as our own personal choices.
+# Safeat Enforced Coding Style
+This style guide uses the most popular coding styles from the web for JavaScript and python. It is a combination of styles from industry professionals and leading edge technology companies as well as our own personal choices. This is the complete list of coding styles used by team Thanatos for project Safeat. It is separated into frontend and backend styles as they are written in two different languages.
+
 # Frontend Guide
 ## Basic Rules
   - Only include one React component per file.
@@ -43,22 +44,22 @@ This style guide uses the most popular coding styles from the web for JavaScript
 
     ```jsx
     // bad
-    <Foo superLongParam="bar"
-         anotherSuperLongParam="baz" />
+    <Foo superLongParam='bar'
+         anotherSuperLongParam='baz' />
 
     // good
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz"
+      superLongParam='bar'
+      anotherSuperLongParam='baz'
     />
 
     // if props fit in one line then keep it on the same line
-    <Foo bar="bar" />
+    <Foo bar='bar' />
 
     // children get indented normally
     <Foo
-      superLongParam="bar"
-      anotherSuperLongParam="baz"
+      superLongParam='bar'
+      anotherSuperLongParam='baz'
     >
       <Quux />
     </Foo>
@@ -87,8 +88,8 @@ This style guide uses the most popular coding styles from the web for JavaScript
       && anotherLongConditional
       && (
         <Foo
-          superLongParam="bar"
-          anotherSuperLongParam="baz"
+          superLongParam='bar'
+          anotherSuperLongParam='baz'
         />
       )
     }
@@ -98,8 +99,8 @@ This style guide uses the most popular coding styles from the web for JavaScript
       <Foo />
     ) : (
       <Foo
-        superLongParam="bar"
-        anotherSuperLongParam="baz"
+        superLongParam='bar'
+        anotherSuperLongParam='baz'
       />
     )}
     ```
@@ -109,10 +110,10 @@ This style guide uses the most popular coding styles from the web for JavaScript
   - Always use single quotes (`'`) for all JS
 
     ```jsx
-    // bad
+    // good
     <Foo bar='bar' />
 
-    // good
+    // bad
     <Foo bar="bar" />
     ```
 
@@ -145,13 +146,13 @@ This style guide uses the most popular coding styles from the web for JavaScript
     ```jsx
     // bad
     <Foo
-      UserName="hello"
+      UserName='hello'
       phone_number={12345678}
     />
 
     // good
     <Foo
-      userName="hello"
+      userName='hello'
       phoneNumber={12345678}
       Component={SomeComponent}
     />
@@ -163,7 +164,7 @@ This style guide uses the most popular coding styles from the web for JavaScript
     ```jsx
     // bad
     render() {
-      return <MyComponent variant="long body" foo="bar">
+      return <MyComponent variant='long body' foo='bar'>
                <MyChild />
              </MyComponent>;
     }
@@ -171,7 +172,7 @@ This style guide uses the most popular coding styles from the web for JavaScript
     // good
     render() {
       return (
-        <MyComponent variant="long body" foo="bar">
+        <MyComponent variant='long body' foo='bar'>
           <MyChild />
         </MyComponent>
       );
@@ -183,13 +184,13 @@ This style guide uses the most popular coding styles from the web for JavaScript
     ```jsx
     // bad
     <Foo
-      bar="bar"
-      baz="baz" />
+      bar='bar'
+      baz='baz' />
 
     // good
     <Foo
-      bar="bar"
-      baz="baz"
+      bar='bar'
+      baz='baz'
     />
     ```
 
@@ -327,4 +328,3 @@ This style guide uses the most popular coding styles from the web for JavaScript
       is on its own line.
       """
   ```
-

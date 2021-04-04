@@ -25,9 +25,17 @@ describe('Contact Tracing', ()=>{
         cy.findByText('Continue').click()
     })
     it('Report Covid', () => {
+        cy.intercept('POST', '/Api/Tracing/Report', (req) => {
+            req.body.date = 'Sun Apr 04 2121 14:55:13 GMT-0500 (Central Daylight Time)'
+            req.body.cookies.restaurant = '99'
+        }).as('covidReport')
         cy.findByText('Reports').click()
         cy.findByText('Submit Report').click()
         cy.findByText('Confirm').click()
+        cy.wait('@covidReport')
+        cy.get('@covidReport').then(xhr => {
+            expect(xhr.response.statusCode).to.equal(200)
+        })
         cy.findByText('Report Has Been Confirmed')
         cy.findByText('OK').click()
     })
