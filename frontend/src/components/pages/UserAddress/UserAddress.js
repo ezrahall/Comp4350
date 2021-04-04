@@ -65,8 +65,10 @@ function UserAddress(props) {
         <div className={styles.enter__address} onClick={handleFocus}>
             <div className={styles.address__buttonsContainer}>
                 <Link to='/login'>
-                <button className={styles.address__login} color={buttonAttr.color} variant='contained' type='submit'>Login</button>
-                <button className={styles.address__signUp}>Sign Up</button>
+                    <button className={styles.address__login} color={buttonAttr.color} variant='contained' type='submit'>Login</button>
+                </Link>
+                <Link to='/signup'>
+                    <button className={styles.address__signUp}>Sign Up</button>
                 </Link>
             </div>
 

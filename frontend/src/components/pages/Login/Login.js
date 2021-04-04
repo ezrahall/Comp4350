@@ -27,6 +27,9 @@ const Login = (props) => {
         document.getElementsByClassName(styles.image__btn)[0].addEventListener('click', () => {
             document.getElementsByClassName(styles.container)[0].classList.toggle(styles.sSignUp)
         })
+        if(props.signUp) {
+            document.getElementsByClassName(styles.mUp)[1].click()
+        }
     }, [])
 
     const [name, setName] = useState('')
