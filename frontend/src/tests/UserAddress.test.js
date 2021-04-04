@@ -56,7 +56,10 @@ test('Address Page Test With Bad Address', async () => {
     await waitFor(() => getAllByText('66 Chancelor Drive'))
     //select address from selctions
     getByText('66 Chancelor Drive')
+    act(() =>{
+        fireEvent.change(input, {target: {value: ''}})
+    })
     act(() => {fireEvent.click(getByText('Find Restaurants Nearby'))})
     //Check if button disabled
-    getByText('Please choose an address from one of the options')
+    getByText('Please choose from one of the options')
 });

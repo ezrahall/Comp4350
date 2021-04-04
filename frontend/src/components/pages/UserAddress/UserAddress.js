@@ -57,8 +57,12 @@ function UserAddress(props) {
         setButtonAttr({name: FIND_RESTAURANTS})
     }
 
+    const handleFocus = () => {
+        setVisibility(false)
+    }
+
     return (
-        <div className={styles.enter__address}>
+        <div className={styles.enter__address} onClick={handleFocus}>
             <div className={styles.image__container}>
             <img src={Logo} alt={'logo'}/>
                 <form onSubmit={handleSubmit} >
