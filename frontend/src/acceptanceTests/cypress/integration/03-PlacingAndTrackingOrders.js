@@ -11,9 +11,9 @@ describe('Placing And Tracking Orders Client', ()=>{
         cy.get('#enterPassword').type('test')
         cy.get('#SubmitSign').click()
         cy.findByText('Find Restaurants Nearby')
-        cy.get('input').type('66 Chancelors Circle, Winnipeg')
+        cy.get('input').type('66 Chancellors Circle, Winnipeg')
         cy.findByText('66 Chancellors Circle, Winnipeg, MB, Canada').click()
-        cy.get('button').click()
+        cy.get('form').submit()
         cy.findByText('of 66 Chancellors Circle, Winnipeg, MB, Canada')
     })
     it("View Restaurant Menu", () =>{
