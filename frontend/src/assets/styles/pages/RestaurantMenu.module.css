@@ -26,11 +26,12 @@
   display: flex;
   flex-direction: column;
   background-color: #eae6ff;
+  padding-bottom: 80px;
 }
 
 .menu__clickContainer {
   margin-top: 720px;
-  margin-left: 60px;
+  margin-left: 35px;
   z-index: 1;
   position: absolute;
 }
@@ -38,5 +39,18 @@
 .menu__menuImage {
   width: 220px;
   height: 56px;
+  z-index: 1;
+}
+
+.menu__itemImageContainer {
+  margin-top: 610px;
+  margin-left: 1170px;
+  z-index: 1;
+  position: absolute;
+}
+
+.menu__menuItem {
+  width: 210px;
+  height: 300px;
   z-index: 1;
 }

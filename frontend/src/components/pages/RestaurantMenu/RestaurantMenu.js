@@ -7,6 +7,7 @@ import FoodItem from '../../FoodItem/FoodItem'
 import NavBar from '../../NavBar/NavBar';
 import KFC from '../../../assets/images/KFC.jpg';
 import ClickImage from '../../../assets/images/menuClick.png'
+import ItemImage from '../../../assets/images/menuItemImage.jpg'
 import {getRestaurantMenu} from '../../../services/restaurants/restaurantsService';
 
 function RestaurantMenu() {
@@ -40,6 +41,12 @@ function RestaurantMenu() {
                 <img className={styles.menu__menuImage}  src={ClickImage} alt ='' />
                 
             </div>
+
+            <div className={styles.menu__itemImageContainer} >
+                <img className={styles.menu__menuItem}  src={ItemImage} alt ='' />
+                
+            </div>
+            <br />
  
             {menuItems.map((item) => <FoodItem
                 key={item.id}
