@@ -6,6 +6,7 @@ import Hero from '../../Hero/Hero'
 import FoodItem from '../../FoodItem/FoodItem'
 import NavBar from '../../NavBar/NavBar';
 import KFC from '../../../assets/images/KFC.jpg';
+import ClickImage from '../../../assets/images/menuClick.png'
 import {getRestaurantMenu} from '../../../services/restaurants/restaurantsService';
 
 function RestaurantMenu() {
@@ -22,19 +23,24 @@ function RestaurantMenu() {
     },[])
 
     return (
-        <div className={styles.restaurantMenu}>
+        <div className={styles.menu}>
             <NavBar />
             <br />
             <Hero />
             <br />
-            <div className={styles.restaurantMenu__titleContainer}>
-                <div className={styles.restaurantMenu__title}>Menu:</div>
+            <div className={styles.menu__titleContainer}>
+                
 
-                <div className={styles.restaurantMenu__subtitle}>
+                <div className={styles.menu__subtitle}>
                     Delivery Time: {restaurant.time}
                 </div>
 
             </div>
+            <div className={styles.menu__clickContainer} >
+                <img className={styles.menu__menuImage}  src={ClickImage} alt ='' />
+                
+            </div>
+ 
             {menuItems.map((item) => <FoodItem
                 key={item.id}
                 image={KFC}
