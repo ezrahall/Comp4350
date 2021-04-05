@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory,Link } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 
 import Logo from '../../../assets/images/SafeEat.svg';
@@ -63,6 +63,13 @@ function UserAddress(props) {
 
     return (
         <div className={styles.enter__address} onClick={handleFocus}>
+            <div className={styles.address__buttonsContainer}>
+                <Link to='/login'>
+                <button className={styles.address__login} color={buttonAttr.color} variant='contained' type='submit'>Login</button>
+                <button className={styles.address__signUp}>Sign Up</button>
+                </Link>
+            </div>
+
             <div className={styles.image__container}>
             <img src={Logo} alt={'logo'}/>
                 <form onSubmit={handleSubmit} >
