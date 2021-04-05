@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import {useSelector} from 'react-redux';
 
 import styles from '../../../assets/styles/pages/RestaurantMenu.module.css'
 import Hero from '../../Hero/Hero'
@@ -9,6 +10,7 @@ import {getRestaurantMenu} from '../../../services/restaurants/restaurantsServic
 
 function RestaurantMenu() {
     const [menuItems, setMenuItems] = useState([])
+    const restaurant = useSelector(state => state.restaurant.restaurant)
 
 
 
@@ -29,7 +31,7 @@ function RestaurantMenu() {
                 <div className={styles.restaurantMenu__title}>Menu:</div>
 
                 <div className={styles.restaurantMenu__subtitle}>
-                    Click below to select items
+                    Delivery Time: {restaurant.time}
                 </div>
 
             </div>
