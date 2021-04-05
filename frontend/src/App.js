@@ -15,24 +15,13 @@ import PaymentCancel from './components/pages/Payment/Cancel'
 import Checkout from './components/pages/Checkout/Checkout';
 import Account from './components/pages/Account/Account';
 import UserAddress from './components/pages/UserAddress/UserAddress';
-import Orders from "./components/pages/Orders/Orders";
-import Order from "./components/pages/Order/Order";
 import RestaurantDetails from './components/pages/RestaurantDetails/RestaurantDetails';
-import CovidReport from "./components/pages/CovidReport/CovidReport";
 import {authSuccess} from './store/actions/user';
 import OrderTracker from "./components/pages/OrderTracker/OrderTracker";
 
 
 const stripePromise = loadStripe('pk_test_51IWvOsCXMychAZM499t1cB9kFug8Z5AvB9FpXhSnpsCcOGCXz1OervvAlKPzbg5VzYz2Ro5UGDxtYQHk2A0p1zw0002D2xp1OP');
 
-const LoginContainer = () => {
-
-  return(
-    <div className="container">
-      <Route path="/login"component={Login}/>
-    </div>
-  )
-}
 
 const DefaultContainer = () => {
     const user = useSelector(state => state.user.user)
@@ -67,8 +56,9 @@ const App = () => {
     <div className="App">
       <Layout>
         <Switch>
-          <Route exact strict path="/login" component={LoginContainer}/>
           <Route exact strict path="/" component={UserAddress}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/signup" render={() => (<Login signUp={true} />)}/>
           <Route component={DefaultContainer} />
         </Switch>
       </Layout>
