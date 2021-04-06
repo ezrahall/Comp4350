@@ -13,6 +13,7 @@ import {getRestaurantMenu} from '../../../services/restaurants/restaurantsServic
 function RestaurantMenu() {
     const [menuItems, setMenuItems] = useState([])
     const restaurant = useSelector(state => state.restaurant.restaurant)
+    const basket = useSelector(state => state.cart.basket)
 
 
 
@@ -37,11 +38,15 @@ function RestaurantMenu() {
                 </div>
 
             </div>
-            <div className={styles.menu__clickContainer} >
+            { basket?.length === 0 ?             
+                <div className={styles.menu__clickContainer} >
                 <img className={styles.menu__menuImage}  src={ClickImage} alt ='' />
+                </div>
+                :
+                <div></div>
                 
-            </div>
-
+            }
+            
             <div className={styles.menu__itemImageContainer} >
                 <img className={styles.menu__menuItem}  src={ItemImage} alt ='' />
                 
