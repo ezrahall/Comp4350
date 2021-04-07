@@ -1,26 +1,11 @@
-.restaurantMenu__titleContainer {
+.menu__titleContainer {
   align-items: center;
   display: flex;
   flex-direction: row;
 }
 
-.restaurantMenu__title {
-  font-size: 24px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-left: 180px;
-  font-weight: 500;
-  color: #eae6ff;
-  background-color: #4400cc;
-  width: max-content;
-
-  border-radius: 8px;
-}
-
-.restaurantMenu__subtitle {
-  margin-left: 10px;
+.menu__subtitle {
+  margin-left: 120px;
   font-size: 24px;
   padding-left: 20px;
   padding-right: 20px;
@@ -33,15 +18,39 @@
   border-radius: 8px;
 }
 
-.restaurantMenu__title:hover {
-  background-color: #2a0080;
-}
-.restaurantMenu__subtitle:hover {
+.menu__subtitle:hover {
   background-color: #2a0080;
 }
 
-.restaurantMenu {
+.menu {
   display: flex;
   flex-direction: column;
   background-color: #eae6ff;
+  padding-bottom: 80px;
+}
+
+.menu__clickContainer {
+  margin-top: 720px;
+  margin-left: 50px;
+  z-index: 1;
+  position: absolute;
+}
+
+.menu__menuImage {
+  width: 220px;
+  height: 56px;
+  z-index: 1;
+}
+
+.menu__itemImageContainer {
+  margin-top: 610px;
+  margin-left: 1170px;
+  z-index: 1;
+  position: absolute;
+}
+
+.menu__menuItem {
+  width: 210px;
+  height: 300px;
+  z-index: 1;
 }
