@@ -65,7 +65,7 @@ const NavBar = (props) => {
                         <button><SearchIcon /></button>
                     </div>
                 </form>
-                <Link to='/orderTracker'>
+                <Link id='OrderTracker' to='/orderTracker'>
                     <div className={styles.navbar__orders}>
                         <Orders/>
                     </div>

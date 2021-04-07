@@ -200,7 +200,7 @@ const Login = (props) => {
                             <p id='login-p1-secondText'>{displayTexts.pSecond}</p>
                         </div>
                         <div>
-                            <div className={styles.image__btn} onClick={swicthMode}>
+                            <div id='SignUp' className={styles.image__btn} onClick={swicthMode}>
                                 <span className={styles.mUp}>Sign Up</span>
                                 <span className={styles.mIn}>Sign In</span>
                             </div>
@@ -211,24 +211,24 @@ const Login = (props) => {
                             <h2 className={styles.header__text}>Sign Up</h2>
                             <label className={styles.label}>
                                 <span>{checked ? 'Restaurant' : 'Full'} Name</span>
-                                <TextField className={styles.input} onChange={e => setName(e.target.value)} value={name} />
+                                <TextField id='FullName' className={styles.input} onChange={e => setName(e.target.value)} value={name} />
                             </label>
                             <label className={styles.label}>
                                  <span>Email Address</span>
-                                <TextField className={styles.input} onChange={e => setEmail(e.target.value)} value={email} />
+                                <TextField id='Email' className={styles.input} onChange={e => setEmail(e.target.value)} value={email} />
                             </label>
                             <label className={styles.label}>
                                 <span>Password</span>
-                                <TextField className={styles.input} onChange={e => setPassword(e.target.value)} type='password' value={password} />
+                                <TextField id='Password' className={styles.input} onChange={e => setPassword(e.target.value)} type='password' value={password} />
                             </label>
                             <label className={styles.label}>
                                 <span>Confirm Password</span>
-                                <TextField className={styles.input} onChange={e => setConfirmPassword(e.target.value)} type='password' value={confirmPassword} />
+                                <TextField id='ConfirmPassword' className={styles.input} onChange={e => setConfirmPassword(e.target.value)} type='password' value={confirmPassword} />
                             </label>
                             { checked && <label className={styles.label}> <span> Restaurant Address </span></label> }
                             { checked && <AutoCompleteTextField callback={(e) => {setAddress(e)}} type='text' value={address} /> }
                             
-                            <Button type='submit'  className={styles.submit + ' ' + styles.button__marg + ' ' + styles.Button} classes={buttonClasses}><span>Sign Up</span></Button>
+                            <Button id='SubmitRegistration' type='submit'  className={styles.submit + ' ' + styles.button__marg + ' ' + styles.Button} classes={buttonClasses}><span>Sign Up</span></Button>
                             <br/>
                             { isLoading && <CircularProgress color='secondary' size={20}/> }
                         </form>

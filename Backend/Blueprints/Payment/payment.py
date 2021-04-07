@@ -35,7 +35,6 @@ def create_session():
         price = 0.0
 
         restaurant_id = int(data['restaurant']['id'])
-
         for food in data['basket']:
             quant_map[int(food['id'])] = int(food['qty'])
 
@@ -52,9 +51,9 @@ def create_session():
         # and get cheap meals as a security vulnerability
         for entry in food:
             price += quant_map[entry[0]] * entry[1]
-
         # Make API Call to Stripe to set up transaction only if not testing
         if "pytest" not in sys.modules and os.environ.get('SAFEAT_ACCEPTANCE_TEST') is None:
+
             stripe_session = stripe.checkout.Session.create(
                 success_url='http://localhost:3000/payment/success?id={CHECKOUT_SESSION_ID}',
                 cancel_url='http://localhost:3000/payment/cancel',
@@ -73,6 +72,8 @@ def create_session():
         else:
             # Pull max key from database for testing key generation
             max_key = session.execute('select max(t.id) from transaction as t').fetchall()[0][0]
+            if max_key is None:
+                max_key = 0
             stripe_session = {'id': 'test_' + str(max_key + 1)}
 
         # Create transaction in our data model
@@ -190,6 +191,7 @@ def webhook():
                 'type': 'checkout.session.completed',
                 'data': {'object': {'id': json.loads(request.data)['id']}}
             }
+            print(event)
 
         # Handle the checkout.session.completed event
         if event['type'] == "checkout.session.completed":
