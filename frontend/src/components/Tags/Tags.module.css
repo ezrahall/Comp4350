@@ -1,11 +1,8 @@
 .Tags{
     position: relative;
+    width: 100%;
     overflow-x: hidden;
     border-radius: 10px;
-    display: flex;
-    flex: 1;
-    width: 94vw;
-    margin-left: -10%;
 }
 .TagsHolder{
     display: flex;
