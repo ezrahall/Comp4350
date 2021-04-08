@@ -46,13 +46,6 @@ const RestaurantMenu = () => {
                 <div></div>
                 
             }
-            
-            <div className={styles.menu__itemImageContainer} >
-                <img className={styles.menu__menuItem}  src={ItemImage} alt ='' />
-                
-            </div>
-            <br />
- 
             {menuItems.map((item) => <FoodItem
                 key={item.id}
                 image={KFC}
@@ -61,6 +54,9 @@ const RestaurantMenu = () => {
                 ing={item.description}
                 price={item.price}
             />)}
+            <div className={styles.menu__itemImageContainer} >
+                <img className={styles.menu__menuItem}  src={ItemImage} alt ='' />
+            </div>
             <br />
             <br />
             <br />
