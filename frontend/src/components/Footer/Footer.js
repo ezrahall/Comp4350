@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from '../../assets/styles/Footer.module.css'
 
-function Footer() {
+const Footer = () => {
     return (
         <div className={styles.footer}>
             <h2> Created by </h2>

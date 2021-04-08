@@ -9,9 +9,9 @@
     transition: 1s;
 }
 .Title{
+    margin-top: 30px;
     text-align: left;
     padding-bottom: 25px;
-    padding-left: 25px;
 }
 .Tag{
     position: relative;

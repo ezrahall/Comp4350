@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 
 import styles from '../../assets/styles/Hero.module.css'
 
-function Hero(props) {
+const Hero = (props) => {
     const restaurant = useSelector(state => state.restaurant.restaurant)
 
     return (

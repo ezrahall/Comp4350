@@ -1,11 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
 .home {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-right: auto;
-  margin-left: auto; /* Allows us to not stretch if the screen size increases*/
-  max-width: 100vw;
+  margin-left: auto; 
   overflow-x: hidden;
+  background-color: white
 }
 
 .tags{
@@ -19,6 +22,18 @@
   z-index: 1;
   margin: 25px 5%;
 }
+@media only screen and (max-width: 1050px) {
+  .home__card {
+    grid-template-columns: auto auto;
+  }
+}
+
+
+@media only screen and (max-width: 700px) {
+  .home__card {
+    grid-template-columns: auto;
+  }
+}
 
 .show__more {
   background-color: rgb(255, 0, 106);
@@ -26,11 +41,11 @@
   text-transform: inherit;
   margin: 20px 50px 50px;
   font-weight: 600;
-  border: none;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
   transition: 0.5s;
+  border: 1px solid  rgb(255, 0, 106);
 }
 
 .show__more:hover{
@@ -45,12 +60,14 @@
 .home__title {
   display: flex;
   justify-content: center;
-  margin: 20px 160px 10px;
+  margin: 30px 30px 10px;
+  font-size: 17px;
 }
 .home__title div{
   display: flex;
   align-items: center;
   flex-direction: row;
+  
 }
 .home__title h2{
   text-align: left;
@@ -71,16 +88,19 @@
   text-decoration: underline;
 }
 .change{
-  color: #420e5d;
-  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  background-color: rgb(255, 0, 106);;
   border: 1px solid  rgb(255, 0, 106);
-  padding: 4px 10px;
+  padding: 10px;
   width: fit-content;
   font-size: 14px;
   margin-left: 10px;
   transition: 0.5s;
-  border-radius: 10px;
+  border-radius: 5px;
+  outline:none;
 }
 .change:hover{
-  background: rgba(255, 0, 106, 0.8);
+  background-color: white;
+  color: rgb(255, 0, 106);
 }

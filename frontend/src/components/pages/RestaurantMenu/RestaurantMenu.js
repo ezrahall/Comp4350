@@ -10,7 +10,7 @@ import ClickImage from '../../../assets/images/menuClick.png'
 import ItemImage from '../../../assets/images/menuItemImage.jpg'
 import {getRestaurantMenu} from '../../../services/restaurants/restaurantsService';
 
-function RestaurantMenu() {
+const RestaurantMenu = () => {
     const [menuItems, setMenuItems] = useState([])
     const restaurant = useSelector(state => state.restaurant.restaurant)
     const basket = useSelector(state => state.cart.basket)
@@ -46,13 +46,6 @@ function RestaurantMenu() {
                 <div></div>
                 
             }
-            
-            <div className={styles.menu__itemImageContainer} >
-                <img className={styles.menu__menuItem}  src={ItemImage} alt ='' />
-                
-            </div>
-            <br />
- 
             {menuItems.map((item) => <FoodItem
                 key={item.id}
                 image={KFC}
@@ -61,6 +54,9 @@ function RestaurantMenu() {
                 ing={item.description}
                 price={item.price}
             />)}
+            <div className={styles.menu__itemImageContainer} >
+                <img className={styles.menu__menuItem}  src={ItemImage} alt ='' />
+            </div>
             <br />
             <br />
             <br />

@@ -7,7 +7,7 @@ import styles from '../../../assets/styles/pages/UserAddress.module.css';
 import {enterAddress} from '../../../services/address/address';
 import {setAddress} from '../../../store/actions/adress';
 
-function UserAddress(props) {
+const UserAddress = (props) => {
     const FIND_RESTAURANTS = 'Find Restaurants Nearby';
     const CHOOSE_ADDRESS = 'Please choose from one of the options';
     const [buttonAttr, setButtonAttr] = useState({name: FIND_RESTAURANTS});

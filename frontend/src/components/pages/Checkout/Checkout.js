@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import adImage from '../../../assets/images/Checkout-Banner.jpg';
 import { useSelector } from "react-redux";
 import { useStripe } from "@stripe/react-stripe-js";
 import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from "@material-ui/core"
 import {useDispatch} from 'react-redux'
 
-
+import Burg from '../../../assets/images/burg.gif'
 import CheckoutProduct from '../../CheckoutProduct/CheckoutProduct';
 import styles from '../../../assets/styles/pages/Checkout.module.css';
 import Subtotal from '../../Subtotal/Subtotal';
@@ -14,7 +13,7 @@ import {genCookies} from '../../../services/genCookies'
 import {setAddress} from '../../../store/actions/adress';
 import AutoCompleteTextField from '../../AutoCompleteTextField/AutoCompleteTextField';
 
-function Checkout() {
+const Checkout = () => {
     const basket = useSelector(state => state.cart.basket)
     const restaurant = useSelector(state => state.restaurant.restaurant)
     const user_address = useSelector(state => state.user.address)
@@ -75,11 +74,15 @@ function Checkout() {
         <div className={styles.checkout}>
             <NavBar />
             <div className={styles.checkout__left}>
-                <img
-                    className={styles.checkout__ad}
-                    src={adImage}
-                    alt=''
-                />
+                <div className={styles.top}>
+                  <img
+                      className={styles.burg__img}
+                      src={Burg}
+                      alt='burg'
+                  />
+                  <p className={styles.title__thankYou}>Thank you for using</p>
+                  <p className={styles.title}>Safeat</p>
+                </div>
                 <div className={styles.checkout__titleContainer}>
                     <p>Hello {user_name} </p>
                     <p className={styles.checkout__title}>Your Shopping Basket:</p>

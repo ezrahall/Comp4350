@@ -81,17 +81,17 @@ const NavBar = (props) => {
                             </li>
                         )
                     })}
-                    <Link id='Checkout' to="/checkout">
-
-                        <div className={styles.navbar__basket}>
-                            <ShoppingBasketIcon/>
-                            <span
-                            className={styles.navbar__basketCount}>
-                                {basketCount}
-                            </span>
-                        </div>
-                    </Link>
                 </ul>
+                <Link id='Checkout' to="/checkout">
+                    <div className={styles.navbar__basket}>
+                        <ShoppingBasketIcon/>
+                        <span
+                        className={styles.navbar__basketCount}>
+                            {basketCount}
+                        </span>
+                    </div>
+                </Link>
+                
             </nav>
         )
     }

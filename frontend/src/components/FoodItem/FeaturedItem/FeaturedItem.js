@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from '../../../assets/styles/FeaturedItem.module.css'
 
-function FeaturedItem() {
+const FeaturedItem = () => {
     return (
         <div className={styles.featuredItem}>
             <h1>Chicken of the Day</h1>
