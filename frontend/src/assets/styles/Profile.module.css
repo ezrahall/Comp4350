@@ -53,9 +53,8 @@
 }
 
 .info__div input {
-    width: 720px;
+    width: calc(40vw - 5px);
     text-align: left;
-
 }
 
 .info__div {

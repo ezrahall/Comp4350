@@ -57,6 +57,7 @@
   position: fixed;
   margin: 0% 10%;
   min-width: 80%;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 414px) {
@@ -87,7 +88,11 @@
 }
 
 .address__listitem:hover {
-  background-color: rgb(200, 200, 200);
+  background-color: #E1E1E1;
+}
+
+.address__listitem:active {
+  background-color: #C8C8C8;
 }
 
 .address__button {
@@ -101,6 +106,15 @@
   outline: none;
 }
 
+.address__button:hover {
+  background: #E1E1E1;
+  border-color: #E1E1E1;
+}
+
+.address__button:active {
+  background: #C8C8C8;
+  border-color: #C8C8C8;
+}
 .address__buttonsContainer {
   width: 300px;
   height: 100px;

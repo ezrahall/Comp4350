@@ -47,9 +47,9 @@ export let getPastOrders = async () => {
 
 const genCookies = () => {
     return (
-        document.cookie.split(';').map(function(c) {
+        document.cookie.split(';').map((c) => {
             return c.trim().split('=').map(decodeURIComponent);
-        }).reduce(function(a, b) {
+        }).reduce((a, b) => {
             try {
                 a[b[0]] = JSON.parse(b[1]);
             } catch (e) {

@@ -7,7 +7,7 @@ import NavBar from '../../NavBar/NavBar';
 import KFC from '../../../assets/images/KFC.jpg';
 import {getRestaurantMenu} from '../../../services/restaurants/restaurantsService';
 
-function RestaurantMenu() {
+const RestaurantMenu = () => {
     const [menuItems, setMenuItems] = useState([])
 
 

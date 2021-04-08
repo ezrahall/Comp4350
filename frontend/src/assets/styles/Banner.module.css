@@ -1,32 +1,31 @@
+html {
+  scroll-behavior: smooth;
+}
 .banner {
   display: flex;
-  height: 50vh;
-  position: relative;
-  width: 80%;
-  flex-direction: column;
-  margin-left: 220px;
-  margin-top: 50px;
-}
-
-.banner__image {
-  display: flex;
-  margin-left: 280px;
-  margin-top: -385px;
-  z-index: -1;
-  height: 98%;
+  flex:1;
 }
 
 .banner__info {
   background: -webkit-linear-gradient(left, #7579ff, #b224ef);
   color: white;
-  padding-top: 25vh;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 40px;
-  width: 300px;
+  padding-top: 10vh;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 10vh;
+  width:100%;
+  font-size: 30px;
 }
 
 .banner__info > button {
+  background-color: rgb(255, 0, 106);
+  color: white;
+  text-transform: inherit;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.banner__info > a {
   background-color: rgb(255, 0, 106);
   color: white;
   text-transform: inherit;
@@ -43,3 +42,10 @@
   color: rgb(255, 0, 106);
   cursor: none;
 }
+
+.banner__info > a:hover {
+  background-color: white;
+  color: rgb(255, 0, 106);
+  cursor: none;
+}
+

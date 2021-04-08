@@ -4,7 +4,7 @@
   flex-direction: row;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  background-color: #d1bffd;
+  background-color: #ffffff;
   margin: 2px;
   line-height: 1;
   width: 450px;
@@ -81,7 +81,7 @@
 
 .checkoutProduct__removeBtn:hover {
   transform: scale(1.2) rotate(360deg);
-  background-color: #990000;
+  border: 1px solid black;
 }
 
 .checkoutProduct__qty {
@@ -95,6 +95,6 @@
   margin-left: 0.4rem;
   width: 30px;
   border-radius: 10px;
-  border: 1px solid #e6b3ff;
+  border: 1px solid #7579ff;
   outline: none;
 }

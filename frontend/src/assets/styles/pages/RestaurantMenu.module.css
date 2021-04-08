@@ -43,5 +43,5 @@
 .restaurantMenu {
   display: flex;
   flex-direction: column;
-  background-color: #eae6ff;
+  background-color: white;
 }

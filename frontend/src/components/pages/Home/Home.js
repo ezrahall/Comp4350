@@ -132,7 +132,7 @@ const Home = (props) => {
                         <h2>No Available Restaurants In The Area</h2>
                     </div>
                     : <div>
-                        <div className={styles.home__card}>
+                        <div className={styles.home__card} id='restaurantSection'>
 
                             {restaurants?.map((restaurant) => (
                                 <Link key={restaurant.id} to={'/restaurantmenu/'+restaurant.id} style={{ textDecoration: 'none' }}>

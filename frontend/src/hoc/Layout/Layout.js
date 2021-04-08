@@ -1,5 +1,5 @@
 import React from 'react';
-function Layout(props) {
+const Layout = (props) => {
     return (
         <div>            
             {props.children}
