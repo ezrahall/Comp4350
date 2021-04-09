@@ -232,7 +232,7 @@ const Login = (props) => {
                             { checked && <label className={styles.label}> <span> Restaurant Address </span></label> }
                             { checked && <AutoCompleteTextField callback={(e) => {setAddress(e)}} type='text' value={address} /> }
                             
-                            <Button id='SubmitRegistrationx' type='submit'  className={styles.submit + ' ' + styles.button__marg + ' ' + styles.Button} classes={buttonClasses}><span>Sign Up</span></Button>
+                            <Button id='SubmitRegistration' type='submit'  className={styles.submit + ' ' + styles.button__marg + ' ' + styles.Button} classes={buttonClasses}><span>Sign Up</span></Button>
                             <br/>
                             { isLoading && <CircularProgress color='secondary' size={20}/> }
                         </form>
