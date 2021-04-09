@@ -116,10 +116,10 @@ const Home = (props) => {
                         ))}
                     </select>
                 </div>
-                    <div>
-                        <h3> of {address}</h3>
-                        <button className={styles.change} onClick={() => goToAddress()}>Change Address</button>
-                    </div>
+                <div>
+                    <h3> of {address}</h3>
+                    <button className={styles.change} onClick={() => goToAddress()}>Change Address</button>
+                </div>
             </div>
             {filtered && <div>
                 <h2 className={styles.search__header}>Search Results For: {filter}</h2>

@@ -72,7 +72,10 @@ const Checkout = () => {
 
     return (
         <div className={styles.checkout}>
-            <NavBar />
+            <NavBar
+                hideSearch
+            />
+            <div className={styles.mobile__friendly}>
             <div className={styles.checkout__left}>
                 <div className={styles.top}>
                   <img
@@ -88,9 +91,9 @@ const Checkout = () => {
                     <p className={styles.checkout__title}>Your Shopping Basket:</p>
                 </div>
                 <br />
-    
+
                 {basket.map(item => (
-                    <CheckoutProduct 
+                    <CheckoutProduct
                         key = {item.id}
                         id = {item.id}
                         title = {item.title}
@@ -109,7 +112,7 @@ const Checkout = () => {
               <h4>Your order will be delivered to: {user_address} </h4>
               <Button color="secondary" variant="contained" style={{margin: '10px'}} onClick={handleClick}>Change delivery address</Button>
             </div>
-
+            </div>
             <Dialog  fullWidth={true} maxWidth="sm" open={openChangeAddress} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogContent>
                     <DialogContentText>

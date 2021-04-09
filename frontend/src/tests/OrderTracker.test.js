@@ -36,7 +36,7 @@ test('Get Order Info Active', async () => {
         await waitFor(() => getByText('item'))
         getByText('Order Tracker')
         getByText('Quantity: 1')
-        getByText('Order Stage: 1')
+        getByText('Order Stage: Not known error!')
         getByText('Price: $1.11')
     })
 });
@@ -67,7 +67,7 @@ test('Get Order Info Most Recent', async () => {
         await waitFor(() => getByText('item'))
         getByText('Most Recent Order')
         getByText('Quantity: 1')
-        getByText('Order Stage: 4')
+        getByText('Order Stage: Not known error!')
         getByText('Price: $1.11')
     })
 });
