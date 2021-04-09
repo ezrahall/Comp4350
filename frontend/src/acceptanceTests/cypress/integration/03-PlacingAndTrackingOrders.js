@@ -130,6 +130,7 @@ describe('Placing and Tracking Orders Restaurant', () =>{
         cy.wait(1000)
         cy.visit('/home')
         cy.get('#OrderTracker').click()
+        cy.wait(2000)
         cy.findByText('Order Stage: Order Cooking')
         cy.findByText('Currently Tracking Order From Burrito Place')
         cy.findByText('Vanilla cone')
