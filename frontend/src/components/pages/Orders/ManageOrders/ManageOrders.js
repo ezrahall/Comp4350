@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import classes from './ManageOrders.module.css'
+import classes from '../../../../assets/styles/ManageOrders.module.css'
 import OrderSummary from '../OrderSummary/OrderSummary';
 import {getOrders} from '../../../../services/orders/orders';
 import Order from '../../Order/Order';

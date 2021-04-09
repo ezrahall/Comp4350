@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import styles from '../../../assets/styles/pages/Home.module.css'
 import Banner from '../../Banner/Banner'
 import Card from '../../Card/Card'
-import Spinner from '../../../ui/Spinner/Spinner';
+import Spinner from '../../ui/Spinner/Spinner';
 import Tags from '../../Tags/Tags';
 import {getRestaurants,addRestaurants} from '../../../services/restaurants/restaurantsService';
 import NavBar from '../../NavBar/NavBar';

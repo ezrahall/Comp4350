@@ -6,9 +6,45 @@
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/03-PlacingAndTrackingOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/03-PlacingAndTrackingOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/tests/OrderTracker.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/tests/OrderTracker.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile/PrivateRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tag/Tag.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tag/Tag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tag/Tag.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Tag.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Tags/Tags.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Tags.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/CovidReport/CovidReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManageOrders/ManageOrders.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/ManageOrders.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManagePastOrders/ManagePastOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/ManagePastOrders/ManagePastOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/OrderSummary/OrderSummary.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/OrderSummary.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Orders/Orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Orders/Orders.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Orders.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hoc/Layout/Layout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hoc/Layout/Layout.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Checkout.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/Checkout.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/ContactTracing.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/ContactTracing.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Home.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/Home.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Login.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/Login.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/ManageOrders.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/ManageOrders.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/OrderTracker.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/OrderTracker.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Password.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/Password.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Profile.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/Profile.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/RestaurantMenu.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/RestaurantMenu.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/RestaurantTags.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/RestaurantTags.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Staff.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/Staff.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/tests/UserAddress.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/unitTests/UserAddress.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Backdrop/Backdrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Backdrop/Backdrop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Backdrop/Backdrop.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Backdrop.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/OpenModal/OpenModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/OpenModal/OpenModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/OpenModal/OpenModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/OpenModal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Spinner/Spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Spinner/Spinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Spinner/Spinner.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Spinner.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Tracker/Tracker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ui/Tracker/Tracker.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Tracker.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +57,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="#261-ResponsiveMenu" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,10 +92,11 @@
       <recent name="$PROJECT_DIR$/frontend/src/components/pages/UserAddress" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/assets/styles" />
+      <recent name="$PROJECT_DIR$/frontend/src/components/Profile" />
+      <recent name="$PROJECT_DIR$/frontend/src/components" />
       <recent name="$PROJECT_DIR$/frontend/src/assets" />
       <recent name="$PROJECT_DIR$/frontend/src/pages/Home" />
-      <recent name="$PROJECT_DIR$/frontend/src/hoc/Layout" />
-      <recent name="$PROJECT_DIR$/frontend/src/hoc" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.Get Order Info Most Recent">
@@ -127,12 +164,12 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Jest.Get Order Info Active" />
+      <item itemvalue="Jest.Get Order Info Most Recent" />
       <item itemvalue="npm.start" />
       <item itemvalue="npm.acceptance" />
       <item itemvalue="npm.cypress-open" />
       <item itemvalue="npm.stop" />
-      <item itemvalue="Jest.Get Order Info Active" />
-      <item itemvalue="Jest.Get Order Info Most Recent" />
     </list>
     <recent_temporary>
       <list>
