@@ -38,13 +38,14 @@ def all_orders():
                                  '  left join order_log ol on t.id = ol.transaction '
                                  '  inner join menu_item mi on ol.menu_item = mi.id '
                                  '  inner join (select distinct t.id '
-                                 '      from transaction as t '
+                                 '      from transaction as t ' 
                                  '      where t.restaurant = :restaurant '
-                                 '      and t.state < :state and t.state > 0 '
+                                 '      and t.state < :state '
+                                 '      and t.state > 0 '
+                                 '      order by t.id desc '
                                  '      limit :limit offset :offset) '
-                                 '  as temp_table on temp_table.id = t.id '
-                                 ') as orders '
-                                 'order by orders.id;',
+                                 'as temp_table on temp_table.id = t.id '
+                                 ') as orders;',
                                  {
                                     'restaurant': data['restaurant'],
                                     'limit': parameters['limit'],
@@ -85,6 +86,7 @@ def all_orders():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
+    print(result)
     return json.loads(result)
 
 
