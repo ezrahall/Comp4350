@@ -39,3 +39,13 @@
   cursor: pointer;
   color: #000;
 }
+@media (max-width: 500px) {
+  .subtotal{
+    width: 100%;
+    margin: 10px 0;
+    height: 50px;
+  }
+  .subtotal__gift{
+    display: none;
+  }
+}

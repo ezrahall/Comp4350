@@ -54,7 +54,7 @@ const NavBar = (props) => {
                     <img className={styles.nav__logo} alt='' src={SafeEat}/>
                 </button>
                 <div className={styles.menu__icon} onClick={handleClick}></div>
-                <form  className={styles.navbar__search} onSubmit={handleSubmit}>
+                {!props.hideSearch && <form  className={styles.navbar__search} onSubmit={handleSubmit}>
                     <div className={styles.search__box}>
                         <input
                             type='text'
@@ -64,7 +64,7 @@ const NavBar = (props) => {
                             onChange={(data) => setSearchQuery(data.target.value)}/>
                         <button><SearchIcon /></button>
                     </div>
-                </form>
+                </form>}
                 <Link id='OrderTracker' to='/orderTracker'>
                     <div className={styles.navbar__orders}>
                         <Orders/>

@@ -6,15 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="db95f8a6-7f95-48b7-a160-1b7aca1af1b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/Blueprints/Misc/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Blueprints/Misc/misc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/Blueprints/Payment/payment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Blueprints/Payment/payment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/02-AccountManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/02-AccountManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/03-PlacingAndTrackingOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/acceptanceTests/cypress/integration/03-PlacingAndTrackingOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/CheckoutProduct.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/CheckoutProduct.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/FoodItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/FoodItem.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/Hero.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Hero.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/NavBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/NavBar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/Subtotal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/Subtotal.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Checkout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Checkout.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Login.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/pages/RestaurantMenu.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/RestaurantMenu.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Success.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/pages/Success.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Checkout/Checkout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Home/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/orders/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/OrderTracker/OrderTracker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/RestaurantMenu/RestaurantMenu.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

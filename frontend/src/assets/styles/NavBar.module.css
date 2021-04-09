@@ -120,6 +120,7 @@ input::-webkit-input-placeholder {
   background-color: transparent;
   border: none;
   margin-left: 20px;
+  z-index: 100;
   outline: none;
 }
 .button__logo:hover {
