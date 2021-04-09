@@ -26,18 +26,26 @@ def all_orders():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        orders = session.execute('select * from (select t.stripe_transaction, t.address, mi.name, ol.quantity, t.state, t.id '
+        orders = session.execute('select * '
+                                 'from (select t.stripe_transaction, '
+                                 '             t.address, '
+                                 '             mi.name, '
+                                 '             ol.quantity, '
+                                 '             t.state, '
+                                 '             t.id '
                                  'from transaction as t '
-                                 '       inner join user on t.user = user.id '
-                                 '       left join order_log ol on t.id = ol.transaction '
-                                 '       inner join menu_item mi on ol.menu_item = mi.id '
-                                 '       inner join (select distinct t.id '
-                                 '                   from transaction as t '
-                                 '                   where t.restaurant = :restaurant '
-                                 '                   limit :limit offset :offset) '
-                                 '       as temp_table on temp_table.id = t.id '
-                                 'where t.restaurant = :restaurant and t.state < :state) as orders '
-                                 'order by orders.id',
+                                 '  inner join user on t.user = user.id '
+                                 '  left join order_log ol on t.id = ol.transaction '
+                                 '  inner join menu_item mi on ol.menu_item = mi.id '
+                                 '  inner join (select distinct t.id '
+                                 '      from transaction as t ' 
+                                 '      where t.restaurant = :restaurant '
+                                 '      and t.state < :state '
+                                 '      and t.state > 0 '
+                                 '      order by t.id desc '
+                                 '      limit :limit offset :offset) '
+                                 'as temp_table on temp_table.id = t.id '
+                                 ') as orders;',
                                  {
                                     'restaurant': data['restaurant'],
                                     'limit': parameters['limit'],
@@ -78,6 +86,7 @@ def all_orders():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
+    print(result)
     return json.loads(result)
 
 
@@ -214,5 +223,4 @@ def user_order():
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     session.close()
-    print(result)
     return json.loads(result)

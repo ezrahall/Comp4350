@@ -9,7 +9,7 @@ export let getOrders = async () => {
             offset: 0,
             limit: 20
         })
-        result = res.data.orders.filter((order) => order.state >= 0 && order.state <=4 )
+        result = res.data.orders.filter((order) => order.state >= 0 && order.state <=4 ).reverse()
         return result
     } catch (e) {
         console.log(e)
@@ -37,7 +37,7 @@ export let getPastOrders = async () => {
             offset: 0,
             limit: 20
         })
-        result = res.data.orders.filter((order) => order.state < 0 || order.state >= 4 )
+        result = res.data.orders.filter((order) => order.state < 0 || order.state >= 4 ).reverse()
         return result
     } catch (e) {
         console.log(e)
