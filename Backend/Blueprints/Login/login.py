@@ -1,12 +1,14 @@
+import json
+from urllib.parse import quote_plus
+
+import requests
 from flask import Blueprint, request
-from werkzeug.security import generate_password_hash
 from sqlalchemy.orm import sessionmaker
+from werkzeug.security import generate_password_hash
+
 from Backend import db
 from Backend.Models.user import User
-from urllib.parse import quote_plus
-import requests
 from Backend.Utilities import jwt_tools
-import json
 
 login_bp = Blueprint('login_bp', __name__)
 
@@ -45,11 +47,10 @@ def user_login():
         return json.dumps({'success': False, 'error': 'Username or password is incorrect'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return response, 200, {'ContentType': 'application/json'}
@@ -97,11 +98,10 @@ def user_register():
         return json.dumps({'success': False, 'error': 'An account with this name already exists.'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
@@ -160,11 +160,10 @@ def restaurant_register():
         return json.dumps({'success': False, 'error': 'An account with this email already exists.'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}

@@ -1,15 +1,18 @@
+import json
+import os
+import sys
+
+import stripe
 from flask import Blueprint, jsonify, request
 from sqlalchemy.orm import sessionmaker
-from Backend.Utilities import jwt_tools
+
 from Backend import db
-import sys
-import os
-import stripe
-import json
+from Backend.Utilities import jwt_tools
 
 # Stripe Secret Key
-stripe.api_key = 'sk_test_51IWvOsCXMychAZM4oqHKxvqoZXCur0HcBuhhelJ2Mr7VyP7IRQnBFEgWypUycGKFhYCPfqqqZaODnDgEfhtwF57H00GeEFahIS'
-endpoint_secret = 'whsec_7BuWKvdQTCa16ZIO9ul5L6kUhxKtMUWQ'
+stripe.api_key = 'sk_test_51IWvOsCXMychAZM4oqHKxvqoZXCur0HcBuhhelJ2Mr7Vy' \
+                 'P7IRQnBFEgWypUycGKFhYCPfqqqZaODnDgEfhtwF57H00GeEFahIS'
+ENDPOINT_SECRET = 'whsec_7BuWKvdQTCa16ZIO9ul5L6kUhxKtMUWQ'
 
 payment_bp = Blueprint('payment_bp', __name__)
 
@@ -97,18 +100,16 @@ def create_session():
 
         session.commit()
 
-    except LookupError as e:
+    except LookupError:
         session.rollback()
         session.close()
-        print(str(e))
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
             403, {'ContentType': 'application/json'}
 
-    except Exception as e:
+    except Exception as error:
         session.rollback()
         session.close()
-        print(str(e))
-        return json.dumps({'success': False, 'error': str(e)}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return jsonify(stripe_session)
@@ -150,18 +151,16 @@ def retrieve_session():
             else:
                 stripe_session = {'id': transaction[0][0]}
 
-    except LookupError as e:
+    except LookupError:
         session.rollback()
         session.close()
-        print(str(e))
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
             403, {'ContentType': 'application/json'}
 
-    except Exception as e:
+    except Exception as error:
         session.rollback()
         session.close()
-        print(str(e))
-        return json.dumps({'success': False, 'error': str(e)}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return jsonify(stripe_session)
@@ -183,7 +182,7 @@ def webhook():
             sig_header = request.headers.get("Stripe-Signature")
 
             event = stripe.Webhook.construct_event(
-                payload, sig_header, endpoint_secret
+                payload, sig_header, ENDPOINT_SECRET
             )
         else:
             # This is for testing purposes to replicate the data returned by stripe
@@ -191,7 +190,6 @@ def webhook():
                 'type': 'checkout.session.completed',
                 'data': {'object': {'id': json.loads(request.data)['id']}}
             }
-            print(event)
 
         # Handle the checkout.session.completed event
         if event['type'] == "checkout.session.completed":
@@ -199,7 +197,6 @@ def webhook():
                             {
                                 'id': event['data']['object']['id']
                             })
-            # TODO Also need to send money to the restaurant
         else:  # Safe to assume transaction cancelled or failed for now
             session.execute('update transaction set state = -1 where stripe_transaction =:id',
                             {
@@ -208,23 +205,22 @@ def webhook():
 
         session.commit()
 
-    except ValueError as e:
+    except ValueError:
         # Invalid payload
         session.rollback()
         session.close()
         return json.dumps({'success': False, 'error': 'Invalid Payload'}), 400, {'ContentType': 'application/json'}
 
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         # Invalid signature
         session.rollback()
         session.close()
         return json.dumps({'success': False, 'error': 'Invalid Signature'}), 400, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        # Generic Exception
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False, 'error': str(e)}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}

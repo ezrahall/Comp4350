@@ -1,8 +1,10 @@
+import json
+
 from flask import Blueprint, request
 from sqlalchemy.orm import sessionmaker
+
 from Backend import db
 from Backend.Utilities import jwt_tools
-import json
 
 menu_bp = Blueprint('menu_bp', __name__)
 
@@ -59,11 +61,10 @@ def restaurant_menu(restaurant):
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.loads(result)
