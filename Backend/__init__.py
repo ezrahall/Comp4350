@@ -1,9 +1,10 @@
+import os
+
 from flask import Flask
-from flask_login import LoginManager
 from flask_cors import CORS
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from gevent import monkey
-import os
 
 db = SQLAlchemy()
 login_manager = LoginManager()

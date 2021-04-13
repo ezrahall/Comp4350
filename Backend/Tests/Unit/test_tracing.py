@@ -1,6 +1,9 @@
-import pytest
-from Backend import create_app
 import json
+
+import pytest
+
+from Backend import create_app
+
 
 @pytest.fixture(scope='module')
 def client():
@@ -11,6 +14,7 @@ def client():
         # Establish an application context
         with flask_app.app_context():
             yield testing_client  # this is where the testing happens!
+
 
 def test_tracing_send_email(client):
 

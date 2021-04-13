@@ -28,7 +28,12 @@ def all_orders():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        orders = session.execute('select * from (select t.stripe_transaction, t.address, mi.name, ol.quantity, t.state, t.id '
+        orders = session.execute('select * from (select t.stripe_transaction, '
+                                 '                      t.address, '
+                                 '                      mi.name, '
+                                 '                      ol.quantity, '
+                                 '                      t.state, '
+                                 '                      t.id '
                                  'from transaction as t '
                                  '       inner join user on t.user = user.id '
                                  '       left join order_log ol on t.id = ol.transaction '
