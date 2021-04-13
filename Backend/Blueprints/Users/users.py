@@ -1,11 +1,13 @@
+import json
+
 from flask import Blueprint, request
 from flask_login import current_user
-from werkzeug.security import generate_password_hash
 from sqlalchemy.orm import sessionmaker
-from Backend.Models.user import User
+from werkzeug.security import generate_password_hash
+
 from Backend import db
+from Backend.Models.user import User
 from Backend.Utilities import jwt_tools
-import json
 
 users_bp = Blueprint('users__bp', __name__)
 
@@ -49,11 +51,10 @@ def user_update():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': enc_jwt}), 200, {'ContentType': 'application/json'}
@@ -88,11 +89,10 @@ def user_deactivate():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
@@ -109,10 +109,10 @@ Endpoint expects only one param
 def user_test():
     try:
         parameters = request.json
-        data = jwt_tools.decode(parameters['cookies'])
+        jwt_tools.decode(parameters['cookies'])
 
-    except Exception:
-        return json.dumps({'success': False, 'error': 'Session Timeout'}), \
+    except Exception as error:
+        return json.dumps({'success': False, 'error': str(error)}), \
                403, {'ContentType': 'application/json'}
 
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}

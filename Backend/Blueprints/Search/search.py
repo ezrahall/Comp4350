@@ -1,13 +1,14 @@
-from flask import Blueprint, request
-from sqlalchemy.orm import sessionmaker
-from Backend import db
+import json
+import math
+import uuid
 from urllib.parse import parse_qs, urlparse, quote_plus
-from Backend.Utilities import jwt_tools
+
 import grequests
 import requests
-import math
-import json
-import uuid
+from flask import Blueprint, request
+from sqlalchemy.orm import sessionmaker
+
+from Backend import db
 
 search_bp = Blueprint('search__bp', __name__)
 
@@ -103,11 +104,10 @@ def search():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.loads(json_string), 200, {'ContentType': 'application/json'}
@@ -150,8 +150,7 @@ def location_autocomplete():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+    except Exception as error:
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     return json.loads(json_string)

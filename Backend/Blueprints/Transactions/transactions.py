@@ -1,8 +1,10 @@
+import json
+
 from flask import Blueprint, request
 from sqlalchemy.orm import sessionmaker
+
 from Backend import db
 from Backend.Utilities import jwt_tools
-import json
 
 transaction_bp = Blueprint('transaction_bp', __name__)
 
@@ -26,13 +28,13 @@ def all_orders():
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
 
-        orders = session.execute('select * '
-                                 'from (select t.stripe_transaction, '
-                                 '             t.address, '
-                                 '             mi.name, '
-                                 '             ol.quantity, '
-                                 '             t.state, '
-                                 '             t.id '
+
+        orders = session.execute('select * from (select t.stripe_transaction, '
+                                 '                      t.address, '
+                                 '                      mi.name, '
+                                 '                      ol.quantity, '
+                                 '                      t.state, '
+                                 '                      t.id '
                                  'from transaction as t '
                                  '  inner join user on t.user = user.id '
                                  '  left join order_log ol on t.id = ol.transaction '
@@ -79,11 +81,10 @@ def all_orders():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     print(result)
@@ -106,7 +107,6 @@ def update_order_state():
     try:
         parameters = request.json
         data = jwt_tools.decode(parameters['cookies'])
-        print(data)
 
         session.execute('update transaction '
                         '   set state = state + 1 '
@@ -127,11 +127,10 @@ def update_order_state():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.loads(result)
@@ -216,11 +215,10 @@ def user_order():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.loads(result)

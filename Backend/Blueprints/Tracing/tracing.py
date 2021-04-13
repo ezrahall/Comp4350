@@ -1,14 +1,16 @@
 import json
+import re
 import smtplib
 import ssl
 import sys
-import re
 from datetime import datetime, timedelta
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from email.utils import formataddr
+
 from flask import Blueprint, request
 from sqlalchemy.orm import sessionmaker
+
 from Backend import db
 from Backend.Utilities import jwt_tools
 
@@ -64,11 +66,10 @@ def tracing_send_email():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}

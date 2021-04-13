@@ -1,4 +1,5 @@
 import pytest
+
 from Backend import create_app
 
 
@@ -46,3 +47,5 @@ def test_registration_rest(client):
         'email': "joblo_@test.com",
         'password': "test"
     }, content_type='application/json')
+
+    assert res.status_code == 200

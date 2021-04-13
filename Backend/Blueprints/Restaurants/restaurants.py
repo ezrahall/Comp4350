@@ -1,13 +1,15 @@
+import json
+import os
+
+from PIL import Image
 from flask import Blueprint, request, send_from_directory
 from sqlalchemy.orm import sessionmaker
-from Backend.Models.restaurant import Restaurant
-from Backend.Models.menu_item import MenuItem
-from Backend.Models.staff import Staff
+
 from Backend import db
+from Backend.Models.menu_item import MenuItem
+from Backend.Models.restaurant import Restaurant
+from Backend.Models.staff import Staff
 from Backend.Utilities import jwt_tools
-from PIL import Image
-import os
-import json
 
 restaurant_bp = Blueprint('restaurant_bp', __name__)
 
@@ -53,11 +55,10 @@ def restaurant_get_staff_data():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.loads('{' + staff + jwt_token + '}')
@@ -105,11 +106,10 @@ def restaurant_get_tag_data():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.loads('{' + tags + jwt_token + '}')
@@ -158,11 +158,10 @@ def restaurant_get_menu_data():
         return json.dumps({'success': False, 'error': 'Session Timout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.loads('{' + menu + jwt_token + '}')
@@ -200,11 +199,10 @@ def restaurant_update():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
@@ -247,11 +245,10 @@ def restaurant_create_food():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token, 'id': food_id}), 200, {'ContentType': 'application/json'}
@@ -287,11 +284,10 @@ def restaurant_delete_food():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
@@ -346,11 +342,10 @@ def restaurant_update_food():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
@@ -391,11 +386,10 @@ def restaurant_add_tag():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token, 'id': tag_id}), 200, {'ContentType': 'application/json'}
@@ -432,11 +426,10 @@ def restaurant_delete_tag():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
@@ -476,11 +469,10 @@ def restaurant_create_staff():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token, 'id': staff_id}), 200, {'ContentType': 'application/json'}
@@ -528,11 +520,10 @@ def restaurant_update_staff():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
@@ -569,11 +560,10 @@ def restaurant_delete_staff():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception as error:
         session.rollback()
         session.close()
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     session.close()
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
@@ -625,9 +615,8 @@ def upload_image():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
-        return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
+    except Exception as error:
+        return json.dumps({'success': False, 'error': str(error)}), 500, {'ContentType': 'application/json'}
 
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
 
@@ -651,8 +640,7 @@ def delete_image():
         return json.dumps({'success': False, 'error': 'Session Timeout'}), \
                403, {'ContentType': 'application/json'}
 
-    except Exception as e:
-        print(str(e))
+    except Exception:
         return json.dumps({'success': False}), 500, {'ContentType': 'application/json'}
 
     return json.dumps({'success': True, 'jwt_token': jwt_token}), 200, {'ContentType': 'application/json'}
