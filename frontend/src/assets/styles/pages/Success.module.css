@@ -105,3 +105,39 @@
   transform: scale(1.03);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 500px ){
+  .success{
+    height: 100vh;
+    overflow-y: hidden;
+  }
+  .success__container {
+    background: #eae6ff;
+    width: 90vw;
+    height: 580px;
+    margin-left: 5vw;
+    margin-top: 20px;
+    z-index: 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  .success__content{
+    display: none;
+  }
+  .success__buttons{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .success__buttons button{
+    margin-bottom: 30px;
+  }
+  .success__buttonStyle1 {
+    margin-right: 0;
+  }
+}

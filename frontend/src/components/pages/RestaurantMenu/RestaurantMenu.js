@@ -26,17 +26,16 @@ const RestaurantMenu = () => {
 
     return (
         <div className={styles.menu}>
-            <NavBar />
+            <NavBar
+                hideSearch={true}
+            />
             <br />
             <Hero />
             <br />
             <div className={styles.menu__titleContainer}>
-                
-
                 <div className={styles.menu__subtitle}>
                     Delivery Time: {restaurant.time}
                 </div>
-
             </div>
             { basket?.length === 0 ?             
                 <div className={styles.menu__clickContainer} >
@@ -46,14 +45,16 @@ const RestaurantMenu = () => {
                 <div></div>
                 
             }
-            {menuItems.map((item) => <FoodItem
+            <div className={styles.menu__items}>
+                {menuItems.map((item) => <FoodItem
                 key={item.id}
                 image={KFC}
                 id={item.id}
                 title={item.name}
                 ing={item.description}
                 price={item.price}
-            />)}
+                />)}
+            </div>
             <div className={styles.menu__itemImageContainer} >
                 <img className={styles.menu__menuItem}  src={ItemImage} alt ='' />
             </div>

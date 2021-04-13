@@ -91,3 +91,22 @@
   align-items: center;
   margin-left: 15px;
 }
+
+@media (max-width: 600px) {
+  .fooditem__card{
+    width: 80vw;
+    margin: 0 5vw;
+    display: flex;
+    flex-direction: row;
+  }
+  .fooditem__title{
+    font-weight: normal;
+    font-size: 18px;
+  }
+  .fooditem__info{
+    width: 60vw;
+  }
+  .fooditem_remove {
+    margin-left: 2px;
+  }
+}

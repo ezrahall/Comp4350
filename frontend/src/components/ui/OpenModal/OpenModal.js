@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import classes from './OpenModal.module.css';
+import classes from '../../../assets/styles/OpenModal.module.css';
 import Backdrop from '../Backdrop/Backdrop';
 
 class OpenModal extends Component{

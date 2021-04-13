@@ -2,7 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 
-import classes from './OrderSummary.module.css';
+import classes from '../../../../assets/styles/OrderSummary.module.css';
 import {setOrder} from '../../../../store/actions/orders';
 
 

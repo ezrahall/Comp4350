@@ -6,7 +6,6 @@ import {loadStripe} from '@stripe/stripe-js';
 
 
 import './assets/styles/App.css';
-import Layout from "./hoc/Layout/Layout";
 import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
 import RestaurantMenu from './components/pages/RestaurantMenu/RestaurantMenu';
@@ -54,14 +53,12 @@ const App = () => {
     }, [])
   return ( 
     <div className="App">
-      <Layout>
         <Switch>
           <Route exact strict path="/" component={UserAddress}/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" render={() => (<Login signUp={true} />)}/>
           <Route component={DefaultContainer} />
         </Switch>
-      </Layout>
     </div>
   );
 }

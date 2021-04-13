@@ -104,3 +104,9 @@ html {
   background-color: white;
   color: rgb(255, 0, 106);
 }
+
+@media (max-width: 500px) {
+  .home__title{
+    flex-direction: column;
+  }
+}

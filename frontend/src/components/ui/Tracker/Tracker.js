@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './Tracker.module.css'
+import classes from '../../../assets/styles/Tracker.module.css'
 
 const Tracker = (props) => {
     return (

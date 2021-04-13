@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './Tag.module.css';
+import classes from '../../../assets/styles/Tag.module.css';
 
 const Tag = (props) => {
 

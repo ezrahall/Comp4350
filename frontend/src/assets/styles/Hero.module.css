@@ -45,3 +45,16 @@
   margin: 10px 40px;
   text-align: left;
 }
+
+@media (max-width: 500px) {
+  .hero{
+    margin-left: 0;
+    width: 100%;
+    height: 400px;
+  }
+  .hero__items{
+    padding: 0 10px;
+    width: 95vw;
+    align-items: center;
+  }
+}

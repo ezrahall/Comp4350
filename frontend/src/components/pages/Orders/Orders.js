@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Orders.module.css';
+import classes from '../../../assets/styles/Orders.module.css';
 import NavBar from '../../NavBar/NavBar';
 import ManageOrders from './ManageOrders/ManageOrders';
 

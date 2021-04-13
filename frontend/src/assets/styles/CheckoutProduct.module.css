@@ -98,3 +98,19 @@
   border: 1px solid #7579ff;
   outline: none;
 }
+@media (max-width: 500px) {
+  .container{
+    margin: 0;
+    width: 80vw;
+  }
+  .checkoutProduct{
+    margin-left: 10vw;
+    width: 80vw;
+  }
+  .checkoutProduct__qty{
+    margin-right: 10px;
+  }
+  .checkoutProduct__price{
+    display: none;
+  }
+}

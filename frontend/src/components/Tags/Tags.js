@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {KeyboardArrowLeftOutlined, KeyboardArrowRightOutlined} from '@material-ui/icons';
 
 import {tags} from '../../data/Tags/Tags';
-import classes from './Tags.module.css';
+import classes from '../../assets/styles/Tags.module.css';
 import Tag from './Tag/Tag';
 
 const Tags = (props) => {

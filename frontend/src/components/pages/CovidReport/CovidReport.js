@@ -3,7 +3,7 @@ import DatePicker from 'react-datetime-picker';
 import {useSelector} from 'react-redux'
 
 import classes from '../../../assets/styles/CovidReport.module.css'
-import OpenModal from '../../../ui/OpenModal/OpenModal';
+import OpenModal from '../../ui/OpenModal/OpenModal';
 import {reportPositive} from '../../../services/covidReport/covidReport';
 const CovidReport = (props) => {
     const [date, setDate] = useState(new Date);

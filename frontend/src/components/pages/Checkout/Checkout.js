@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from "react-redux";
-import { useStripe } from "@stripe/react-stripe-js";
-import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from "@material-ui/core"
+import { useSelector } from 'react-redux';
+import { useStripe } from '@stripe/react-stripe-js';
+import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from '@material-ui/core'
 import {useDispatch} from 'react-redux'
 
 import Burg from '../../../assets/images/burg.gif'
@@ -72,7 +72,10 @@ const Checkout = () => {
 
     return (
         <div className={styles.checkout}>
-            <NavBar />
+            <NavBar
+                hideSearch
+            />
+            <div className={styles.mobile__friendly}>
             <div className={styles.checkout__left}>
                 <div className={styles.top}>
                   <img
@@ -88,9 +91,9 @@ const Checkout = () => {
                     <p className={styles.checkout__title}>Your Shopping Basket:</p>
                 </div>
                 <br />
-    
+
                 {basket.map(item => (
-                    <CheckoutProduct 
+                    <CheckoutProduct
                         key = {item.id}
                         id = {item.id}
                         title = {item.title}
@@ -107,25 +110,25 @@ const Checkout = () => {
             <br />
             <div className={styles.checkout__deliveryInfo}>
               <h4>Your order will be delivered to: {user_address} </h4>
-              <Button color="secondary" variant="contained" style={{margin: '10px'}} onClick={handleClick}>Change delivery address</Button>
+              <Button color='secondary' variant='contained' style={{margin: '10px'}} onClick={handleClick}>Change delivery address</Button>
             </div>
-
-            <Dialog  fullWidth={true} maxWidth="sm" open={openChangeAddress} onClose={handleClose} aria-labelledby="form-dialog-title">
+            </div>
+            <Dialog  fullWidth={true} maxWidth='sm' open={openChangeAddress} onClose={handleClose} aria-labelledby='form-dialog-title'>
                 <DialogContent>
                     <DialogContentText>
-                        <form noValidate autoComplete="off">
+                        <form noValidate autoComplete='off'>
                             <div>
-                                <label htmlFor="newAddress">Enter new address</label>
-                                <AutoCompleteTextField id="newAddress" value={newAddress} fullWidth callback={setNewAddress}/>
+                                <label htmlFor='newAddress'>Enter new address</label>
+                                <AutoCompleteTextField id='newAddress' value={newAddress} fullWidth callback={setNewAddress}/>
                             </div>
                         </form> 
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions className={styles.actionBtns}>
-                    <Button onClick={handleClose} color="secondary" variant="contained">
+                    <Button onClick={handleClose} color='secondary' variant='contained'>
                       Cancel
                     </Button>
-                    <Button onClick={handleAddressChange} color="primary" variant="contained">
+                    <Button onClick={handleAddressChange} color='primary' variant='contained'>
                       Change
                     </Button> 
                 </DialogActions>
