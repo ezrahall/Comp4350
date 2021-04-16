@@ -1,3 +1,4 @@
+
 describe('Discover Restaurants', ()=>{
     beforeEach(() => {
         cy.visit('/')
