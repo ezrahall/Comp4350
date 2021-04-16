@@ -10,7 +10,6 @@ export let getRestaurants = async (distance, filter, address) => {
             'offset': 0,
             'limit': 6
         })
-        console.log(res.data.restaurants[0])
         return res.data.restaurants
     } catch (e){
         console.log(e)
@@ -45,7 +44,6 @@ export let getRestaurantMenu = async (id) =>{
             result.push(item);
             count++;
         })
-        console.log(result)
         return result
     }catch (e){
         console.log(e)

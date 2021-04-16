@@ -45,7 +45,6 @@ const Home = (props) => {
         setLoadingAll(true)
         getRestaurants(5, filter, address)
             .then((data) => {
-                console.log(data)
                 setRestaurants(data)
                 setLoadingAll(false)
             })
