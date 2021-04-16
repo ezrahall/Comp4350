@@ -25,7 +25,6 @@ export let getOrderCustomer = async () => {
         offset: 0,
         limit: 500
     })
-    console.log(res)
     return res.data.orders[0]
 }
 export let getPastOrders = async () => {

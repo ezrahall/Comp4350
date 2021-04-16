@@ -12,7 +12,7 @@ This style guide uses the most popular coding styles from the web for JavaScript
 ## Naming
 
   - **Extensions**: Use `.js` extension for React components.
-  - **Filename**: Use PascalCase for filenames, use camelCase for `styles` or services.
+  - **Files**: Use PascalCase for components, use camelCase for `styles` or services.
 
     ```jsx
     // bad
@@ -27,8 +27,8 @@ This style guide uses the most popular coding styles from the web for JavaScript
     // good
     import signIn from '../../../store/actions/user';
     ```
-
-  - **Component Naming**: Use the filename as the component name and as the directory name.
+  - **Directories**: Same as files, except lower case for directories with sub-directories. 
+  - **Components**: Use the file name as the component name and as the directory name.
 
     ```jsx
     // bad
@@ -37,6 +37,7 @@ This style guide uses the most popular coding styles from the web for JavaScript
     // good 
     import Footer from './Address/Address';
     ```
+  - **Constants for non-functions**: UPPERCASE_WITH_UNDERSCORES 
 
 ## Alignment
 
