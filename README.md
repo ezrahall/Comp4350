@@ -8,6 +8,19 @@
 | Michael Ukwenya         | ukwenyam        | Full Stack Dev |
 | Matt Lewis              | Matthew9799     | Backend Dev    |
 
+### Team Leader
+Team leader bonus should be spilt evenly amongst all group members.
+
+**Sprint 1 Leader:** Ezra Hall
+
+**Sprint 2 Leader:** Matt Lewis
+
+**Sprint 3 Leader:** Tahmidul Hasnain Zidaan
+
+**Sprint 4 Leader:** James Harvey
+
+**Final Project Report/Presentation/Deliverable Leader:** Michael Ukwenya
+
 ### Description
 
 Safeat is designed to provide customers a platform to order food from restauraunts in a safe and efficient manner. The application allows users to order off the menu of a restauraunt and pay for that order, which will then be delivered to a location specified by the customer. What makes Safeat standout from any other food ordering service is that it adds contact tracing to the delivery process. The contact tracing feature means that if any individual involved in the food delivery procees (restaurant worker, delivery driver or customer) tests positive for Covid-19 (or in the future any other illnesses) all other parties involved in the order will recieve a notification.
